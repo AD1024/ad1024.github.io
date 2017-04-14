@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.4 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            C语言基础(中文版) | 
+        
+        Space Of AD1024
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#536DFE">
+    <meta name="author" content="AD1024">
+    <meta name="description" content="A Senior Student From Beijing National Day School">
+    <meta name="keywords" content="null">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Space Of AD1024">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://ad1024.tech">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="C语言基础(中文版) | Space Of AD1024">
+    <meta property="og:description" content="A Senior Student From Beijing National Day School">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.en.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #3D5AFE;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #536DFE !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #536DFE !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #536DFE !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #3D5AFE;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+<link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                C语言基础(中文版)
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>AD1024</strong>
+        <span>Sep 28, 2016</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=C语言基础(中文版)&url=http://ad1024.tech//C-language-Basis/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Weibo
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=C语言基础(中文版)&url=http://ad1024.tech//C-language-Basis/index.html&via=AD1024" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://ad1024.tech//C-language-Basis/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://ad1024.tech//C-language-Basis/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="1-基础语法"><a href="#1-基础语法" class="headerlink" title="1 基础语法"></a>1 基础语法</h2><h3 id="1-1-C语言基本数据类型"><a href="#1-1-C语言基本数据类型" class="headerlink" title="1.1 C语言基本数据类型"></a>1.1 C语言基本数据类型</h3><p>C语言基本数据类型有:</p>
+<blockquote>
+<p>类型名称 数据类型 范围<br>char   字符     -128~127<br>int    整数     -2^32~2^32-1<br>float  单精度小数 -2^128~2^127<br>double 双精度小数 -1.07<em>10^308~1.07</em>10^308<br>bool   布尔值    true~false(0~1)</p>
+</blockquote>
+<hr>
+<h3 id="1-1-声明与赋值语句"><a href="#1-1-声明与赋值语句" class="headerlink" title="1.1 声明与赋值语句"></a>1.1 声明与赋值语句</h3><h4 id="1-1-1-声明"><a href="#1-1-1-声明" class="headerlink" title="1.1.1 声明"></a>1.1.1 声明</h4><p>在变量使用之前，我们需要声明变量。也就是我们告诉计算机，让它给你准备空间存放这个变量。如：</p>
+<pre><code>/*声明3个变量名称为a b c*/
+int a;
+int b;
+int c;
+</code></pre><hr>
+<h4 id="1-1-2-赋值语句"><a href="#1-1-2-赋值语句" class="headerlink" title="1.1.2 赋值语句"></a>1.1.2 赋值语句</h4><p>与数学表达类似，C语言中也使用’=’进行变量赋值。如：</p>
+<pre><code>int a; // 声明变量
+a=1;   // 赋值变量
+</code></pre><p>通过以上语句，我们就将a赋值为1。当然，我们可以将声明与赋值合并在一起:</p>
+<pre><code>int a=1;
+</code></pre><p>这样我们就在声明时直接将a赋值为1。</p>
+<hr>
+<h3 id="1-2-运算符"><a href="#1-2-运算符" class="headerlink" title="1.2 运算符"></a>1.2 运算符</h3><p>在C语言中，运算符有数学中的加、减、乘、除和取模(mod)。在C语言中对应为:</p>
+<blockquote>
+<p>加: +<br>减: -<br>乘: *<br>除: /<br>取模: %</p>
+</blockquote>
+<p><strong>注意C语言中没有乘方(小角标)，阶乘(!)，根号运算符</strong></p>
+<h4 id="1-2-1-变量之间的运算"><a href="#1-2-1-变量之间的运算" class="headerlink" title="1.2.1 变量之间的运算"></a>1.2.1 变量之间的运算</h4><pre><code>int a=1;int b=2;
+int c=a+b;
+</code></pre><p>通过以上代码，我们将a+b的结果存储在c中。其他运算以此类推</p>
+<h4 id="1-2-2-C语言特有运算符"><a href="#1-2-2-C语言特有运算符" class="headerlink" title="1.2.2 C语言特有运算符"></a>1.2.2 C语言特有运算符</h4><p>为了方便程序猿，C语言中有一些独有的，数学中没有的运算符：</p>
+<blockquote>
+<p>a++ a– a+=2 a-=2 a*=2 a/=2<br>对应的意思是:a自增1 a自减1 a自增2 a自减2 a自乘2 a自除2</p>
+</blockquote>
+<p>当然还有</p>
+<blockquote>
+<p>++a –a</p>
+</blockquote>
+<p>其与a++ a–的区别是:运算符在前的先自增/减1再带入运算；运算符在后的，先带入运算再自增/减1。如:</p>
+<pre><code>int a=1;
+int b=a++; // 此时b=1
+int c=a; // 此时c=2
+a=1;
+b=++a; // 此时 b=2
+</code></pre><h4 id="1-2-3-比较运算符"><a href="#1-2-3-比较运算符" class="headerlink" title="1.2.3 比较运算符"></a>1.2.3 比较运算符</h4><p>比较运算符有:<br>大于 &gt;<br>小于 &lt;<br>大于等于 &gt;=<br>小于等于 &lt;=<br>是否相等 ==</p>
+<h4 id="1-2-4-逻辑运算"><a href="#1-2-4-逻辑运算" class="headerlink" title="1.2.4 逻辑运算"></a>1.2.4 逻辑运算</h4><p>逻辑运算中与数学中的逻辑运算相同，有与(并且)，或(或者)，非(取反)。在C语言中表现为:</p>
+<blockquote>
+<p>&amp;&amp; || !</p>
+</blockquote>
+<p>当遇到’&amp;&amp;’时，只有前后两个条件都是真时，才表现为真；<br>如:</p>
+<blockquote>
+<p>1&gt;2 &amp;&amp; 2<3 1="" 假="">2 &amp;&amp; 2&gt;4 // 假<br>1&gt;0 &amp;&amp; 2&lt;10 // 真</3></p>
+</blockquote>
+<p>当遇到’||’时，只有前后两个条件至少一个是真时，才表现为真；<br>如：</p>
+<blockquote>
+<p>1&gt;2 || 2<0 1="" 假="">2 || 2&gt;1 // 真<br>2&gt;1 || 1==1 // 真</0></p>
+</blockquote>
+<p>当遇到’!’时，该运算符后方的命题真实性翻转<br>如：</p>
+<blockquote>
+<p>!(1&gt;2) // 真<br>!(2&gt;1) // 假</p>
+</blockquote>
+<h4 id="1-2-5-运算符优先级"><a href="#1-2-5-运算符优先级" class="headerlink" title="1.2.5 运算符优先级"></a>1.2.5 运算符优先级</h4><p><a href="http://baike.baidu.com/link?url=zZw6JFh_tauCobt_0YdVXeuAkf2u6Y4PurM4XC4VpfhFG6n2nBJsLpVXprO65Mh7863Q0vnxPtH-D1HcsOhOMa" target="_blank" rel="external">百度百科</a></p>
+<hr>
+<h3 id="1-3-选择结构"><a href="#1-3-选择结构" class="headerlink" title="1.3 选择结构"></a>1.3 选择结构</h3><h4 id="1-3-1-if结构"><a href="#1-3-1-if结构" class="headerlink" title="1.3.1 if结构"></a>1.3.1 if结构</h4><p>在C语言中，可以对一些情况作出判断。其判断只存在对于错，不存在中间值。我们可以使用if()对括号内的情况作出判断。一个if选择为：</p>
+<pre><code>if(){
+  // 代码块
+}
+</code></pre><p>若括号中的条件为真，则会执行代码块；若为假则不执行。<br>如：</p>
+<pre><code>int a=1;int b=2;
+if(a&gt;b){
+  a-=b;
+}
+</code></pre><p>以上代码，if中的语句不会执行。</p>
+<hr>
+<h4 id="1-3-2-if-else结构"><a href="#1-3-2-if-else结构" class="headerlink" title="1.3.2 if-else结构"></a>1.3.2 if-else结构</h4><p>当然，当条件不为真时，我们也想搞事情，怎么办呢？那么我们就搞一个if-else结构。该结构基本结构如下:</p>
+<pre><code>if(){
+  // A
+}else{
+  // B
+}
+</code></pre><p>当括号中为真时，则执行A处代码，否则执行B处代码。<br>if-else结构是可以嵌套的:</p>
+<pre><code>if(){
+  if(){
+
+  }
+}else{
+  if(){
+
+  }else{
+
+  }
+}
+</code></pre><p><strong>注意else后方只能再写if或者代码，不能继续else</strong><br>通过这个方法，我们可以做一些复杂状况的判断。</p>
+<hr>
+<h4 id="1-3-3-switch-case结构"><a href="#1-3-3-switch-case结构" class="headerlink" title="1.3.3 switch-case结构"></a>1.3.3 switch-case结构</h4><p>考虑如下问题：某个班级有着森严的等级制度，颜值越高的同学等级越低，对应等级如下(递减):<br>颜值 等级<br>1   A<br>2   B<br>3   C<br>4   D<br>现在告诉你全班每个人的颜值，请确定同学们的等级。<br>如果用if-else结构，程序是这样的:</p>
+<pre><code>if(){
+
+}else if(){
+
+}else if(){
+
+}else if(){
+
+}
+</code></pre><p>这看着好难看，在班里等级一定很高。所以我们要使用颜值高的switch-case结构。一个switch-case选择结构是这样的:</p>
+<pre><code>switch(x){
+  case 值1://A;break;
+  case 值2://B;break;
+  case 值3://C;break;
+  default://C;break;
+}
+</code></pre><p>当x==值1时，会执行A部分代码；x==2时执行B部分….<br>default是指，x和值1值2值2都不相等时，执行C后直接退出(当然A,B,C视情况而定)。<br>使用以上代码，颜值高但是等级低。这是因为switch-case结构仅能判断是否相等，而不能判断其他关系。</p>
+<hr>
+<h3 id="1-4-循环结构"><a href="#1-4-循环结构" class="headerlink" title="1.4 循环结构"></a>1.4 循环结构</h3><p>为了实现更为复杂的功能和算法，C语言支持循环结构。在C语言中，循环结构有3种：</p>
+<ul>
+<li>while循环</li>
+<li>for循环</li>
+<li>do…while结构<br><strong>循环结构可以嵌套</strong></li>
+</ul>
+<hr>
+<h4 id="1-4-1-什么是循环结构"><a href="#1-4-1-什么是循环结构" class="headerlink" title="1.4.1 什么是循环结构?"></a>1.4.1 什么是循环结构?</h4><p>循环结构及重复做同一件事情。在生活中处处存在着循环结构：你每天都奔走在各个教室之间，这是循环；老师判作业时一张一张卷子翻，这也是循环。同样在C语言中，循环是一个很重要的部分，因为它可以为你节省很多时间：计算1+2+3+…+100，如果不使用求和公式你需要手打100个数字；然而使用循环结构，仅仅几行就能实现。</p>
+<hr>
+<h4 id="1-4-2-while循环结构"><a href="#1-4-2-while循环结构" class="headerlink" title="1.4.2 while循环结构"></a>1.4.2 while循环结构</h4><p>一个while循环结构的基本框架如下:</p>
+<pre><code>while(&lt;condition&gt;){
+  &lt;code&gt;
+}
+</code></pre><p>也就是说，在condition成立的情况下，程序将一直执行code，其中condition可以是任何逻辑判断。<br>E.g.计算1+2+…+1000;</p>
+<pre><code>int x=1;int sum=0;
+while(x&lt;=1000){
+  sum+=x;
+  x+=1;
+}
+</code></pre><hr>
+<h4 id="1-4-3-for循环结构"><a href="#1-4-3-for循环结构" class="headerlink" title="1.4.3 for循环结构"></a>1.4.3 for循环结构</h4><p>一个for循环的基本结构如下：</p>
+<pre><code>for(&lt;initial-condition&gt;;&lt;terminate-condition&gt;;&lt;operation&gt;){
+  &lt;code&gt;
+}
+</code></pre><p>initial-condition是循环初始条件/初始化；terminate-condition是循环终止条件；operation是一次循环结束后对初始条件作出的变化。<br>E.g.计算1+2+…+1000</p>
+<pre><code>int sum=0;
+for(int i=1;i&lt;=1000;i++){
+  sum+=i;
+}
+</code></pre><hr>
+<h4 id="1-4-4-do…while循环结构"><a href="#1-4-4-do…while循环结构" class="headerlink" title="1.4.4 do…while循环结构"></a>1.4.4 do…while循环结构</h4><p>do-while结构在实际应用中并不常见(因为用while是可以替代的)。一个do-while的基本框架如下:</p>
+<pre><code>do{
+  &lt;code&gt;
+}while(&lt;condition&gt;);
+</code></pre><p>与while循环相似，do-while结构的执行条件依旧是condition，而与while循环不同的是在循环开始前，code中的内容会先被执行一次。</p>
+<hr>
+<h4 id="1-4-5-continue语句与break语句"><a href="#1-4-5-continue语句与break语句" class="headerlink" title="1.4.5 continue语句与break语句"></a>1.4.5 continue语句与break语句</h4><p>continue语句用于跳过一次循环进入下一次循环；<br>break语句可用于忽视终止条件退出循环。</p>
+<p><strong>注意:在执行continue语句后，初始状态依旧会按照编写的规则变化</strong></p>
+<hr>
+<h4 id="1-4-6-循环的嵌套"><a href="#1-4-6-循环的嵌套" class="headerlink" title="1.4.6 循环的嵌套"></a>1.4.6 循环的嵌套</h4><p>在本小节开始时曾说过，循环是可以嵌套的。那么循环嵌套是什么呢？其实很简单——循环里跑循环。如：求1+..+10,2+..+10,3+..+10 … 10+10的和</p>
+<pre><code>int sum=0;
+for(int i=1;i&lt;=10;++i){
+  for(int j=i;j&lt;=10;++j){
+    sum+=j;
+  }
+}
+</code></pre><p>使用该方法可以简单实现更加复杂的循环结构。</p>
+<hr>
+<h3 id="1-5-数组"><a href="#1-5-数组" class="headerlink" title="1.5 数组"></a>1.5 数组</h3><h4 id="1-5-1-什么是数组"><a href="#1-5-1-什么是数组" class="headerlink" title="1.5.1 什么是数组?"></a>1.5.1 什么是数组?</h4><p>数组就是一组数据，可以集中存储一些互相有关联的，或者是需要集中化存储的数据。相比起单独的一个变量，数组更加具有灵活性。数组不仅在算法竞赛扮演着重要的角色，在软件项目开发中也有着至关重要的作用。</p>
+<hr>
+<h4 id="1-5-2-一维数组的声明"><a href="#1-5-2-一维数组的声明" class="headerlink" title="1.5.2 一维数组的声明"></a>1.5.2 一维数组的声明</h4><p>数组声明事实上和普通的一个变量声明相似，只不过多一个小尾巴：</p>
+<pre><code>int a[1001]; //这就是一个数组
+</code></pre><p>数组后面中括号和数字表示：这个变量是个数组，一共可以存下1000个数字。</p>
+<hr>
+<h4 id="1-5-3-一维数组的赋值与取值"><a href="#1-5-3-一维数组的赋值与取值" class="headerlink" title="1.5.3 一维数组的赋值与取值"></a>1.5.3 一维数组的赋值与取值</h4><p>对于一个数组，我们可以通过使用中括号+下标的方式取值/赋值:</p>
+<pre><code>int a[1001];
+a[2]=1;
+</code></pre><p>以上代码，将数组a的第二位赋值为1。需要注意的一点是:<br><strong>C语言中数组起始下标为0</strong><br>也就是说第二位事实上在这个数组里是第三位。(0-&gt;1-&gt;2)</p>
+<p>同样地，我们也可以通过使用这个方法取值:</p>
+<pre><code>int x;
+int a[1001];
+a[0]=1;
+x=a[0];
+</code></pre><p>通过以上代码，我们将x的数值赋值为数组a第一个元素的值。</p>
+<hr>
+<h4 id="1-5-4-多维数组的声明与赋值"><a href="#1-5-4-多维数组的声明与赋值" class="headerlink" title="1.5.4 多维数组的声明与赋值"></a>1.5.4 多维数组的声明与赋值</h4><p>与一维数组类似，数组可以是多维的(如：二维就是矩阵)。这取决于数组标识符后有几个中括号。例如一个二维数组声明就是:</p>
+<pre><code>int a[1001][1001];
+</code></pre><p>表示这是一个1001<em>1001的数组(矩阵)。<br>当然我们不要把“维”这个东西想的太高端，因为这个“维”仅仅是一个概念，实际应用时不需要管那么多。不过需要注意的是空间限制。大小为1000的一维数组占用空间是1000，而二维的就是1000</em>1000。维越高，越占用空间。</p>
+<hr>
+<h4 id="1-5-5-数组的初始化"><a href="#1-5-5-数组的初始化" class="headerlink" title="1.5.5 数组的初始化"></a>1.5.5 数组的初始化</h4><p>数组初始化需要include一个头文件叫做”string.h”(C++为cstring)。其中有一个函数为”memset”，它的作用就是初始化数组(几维数组都可以)。memset使用方法如下:</p>
+<pre><code>int a[1001];
+memset(a,0,sizeof(a));
+</code></pre><p>传入a的地址，初始化值以及初始化长短；二维数组与其相同<br>不过注意：memset()是按字节进行，也就是说以下代码:</p>
+<pre><code>int a[1001];
+memset(a,1,sizeof(a));
+</code></pre><p>是错误的，因为每次赋值只赋值1B，无法保证所有值都是1。</p>
+<hr>
+<h3 id="1-6-指针"><a href="#1-6-指针" class="headerlink" title="1.6 指针"></a>1.6 指针</h3><p>指针在C语言中属于较为苦难的一部分，因为各种引用关系比较复杂。因此这里仅讲解算法竞赛中会使用到的指针的知识。</p>
+<h4 id="1-6-1-声明指针类型"><a href="#1-6-1-声明指针类型" class="headerlink" title="1.6.1 声明指针类型"></a>1.6.1 声明指针类型</h4><p>事实上指针类型基于现有的数据类型，如：我要声明一个int类型的指针，我只需要:</p>
+<pre><code>int *a;
+</code></pre><p>即可。也就是在标识符前加“*”。其他类型以此类推。</p>
+<hr>
+<h4 id="1-6-2-指针类型的作用"><a href="#1-6-2-指针类型的作用" class="headerlink" title="1.6.2 指针类型的作用"></a>1.6.2 指针类型的作用</h4><p>指针类型不真正存储数据，而是指向真正存储数据变量的地址，因此对指针类型的操作不会体现在指针类型上，而是会体现在它所指向的变量上。如:</p>
+<pre><code>int a=1;
+int *p=&amp;a; //&amp;操作符用于取出变量对应的内存地址
+*p=10;
+/*此时a的值已经变成了10*/
+</code></pre><h4 id="1-6-3-引用类型"><a href="#1-6-3-引用类型" class="headerlink" title="*1.6.3 引用类型"></a>*1.6.3 引用类型</h4><p><strong>引用类型为附加内容，可跳过，但建议阅读</strong><br>在C++中还有一种类型叫做引用类型，与指针类型相似。引用类型方便在:如果在其他函数中对形参的修改想要体现在调用处，我们需要用引用类型。引用类型应用如下:</p>
+<pre><code>void SWAP(int &amp;a,int &amp;b){
+  a^=b^=a^=b;
+}
+
+int main(){
+  int a=1,b=2;
+  SWAP(a,b);
+  return 0;
+}
+</code></pre><p>使用这个方法，可以在SWAP函数中交换a，b的数值，但是这个修改也会体现在main函数中。</p>
+<hr>
+<h3 id="1-7-结构体"><a href="#1-7-结构体" class="headerlink" title="1.7 结构体"></a>1.7 结构体</h3><p>为了增强程序对数据的封装性，C语言支持结构体对数据进行集散化。<br><strong>结构体支持数组</strong></p>
+<h4 id="1-7-1-定义结构体"><a href="#1-7-1-定义结构体" class="headerlink" title="1.7.1 定义结构体"></a>1.7.1 定义结构体</h4><p>一个结构体的定义框架如下:</p>
+<pre><code>struct &lt;Name&gt;{
+  Data a;
+  Data b;
+  ...
+};
+</code></pre><p>其中<name>为结构体名称。<br>例如我想要存储一个人的基本信息:</name></p>
+<pre><code>struct Person{
+  int age;
+  char name[30];
+};
+</code></pre><p>在使用这个结构体时与使用基本数据类型方法一样:</p>
+<pre><code>Person me; //声明一个Person结构体数据类型
+</code></pre><hr>
+<h4 id="1-7-2-结构体中数据的修改"><a href="#1-7-2-结构体中数据的修改" class="headerlink" title="1.7.2 结构体中数据的修改"></a>1.7.2 结构体中数据的修改</h4><p>有了结构体，我们还需要往里面存一些数据，如何存呢?我们引进”.”和”-&gt;”操作符。对于普通数据对象我们使用”.”操作符取数据，对于指针类型我们使用”-&gt;”操作费取数据。如:</p>
+<pre><code>Person a;
+a.age=1;
+//----------
+Person *p=&amp;a;
+p-&gt;age=a.age+10;
+</code></pre><p>通过这个方法我们可以修改/访问结构体中的数据。</p>
+<hr>
+<h4 id="1-7-3-结构体的构造函数"><a href="#1-7-3-结构体的构造函数" class="headerlink" title="1.7.3 *结构体的构造函数"></a>1.7.3 *结构体的构造函数</h4><p>* <em>这部分内容属于附加内容，可跳过，但是推荐阅读</em><br>构造函数就像一个工厂，放入原料，出来产品。struct的构造函数只要传入你想要初始化的参数，它会“造出来”一个结构体给你。如:</p>
+<pre><code>struct Person{
+  int age;
+  string name;
+  Person(int Age,string Name){ //构造函数(参数不要和结构体里的重名)
+    age=Age;
+    name=Name;
+  }
+};
+</code></pre><p>注意:你会发现如果这样写了构造函数，直接定义会编译报错，这是因为如果不写构造函数，其默认的构造函数是没有任何参数的。因此如果想要保留直接定义的支持性，需要写一个空的构造函数:</p>
+<pre><code>struct Person{
+  int age;
+  string name;
+  Person(){} //直接定义的支持
+  Person(int Age,string Name){ //构造函数(参数不要和结构体里的重名)
+    age=Age;
+    name=Name;
+  }
+};
+</code></pre>
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="AD1024's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        ccoderad@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                Home
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    Archives
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/03/">March 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">February 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">January 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">December 2016<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">November 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">October 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">September 2016<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">August 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">July 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">June 2016<span class="sidebar_archives-count">20</span></a></li><li><a class="sidebar_archives-link" href="/archives/1970/01/">January 1970<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/Algorithm-Template" title="Algorithm Templates">
+                
+                    <i class="material-icons sidebar-material-icons">assignment</i>
+                
+                Algorithm Templates
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallary" title="Moments">
+                
+                    <i class="material-icons sidebar-material-icons">photo</i>
+                
+                Moments
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/tags" title="Tag Cloud">
+                
+                    <i class="material-icons sidebar-material-icons">book</i>
+                
+                Tag Cloud
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="Friend Links">
+                
+                    <i class="material-icons sidebar-material-icons">people</i>
+                
+                Friend Links
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                Number of articles
+                <span class="sidebar-badge">60</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            Theme - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.svg);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.svg);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.svg);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/AD1024" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.svg);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/mike-he-94/activities" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-zhihu.svg);">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+        <a href="http://space.bilibili.com/11936677/#!/index" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-bilibili.svg);">
+                <span class="visuallyhidden">Bilibili</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Space Of AD1024
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

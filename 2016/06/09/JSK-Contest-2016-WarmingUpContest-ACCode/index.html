@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.4 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            JSK Contest 2016 WarmingUpContest AC Code | 
+        
+        Space Of AD1024
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#536DFE">
+    <meta name="author" content="AD1024">
+    <meta name="description" content="A Senior Student From Beijing National Day School">
+    <meta name="keywords" content="null,OI,ACM,JiSuanKe,Contest">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Space Of AD1024">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://ad1024.tech">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="JSK Contest 2016 WarmingUpContest AC Code | Space Of AD1024">
+    <meta property="og:description" content="A Senior Student From Beijing National Day School">
+    <meta property="og:article:tag" content="OI"> <meta property="og:article:tag" content="ACM"> <meta property="og:article:tag" content="JiSuanKe"> <meta property="og:article:tag" content="Contest"> 
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.en.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #3D5AFE;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #536DFE !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #536DFE !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #536DFE !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #3D5AFE;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+<link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Problem-Descriptions"><span class="post-toc-number">1.</span> <span class="post-toc-text">Problem Descriptions</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Categories-Of-Each-Problem"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Categories Of Each Problem</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Problem-Analysis"><span class="post-toc-number"></span> <span class="post-toc-text">Problem Analysis</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Problem-A"><span class="post-toc-number">1.</span> <span class="post-toc-text">Problem A</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#AC-Code-for-Question-A"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">AC Code for Question A</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Problem-B"><span class="post-toc-number">2.</span> <span class="post-toc-text">Problem B</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#AC-Code-For-Question-B"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">AC Code For Question B</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Problem-C"><span class="post-toc-number">3.</span> <span class="post-toc-text">Problem C</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#AC-Code-For-Problem-C"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">AC Code For Problem C</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Problem-D"><span class="post-toc-number"></span> <span class="post-toc-text">Problem D</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#AC-Code-For-Question-D"><span class="post-toc-number">0.1.</span> <span class="post-toc-text">AC Code For Question D</span></a></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                JSK Contest 2016 WarmingUpContest AC Code
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>AD1024</strong>
+        <span>Jun 09, 2016</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/ACM/">ACM</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Contest/">Contest</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/JiSuanKe/">JiSuanKe</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/OI/">OI</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=JSK Contest 2016 WarmingUpContest AC Code&url=http://ad1024.tech//2016/06/09/JSK-Contest-2016-WarmingUpContest-ACCode/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Weibo
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=JSK Contest 2016 WarmingUpContest AC Code&url=http://ad1024.tech//2016/06/09/JSK-Contest-2016-WarmingUpContest-ACCode/index.html&via=AD1024" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://ad1024.tech//2016/06/09/JSK-Contest-2016-WarmingUpContest-ACCode/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://ad1024.tech//2016/06/09/JSK-Contest-2016-WarmingUpContest-ACCode/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="Problem-Descriptions"><a href="#Problem-Descriptions" class="headerlink" title="Problem Descriptions"></a>Problem Descriptions</h2><hr>
+<p>A:<a href="http://nanti.jisuanke.com/t/11097" target="_blank" rel="external">Rotate TheCoin</a></p>
+<p>B:<a href="http://nanti.jisuanke.com/t/11099" target="_blank" rel="external">Package Transporting</a></p>
+<p>C:<a href="http://nanti.jisuanke.com/t/11112" target="_blank" rel="external">Building An Airport</a></p>
+<p>D:<a href="http://nanti.jisuanke.com/t/11115" target="_blank" rel="external">The Lighten Point</a></p>
+<h3 id="Categories-Of-Each-Problem"><a href="#Categories-Of-Each-Problem" class="headerlink" title="Categories Of Each Problem"></a>Categories Of Each Problem</h3><table>
+<thead>
+<tr>
+<th>Question</th>
+<th style="text-align:center">Categories</th>
+<th style="text-align:right">Hard Level(0~10)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RotateTheCoin</td>
+<td style="text-align:center">BitCalculation</td>
+<td style="text-align:right">7</td>
+</tr>
+<tr>
+<td>PackageTransporting</td>
+<td style="text-align:center">Offline UnionFind</td>
+<td style="text-align:right">7.5</td>
+</tr>
+<tr>
+<td>BuildingAnAirport</td>
+<td style="text-align:center">NetWorkFlow</td>
+<td style="text-align:right">8</td>
+</tr>
+<tr>
+<td>TheLightenPoint</td>
+<td style="text-align:center">Geometric</td>
+<td style="text-align:right">9.4</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Problem-Analysis"><a href="#Problem-Analysis" class="headerlink" title="Problem Analysis"></a>Problem Analysis</h1><h2 id="Problem-A"><a href="#Problem-A" class="headerlink" title="Problem A"></a>Problem A</h2><p>This question isn’t that easy because of its data range..If it had a narrower data range,I could pass every test point TAT. Anyway,you just need to enumerate the status of the first line,then you can know the status of following lines(1 stands for front,0 stands for back).So you just need to enumerate the first line….And use an O(2^20) algorithm to search out all status.</p>
+<h3 id="AC-Code-for-Question-A"><a href="#AC-Code-for-Question-A" class="headerlink" title="AC Code for Question A"></a>AC Code for Question A</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;time.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;cstdio></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;cstring></span></span>
+
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token keyword">int</span> b<span class="token punctuation">[</span><span class="token number">65536</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> he<span class="token punctuation">[</span><span class="token number">105</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> cun<span class="token punctuation">[</span><span class="token number">105</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token number">17</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span><span class="token number">16</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+        a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>a<span class="token punctuation">[</span>i<span class="token number">-1</span><span class="token punctuation">]</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> s<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span><span class="token number">65535</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        s<span class="token operator">=</span>i<span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>s<span class="token operator">!=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token operator">%</span><span class="token number">2</span><span class="token punctuation">)</span>
+                b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+            s<span class="token operator">/</span><span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">,</span>m<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>n<span class="token punctuation">,</span><span class="token operator">&amp;</span>m<span class="token punctuation">)</span><span class="token operator">!=</span><span class="token constant">EOF</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">memset</span><span class="token punctuation">(</span>he<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>he<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span>m<span class="token punctuation">;</span>j<span class="token operator">>=</span><span class="token number">1</span><span class="token punctuation">;</span>j<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                he<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span><span class="token operator">=</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">*</span>s<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">int</span> mi<span class="token punctuation">,</span>zhi<span class="token punctuation">,</span>an<span class="token punctuation">;</span>
+        mi<span class="token operator">=</span><span class="token number">1000000000</span><span class="token punctuation">;</span>
+        zhi<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">bool</span> neng<span class="token punctuation">;</span>
+        neng<span class="token operator">=</span><span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>a<span class="token punctuation">[</span>m<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            zhi<span class="token operator">=</span>b<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            cun<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">(</span>he<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">^</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            cun<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">(</span>i<span class="token operator">*</span><span class="token number">2</span><span class="token operator">%</span>a<span class="token punctuation">[</span>m<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">^</span>cun<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            cun<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">(</span>i<span class="token operator">/</span><span class="token number">2</span><span class="token operator">%</span>a<span class="token punctuation">[</span>m<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">^</span>cun<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            cun<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">(</span>he<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token operator">^</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                zhi<span class="token operator">+</span><span class="token operator">=</span>b<span class="token punctuation">[</span>a<span class="token punctuation">[</span>m<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">-</span>cun<span class="token punctuation">[</span>j<span class="token number">-1</span><span class="token punctuation">]</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                an<span class="token operator">=</span>a<span class="token punctuation">[</span>m<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">-</span>cun<span class="token punctuation">[</span>j<span class="token number">-1</span><span class="token punctuation">]</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+                cun<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">(</span>cun<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">^</span>an<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                cun<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">(</span>he<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">^</span>an<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                cun<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">(</span>an<span class="token operator">*</span><span class="token number">2</span><span class="token operator">%</span>a<span class="token punctuation">[</span>m<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">^</span>cun<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                cun<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">(</span>an<span class="token operator">/</span><span class="token number">2</span><span class="token operator">%</span>a<span class="token punctuation">[</span>m<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">^</span>cun<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>cun<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token operator">==</span>a<span class="token punctuation">[</span>m<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">-</span><span class="token number">1</span><span class="token operator">&amp;&amp;</span>zhi<span class="token operator">&lt;</span>mi<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                mi<span class="token operator">=</span>zhi<span class="token punctuation">;</span>
+                neng<span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>neng<span class="token punctuation">)</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span>mi<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"no solution\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="Problem-B"><a href="#Problem-B" class="headerlink" title="Problem B"></a>Problem B</h2><p>Lots of participants said Problem B is a piece of cake…Well really easy(Because it is the only problem that I get full score…).U just need to use an Offline Union find to store connected points.And check out them in each query.It is really easy to handle…</p>
+<h3 id="AC-Code-For-Question-B"><a href="#AC-Code-For-Question-B" class="headerlink" title="AC Code For Question B"></a>AC Code For Question B</h3><pre><code>#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+#define MaxN 10005
+#define MaxM 50005
+
+struct node
+{
+    int x , y , len;
+}a[MaxM];
+int UF[MaxN];
+int P[MaxN];
+int f[MaxM];
+int n , m , q;
+
+int cmp(const node&amp;,const node&amp;);
+int Find(int);
+int binarysearch(int);
+
+int main()
+{
+
+    while (scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;q)!=EOF)
+    {
+        memset(P,0,sizeof(P));
+        for (int i=0;i&lt;=n;i++) UF[i] = i;
+
+        for (int i=1;i&lt;=m;i++)
+            scanf(&quot;%d%d%d&quot;,&amp;a[i].x,&amp;a[i].y,&amp;a[i].len);
+
+        a[0].len = 0;
+        a[m+1].len = 0x3fffffff;
+        sort(a+1,a+m+1,cmp);
+        for (int i=0;i&lt;=n;i++)
+            P[i] = 1;
+
+        for (int i=1;i&lt;=m;i++)
+        {
+            f[i] = f[i-1];
+            if (Find(a[i].x)!=Find(a[i].y))
+            {
+                f[i] += P[Find(a[i].x)]*P[Find(a[i].y)];
+                P[Find(a[i].x)] += P[Find(a[i].y)];
+                UF[Find(a[i].y)] = Find(a[i].x);
+            }
+        }
+        f[m+1] = 0x3fffffff;
+
+        for (int i=0;i&lt;q;i++)
+        {
+            int tmp;
+            scanf(&quot;%d&quot;,&amp;tmp);
+            printf(&quot;%d\n&quot;,f[binarysearch(tmp)]);
+        }
+    }
+    return    0;
+}
+
+int cmp(const node&amp;a,const node&amp;b)
+{
+    return a.len&lt;b.len;
+}
+
+int Find(int x)
+{
+    if (UF[x] != x)
+        UF[x] = Find(UF[x]);
+    return    UF[x];
+}
+
+int binarysearch(int x)
+{
+    int s = 0;
+    int t = m;
+    int ret = (s+t)&gt;&gt;1;
+
+    while (!(a[ret].len&lt;=x&amp;&amp;x&lt;a[ret+1].len))
+    {
+        if (a[ret].len&gt;x)
+            t = ret-1;
+        else
+            s = ret+1;
+        ret = (s+t)&gt;&gt;1;
+    }
+    return    ret;
+}
+</code></pre><h2 id="Problem-C"><a href="#Problem-C" class="headerlink" title="Problem C"></a>Problem C</h2><p>This is a classic problem in NetWorkFlow section…The MaxFlow problem.I tried to used ISAP to solve this problem but I failed because the data range was too large….I’ll show the AC Code for this problem.</p>
+<p>Actually This problem was hard enough to drag my speed during the contest 233333.</p>
+<h3 id="AC-Code-For-Problem-C"><a href="#AC-Code-For-Problem-C" class="headerlink" title="AC Code For Problem C"></a>AC Code For Problem C</h3><pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+#define min(a,b) a&lt;b?a:b
+
+const int maxnode = 101000 + 5;
+const int maxedge = 1010000 + 5;
+const int oo = 10000000;
+
+int node, src, dest, nedge;
+int head[maxnode], dist[maxnode], Q[maxnode], work[maxnode];
+int  point[maxedge], Ne[maxedge], flow[maxedge], capa[maxedge];
+
+void init(int _node, int _src, int _dest) {
+    node = _node;
+    src = _src;
+    dest = _dest;
+    for (int i = 0; i &lt; node; i++) head[i] = -1;
+    nedge = 0;
+}
+
+void addedge(int u, int v, int c1, int c2) {
+    point[nedge] = v, capa[nedge] = c1, flow[nedge] = 0, Ne[nedge] = head[u], head[u] = (nedge++);
+    point[nedge] = u, capa[nedge] = c2, flow[nedge] = 0, Ne[nedge] = head[v], head[v] = (nedge++);
+}
+
+bool dinic_bfs() {
+    memset(dist, 255, sizeof (dist));
+    dist[src] = 0;
+    int sizeQ = 0;
+    Q[sizeQ++] = src;
+    for (int cl = 0; cl &lt; sizeQ; cl++)
+        for (int k = Q[cl], i = head[k]; i &gt;= 0; i = Ne[i])
+            if (flow[i] &lt; capa[i] &amp;&amp; dist[point[i]] &lt; 0) {
+                dist[point[i]] = dist[k] + 1;
+                Q[sizeQ++] = point[i];
+            }
+    return dist[dest] &gt;= 0;
+}
+
+int dinic_dfs(int x, int exp) {
+    if (x == dest) return exp;
+    for (int &amp;i = work[x]; i &gt;= 0; i = Ne[i]) {
+        int v = point[i], tmp;
+        if (flow[i] &lt; capa[i] &amp;&amp; dist[v] == dist[x] + 1 &amp;&amp; (tmp = dinic_dfs(v, min(exp, capa[i] - flow[i]))) &gt; 0) {
+            flow[i] += tmp;
+            flow[i^1] -= tmp;
+            return tmp;
+        }
+    }
+    return 0;
+}
+
+int dinic_flow() {
+    int result = 0;
+    while (dinic_bfs()) {
+        for (int i = 0; i &lt; node; i++) work[i] = head[i];
+        while (1) {
+            int delta = dinic_dfs(src, oo);
+            if (delta == 0) break;
+            result += delta;
+        }
+    }
+    return result;
+}
+
+int main() {
+    int n,m;
+    while(scanf(&quot;%d%d&quot;,&amp;n,&amp;m)!=EOF){
+    int sum=0,t;
+    init(n+m+2,n+m,n+m+1);
+    for (int i=0;i&lt;n;i++) {
+        scanf(&quot;%d&quot;,&amp;t);
+        addedge(n+m,i,t,0);
+    }
+    int a,b,c;
+    for (int i=0;i&lt;m;i++) {
+        scanf(&quot;%d%d%d&quot;,&amp;a,&amp;b,&amp;c);
+        a--,b--;
+        sum+=c;
+        addedge(a,i+n,oo,0);
+        addedge(b,i+n,oo,0);
+        addedge(i+n,n+m+1,c,0);
+    }
+    printf(&quot;%d\n&quot;,sum-dinic_flow());
+    }
+    return 0;
+}
+</code></pre><h1 id="Problem-D"><a href="#Problem-D" class="headerlink" title="Problem D"></a>Problem D</h1><p>Oh,my god.Geometric isn’t my strong suit.I didn’t solve this problem..I should say sorry…I’v not learnt that section…I’ll just give out the solution.</p>
+<h3 id="AC-Code-For-Question-D"><a href="#AC-Code-For-Question-D" class="headerlink" title="AC Code For Question D"></a>AC Code For Question D</h3><pre><code>#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;string.h&gt;
+#include&lt;stdio.h&gt;
+#include&lt;math.h&gt;
+using namespace std;
+
+#define MAXN 110
+#define EPS 1e-8
+
+typedef long long llint;
+
+double transformMat[4][4];
+
+struct point3D{
+    double x,y,z;
+    point3D():x(0.0),y(0.0),z(0.0){;}
+    point3D(double xx,double yy,double zz):x(xx),y(yy),z(zz){;}
+    point3D operator +(const point3D &amp;p)
+    {
+        point3D resP(x+p.x,y+p.y,z+p.z);
+        return resP;
+    }
+    point3D operator -(const point3D &amp;p)
+    {
+        point3D resP(x-p.x,y-p.y,z-p.z);
+        return resP;
+    }
+    point3D operator *(const double &amp;lamda)
+    {
+        point3D resP(x*lamda,y*lamda,z*lamda);
+        return resP;
+    }
+    double dot(const point3D &amp;p)
+    {
+        return x*p.x+y*p.y+z*p.z;
+    }
+    point3D cross(const point3D &amp;p)
+    {
+        point3D resP;
+        resP.x=y*p.z-z*p.y;
+        resP.y=z*p.x-x*p.z;
+        resP.z=x*p.y-y*p.x;
+        return resP;
+    }
+    double mag()
+    {
+        return sqrt(x*x+y*y+z*z);
+    }
+    void normalize()
+    {
+        double m=mag();
+        x/=m;
+        y/=m;
+        z/=m;
+    }
+};
+
+typedef point3D vec3D;
+
+struct plane{
+    double a,b,c,d;
+    void init()
+    {
+        double mag=vec3D(a,b,c).mag();
+        a/=mag;
+        b/=mag;
+        c/=mag;
+        d/=mag;
+    }
+};
+
+void multMat(double MA[][4],double MB[][4])
+{
+    double MR[4][4];
+    for(int i=0;i&lt;4;i++)
+    {
+        for(int j=0;j&lt;4;j++)
+            MR[i][j]=0.0;
+    }
+
+    for(int i=0;i&lt;4;i++)
+    {
+        for(int j=0;j&lt;4;j++)
+        {
+            for(int k=0;k&lt;4;k++)
+                MR[i][j]+=MA[i][k]*MB[k][j];
+        }
+    }
+    memcpy(MB,MR,sizeof(MR));
+}
+
+void loadIdentity(double mat[][4])
+{
+    for(int i=0;i&lt;4;i++)
+    {
+        mat[i][i]=1.0;
+        for(int j=0;j&lt;4;j++)
+        {
+            if(i==j)continue;
+            mat[i][j]=0.0;
+        }
+    }
+}
+
+void translate(double tx,double ty,double tz)
+{
+    double tmpMat[4][4];
+    loadIdentity(tmpMat);
+    tmpMat[0][3]=tx;
+    tmpMat[1][3]=ty;
+    tmpMat[2][3]=tz;
+    multMat(tmpMat,transformMat);
+}
+
+void rotate(double theta,double vx,double vy,double vz)
+{
+    double tmpMat[4][4];
+    double cosTheta2=cos(theta/2.0),sinTheta2=sin(theta/2.0);
+    tmpMat[0][0]=1.0-2.0*(vy*vy+vz*vz)*sinTheta2*sinTheta2;
+    tmpMat[1][0]=2.0*vx*vy*sinTheta2*sinTheta2+2.0*vz*cosTheta2*sinTheta2;
+    tmpMat[2][0]=2.0*vx*vz*sinTheta2*sinTheta2-2.0*vy*cosTheta2*sinTheta2;
+    tmpMat[3][0]=0.0;
+
+    tmpMat[0][1]=2.0*vx*vy*sinTheta2*sinTheta2-2.0*vz*cosTheta2*sinTheta2;
+    tmpMat[1][1]=1.0-2.0*(vx*vx+vz*vz)*sinTheta2*sinTheta2;
+    tmpMat[2][1]=2.0*vy*vz*sinTheta2*sinTheta2+2.0*vx*cosTheta2*sinTheta2;
+    tmpMat[3][1]=0.0;
+
+    tmpMat[0][2]=2.0*vx*vz*sinTheta2*sinTheta2+2.0*vy*cosTheta2*sinTheta2;
+    tmpMat[1][2]=2.0*vy*vz*sinTheta2*sinTheta2-2.0*vx*cosTheta2*sinTheta2;
+    tmpMat[2][2]=1.0-2.0*(vx*vx+vy*vy)*sinTheta2*sinTheta2;
+    tmpMat[3][2]=0.0;
+
+    tmpMat[0][3]=tmpMat[1][3]=tmpMat[2][3]=0.0;
+    tmpMat[3][3]=1.0;
+
+    multMat(tmpMat,transformMat);
+}
+
+int n,m;
+plane P;
+double a,b,c,d;
+point3D S[MAXN],R[MAXN];
+point3D C[MAXN];
+point3D O;
+point3D bp;
+bool isEqualD(double d1,double d2)
+{
+    return fabs(d1-d2)&lt;EPS;
+}
+
+void transform(double trMat[][4],point3D &amp;p)
+{
+    point3D resP;
+    resP.x=trMat[0][0]*p.x+trMat[0][1]*p.y+trMat[0][2]*p.z+trMat[0][3];
+    resP.y=trMat[1][0]*p.x+trMat[1][1]*p.y+trMat[1][2]*p.z+trMat[1][3];
+    resP.z=trMat[2][0]*p.x+trMat[2][1]*p.y+trMat[2][2]*p.z+trMat[2][3];
+    p=resP;
+}
+
+bool isInter(point3D o,point3D s,double &amp;lamda)
+{
+    vec3D tv=s-o;
+    if(isEqualD(tv.z,0.0))
+        return false;
+    lamda=-(o.z/tv.z);
+    return lamda&gt;EPS;
+}
+
+double cross(point3D p1,point3D p2,point3D p3)
+{
+    double res=0.0;
+    return (p2-p1).x*(p3-p1).y-(p2-p1).y*(p3-p1).x;
+}
+
+
+bool cmp(point3D p1,point3D p2)
+{
+    llint kross=cross(bp,p1,p2);
+    if(kross==0)
+        return (p1-bp).mag()&lt;(p2-bp).mag();
+    return kross&gt;0;
+}
+
+int GrahamScan(point3D *pts,int n)
+{
+    int i,j,k;
+    llint u,v;
+    for(i=0,k=0;i&lt;n;i++)
+    {
+        u=pts[i].x-pts[k].x;
+        v=pts[i].y-pts[k].y;
+        if((u&lt;0)||(u==0&amp;&amp;v&lt;0))k=i;
+    }
+    bp=pts[k];
+    sort(pts,pts+n,cmp);
+    pts[n]=pts[0];
+    for(i=1,j=2;j&lt;n;j++)
+    {
+        while(i&gt;0&amp;&amp;cross(pts[i-1],pts[i],pts[j])&lt;=0)
+            i--;
+        pts[++i]=pts[j];
+    }
+    return i+1;
+}
+
+bool isInPolygon(point3D *pts,int n,point3D p)
+{
+    for(int i=0;i&lt;n;i++)
+    {
+        if(cross(pts[i],pts[(i+1)%n],p)&lt;EPS)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main()
+{
+    int ta,tb,tc,td;
+    while(scanf(&quot;%d %d %d %d&quot;,&amp;ta,&amp;tb,&amp;tc,&amp;td),!(!ta&amp;&amp;!tb&amp;&amp;!tc&amp;&amp;!td))
+    {
+        P.a=ta,P.b=tb,P.c=tc,P.d=td;
+        P.init();
+        scanf(&quot;%d&quot;,&amp;n);
+        for(int i=0;i&lt;n;i++)
+            scanf(&quot;%lf %lf %lf&quot;,&amp;S[i].x,&amp;S[i].y,&amp;S[i].z);
+
+        scanf(&quot;%lf %lf %lf&quot;,&amp;O.x,&amp;O.y,&amp;O.z);
+
+        scanf(&quot;%d&quot;,&amp;m);
+        for(int i=0;i&lt;m;i++)
+            scanf(&quot;%lf %lf %lf&quot;,&amp;R[i].x,&amp;R[i].y,&amp;R[i].z);
+
+        loadIdentity(transformMat);
+        translate(-P.a*P.d,-P.b*P.d,-P.c*P.d);
+        vec3D tmpV=vec3D(P.a,P.b,P.c).cross(vec3D(0.0,0.0,1.0));
+        double cosTheta=vec3D(P.a,P.b,P.c).dot(vec3D(0.0,0.0,1.0));
+        if(!isEqualD(fabs(cosTheta),1.0))
+        {
+            tmpV.normalize();
+            rotate(acos(cosTheta),tmpV.x,tmpV.y,tmpV.z);
+        }
+
+        for (int i=0;i&lt;n;i++)
+        {
+            transform(transformMat,S[i]);
+        }
+        transform(transformMat,O);
+
+        for(int i=0;i&lt;m;i++)
+        {
+            transform(transformMat,R[i]);
+        }
+        int cnt=0;
+        for(int i=0;i&lt;n;i++)
+        {
+            double lamda;
+            if(isInter(O,S[i],lamda))
+            {
+                C[cnt++]=O+(S[i]-O)*lamda;
+            }
+        }
+
+        if(cnt==0)
+        {
+            printf(&quot;ZERO\n&quot;);
+            continue;
+        }
+        else if(cnt!=n)
+        {
+            printf(&quot;INF\n&quot;);
+            continue;
+        }
+        else
+        {
+            cnt=GrahamScan(C,cnt);
+            int ans=0;
+            for(int i=0;i&lt;m;i++)
+            {
+                double lamda;
+                if(!isInter(O,R[i],lamda))
+                    continue;
+                R[i]=O+(R[i]-O)*lamda;
+                if(isInPolygon(C,cnt,R[i]))
+                {
+                    ans++;
+                }
+            }
+            printf(&quot;%.2lf%%\n&quot;,(double)ans/m*100);
+            continue;
+        }
+
+    }
+
+    return 0;
+}
+</code></pre>
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2016/06/09/Concerto-for-violin-and-orchestra-in-e-minor-Op-64-By-AD1024/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Newer
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/06/12/JSK-Contest-2016-TencentGame-1/" id="post_nav-older" class="next-content">
+            Older
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="AD1024's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        ccoderad@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                Home
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    Archives
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/03/">March 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">February 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">January 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">December 2016<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">November 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">October 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">September 2016<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">August 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">July 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">June 2016<span class="sidebar_archives-count">20</span></a></li><li><a class="sidebar_archives-link" href="/archives/1970/01/">January 1970<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/Algorithm-Template" title="Algorithm Templates">
+                
+                    <i class="material-icons sidebar-material-icons">assignment</i>
+                
+                Algorithm Templates
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallary" title="Moments">
+                
+                    <i class="material-icons sidebar-material-icons">photo</i>
+                
+                Moments
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/tags" title="Tag Cloud">
+                
+                    <i class="material-icons sidebar-material-icons">book</i>
+                
+                Tag Cloud
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="Friend Links">
+                
+                    <i class="material-icons sidebar-material-icons">people</i>
+                
+                Friend Links
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                Number of articles
+                <span class="sidebar-badge">60</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            Theme - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.svg);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.svg);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.svg);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/AD1024" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.svg);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/mike-he-94/activities" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-zhihu.svg);">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+        <a href="http://space.bilibili.com/11936677/#!/index" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-bilibili.svg);">
+                <span class="visuallyhidden">Bilibili</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Space Of AD1024
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

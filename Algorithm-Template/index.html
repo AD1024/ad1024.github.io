@@ -1,0 +1,2109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.4 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            Algorithm-Template | 
+        
+        Space Of AD1024
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#536DFE">
+    <meta name="author" content="AD1024">
+    <meta name="description" content="A Senior Student From Beijing National Day School">
+    <meta name="keywords" content="null">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Space Of AD1024">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://ad1024.tech">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Algorithm-Template | Space Of AD1024">
+    <meta property="og:description" content="A Senior Student From Beijing National Day School">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.en.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #3D5AFE;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #536DFE !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #536DFE !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #536DFE !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #3D5AFE;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+<link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Algorithm-Template
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>AD1024</strong>
+        <span>Oct 08, 2016</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Algorithm-Template&url=http://ad1024.tech//Algorithm-Template/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Weibo
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Algorithm-Template&url=http://ad1024.tech//Algorithm-Template/index.html&via=AD1024" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://ad1024.tech//Algorithm-Template/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://ad1024.tech//Algorithm-Template/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>This is a page, which shows some implementations of algorithms that are commonly used in OI.</p>
+<h2 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h2><h3 id="GCD-Greatest-Common-Divisor"><a href="#GCD-Greatest-Common-Divisor" class="headerlink" title="GCD(Greatest Common Divisor)"></a>GCD(Greatest Common Divisor)</h3><blockquote>
+<p>Greatest Common Divisor is the most basic problem in Math Theorem. In C language .it can be written in briefly two style.</p>
+</blockquote>
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+// Recursive
+
+int GCD(int x,int y){
+    if(x==0) return y;
+    return GCD(y%x,x);
+}
+
+// Loop (Recommended);
+inline void GCD(int x,int y){
+    while(x^=y^=x^=y%=x);return y;
+}
+</code></pre><hr>
+<h3 id="Prime-List"><a href="#Prime-List" class="headerlink" title="Prime List"></a>Prime List</h3><blockquote>
+<p>The fastest way to judge a prime number</p>
+</blockquote>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;map&gt;
+using namespace std;
+
+bool vis[10000001];
+int prime[10000001];
+int n,m;
+bool idx[10000000];
+void init(){
+    memset(vis, true, sizeof(vis));  
+    memset(prime,0,sizeof(prime));
+    int num = 0;  
+    for (int i = 2; i &lt;= n; ++i){  
+        if (vis[i] == true){  
+            num++;  
+            prime[num] = i;  
+            idx[i]=true;
+        }  
+        for (int j = 1; ((j &lt;= num) &amp;&amp; (i * prime[j] &lt;= n));  ++j){  
+            vis[i * prime[j]] = false;  
+            if (i % prime[j] == 0) break;  
+        }  
+    }  
+}
+
+int main(){
+    cin&gt;&gt;n&gt;&gt;m;
+    init();
+    while(m--){
+        int s;cin&gt;&gt;s;
+        if(idx[s]){
+            puts(&quot;Yes&quot;);
+        }else{
+            puts(&quot;No&quot;);
+        }
+    }
+    return 0;
+}
+</code></pre><hr>
+<h3 id="Union-Find-Structure"><a href="#Union-Find-Structure" class="headerlink" title="Union-Find Structure"></a>Union-Find Structure</h3><blockquote>
+<p>This is a dataStructure that can judge two elements whether they are in a same set or not. It is essential in Kruskal Algorithm.</p>
+</blockquote>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+using namespace std;
+
+int fa[10001];
+int N,M;
+
+int Find(int x){
+    int xx=x;
+    while(x!=fa[x]) x=fa[x];
+    int j;
+    while(xx!=x){
+        j=fa[xx];
+        fa[xx]=x;
+        xx=j;
+    }
+    return x;
+}
+
+inline void Union(int x,int y){
+    int fx=Find(x);int fy=Find(y);
+    if(fx!=fy){
+        fa[fx]=fy;
+    }
+}
+
+inline void init(){
+    for(int i=1;i&lt;=N;++i) fa[i]=i;
+}
+
+int main(){
+    cin&gt;&gt;N&gt;&gt;M;
+    init();
+    int op,a,b;
+    while(M--){
+        cin&gt;&gt;op&gt;&gt;a&gt;&gt;b;
+        if(op==1){
+            Union(a,b);
+        }else{
+            if(Find(a)==Find(b)){
+                puts(&quot;Y&quot;);
+            }else{
+                puts(&quot;N&quot;);
+            }
+        }
+    }
+    return 0;
+}
+</code></pre><hr>
+<h3 id="High-Precision-Algorithm"><a href="#High-Precision-Algorithm" class="headerlink" title="High Precision Algorithm"></a>High Precision Algorithm</h3><blockquote>
+<p>A very useful template. It can be used in big integer calculation</p>
+</blockquote>
+<p>Version-1(Negative integer supported | Modulo unsupported | Digit compression supported)</p>
+<pre><code>#include &lt;vector&gt;
+using std::vector;
+#include &lt;sstream&gt;
+using std::stringstream;
+#include &lt;iterator&gt;
+using std::ostream_iterator;
+#include &lt;iostream&gt;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::istream;
+using std::ostream;
+#include &lt;algorithm&gt;
+using std::reverse;
+using std::max;
+using std::lexicographical_compare;
+using std::find;
+#include &lt;string&gt;
+using std::string;
+#include &lt;iterator&gt;
+using namespace std;
+#include &lt;cmath&gt;
+
+class BigInt : public vector&lt;long long&gt; {
+    bool negative;
+
+public:
+    BigInt(long long num = 0);
+    BigInt operator +(const BigInt&amp;) const ;
+    BigInt operator += (const BigInt&amp;);
+    BigInt operator -(const BigInt&amp;) const ;
+    BigInt operator -= (const BigInt&amp;);
+    BigInt operator * (const BigInt&amp;) const ;
+    BigInt operator *= (const BigInt&amp;);
+    BigInt operator / (long long num) const ;
+    BigInt operator ^ (unsigned index) const ;
+    inline bool operator &lt; (const BigInt&amp;) const ;
+    inline bool operator &gt; (const BigInt&amp;) const ;
+    inline bool operator &lt;= (const BigInt&amp;) const ;
+    inline bool operator &gt;= (const BigInt&amp;) const ;
+    friend inline istream &amp;operator &gt;&gt; (istream&amp;, BigInt&amp;);
+    friend inline ostream &amp;operator &lt;&lt; (ostream&amp;, BigInt&amp;);
+} dp[88][88], ans;
+
+const unsigned sys(100000); // Digit compression
+
+BigInt::BigInt(long long num) {
+    negative = num &lt; 0;
+    do
+        this-&gt;push_back(num % sys);
+    while (num /= sys);
+}
+
+BigInt BigInt:: operator +(const BigInt &amp;num) const {
+    BigInt result, a = *this, b = num;
+    a.negative = b.negative = false;
+    if (this-&gt;negative)
+        if (num.negative) {
+            result = a + b;
+            result.negative = true;
+            return result;
+        }
+        else
+            return b - a;
+    else if (num.negative)
+        return a - b;
+    else {
+        size_t max_size(std::max(num.size(), size()));
+        a.resize(max_size, 0);
+        b.resize(max_size, 0);
+        for (size_t i(0); i &lt; max_size; result[i++] %= sys)
+            result.push_back((result[i] += b[i] + a[i]) / sys);
+        while (result.size() &gt; 1 &amp;&amp; *result.rbegin() == 0)
+            result.erase(result.end() - 1);
+        return result;
+    }
+}
+
+BigInt BigInt:: operator += (const BigInt &amp;num) {
+    return *this = *this +num;
+}
+
+BigInt BigInt:: operator -(const BigInt &amp;num) const {
+    BigInt result, a(*this), b(num);
+    a.negative = b.negative = false;
+    if (negative)
+        if (num.negative)
+            return b - a;
+        else {
+            result = a + b;
+            result.negative = !result.negative;
+            return result;
+        }
+    else if (num.negative)
+        return a + b;
+    else {
+        if (a &lt; b) {
+            a.swap(b);
+            a.negative = true;
+        }
+        b.resize(a.size(), 0);
+        for (size_t i(0); i &lt; a.size(); ++i) {
+            if (a[i] &lt; b[i])
+                a[i] += sys, --a[i + 1];
+            a[i] -= b[i];
+        }
+        while (a.size() &gt; 1 &amp;&amp; *a.rbegin() == 0)
+            a.erase(a.end() - 1);
+        return a;
+    }
+}
+
+BigInt BigInt:: operator -= (const BigInt &amp;num) {
+    return *this = *this -num;
+}
+
+BigInt BigInt:: operator *(const BigInt &amp;num) const {
+    if (*this == BigInt() || num == BigInt())
+        return BigInt();
+    BigInt result;
+    result.negative = negative ^ num.negative;
+    result.resize(size() + num.size(), 0);
+    for (size_t i(0); i &lt; size(); ++i)
+        for (size_t j(0); j &lt; num.size(); ++j)
+            result[i + j] += at(i) * num[j];
+    for (size_t i(0); i &lt; result.size() - 1; ++i)
+        result[i + 1] += result[i] / sys, result[i] %= sys;
+    while (*result.rbegin() == 0)
+        result.erase(result.end() - 1);
+    return result;
+}
+
+BigInt BigInt:: operator *= (const BigInt &amp;num) {
+    return *this = *this*num;
+}
+
+BigInt BigInt:: operator / (long long num) const {
+    BigInt result(*this);
+    return result;
+}
+
+BigInt BigInt:: operator ^ (unsigned index) const {
+    BigInt result(1), base = *this;
+    for (; index; base *= base, index &gt;&gt;= 1)
+        if (index &amp; 1)
+            result *= base;
+    return result;
+}
+
+Bigint Bigint::operator %(const BigInt&amp; num)const{
+    BigInt res=*this/num;
+    res=*this-res*num;
+    return res;
+}
+
+inline bool BigInt:: operator &lt; (const BigInt &amp;num) const {
+    if (negative ^ num.negative)
+        return negative;
+    if (size() == num.size()) {
+        for (int i(size() - 1); i &gt;= 0; --i)
+            if (at(i) != num[i])
+                return at(i) &lt; num[i] ^ negative;
+        return false;
+    }
+    else
+        return size() &lt; num.size() ^ negative;
+}
+
+inline bool BigInt:: operator &gt; (const BigInt &amp;num) const {
+    return num &lt; *this;
+}
+
+inline bool BigInt:: operator &lt;= (const BigInt &amp;num) const {
+    return !(num &lt; *this);
+}
+
+inline bool BigInt:: operator &gt;= (const BigInt &amp;num) const {
+    return !(*this &lt; num);
+}
+
+inline istream &amp;operator &gt;&gt; (istream &amp;in, BigInt &amp;num) {
+    num.clear();
+    num.negative = false;
+    string data;
+    in &gt;&gt; data;
+    if (data[0] == &#39;-&#39;)
+        data.erase(0, 1), num.negative = true;
+    int tmp(0);
+    for (size_t i(data.size()), cnt(1); i--; cnt *= 10)
+        if (cnt &lt; sys)
+            tmp += cnt * (data[i] - &#39;0&#39;);
+        else {
+            num.push_back(tmp);
+            tmp = data[i] - &#39;0&#39;;
+            cnt = 1;
+        }
+    num.push_back(tmp);
+    return in;
+}
+
+inline ostream &amp;operator &lt;&lt; (ostream &amp;out, BigInt &amp;num) {
+    if (num.negative)
+        out.put(&#39;-&#39;);
+    for (BigInt::reverse_iterator i(num.rbegin()); i &lt; num.rend(); out &lt;&lt; *i++)
+        if (i != num.rbegin())
+            for (int j(0); j &lt; (*i ? int(log10(sys))-int(log10(*i) + 1) :
+                log10(sys) - 1); ++j)
+                out.put(&#39;0&#39;);
+    return out;
+}
+</code></pre><p>Version-2(Negative integer unsupported | Modulo supported)</p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstdlib&gt;
+#include &lt;cstring&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+const int MAXN = 1110;
+
+struct BigInt{
+    int len, s[MAXN];
+    // Constructor
+    BigInt (){
+        memset(s,0,sizeof(s));
+        len = 1;
+    }
+    BigInt(int num){*this=num;}
+    BigInt(const char *num){*this=num;}
+
+    // Logic Operands
+    bool operator &lt; (const BigInt &amp;b){
+        if(len != b.len) return len &lt; b.len;
+        for(int i = len-1; i &gt;= 0; i--){
+            if(s[i] != b.s[i]) return s[i] &lt; b.s[i];
+        }
+        return false;
+    }
+    bool operator &gt; (const BigInt &amp;b){
+        if(len!=b.len) return len &gt; b.len;
+        for(int i=len-1;i&gt;=0;i--){
+            if(s[i] != b.s[i]) return s[i]&gt;b.s[i];
+        }
+        return false;
+    }
+    bool operator == (const BigInt &amp;b){
+        if(len!=b.len) return false;
+        for(int i=0;i&lt;len;++i){
+            if(s[i]!=b.s[i]) return false;
+        }
+        return true;
+    }
+    bool operator != (const BigInt &amp;b){
+        return !(*this == b);
+    }
+    bool operator &lt;= (const BigInt &amp;b){
+        return *this&lt;b || *this==b;
+    }
+    bool operator &gt;= (const BigInt &amp;b){
+        return *this&gt;b || *this==b;
+    }
+
+    // Arithmetic Operands
+    BigInt operator = (const int num){
+        char s[MAXN];
+        sprintf(s, &quot;%d&quot;, num);
+        *this=s;
+        return *this;
+    }
+    BigInt operator = (const char *num){
+        for(int i = 0; num[i] == &#39;0&#39;; num++) ;
+        len = strlen(num);
+        for(int i = 0; i &lt; len; i++) s[i] = num[len-i-1] - &#39;0&#39;;
+        return *this;
+    }
+    BigInt operator + (const BigInt &amp;b) const{
+        BigInt c;
+        c.len = 0;
+        for(int i = 0, g = 0; g || i &lt; max(len, b.len); i++)
+        {
+            int x = g;
+            if(i &lt; len) x += s[i];
+            if(i &lt; b.len) x += b.s[i];
+            c.s[c.len++] = x % 10;
+            g = x / 10;
+        }
+        return c;
+    }
+    BigInt operator += (const BigInt &amp;b){
+        *this = *this + b;
+        return *this;
+    }
+    void clear(){
+        while(len &gt; 1 &amp;&amp; !s[len-1]) len--;
+    }
+    BigInt operator * (const BigInt &amp;b){
+        BigInt c;
+        c.len = len + b.len;
+        for(int i = 0; i &lt; len; i++)
+        {
+            for(int j = 0; j &lt; b.len; j++)
+            {
+                c.s[i+j] += s[i] * b.s[j];
+            }
+        }
+        for(int i = 0; i &lt; c.len; i++)
+        {
+            c.s[i+1] += c.s[i]/10;
+            c.s[i] %= 10;
+        }
+        c.clear();
+        return c;
+    }
+    BigInt operator *= (const BigInt &amp;b){
+        *this = *this * b;
+        return *this;
+    }
+    BigInt operator - (const BigInt &amp;b){
+        BigInt c;
+        c.len = 0;
+        for(int i=0,g=0;i&lt;len;i++){
+            int x=s[i]-g;
+            if(i&lt;b.len)x-=b.s[i];
+            if(x&gt;=0) g=0;
+            else{
+                g=1;
+                x+=10;
+            }
+            c.s[c.len++]=x;
+        }
+        c.clear();
+        return c;
+    }
+    BigInt operator -= (const BigInt &amp;b){
+        *this = *this - b;
+        return *this;
+    }
+    BigInt operator / (const BigInt &amp;b){
+        BigInt c, f = 0;
+        for(int i = len-1; i &gt;= 0; i--)
+        {
+            f = f*10;
+            f.s[0] = s[i];
+            while(f &gt;= b)
+            {
+                f -= b;
+                c.s[i]++;
+            }
+        }
+        c.len = len;
+        c.clear();
+        return c;
+    }
+    BigInt operator /= (const BigInt &amp;b){
+        *this  = *this / b;
+        return *this;
+    }
+    BigInt operator % (const BigInt &amp;b){
+        BigInt r = *this / b;
+        r = *this - r*b;
+        return r;
+    }
+    BigInt operator %= (const BigInt &amp;b){
+        *this = *this % b;
+        return *this;
+    }
+    string str()const{
+        string res = &quot;&quot;;
+        for(int i=0;i&lt;len;i++) res=char(s[i]+&#39;0&#39;)+res;
+        return res;
+    }
+};
+
+istream&amp; operator &gt;&gt; (istream &amp;in, BigInt &amp;x){
+    string s;
+    in &gt;&gt; s;
+    x = s.c_str();
+    return in;
+}
+
+ostream&amp; operator &lt;&lt; (ostream &amp;out, const BigInt &amp;x){
+    out &lt;&lt; x.str();
+    return out;
+}
+
+int main(){
+    BigInt a,b;
+    a=100;
+    b=2120;
+    BigInt c=a+b;
+    cout&lt;&lt;c&lt;&lt;&quot; &quot;;
+    c=b-a;
+    cout&lt;&lt;c&lt;&lt;&quot; &quot;;
+    c=a*b;
+    cout&lt;&lt;c&lt;&lt;&quot; &quot;;
+    c=b/a;
+    cout&lt;&lt;c&lt;&lt;&quot; &quot;;
+    c=b%a;
+    cout&lt;&lt;c&lt;&lt;&quot; &quot;;
+}
+</code></pre><hr>
+<h2 id="Linear-Structure"><a href="#Linear-Structure" class="headerlink" title="Linear Structure"></a>Linear Structure</h2><h3 id="LinkList-Revision-1"><a href="#LinkList-Revision-1" class="headerlink" title="LinkList (Revision-1)"></a>LinkList (Revision-1)</h3><blockquote>
+<p>The simplest linear dataStructure;<br>It can be used to implement adjacent list in graph structure</p>
+</blockquote>
+<pre><code>/*************************************************************************
+    &gt; File Name: LinkList.cpp
+    &gt; Author:
+    &gt; Mail:
+    &gt; Created Time: Fri 07 Oct 2016 11:30:20 PM CST
+ ************************************************************************/
+
+#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+
+#define null NULL
+
+struct Node{
+    int data;
+    Node* Next;
+};
+
+Node *head;
+Node *tail;
+int tot=0;
+void Tail_Insert(int v); // Insert to the tail
+void Head_Insert(int v); // Insert to the head
+void Insert(int idx,int v); // Insert to idx(2&lt;=idx&lt;=tot)
+void Remove(idx); // Remove the element on idx
+void Pop_Tail();  // Remove the element of the tail
+void Pop_Head();  // Remove the element after the head
+void Traverse();  // Print the data from head to tail
+
+int main(){
+    //head-&gt;Next=null;
+    //tail=null;
+    head=(Node*)malloc(sizeof(Node));
+    head-&gt;Next=null;
+    int N,M;
+    cin&gt;&gt;N&gt;&gt;M;
+    int op,v;
+    while(M--){
+        cin&gt;&gt;op;
+        switch(op){
+            case 1:{
+                cin&gt;&gt;v;
+                Head_Insert(v);
+                break;
+            }
+            case 2:{
+                cin&gt;&gt;v;
+                Tail_Insert(v);
+                break;
+            }
+            case 3:{
+                int idx;cin&gt;&gt;idx&gt;&gt;v;
+                if(idx&gt;=tot){
+                    Tail_Insert(v);
+                }else{
+                    Insert(idx,v);
+                }
+                break;
+            }
+            case 4:{
+                cin&gt;&gt;v;
+                if(v&lt;=tot){
+                    Remove(v);
+                }else if(tot&gt;0){
+                    Pop_Tail();
+                }
+                break;
+            }
+            case 5:{
+                if(tot&gt;0){
+                    Pop_Head();
+                }
+                break;
+            }
+            case 6:{
+                if(tot&gt;0){
+                    Pop_Tail();
+                }
+                break;
+            }
+            case 7:{
+                Traverse();
+                putchar(&#39;\n&#39;);
+                break;
+            }
+        }
+    }
+}
+
+inline void Tail_Insert(int v){
+    ++tot;
+    Node* q=(Node*)malloc(sizeof(Node));
+    q-&gt;data=v;q-&gt;Next=null;
+    if(tail==null){
+        head-&gt;Next=q;
+        q-&gt;Next=null;
+        tail=q;
+    }else{
+        q-&gt;Next=tail-&gt;Next;
+        tail-&gt;Next=q;
+        tail=q;
+    }
+}
+
+inline void Head_Insert(int v){
+    ++tot;
+    Node* q=(Node*)malloc(sizeof(Node));
+    q-&gt;data=v;q-&gt;Next=null;
+    if(head-&gt;Next==null){
+        head-&gt;Next=q;
+        tail=q;
+        q-&gt;Next=null;
+    }else{
+        q-&gt;Next=head-&gt;Next;
+        head-&gt;Next=q;
+    }
+}
+
+inline void Insert(int idx,int data){
+    ++tot;
+    Node* cur=head-&gt;Next;
+    for(int i=1;i&lt;idx;++i){
+        cur=cur-&gt;Next;
+    }
+    Node* q=(Node*)malloc(sizeof(Node));
+    q-&gt;data=data;q-&gt;Next=cur-&gt;Next;
+    cur-&gt;Next=q;
+}
+
+inline void Remove(int idx){
+    --tot;
+    Node* cur=head-&gt;Next;
+    for(int i=2;i&lt;idx;++i) cur=cur-&gt;Next;
+    Node* del=cur-&gt;Next;
+    cur-&gt;Next=del-&gt;Next;
+    free(del);
+}
+inline void Pop_Head(){
+    --tot;
+    Node* del=head-&gt;Next;
+    head-&gt;Next=del-&gt;Next;
+    free(del);
+}
+inline void Pop_Tail(){
+    --tot;
+    Node* cur=head-&gt;Next;
+    while(cur-&gt;Next-&gt;Next!=null){
+        cur=cur-&gt;Next;
+    }
+    Node* del=cur-&gt;Next;
+    free(del);
+    cur-&gt;Next=null;
+    tail=cur;
+}
+
+inline void Traverse(){
+    Node* cur=head-&gt;Next;
+    while(cur!=null){
+        printf(&quot;%d &quot;,cur-&gt;data);
+        cur=cur-&gt;Next;
+    }
+}
+</code></pre><hr>
+<h3 id="CircleLinkList"><a href="#CircleLinkList" class="headerlink" title="CircleLinkList"></a>CircleLinkList</h3><blockquote>
+<p>Differing from the traditional linklist, the CircleLinkList maintains a tail element whose ‘<em>Next</em>‘ pointer points to the ‘<em>head</em>‘. It can be used to solve Joseph Problem..</p>
+</blockquote>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdlib&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+struct Node{
+    int data;
+    Node* Next;
+};
+
+Node* head;
+Node* tail;
+
+inline void Push_back(int v){
+    Node *q=(Node*)malloc(sizeof(Node));
+    q-&gt;data=v;
+    if(tail==NULL){
+        head-&gt;Next=q;
+        q-&gt;Next=head;
+        tail=q;
+    }else{
+        tail-&gt;Next=q;
+        q-&gt;Next=head;
+        tail=q;
+    }
+}
+
+inline void Push_Front(int v){
+    Node* q=(Node*)malloc(sizeof(Node));
+    q-&gt;data=v;
+    if(tail==NULL){
+        head-&gt;Next=q;
+        q-&gt;Next=head;
+        tail=q;
+    }else{
+        q-&gt;Next=head-&gt;Next;
+        head-&gt;Next=q;
+    }
+}
+
+inline void Traverse(){
+    Node* cur=head-&gt;Next;
+    while(cur!=head){
+        cout&lt;&lt;cur-&gt;data&lt;&lt;&#39; &#39;;
+        cur=cur-&gt;Next;
+    }
+}
+
+int main(){
+    head=(Node*)malloc(sizeof(Node));
+    head-&gt;Next=head;
+    int N;
+    cin&gt;&gt;N;
+    while(N--){
+        int op;cin&gt;&gt;op;
+        switch(op){
+            case 1:{
+                int v;cin&gt;&gt;v;
+                Push_Front(v);
+                break;
+            }
+            case 2:{
+                int v;cin&gt;&gt;v;
+                Push_back(v);
+                break;
+            }
+            case 3:{
+                Traverse();
+                putchar(&#39;\n&#39;);
+                break;
+            }
+        }
+    }
+}
+</code></pre><hr>
+<h3 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h3><blockquote>
+<p>Stack is a very essential data structure in OI. It is widely used in various solutions of problems. Its idea is ‘<em>FILO</em>‘ which means <strong>First In Last Out</strong>. It also can be used to reverse elements in an array.</p>
+</blockquote>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+
+struct Stack{
+    int t;
+    int bottom;
+    int a[10001];
+    Stack(){
+        memset(a,0,sizeof(a));
+        t=bottom=0;
+    }
+    void push(int x){
+        a[++t]=x;
+    }
+    void pop(){
+        if(t==bottom) return;
+        else{
+            --t;
+        }
+    }
+    int size(){
+        return t-bottom;
+    }
+    int top(){
+        return a[t];
+    }
+};
+
+int main(){
+    Stack s;
+    for(int i=0;i&lt;10;++i){
+        s.push(i);
+    }
+    while(s.size()){
+        cout&lt;&lt;s.top()&lt;&lt;&#39; &#39;;
+        s.pop();
+    }
+    return 0;
+}
+</code></pre><hr>
+<h3 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h3><blockquote>
+<p>Queue is also a popular data structure in OI. It is utilized in various things(Like SPFA algorithm). Its idea contrast to that of stack: ‘<em>FIFO</em>‘ ,which means ‘<strong>First In First Out</strong>‘</p>
+</blockquote>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdio&gt;
+using namespace std;
+#define SIZE 10000
+struct Queue{
+    int f,t;
+    int a[10001];
+    int k;
+
+    Queue(){
+        f=t=0;
+        k=0;
+    }
+    void push(int x){
+        if(t+1&gt;SIZE &amp;&amp; f==0){
+            return;
+        }else if(t+1&gt;SIZE){
+            a[t]=x;
+            t=0;
+        }else{
+            a[t++]=x;
+        }
+        ++k;
+    }
+    int front(){
+        return a[f];
+    }
+    void pop(){
+        if(f!=t){
+            f++;
+            --k;
+            if(f&gt;SIZE) f=0;
+        }
+    }
+    int size(){
+       return k;
+    }
+};
+
+int main(){
+    Queue q;
+    for(int i=0;i&lt;10;++i) q.push(i);
+    while(q.size()){
+        cout&lt;&lt;q.front()&lt;&lt;&#39; &#39;;
+        q.pop();
+    }
+    return 0;
+}
+</code></pre><hr>
+<h2 id="Tree-DataStructure"><a href="#Tree-DataStructure" class="headerlink" title="Tree DataStructure"></a>Tree DataStructure</h2><h3 id="Binary-Tree-Working"><a href="#Binary-Tree-Working" class="headerlink" title="Binary Tree(Working)"></a>Binary Tree(Working)</h3><hr>
+<h3 id="Binary-Search-Tree"><a href="#Binary-Search-Tree" class="headerlink" title="Binary Search Tree"></a>Binary Search Tree</h3><h4 id="Treap"><a href="#Treap" class="headerlink" title="Treap"></a>Treap</h4><blockquote>
+<p>An optimized version of BST(Binary Search Tree). It utilizes the ‘fix’ value to prevent the tree retrogresses to a linear link. The fix value is a heap and the data value is a BST, thus it is named ‘Treap’.</p>
+</blockquote>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+
+struct Node{
+    int l,r,w,v,size;
+    int fix;
+}T[100005];
+int _size=0;
+int ROOT;
+
+inline void init(){
+    srand(19260817); // MOD MOD MOD
+}
+
+inline void Update(int k){
+    T[k].size=T[T[k].l].size+T[T[k].r].size+T[k].w;
+}
+
+inline void left_rot(int &amp;k){
+    int t=T[k].r;
+    T[k].r=T[t].l;
+    T[t].l=k;
+    T[t].size=T[k].size;
+    Update(k);
+    k=t;
+}
+
+inline void right_rot(int &amp;k){
+    int t=T[k].l;
+    T[k].l=T[t].r;
+    T[t].r=k;
+    T[t].size=T[k].size;
+    Update(k);
+    k=t;
+}
+
+void Insert(int &amp;k,int v){
+    if(k==0){
+        _size++;
+        k=_size;
+        T[k].size=T[k].w=1;
+        T[k].v=v;
+        T[k].fix=rand();
+        return;
+    }
+    T[k].size+=1;
+    if(T[k].v==v) T[k].w++;
+    else if(T[k].v&lt;v){
+        Insert(T[k].r,v);
+        if(T[k].fix&gt;T[T[k].r].fix) left_rot(k);
+    }else{
+        Insert(T[k].l,v);
+        if(T[k].fix&gt;T[T[k].l].fix) right_rot(k);
+    }
+}
+
+void del(int &amp;k,int v){
+    if(k==0) return;
+    if(T[k].v==v){
+        if(T[k].w&gt;1){
+            T[k].w--;
+            T[k].size--;
+            return;
+        }
+        if(T[k].l*T[k].r==0){
+            k=T[k].r+T[k].l;
+        }else if(T[T[k].l].fix&lt;T[T[k].r].fix){
+            right_rot(k);del(k,v);
+        }else{
+            left_rot(k);del(k,v);
+        }
+    }else if(T[k].v&gt;v){
+        T[k].size--;
+        del(T[k].l,v);
+    }else{
+        T[k].size--;
+        del(T[k].r,v);
+    }
+}
+
+int Rank(int k,int v){
+    if(k==0) return 0;
+    if(T[k].v==v) return T[T[k].l].size+1;
+    else if(T[k].v&lt;v){
+        return T[k].w+T[T[k].l].size+Rank(T[k].r,v);
+    }else return Rank(T[k].l,v);
+}
+
+int Num(int k,int v){
+    if(k==0) return 0;
+    if(v&lt;=T[T[k].l].size){
+        return Num(T[k].l,v);
+    }else if(v&gt;T[T[k].l].size+T[k].w){
+        return Num(T[k].r,v-T[T[k].l].size-T[k].w);
+    }else return T[k].v;
+}
+int ans=0;
+void query_pre(int k,int v){
+    if(k==0) return;
+    if(T[k].v&lt;v){
+        ans=k;
+        query_pre(T[k].r,v);
+    }else query_pre(T[k].l,v);
+}
+
+void query_son(int k,int v){
+    if(k==0) return;
+    if(T[k].v&gt;v){
+        ans=k;
+        query_son(T[k].l,v);
+    }else query_son(T[k].r,v);
+}
+
+int main(){
+    int N;
+    cin&gt;&gt;N;
+    int op,v;
+    while(N--){
+        cin&gt;&gt;op&gt;&gt;v;
+        switch(op){
+            case 1:Insert(ROOT,v);break;
+            case 2:del(ROOT,v);break;
+            case 3:cout&lt;&lt;Rank(ROOT,v)&lt;&lt;&quot;\n&quot;;break;
+            case 4:cout&lt;&lt;Num(ROOT,v)&lt;&lt;&quot;\n&quot;;break;
+            case 5:{
+                ans=0;
+                query_pre(ROOT,v);cout&lt;&lt;T[ans].v&lt;&lt;&quot;\n&quot;;
+                break;
+            }
+            case 6:{
+                ans=0;
+                query_son(ROOT,v);cout&lt;&lt;T[ans].v&lt;&lt;&quot;\n&quot;;
+                break;
+            }
+        }
+    }
+    return 0;
+}
+</code></pre><hr>
+<h4 id="Binary-Index-Tree-Working"><a href="#Binary-Index-Tree-Working" class="headerlink" title="Binary Index Tree(Working)"></a>Binary Index Tree(Working)</h4><hr>
+<h4 id="Heap-SkewHeap-Working"><a href="#Heap-SkewHeap-Working" class="headerlink" title="Heap(SkewHeap)(Working)"></a>Heap(SkewHeap)(Working)</h4><hr>
+<h4 id="Interval-Tree"><a href="#Interval-Tree" class="headerlink" title="Interval Tree"></a>Interval Tree</h4><p>Interval Tree is a very useful tree structure, which is widely used to maintain a segment (Like number sequence). It utilizes the thought of divide &amp; conquer. </p>
+<p><img src="index/SampleTree.png" alt="SampleTree"></p>
+<p>The graph shows above(Maybe it’s not as beautiful as you thought) describes the appearance of a InvervalTree. As you can see, each nodes maintains a value of an interval, which is built up with a sequence of numbers.</p>
+<pre class="line-numbers language-c++"><code class="language-c++">#include <iostream>
+#include <cstdio>
+#include <cstring>
+using namespace std;
+
+#define INF 0x3f3f3f3f
+#define MAXN 100100
+#define lson(x) x<<1
+#define rson(x) x<<1|1
+#define Mid(x,y) (x+y)>>1
+int A[1001];
+inline int read(){ // ReadInt
+    char ch;
+    bool flag = false;
+    int a=0;
+    while(!((((ch=getchar())>='0') && (ch<='9')) || (ch=='-')));
+    if(ch!='-'){
+        a *= 10;
+        a += ch - '0';
+    }
+    else{
+        flag = true;
+    }
+    while(((ch=getchar())>='0')&& (ch<='9')){
+        a *= 10;
+        a += ch - '0';
+    }
+    if(flag){
+        a = -a;
+    }
+    return a;
+}
+
+struct Node{
+    int sum;
+    int Max,Min;
+    int lson,rson;
+    Node(){
+        sum=0;
+        Max=-INF;
+        Min=INF;
+        lson=rson=0;
+    }
+}Tree[1000<<1]; // Double space
+
+inline void Maintain(int k){ // Pass the value of sons to the father node.
+    Tree[k].sum=Tree[lson(k)].sum+Tree[rson(k)].sum; // Maintain the sum.
+    Tree[k].Max=max(Tree[lson(k)].Max,Tree[rson(k)].Max); // Maintain Max value;
+    Tree[k].Min=min(Tree[lson(k)].Min,Tree[rson(k)].Min); // Maintain Min value;
+}
+
+void Build(int rt,int l,int r){ // Build up an IntervalTree by using a sequence of number
+    Tree[rt].lson=l;Tree[rt].rson=r;
+    if(l==r){ // Reach a leaf node
+        Tree[rt].sum=A[l];
+        Tree[rt].Min=Tree[rt].Max=Tree[rt].sum;
+        return;
+    }
+    int mid=Mid(l,r);
+    Build(lson(rt),l,mid); // Build left son(l to mid)
+    Build(rson(rt),mid+1,r); // Buld right son(mid+1 to r)
+    Maintain(rt); // Maintain the value of father node.
+}
+/*
+* Update a single point of the sequence
+*/
+void Update(int rt,int p,int value,bool change){
+    if(Tree[rt].lson==p && Tree[rt].lson==Tree[rt].rson){
+        if(change){ // Change the value
+            Tree[rt].sum=value;
+            Tree[rt].Max=value;
+            Tree[rt].Min=value;
+        }else{      // Add value to certain point
+            Tree[rt].sum+=value;
+            Tree[rt].Max+=value;
+            Tree[rt].Min+=value;
+        }
+        return;
+    }
+    int mid=Mid(Tree[rt].lson,Tree[rt].rson);
+    if(p<=mid){
+        Update(lson(rt),p,value,change);
+    }else{
+        Update(rson(rt),p,value,change);
+    }
+    Maintain(rt);
+}
+
+int QuerySum(int rt,int l,int r){ // Query the sum of inverval [l,r]
+    if(Tree[rt].lson==l && Tree[rt].rson==r){
+      // Reach the target node
+        return Tree[rt].sum;
+    }else{
+        int mid=Mid(Tree[rt].lson,Tree[rt].rson); // Find the mid point
+        if(r<=mid){                                  
+          // Cond 1: The interval that we are seeking is contained in the interval of left node
+            return QuerySum(lson(rt),l,r);
+        }else if(l>mid){                          
+          // Cond 2: The interval that we are seeking is contained in the interval in the right node.
+            return QuerySum(rson(rt),l,r);
+        }else{    
+            // IMPORTAINT: the half of the interval that we are seeking is contained 
+            // in the interval of left node 
+            // and the other half is contained in that of right node.                                  
+            return QuerySum(lson(rt),l,mid)+QuerySum(rson(rt),mid+1,r);
+        }
+    }
+}
+/*
+* The idea is assemble that of QuertSum
+*/
+int QueryMax(int rt,int l,int r){
+    if(Tree[rt].lson==l && Tree[rt].rson==r){
+        return Tree[rt].Max;
+    }else{
+        int mid=Mid(Tree[rt].lson,Tree[rt].rson);
+        if(r<=mid){
+            return QueryMax(lson(rt),l,r);
+        }else if(l>mid){
+            return QueryMax(rson(rt),l,r);
+        }else return max(QueryMax(lson(rt),l,mid),QueryMax(rson(rt),mid+1,r));
+    }
+}
+
+int QueryMin(int rt,int l,int r){
+    if(Tree[rt].lson==l && Tree[rt].rson==r){
+        return Tree[rt].Min;
+    }else{
+        int mid=Mid(Tree[rt].lson,Tree[rt].rson);
+        if(r<=mid){
+            return QueryMin(lson(rt),l,r);
+        }else if(l>mid){
+            return QueryMin(rson(rt),l,r);
+        }else return min(QueryMin(lson(rt),l,mid),QueryMin(rson(rt),mid+1,r));
+    }
+}
+
+#define NL putchar('\n')
+int main(){
+    int N;N=read();
+    for(int i=1;i<=N;++i) A[i]=read();
+    Build(1,1,N);
+    int op;
+    while(~scanf("%d",&op)){
+        switch(op){
+            case 1:{
+                int l,r;l=read();r=read();
+                cout<<QuerySum(1,l,r);
+                NL;
+                break;
+            }
+            case 2:{
+                int l,r;l=read();r=read();
+                cout<<QueryMax(1,l,r);
+                NL;
+                break;
+            }
+            case 3:{
+                int l,r;l=read();r=read();
+                cout<<QueryMin(1,l,r);
+                NL;
+                break;
+            }
+            case 4:{
+                int pos,val;pos=read();val=read();
+                bool mod=read();
+                Update(1,pos,val,mod);
+                break;
+            }
+        }
+    }
+    return 0;
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h3 id="Trie-Working"><a href="#Trie-Working" class="headerlink" title="Trie(Working)"></a>Trie(Working)</h3><hr>
+<h3 id="K-D-Tree-Working"><a href="#K-D-Tree-Working" class="headerlink" title="K-D Tree(Working)"></a>K-D Tree(Working)</h3><hr>
+<h2 id="Graph-DataStructure"><a href="#Graph-DataStructure" class="headerlink" title="Graph DataStructure"></a>Graph DataStructure</h2><h3 id="Shortest-Path-Algorithm-Working"><a href="#Shortest-Path-Algorithm-Working" class="headerlink" title="Shortest Path Algorithm(Working)"></a>Shortest Path Algorithm(Working)</h3><h4 id="Dijkstra"><a href="#Dijkstra" class="headerlink" title="Dijkstra"></a>Dijkstra</h4><blockquote>
+<p>Dijkstra was created by a computer scientist named Dijkstra. It can be used to calculate shortest paths between one specific vertex and other vertices. This version of Dijkstra is not optimized by Heap thus its total complexity is $O(N^2)$</p>
+</blockquote>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;cstdio&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdlib&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+#define MAXN 1001
+#define INF 0x3f3f3f3f
+
+struct Edge{
+    int v,w;
+    Edge(){}
+    Edge(int vv,int ww){
+        v=vv;w=ww;
+    }
+};
+vector&lt;Edge&gt; g[MAXN];
+int dist[MAXN];
+bool vis[MAXN];
+int N,M;
+
+inline void init(){
+    memset(vis,false,sizeof(vis));
+    memset(dist,INF,sizeof(dist));
+}
+
+inline void AddEdge(int u,int v,int w){
+    g[u].push_back(Edge(v,w));
+    g[v].push_back(Edge(u,w));
+}
+
+inline void Dijkstra(int start){
+    vis[start]=true;
+    dist[start]=0;
+    for(int i=0;i&lt;g[start].size();++i){
+        dist[g[start][i].v]=g[start][i].w;
+    }
+    int MIN;
+    int pos=start;
+    for(int i=1;i&lt;N;++i){
+        MIN=0x3f3f3f3f;
+        for(int i=0;i&lt;g[pos].size();++i){
+            if(!vis[g[pos][i].v] &amp;&amp; MIN&gt;dist[g[pos][i].v]){
+                start=g[pos][i].v;
+                MIN=dist[start];
+            }
+        }
+        vis[start]=true;
+        pos=start;
+        for(int i=0;i&lt;g[pos].size();++i){
+            if(!vis[g[pos][i].v] &amp;&amp; dist[g[pos][i].v]&gt;dist[pos]+g[pos][i].w){
+                dist[g[pos][i].v]=dist[pos]+g[pos][i].w;
+            }
+        }
+    }
+}
+
+int main(){
+    cin&gt;&gt;N&gt;&gt;M;
+    int u,v,w;
+    init();
+    while(M--){
+        cin&gt;&gt;u&gt;&gt;v&gt;&gt;w;
+        AddEdge(u,v,w);
+    }
+    cin&gt;&gt;u;
+    Dijkstra(u);
+    for(int i=1;i&lt;=N;++i){
+        printf(&quot;%d &quot;,dist[i]);
+    }
+    return 0;
+}
+</code></pre><h4 id="Floyd"><a href="#Floyd" class="headerlink" title="Floyd"></a>Floyd</h4><blockquote>
+<p>Floyd is the easiest shortest path algorithm to implement. However, it obtains a very high complexity. Its feature is that it can figure out shortest path between each two vertices.<br>Algorithm Complexity:O($N^3$);<br>```</p>
+<p>#include <iostream></iostream></p>
+<p>#include <cstdio></cstdio></p>
+<p>#include <cstring><br>using namespace std;</cstring></p>
+</blockquote>
+<p>#define MAXN 110</p>
+<p>#define INF 0x3f3f3f3f<br>// Floyd can calculate shortest pathes between each vertice, thus it maintains a high complexity O(N^3)</p>
+<p>int g[MAXN][MAXN];<br>int N,M;<br>inline void init(){<br>    for(int i=1;i&lt;=N;++i){<br>        for(int j=1;j&lt;=N;++j){<br>            if(i==j){<br>                g[i][j]=0;<br>            }else{<br>                g[i][j]=INF;<br>            }<br>        }<br>    }<br>}</p>
+<p>inline void Addedge(int u,int v,int w){<br>    g[u][v]=w;<br>    // If it’s undirected graph, add the line below me<br>    g[v][u]=w;<br>}</p>
+<p>inline void Floyd(){<br>    for(int k=1;k&lt;=N;++k){<br>        for(int i=1;i&lt;=N;++i){<br>            for(int j=1;j&lt;=N;++j){<br>                if(g[i][j]&gt;g[i][k]+g[k][j]){<br>                    g[i][j]=g[i][k]+g[k][j];<br>                }<br>            }<br>        }<br>    }<br>}</p>
+<p>int main(){<br>    cin&gt;&gt;N&gt;&gt;M;<br>    init();<br>    while(M–){<br>        int u,v,w;<br>        cin&gt;&gt;u&gt;&gt;v&gt;&gt;w;<br>        Addedge(u,v,w);<br>    }<br>    Floyd();<br>    // To look up the shortest path between u and v, just use g[u][v]<br>    cin&gt;&gt;M;<br>    while(M–){<br>        int u,v;<br>        cin&gt;&gt;u&gt;&gt;v;<br>        printf(“%d\n”,g[u][v]);<br>    }<br>    return 0;<br>}</p>
+<pre><code>
+---
+
+#### SPFA
+&gt; This Shortest path algorithm is widely used in graphs which is not a complete graph(Each node is connected by a path).
+&gt; Algorithm Complexity:O($K|E|$)
+</code></pre><p>#include <iostream></iostream></p>
+<p>#include <cstdio></cstdio></p>
+<p>#include <cstring></cstring></p>
+<p>#include <vector></vector></p>
+<p>#include <algorithm></algorithm></p>
+<p>#include <queue><br>using namespace std;</queue></p>
+<p>#define MAXN 10010</p>
+<p>#define INF 0x3f3f3f3f<br>struct Edge{<br>    int v,w;<br>    Edge(){}<br>    Edge(int vv,int ww){<br>        v=vv;<br>        w=ww;<br>    }<br>};</p>
+<p>vector<edge> g[MAXN];<br>bool vis[MAXN];<br>int dist[MAXN];<br>int N,M,s;<br>inline void init(){<br>    for(int i=0;i&lt;=N;++i){<br>        dist[i]=2147483647;<br>        vis[i]=false;<br>    }<br>}</edge></p>
+<p>inline void addEdge(int u,int v,int w){<br>    g[u].push_back(Edge(v,w));<br>}</p>
+<p>inline void SPFA(int s){<br>    int k,v;<br>    queue<int> q;<br>    q.push(s);<br>    dist[s]=0;<br>    while(q.size()){<br>        k=q.front();q.pop();<br>        vis[k]=true;<br>        for(int i=0;i&lt;g[k].size();++i){<br>            v=g[k][i].v;<br>            if(g[k][i].w+dist[k]&lt;dist[v]){<br>                dist[v]=g[k][i].w+dist[k];<br>                if(!vis[v]){<br>                    vis[v]=true;<br>                    q.push(v);<br>                }<br>            }<br>        }<br>        vis[k]=false;<br>    }<br>}</int></p>
+<p>int main(){<br>    cin&gt;&gt;N&gt;&gt;M&gt;&gt;s;<br>    init();<br>    int u,v,w;<br>    while(M–){<br>        cin&gt;&gt;u&gt;&gt;v&gt;&gt;w;<br>        addEdge(u,v,w);<br>    }<br>    SPFA(s);<br>    for(int i=1;i&lt;=N;++i){<br>        printf(“%d “,dist[i]);<br>    }<br>    return 0;<br>}</p>
+<pre><code>
+---
+
+### Minimum Spawn Tree(MST)
+#### Kruskal
+**To Better understand Kruskal algorithm, please read [Union-Find](http://ad1024.github.io/Algorithm-Template/#Union-Find-Structure)**
+&gt; Kruskal focus on edges of a graph. It utilizes greedy strategy to find the Minimum spawn tree. To implement kruskal, first we sort edges according to weights from small to big. Then, we use Union-Find set to add vertexes that are the start and the end point of the edge in and we only add vertexes that are not connected(in the UnionFind set). And we add the weight of the edge to the return value each time, we&#39;ll get the MST finally.
+</code></pre><p>#include <iostream></iostream></p>
+<p>#include <cstdio></cstdio></p>
+<p>#include <cstring></cstring></p>
+<p>#include <cstdlib></cstdlib></p>
+<p>#include <algorithm><br>using namespace std;</algorithm></p>
+<p>struct Edge{<br>    int u,v,w;<br>    Edge(int uu,int vv,int ww){<br>        u=uu;<br>        v=vv;<br>        w=ww;<br>    }<br>    Edge(){}<br>}e[200001];<br>int fa[200001];<br>int EID=0;<br>int N,M;</p>
+<p>inline void init(){<br>    for(int i=1;i&lt;=N;++i){<br>        fa[i]=i;<br>    }<br>}</p>
+<p>inline int Find(int x){<br>    int r=x;<br>    while(r!=fa[r]) r=fa[r];<br>    int j;<br>    while(x!=r){<br>        j=fa[x];<br>        fa[x]=r;<br>        x=j;<br>    }<br>    return x;<br>}</p>
+<p>inline void Union(int x,int y){<br>    int fx=Find(x);<br>    int fy=Find(y);<br>    if(fx!=fy){<br>        fa[fx]=fy;<br>    }<br>}</p>
+<p>inline void addEdge(int u,int v,int w){<br>    e[EID]=Edge(u,v,w);<br>    e[EID]=Edge(v,u,w);<br>    EID++;<br>}</p>
+<p>bool cmp(Edge a,Edge b){<br>    return a.w&lt;b.w;<br>}</p>
+<p>inline int Kruskal(){<br>    init();<br>    sort(e,e+EID,cmp);<br>    int ans=0;<br>    for(int i=0;i&lt;EID;++i){<br>        if(Find(e[i].u)!=Find(e[i].v)){<br>            ans+=e[i].w;<br>            Union(e[i].u,e[i].v);<br>        }<br>    }<br>    return ans;<br>}</p>
+<p>int main(){<br>    cin&gt;&gt;N&gt;&gt;M;<br>    int u,v,w;<br>    while(M–){<br>        cin&gt;&gt;u&gt;&gt;v&gt;&gt;w;<br>        addEdge(u,v,w);<br>    }<br>    cout&lt;&lt;Kruskal();<br>    return 0;<br>}<br>```</p>
+<hr>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="AD1024's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        ccoderad@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                Home
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    Archives
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/03/">March 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">February 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">January 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">December 2016<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">November 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">October 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">September 2016<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">August 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">July 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">June 2016<span class="sidebar_archives-count">20</span></a></li><li><a class="sidebar_archives-link" href="/archives/1970/01/">January 1970<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/Algorithm-Template" title="Algorithm Templates">
+                
+                    <i class="material-icons sidebar-material-icons">assignment</i>
+                
+                Algorithm Templates
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallary" title="Moments">
+                
+                    <i class="material-icons sidebar-material-icons">photo</i>
+                
+                Moments
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/tags" title="Tag Cloud">
+                
+                    <i class="material-icons sidebar-material-icons">book</i>
+                
+                Tag Cloud
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="Friend Links">
+                
+                    <i class="material-icons sidebar-material-icons">people</i>
+                
+                Friend Links
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                Number of articles
+                <span class="sidebar-badge">60</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            Theme - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.svg);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.svg);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.svg);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/AD1024" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.svg);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/mike-he-94/activities" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-zhihu.svg);">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+        <a href="http://space.bilibili.com/11936677/#!/index" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-bilibili.svg);">
+                <span class="visuallyhidden">Bilibili</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Space Of AD1024
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

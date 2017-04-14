@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.4 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            NOIP-基础班知识及题解 | 
+        
+        Space Of AD1024
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#536DFE">
+    <meta name="author" content="AD1024">
+    <meta name="description" content="A Senior Student From Beijing National Day School">
+    <meta name="keywords" content="null">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Space Of AD1024">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://ad1024.tech">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="NOIP-基础班知识及题解 | Space Of AD1024">
+    <meta property="og:description" content="A Senior Student From Beijing National Day School">
+    
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.en.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #3D5AFE;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #536DFE !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #536DFE !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #536DFE !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #3D5AFE;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+<link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                NOIP-基础班知识及题解
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>AD1024</strong>
+        <span>Sep 24, 2016</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=NOIP-基础班知识及题解&url=http://ad1024.tech//Introduction-to-NOIP/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Weibo
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=NOIP-基础班知识及题解&url=http://ad1024.tech//Introduction-to-NOIP/index.html&via=AD1024" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://ad1024.tech//Introduction-to-NOIP/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://ad1024.tech//Introduction-to-NOIP/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="1-C语言基础知识与易错点整理"><a href="#1-C语言基础知识与易错点整理" class="headerlink" title="1 C语言基础知识与易错点整理"></a>1 C语言基础知识与易错点整理</h2><p>基础知识:<a href="http://ad1024.github.io/C-language-Basis" target="_blank" rel="external">C语言基础语法-中文版</a></p>
+<h3 id="1-1-数据输入"><a href="#1-1-数据输入" class="headerlink" title="1.1 数据输入"></a>1.1 数据输入</h3><h4 id="1-1-1-从屏幕读入"><a href="#1-1-1-从屏幕读入" class="headerlink" title="1.1.1 从屏幕读入"></a>1.1.1 从屏幕读入</h4><p>C语言从屏幕读取数据的函数是scanf(); 其中注意：输入除字符串(char* 与 char[])类型时需要在要赋值的变量前加’&amp;’ 即(输入十进制整数为例)：</p>
+<pre><code>int x;
+scanf(&quot;%d&quot;,&amp;x);
+</code></pre><p>当输入字符串(char数组)时，不需要加’&amp;’。即:</p>
+<pre><code>char str[1001];
+scanf(&quot;%s&quot;,str);
+</code></pre><p>不建议使用gets()函数读入字符串。</p>
+<hr>
+<h4 id="1-1-2-从文件读入"><a href="#1-1-2-从文件读入" class="headerlink" title="1.1.2 从文件读入"></a>1.1.2 从文件读入</h4><p>很多考试要求使用文件输入、输出。在C语言中，我们可以通过使用freopen()来进行输入/输出重定向。其使用方法是：</p>
+<blockquote>
+<p>freopen(文件名,读入/读出,stdin/stdout);</p>
+</blockquote>
+<p>如:</p>
+<pre><code>freopen(&quot;test.in&quot;,&quot;r&quot;,stdin);
+freopen(&quot;test.out&quot;,&quot;w&quot;,stdout);
+</code></pre><p>提示：在输出答案之后，退出程序前建议加上:</p>
+<pre><code>fclose(stdin);
+fclose(stdout);
+</code></pre><hr>
+<h3 id="1-2-输出数据"><a href="#1-2-输出数据" class="headerlink" title="1.2 输出数据"></a>1.2 输出数据</h3><p>输出数据在做题中是至关重要的一步，有时你可能因为输出格式不对但是答案完全正确而导致爆0.为避免这个情况，请仔细阅读题目输出格式要求。</p>
+<p>输出数据中的易错点:</p>
+<ol>
+<li>若输出多行，行末是否保留空格；</li>
+<li>输出数据的大小写；</li>
+<li>是否输出到文件；</li>
+<li>输出数据的缩进/空格数量。</li>
+</ol>
+<hr>
+<h3 id="1-3-数据范围"><a href="#1-3-数据范围" class="headerlink" title="1.3 数据范围"></a>1.3 数据范围</h3><p>读完题之后，不要立刻去做题，一定要看一下数据范围。一是确定使用什么样的算法解决这个问题，由于每种方式时间复杂度和空间复杂度不相同，所以看数据范围是十分重要的；二是确定开多大是数组，或者使用什么样的数据结构存储输入数据。</p>
+<p>各个数据范围对应时间复杂度:<br>小于等于8 N^N<br>小于等于11 N!<br>小于等于25 2^N<br>小于等于300 N^3<br>小于等于3000 N^2<br>小于等于100W NlogN<br>小于等于9000W N<br>小于等于1E logN<br>任意大小 1</p>
+<hr>
+<h4 id="1-3-1-动态内存分配"><a href="#1-3-1-动态内存分配" class="headerlink" title="1.3.1 动态内存分配"></a>1.3.1 动态内存分配</h4><p>C语言中可以使用malloc()动态分配内存(C++是new)。不过不推荐使用该方法分配内存，因为手动分配内存是在堆上开空间，而不是栈上，所以程序在执行过程中不会自动释放内存。因此需要使用free(C++为delete/delete[])手动释放空间。</p>
+<p>注意：malloc返回的是void*，因此需要进行强制类型转换。</p>
+<p>例：动态分配大小为100的int数组</p>
+<pre><code>// C语言
+int *a=(int*)malloc(sizeof(int)*100);
+// 释放内存
+free(a);
+//-----
+// C++
+int *a = new int[100];
+delete[] a;
+</code></pre><p>注：malloc与new适用于所有类型的内存分配，包括自定义结构体。</p>
+<hr>
+<h4 id="1-3-2-数组初始化"><a href="#1-3-2-数组初始化" class="headerlink" title="1.3.2 数组初始化"></a>1.3.2 数组初始化</h4><p>C语言中提供了memset()函数初始化数组值，使用方法为:</p>
+<pre><code>memset(数组名,初始化值,sizeof(数组名));
+</code></pre><p><strong>注意：在函数外声明的数组默认值为0，但在函数内声明的数组，其数据是随机的数字因此如果在函数内定义数组并使用，不要忘记在使用前初始化它</strong></p>
+<hr>
+<h2 id="2-做题的奇技淫巧"><a href="#2-做题的奇技淫巧" class="headerlink" title="2 做题的奇技淫巧"></a>2 做题的奇技淫巧</h2><h3 id="2-1-判断奇偶数"><a href="#2-1-判断奇偶数" class="headerlink" title="2.1 判断奇偶数"></a>2.1 判断奇偶数</h3><p>通常情况我们通过x%2==0判断是否是偶数，但是模运算是所有运算中最耗时间的一个运算，因此我们可以使用位运算来代替这个耗时巨大的运算：</p>
+<pre><code>if(x&amp;1){
+  // 是奇数
+}else{
+  // 是偶数
+}
+</code></pre><hr>
+<h3 id="2-2-变量数值交换"><a href="#2-2-变量数值交换" class="headerlink" title="2.2 变量数值交换"></a>2.2 变量数值交换</h3><p>常规方法:</p>
+<pre><code>int t=a;
+a=b;
+b=t;s
+</code></pre><p>位运算版:</p>
+<pre><code>a^=b^=a^=b;
+</code></pre><hr>
+<h3 id="2-3-判断一个数是否是2-N"><a href="#2-3-判断一个数是否是2-N" class="headerlink" title="2.3 判断一个数是否是2^N"></a>2.3 判断一个数是否是2^N</h3><pre><code>if(x&amp;(x-1)){
+  // 不是
+}else{
+  // 是
+}
+</code></pre><hr>
+<h3 id="2-4-求两个数的最大公约数-GCD"><a href="#2-4-求两个数的最大公约数-GCD" class="headerlink" title="2.4 求两个数的最大公约数(GCD)"></a>2.4 求两个数的最大公约数(GCD)</h3><pre><code>int GCD(int x,int y){
+  while(x^=y^=x^=y%=x);return y;
+}
+</code></pre><hr>
+<h3 id="2-5-快速计算1-sqrt-N"><a href="#2-5-快速计算1-sqrt-N" class="headerlink" title="2.5 快速计算1/sqrt(N)"></a>2.5 快速计算1/sqrt(N)</h3><pre><code>float rsqrt(float x){ // 原理:牛顿迭代
+    float x2=x*0.5F;
+    int i=*(int*)&amp;x;
+    i=0x5f3759df-(i&gt;&gt;1);
+    x=*(float*)&amp;i;
+    x=x*(1.5F-(x2*x*x)); // 迭代
+
+    return x;
+}
+</code></pre><hr>
+<h3 id="2-6-大数乘积取模"><a href="#2-6-大数乘积取模" class="headerlink" title="2.6 大数乘积取模"></a>2.6 大数乘积取模</h3><pre><code>#define EPS 10e-8
+ans=(a*b-(long long)((long double)a/p*b+EPS)*p)%p
+</code></pre><hr>
+<h3 id="2-7-快速×2-÷2"><a href="#2-7-快速×2-÷2" class="headerlink" title="2.7 快速×2/÷2"></a>2.7 快速×2/÷2</h3><p>这个速度快</p>
+<pre><code>x&lt;&lt;=1; // x*=2
+x&gt;&gt;=1; // x/=2
+</code></pre><hr>
+<h2 id="3-字符串"><a href="#3-字符串" class="headerlink" title="3 字符串"></a>3 字符串</h2><h3 id="3-1-字符串初步"><a href="#3-1-字符串初步" class="headerlink" title="3.1 字符串初步"></a>3.1 字符串初步</h3><h4 id="3-1-1-什么是字符串"><a href="#3-1-1-什么是字符串" class="headerlink" title="3.1.1 什么是字符串"></a>3.1.1 什么是字符串</h4><p>字符串就是一串字符组成的值。其中可以包括字母大小写，各国语言，数字等符号。我们常用的就是大小写字母以及数字。C语言中，我们常用char str[N] (char型数组)存储字符串类型(N为定值)。STL中的string类型也可以存储字符串数据。</p>
+<p><strong>注意：字符串数组起始下标为0，因此strlen()所返回的值是最大下标+1</strong></p>
+<blockquote>
+<p>例如：若字符串a为”123456”，则a[0]=1 a[5]=6 strlen(a)返回6</p>
+</blockquote>
+<p><strong>因此在编写程序时注意取下标时越界的问题</strong></p>
+<hr>
+<h4 id="3-1-2-字符串基本操作"><a href="#3-1-2-字符串基本操作" class="headerlink" title="3.1.2 字符串基本操作"></a>3.1.2 字符串基本操作</h4><p>对于字符串变量，我们通常有:1. 获得长度 2. 获得某位上字符的值 3. 修改某位上字符的值。</p>
+<pre><code>// 获得一个字符串的长度
+int length=strlen(str); // strlen()函数在&lt;string.h&gt;中
+
+// 获得第i位的值
+char c=str[i];
+
+// 修改第i位的值
+str[i]=c;
+</code></pre><hr>
+<h4 id="3-1-3-字符串的遍历"><a href="#3-1-3-字符串的遍历" class="headerlink" title="3.1.3 字符串的遍历"></a>3.1.3 字符串的遍历</h4><p>对于字符串类型，我们可以使用游标(cursor)或者指针(pointer)两种方式进行遍历，多数情况我们使用前者，因为比较好控制程序流程。<br>游标遍历:</p>
+<pre><code>char str[1001]={&quot;123456&quot;};
+for(int i=0;i&lt;strlen(str);++i){ // 起始下标 0 到 终止下标 strlen(str)-1
+  printf(&quot;%c&quot;,str[i]);
+}
+</code></pre><hr>
+<h4 id="3-1-4-字符串比较"><a href="#3-1-4-字符串比较" class="headerlink" title="3.1.4 字符串比较"></a>3.1.4 字符串比较</h4><p>对于字符串比较，C语言提供了strcmp()函数(使用方法在网上自行搜索)。这里我们可以手动实现对字符串的比较(是否相同)。</p>
+<ol>
+<li>比较长度-若长度不相等则字符串一定不相等(无空格)</li>
+<li>遍历字符串进行判断<pre><code>bool isSame(char a[],char b[]){
+int la=strlen(a);int lb=strlen(b); // 获得长度
+if(a!=b) return false; //若不相同直接返回
+else{
+ for(int i=0;i&lt;la;++i){ // 最大下标为la 或 lb (因为二者相等)
+   if(a[i]!=b[i]) return false; // 如果同一位置不相等，直接返回
+ }
+ return true;
+}
+}
+</code></pre></li>
+</ol>
+<hr>
+<h3 id="3-2-字符串相关技巧与算法"><a href="#3-2-字符串相关技巧与算法" class="headerlink" title="3.2 字符串相关技巧与算法"></a>3.2 字符串相关技巧与算法</h3><h4 id="3-2-1-字符转数字"><a href="#3-2-1-字符转数字" class="headerlink" title="3.2.1 字符转数字"></a>3.2.1 字符转数字</h4><p>事实上，字符类型是特殊的int类型，因此他们之间可以进行转化(详见ASCII表)。对于字符类型的x(0-9)，我们可以通过x-‘0’将x所对应的int计算出来。这时因为在ASCII表中，0-9是连续的，因此可以通过”-‘0’”把对应值算出来。</p>
+<h4 id="3-2-2-字符串转整数"><a href="#3-2-2-字符串转整数" class="headerlink" title="3.2.2 字符串转整数"></a>3.2.2 字符串转整数</h4><p>有时我们会遇到字符串转换整数的问题，这时我们需要打出10^N的表，然后进行逆向遍历(从个位开始)计算出结果。</p>
+<pre><code>const int Pow[9]={1,10,100,1000,10000,100000,1000000,10000000,100000000,1000000000};
+int str2int(char str[]){
+  int cur=0,ret=0;
+  for(int i=strlen(str);i&gt;=0;--i){ // 逆向遍历
+    ret+=(str[i]-&#39;0&#39;)*Pow[cur++]; // 每次乘完cur自动+1
+  }
+}
+</code></pre><hr>
+<h4 id="3-2-3-字符串倒转"><a href="#3-2-3-字符串倒转" class="headerlink" title="3.2.3 字符串倒转"></a>3.2.3 字符串倒转</h4><p>此方法同样适用于判断回文。使用对折反转法，复杂度O(N/2)。</p>
+<pre><code>int N = strlen(str);
+for(int i=0;i&lt;(N&gt;&gt;1);++i){ // N&gt;&gt;1 = N/2 参考上文
+  swap(str[i],str[N-i-1]); // swap即可使用上文中的交换实现
+}
+</code></pre><hr>
+<h4 id="3-2-4-整数转字符串"><a href="#3-2-4-整数转字符串" class="headerlink" title="3.2.4 整数转字符串"></a>3.2.4 整数转字符串</h4><p>相对3.2.2的反操作，但是比3.2.2容易，我们只需要不断对10取模即可，最后我们需要反转数组(因为最高位从个位开始)。</p>
+<pre><code>void int2str(int x){
+  char str[1001];
+  int cur=0;
+  while(x!=0){
+    int i=x%10; // 获得最低位
+    str[cur++]=i+&#39;0&#39;; // 加入字符串(由于int需要转换到ASCII码格式，因此需要+&#39;0&#39;);
+    x/=10; //移除最高位
+  }
+  reverse(str); // reverse方法可参考3.2.3
+}
+</code></pre><hr>
+<h2 id="4-模拟算法"><a href="#4-模拟算法" class="headerlink" title="4 模拟算法"></a>4 模拟算法</h2><p>事实上，模拟不能被称作算法，因为模拟仅仅是使用代码模拟一些事情的发生过程。但是好的模拟能够直接体现出一个人的语言功底，因此不可轻易忽视。</p>
+<h3 id="4-1-模拟算法的技巧"><a href="#4-1-模拟算法的技巧" class="headerlink" title="4.1 模拟算法的技巧"></a>4.1 模拟算法的技巧</h3><p>模拟也有很多的技巧，如使用HASH去重(目录)，记录访问历史等。这里会介绍HASH的使用方法。</p>
+<hr>
+<h4 id="4-1-1-HASH去重"><a href="#4-1-1-HASH去重" class="headerlink" title="4.1.1 HASH去重"></a>4.1.1 HASH去重</h4><p>看着名字很高端，其实很lowB。Hash去重就是开一个数组记录某个点/元素/位置/blablabla是否使用过，或使用值是多少。这里拿一个题举例子:<br><a href="http://124.205.120.153/v3/problem_show.php?pid=36094" target="_blank" rel="external">数字统计</a><br>这个题就可以使用该方法做。具体处理方法:开一个hash数组记录各个数字使用次数。</p>
+<pre><code>// 核心代码
+int ans[100001];
+memset(ans,0,sizeof(ans)); // 全部初始化为0
+for(int i=0;i&lt;strlen(str);++i){
+  ans[str[i]-&#39;0&#39;]++; // str[i]-&#39;0&#39;所对应位置的数+1
+}
+</code></pre><hr>
+<h4 id="4-2-2-二维数组记录位置信息"><a href="#4-2-2-二维数组记录位置信息" class="headerlink" title="4.2.2 二维数组记录位置信息"></a>4.2.2 二维数组记录位置信息</h4><p>在某些模拟中，我们需要记录对于一些坐标是否访问过的记录。此时我们可以使用布尔型二维数组记录某个位置是否被访问过。</p>
+<pre><code>bool vis[1001][1001];
+memset(vis,false,sizeof(vis)); //初始化访问记录数组
+vis[x][y]=true; // 坐标或状态(x,y)被访问过
+</code></pre><p>当然，我们可以在数据允许的范围内开更多维的数组记录更多数据，如：</p>
+<pre><code>bool vis[100][100][100];
+memset(vis,false,sizeof(vis)); // 初始化访问数组
+vis[x][y][value]=true; // 在状态或坐标(x,y)上，值为value的情况已经被访问过
+</code></pre><hr>
+<h3 id="4-2-模拟练习题"><a href="#4-2-模拟练习题" class="headerlink" title="4.2 模拟练习题"></a>4.2 模拟练习题</h3><p>Level-1 Easy<br><a href="http://www.luogu.org/problem/show?pid=1003" target="_blank" rel="external">铺地毯</a><br><a href="http://www.luogu.org/problem/show?pid=1097" target="_blank" rel="external">统计数字</a><br><a href="http://www.luogu.org/problem/show?pid=1008" target="_blank" rel="external">三连击</a></p>
+<p>Level-2 Medium<br><a href="http://www.luogu.org/problem/show?pid=1307" target="_blank" rel="external">数字翻转</a><br><a href="http://www.luogu.org/problem/show?pid=1423" target="_blank" rel="external">小玉游泳</a></p>
+<p>Level-3 Hard<br><a href="http://www.luogu.org/problem/show?pid=2615" target="_blank" rel="external">幻方</a></p>
+<hr>
+<h4 id="4-2-1"><a href="#4-2-1" class="headerlink" title="4.2.1"></a>4.2.1</h4><p>总结:模拟部分并不打算放题解，因为难度不是很高。模拟“算法”主要考察你的代码基础与实现能力，因此如果你对模拟感到吃力，就多做些题，熟练代码实现技巧。</p>
+<hr>
+<h2 id="5-递归与搜索算法"><a href="#5-递归与搜索算法" class="headerlink" title="5 递归与搜索算法"></a>5 递归与搜索算法</h2><h3 id="5-1-深度优先搜索"><a href="#5-1-深度优先搜索" class="headerlink" title="5.1 深度优先搜索"></a>5.1 深度优先搜索</h3><h4 id="5-1-1-递归枚举"><a href="#5-1-1-递归枚举" class="headerlink" title="5.1.1 递归枚举"></a>5.1.1 递归枚举</h4><p>递归枚举，属于搜索算法的基础(属于深度优先搜索的一种)，其实现方法为C语言中的递归。递归枚举可以称为“一路走到黑”，因为它会在一次搜索中枚举所有状态直到搜到符合题目条件的状态。在编写深度优先搜索时首先确定搜索的边界条件，然后确定需要枚举哪些参数。<br>一个标准深度优先搜索的框架:</p>
+<pre><code>void f(搜索所需参数){
+  if(达到边界){
+    // 处理结果
+  }else{
+    for(枚举状态){
+      f(下一个状态的参数)
+    }
+  }
+}
+</code></pre><blockquote>
+<p>例题:给定数字0-9，每个数字可以通过一个路径到达比它大1或者大2的数。如:在1的位置可以到达2或3；在2的位置可以到达3或4….给定整数N(0&lt;=N&lt;=9)，输出所有从0到N的路径。<br>边界:位置达到N；<br>状态:当前位置；<br>下一个状态:当前位置到比它编号大1或大2的位置。</p>
+</blockquote>
+<pre><code>// 核心代码
+void f(int k,int idx){
+  if(k==N){
+    // 输出当前合法路径
+  }else{
+    a[idx]=k;
+    f(k+1,idx+1);
+    f(k+2,idx+1);
+  }
+}
+</code></pre><hr>
+<h4 id="5-1-2-回溯搜索"><a href="#5-1-2-回溯搜索" class="headerlink" title="5.1.2 回溯搜索"></a>5.1.2 回溯搜索</h4><p>回溯搜索建立在递归基础之上，属于深度优先搜索。比暴力枚举高端的地方在：它可以记录重复状态，避免一些重复的状态搜索。<br>例题:求给定数字1-N,问在不重复使用同一个数的前提下，用K个数字加和为素数的方案数有多少。</p>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="AD1024's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        ccoderad@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                Home
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    Archives
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/03/">March 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">February 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">January 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">December 2016<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">November 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">October 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">September 2016<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">August 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">July 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">June 2016<span class="sidebar_archives-count">20</span></a></li><li><a class="sidebar_archives-link" href="/archives/1970/01/">January 1970<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/Algorithm-Template" title="Algorithm Templates">
+                
+                    <i class="material-icons sidebar-material-icons">assignment</i>
+                
+                Algorithm Templates
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallary" title="Moments">
+                
+                    <i class="material-icons sidebar-material-icons">photo</i>
+                
+                Moments
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/tags" title="Tag Cloud">
+                
+                    <i class="material-icons sidebar-material-icons">book</i>
+                
+                Tag Cloud
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="Friend Links">
+                
+                    <i class="material-icons sidebar-material-icons">people</i>
+                
+                Friend Links
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                Number of articles
+                <span class="sidebar-badge">60</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            Theme - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.svg);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.svg);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.svg);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/AD1024" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.svg);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/mike-he-94/activities" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-zhihu.svg);">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+        <a href="http://space.bilibili.com/11936677/#!/index" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-bilibili.svg);">
+                <span class="visuallyhidden">Bilibili</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Space Of AD1024
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
