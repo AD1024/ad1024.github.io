@@ -5,7 +5,7 @@
     <entry>
       <title><![CDATA[zkw线段树详解]]></title>
       <url>/2017/04/18/zkwIntervalTree/</url>
-      <content type="html"><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>zkw线段树是一种非递归，处理区间问题的高效数据结构。与传统线段树不同，zkw线段树天然非递归，常数小，代码短，非常有学习价值。<br><a id="more"></a></p>
+      <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>zkw线段树是一种非递归，处理区间问题的高效数据结构。与传统线段树不同，zkw线段树天然非递归，常数小，代码短，非常有学习价值。<br><a id="more"></a></p>
 <h2 id="符号约定"><a href="#符号约定" class="headerlink" title="符号约定"></a>符号约定</h2><p>tree[i]: 第i号节点。由于线段树为二叉树，所以满足对于节点i，其左儿子节点编号为i*2，右儿子节点编号为i*2+1<br>tree[i].l: 该节点维护区间的左端点<br>tree[i].r: 该节点维护区间的右端点<br>tree[i].max: 该节点维护区间的最大值<br>tree[i].min: 该节点维护区间的最小值<br>tree[i].sum: 该节点维护区间的区间和<br>N: 节点总数<br>mid(x,y): (x+y)/2<br>Maintain(int rt): 维护节点编号为rt的信息<br>read(): 读入数据</p>
 <h2 id="建树"><a href="#建树" class="headerlink" title="建树"></a>建树</h2><h3 id="传统线段树建树方法"><a href="#传统线段树建树方法" class="headerlink" title="传统线段树建树方法"></a>传统线段树建树方法</h3><p>传统线段树建树非常“朴素”。直接从根节点(通常为1)下去，一直递归到叶子然后输入信息。输入完一层就维护一下父节点。代码如下：</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">Build</span><span class="token punctuation">(</span><span class="token keyword">int</span> root<span class="token punctuation">,</span><span class="token keyword">int</span> l<span class="token punctuation">,</span><span class="token keyword">int</span> r<span class="token punctuation">)</span><span class="token punctuation">{</span>
