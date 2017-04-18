@@ -3,6 +3,76 @@
   
     
     <entry>
+      <title><![CDATA[zkw线段树详解]]></title>
+      <url>/2017/04/18/zkwIntervalTree/</url>
+      <content type="html"><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>zkw线段树是一种非递归，处理区间问题的高效数据结构。与传统线段树不同，zkw线段树天然非递归，常数小，代码短，非常有学习价值。<br><a id="more"></a></p>
+<h2 id="符号约定"><a href="#符号约定" class="headerlink" title="符号约定"></a>符号约定</h2><p>tree[i]: 第i号节点。由于线段树为二叉树，所以满足对于节点i，其左儿子节点编号为i*2，右儿子节点编号为i*2+1<br>tree[i].l: 该节点维护区间的左端点<br>tree[i].r: 该节点维护区间的右端点<br>tree[i].max: 该节点维护区间的最大值<br>tree[i].min: 该节点维护区间的最小值<br>tree[i].sum: 该节点维护区间的区间和<br>N: 节点总数<br>mid(x,y): (x+y)/2<br>Maintain(int rt): 维护节点编号为rt的信息<br>read(): 读入数据</p>
+<h2 id="建树"><a href="#建树" class="headerlink" title="建树"></a>建树</h2><h3 id="传统线段树建树方法"><a href="#传统线段树建树方法" class="headerlink" title="传统线段树建树方法"></a>传统线段树建树方法</h3><p>传统线段树建树非常“朴素”。直接从根节点(通常为1)下去，一直递归到叶子然后输入信息。输入完一层就维护一下父节点。代码如下：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">Build</span><span class="token punctuation">(</span><span class="token keyword">int</span> root<span class="token punctuation">,</span><span class="token keyword">int</span> l<span class="token punctuation">,</span><span class="token keyword">int</span> r<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    tree<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>l <span class="token operator">=</span> l<span class="token punctuation">;</span>tree<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>r <span class="token operator">=</span> r<span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>l <span class="token operator">==</span> r<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        tree<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>min <span class="token operator">=</span> <span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        tree<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>max <span class="token operator">=</span> tree<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>sum <span class="token operator">=</span> tree<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>min<span class="token punctuation">;</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">int</span> pos <span class="token operator">=</span> <span class="token function">mid</span><span class="token punctuation">(</span>l<span class="token punctuation">,</span>r<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">build</span><span class="token punctuation">(</span>root<span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">,</span> l<span class="token punctuation">,</span> pos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">build</span><span class="token punctuation">(</span>root<span class="token operator">*</span><span class="token number">2</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> pos<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> r<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">Maintain</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>与传统线段树不同， zkw线段树先跳过所有非叶子节点，直接读入叶子节点数据，然后再逐个维护非叶子节点的信息：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> cnt<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 节点计数</span>
+<span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">Build</span><span class="token punctuation">(</span><span class="token keyword">int</span> l<span class="token punctuation">,</span><span class="token keyword">int</span> r<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>cnt<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>cnt<span class="token operator">&lt;=</span>N<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>cnt<span class="token operator">&lt;&lt;=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 开成完全二叉树</span>
+    <span class="token comment" spellcheck="true">// 读入叶子节点数据</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span>cnt<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>cnt<span class="token operator">+</span>N<span class="token punctuation">;</span><span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        tree<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>min <span class="token operator">=</span> <span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        tree<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>max <span class="token operator">=</span> tree<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>sum <span class="token operator">=</span> tree<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>min<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// 维护非叶子节点数据</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> cnt<span class="token number">-1</span><span class="token punctuation">;</span>i<span class="token punctuation">;</span><span class="token operator">--</span>i<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">Maintain</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>是不是非常好写？这里要注意，有时候这个树并非完全二叉树，但是zkw线段树要求是一个完全二叉树。因此这时候我们直接开到完全二叉树就好啦（空间换时间）。</p>
+<h2 id="单点修改"><a href="#单点修改" class="headerlink" title="单点修改"></a>单点修改</h2><h3 id="传统线段树的单点修改"><a href="#传统线段树的单点修改" class="headerlink" title="传统线段树的单点修改"></a>传统线段树的单点修改</h3><p>传统线段树会依次递归直到找到那个单点然后再修改。这样就会有$\log_(N)$的复杂度去找单点。</p>
+<h3 id="zkw线段树的单点修改"><a href="#zkw线段树的单点修改" class="headerlink" title="zkw线段树的单点修改"></a>zkw线段树的单点修改</h3><p>非常简单，由于我们知道应该改的点在叶子节点的第几个，我们只需要把那个点改掉，然后从它的父亲开始向上更新信息：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">update</span><span class="token punctuation">(</span><span class="token keyword">int</span> pos<span class="token punctuation">,</span> <span class="token keyword">int</span> v<span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 这里以将pos处增加v为例</span>
+    pos <span class="token operator">+</span><span class="token operator">=</span> M<span class="token punctuation">;</span>
+    tree<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">.</span>min <span class="token operator">=</span> tree<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">.</span>max <span class="token operator">=</span> tree<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">.</span>sum <span class="token operator">+</span><span class="token operator">=</span> v<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>pos<span class="token operator">>>=</span><span class="token number">1</span><span class="token punctuation">;</span>pos<span class="token punctuation">;</span>pos<span class="token operator">>>=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">Maintain</span><span class="token punctuation">(</span>pos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>是的，只有这么短，是不是很niubia?</p>
+<h2 id="区间修改"><a href="#区间修改" class="headerlink" title="区间修改"></a>区间修改</h2><p>坑着</p>
+<h2 id="区间求和"><a href="#区间求和" class="headerlink" title="区间求和"></a>区间求和</h2><h3 id="传统线段树的区间求和"><a href="#传统线段树的区间求和" class="headerlink" title="传统线段树的区间求和"></a>传统线段树的区间求和</h3><p>对于要求区间的端点分类讨论：</p>
+<ul>
+<li>查询区间在当前节点区间的左边</li>
+<li>查询区间在当前节点区间的右边</li>
+<li>查询区间在横跨当前节点与其兄弟节点<br>好麻烦啊….写起来也是很长很长长长长长长。<h3 id="zkw线段树的区间求和"><a href="#zkw线段树的区间求和" class="headerlink" title="zkw线段树的区间求和"></a>zkw线段树的区间求和</h3>zkw线段树还是那个直接的思想：查哪里就从哪里开始算。因此zkw线段树从叶子节点对应位置开始依次向父节点走进行计算。假设我们查询区间为[l,r]这里要注意一点：</li>
+<li>如果当前tree[l]是左儿子，那么它的兄弟节点(右儿子)tree[l^1]一定在这个查询区间内</li>
+<li>如果当前tree[r]是右儿子，那么它的兄弟节点(左儿子)tree[r^1]一定在这个查询区间内</li>
+<li>当tree[l]与tree[r]是兄弟节点时(l^r == 1 因为只有最后一位不同)，计算结束，防止重叠统计<br>因此实际上zkw线段树区间求和是求的(l,r)<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">inline</span> <span class="token keyword">int</span> <span class="token function">querySum</span><span class="token punctuation">(</span><span class="token keyword">int</span> l<span class="token punctuation">,</span><span class="token keyword">int</span> r<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">int</span> ans <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span>l<span class="token operator">=</span>cnt<span class="token operator">+</span>l<span class="token number">-1</span><span class="token punctuation">,</span>r<span class="token operator">=</span>cnt<span class="token operator">+</span>r<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>l<span class="token operator">^</span>r<span class="token operator">^</span><span class="token number">1</span><span class="token punctuation">;</span>l<span class="token operator">>>=</span><span class="token number">1</span><span class="token punctuation">,</span>r<span class="token operator">>>=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 这里由于要计算[l,r]而不是(l,r)故l=cnt+l-1，r同理</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">~</span>l<span class="token operator">&amp;</span><span class="token number">1</span><span class="token punctuation">)</span> ans <span class="token operator">+</span><span class="token operator">=</span> tree<span class="token punctuation">[</span>l<span class="token operator">^</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>sum<span class="token punctuation">;</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>r<span class="token operator">&amp;</span><span class="token number">1</span><span class="token punctuation">)</span> ans <span class="token operator">+</span><span class="token operator">=</span> tree<span class="token punctuation">[</span>l<span class="token operator">^</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>sum<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+是不是，很！niubi！</li>
+</ul>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[圆形LaTeX脚注的样式]]></title>
       <url>/2017/03/27/%E5%9C%86%E5%BD%A2LaTeX%E8%84%9A%E6%B3%A8%E7%9A%84%E6%A0%B7%E5%BC%8F/</url>
       <content type="html"><![CDATA[<p>LaTeX自带脚注的样式只有一个数字在文字右上角，看起来很奇怪….因此我们需要改成常用的圆形脚注的样式<br><a id="more"></a><br>脚注的修改很简单….只需要几行就可以做到了:</p>
