@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <!--
         © Material Theme
         https://github.com/viosey/hexo-theme-material
@@ -16,6 +15,9 @@
         Space Of AD1024
     </title>
 
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
     <!-- dns prefetch -->
     <meta http-equiv="x-dns-prefetch-control" content="on">
     
@@ -25,9 +27,8 @@
     
     
 
-    <!-- Meta & Info -->
     <meta http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#536DFE">
     <meta name="author" content="AD1024">
     <meta name="description" content="A Senior Student From Beijing National Day School">
@@ -38,7 +39,8 @@
     <link rel="icon" sizes="192x192" href="/img/favicon.png">
     <link rel="apple-touch-icon" href="/img/favicon.png">
 
-    <!--iOS --> 
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-title" content="Title">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -173,6 +175,15 @@
         <script src="/js/jquery.min.js"></script>
         <script src="/js/queue.js"></script>
     
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
 
     
 
@@ -382,7 +393,7 @@
         <p>Given a 2*4 number matrix, and randomly filled in from 1-8. And there are 3 rules of moving those numbers:<br>(1) swap the first row and the second row;<br>(2) all numbers move to right 1 column(the last column will move to the first column);<br>(3) rotate four numbers which located in the center of the matrix clockwisely.</p>
 <p>the Target status is<br>1 2 3 4<br>8 7 6 5</p>
 <p>What is the number of minimum step?<br><a id="more"></a></p>
-<h2 id="Problem-Description-Chinese"><a href="#Problem-Description-Chinese" class="headerlink" title="Problem Description(Chinese)"></a>Problem Description(Chinese)</h2><p><img src="Number-Matrix/problem.jpg" alt="ProblemDescription-CHN"></p>
+<h2 id="Problem-Description-Chinese"><a href="#Problem-Description-Chinese" class="headerlink" title="Problem Description(Chinese)"></a>Problem Description(Chinese)</h2><p><img src="/2016/09/16/Number-Matrix/problem.jpg" alt="ProblemDescription-CHN"></p>
 <h2 id="Problem-Analysis"><a href="#Problem-Analysis" class="headerlink" title="Problem Analysis"></a>Problem Analysis</h2><p>Because the status space of this problem is not very large, we can use BFS to solve the problem. The most complicated thing of the problem is that we need to manually implement the motion of those numbers. But it isn’t difficult, just complicated…<br>In order to simplify the code, I overrode the ‘[]’ operator which enabled me to use [] operator directly on my struct.<br>nxt: the extened status<br>k: current status</p>
 <p>First movement:</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">4</span><span class="token punctuation">;</span><span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -863,7 +874,7 @@ It will not impact the appearance and can give developers a lot of support :)
 
         <!--Copyright-->
         <div id="copyright">
-            Copyright&nbsp;©&nbsp;undefined&nbsp;-&nbsp;
+            Copyright&nbsp;©&nbsp;
             <script type="text/javascript">
                 var fd = new Date();
                 document.write(fd.getFullYear());
@@ -937,15 +948,6 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
-<!-- UC Browser Compatible -->
-<script>
-    var agent = navigator.userAgent.toLowerCase();
-    if(agent.indexOf('ucbrowser')>0) {
-        document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
-        alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
-    }
-</script>
-
 <!-- Window Load-->
 <script>
     $(window).load(function() {
@@ -970,10 +972,6 @@ It will not impact the appearance and can give developers a lot of support :)
             queue.execNext();
         },200);
     });
-</script>
-
-<script>
-console.log('\n %c © Material Theme | Version: 1.3.3 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
 </script>
 
                 </main>

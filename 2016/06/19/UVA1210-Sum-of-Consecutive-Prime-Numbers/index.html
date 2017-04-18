@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <!--
         © Material Theme
         https://github.com/viosey/hexo-theme-material
@@ -16,6 +15,9 @@
         Space Of AD1024
     </title>
 
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
     <!-- dns prefetch -->
     <meta http-equiv="x-dns-prefetch-control" content="on">
     
@@ -25,9 +27,8 @@
     
     
 
-    <!-- Meta & Info -->
     <meta http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#536DFE">
     <meta name="author" content="AD1024">
     <meta name="description" content="A Senior Student From Beijing National Day School">
@@ -38,7 +39,8 @@
     <link rel="icon" sizes="192x192" href="/img/favicon.png">
     <link rel="apple-touch-icon" href="/img/favicon.png">
 
-    <!--iOS --> 
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-title" content="Title">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -173,6 +175,15 @@
         <script src="/js/jquery.min.js"></script>
         <script src="/js/queue.js"></script>
     
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
 
     
 
@@ -382,7 +393,7 @@
         <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><blockquote>
 <p>Problem URL:<a href="http://acm.hust.edu.cn/vjudge/problem/viewProblem.action?id=26054" target="_blank" rel="external">Sum of Consecutive Prime Numbers</a></p>
 </blockquote>
-<p><img src="/UVA1210-Sum-of-Consecutive-Prime-Numbers/pic.png" alt="Problem Description"></p>
+<p><img src="/2016/06/19/UVA1210-Sum-of-Consecutive-Prime-Numbers/pic.png" alt="Problem Description"></p>
 <h2 id="Problem-Analysis"><a href="#Problem-Analysis" class="headerlink" title="Problem Analysis"></a>Problem Analysis</h2><p>Oh,Math,I love it…I saw lots of people deal this problem by pre-calculating…Isn’t that cheating??!I’m a good student,I won’t do in that way.Because the TL is 3000ms and the data range isn’t very big,using simulation is feasible.<br>My way is to try each prime number sequence from big(The biggest less than N) to small(2).Then we can get the answer.<br>There is one thing worth to pay attention:We must search from the greatest prime number that is less than N to 2 instead of N/2,because there is a special situation:there is a prime number greater than N/2 but the next greatest prime number less that one is less than N/2(One convincing example is 100=53+47,if you search from 49 you will get a WA).</p>
 <blockquote>
 <p>Tips:When judging Primes:<br>Evens aren’t primes,you can use n&amp;1==0 to judge wether n is even.If n is even,n&amp;1 is 0<br>When Optimizing the algorithm:<br>When searching,we can just search primes,which means we don’t use kk–(in the code) and we use kk=nextPrime(kk);</p>
@@ -845,7 +856,7 @@ It will not impact the appearance and can give developers a lot of support :)
 
         <!--Copyright-->
         <div id="copyright">
-            Copyright&nbsp;©&nbsp;undefined&nbsp;-&nbsp;
+            Copyright&nbsp;©&nbsp;
             <script type="text/javascript">
                 var fd = new Date();
                 document.write(fd.getFullYear());
@@ -919,15 +930,6 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
-<!-- UC Browser Compatible -->
-<script>
-    var agent = navigator.userAgent.toLowerCase();
-    if(agent.indexOf('ucbrowser')>0) {
-        document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
-        alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
-    }
-</script>
-
 <!-- Window Load-->
 <script>
     $(window).load(function() {
@@ -952,10 +954,6 @@ It will not impact the appearance and can give developers a lot of support :)
             queue.execNext();
         },200);
     });
-</script>
-
-<script>
-console.log('\n %c © Material Theme | Version: 1.3.3 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
 </script>
 
                 </main>

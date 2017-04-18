@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <!--
         © Material Theme
         https://github.com/viosey/hexo-theme-material
@@ -16,6 +15,9 @@
         Space Of AD1024
     </title>
 
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
     <!-- dns prefetch -->
     <meta http-equiv="x-dns-prefetch-control" content="on">
     
@@ -25,9 +27,8 @@
     
     
 
-    <!-- Meta & Info -->
     <meta http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#536DFE">
     <meta name="author" content="AD1024">
     <meta name="description" content="A Senior Student From Beijing National Day School">
@@ -38,7 +39,8 @@
     <link rel="icon" sizes="192x192" href="/img/favicon.png">
     <link rel="apple-touch-icon" href="/img/favicon.png">
 
-    <!--iOS --> 
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-title" content="Title">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -173,6 +175,15 @@
         <script src="/js/jquery.min.js"></script>
         <script src="/js/queue.js"></script>
     
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
 
     
 
@@ -386,7 +397,7 @@
 <p>Of course kkk will type a line of output statement, then she can choose to copy and paste. kkk can copy 1~t lines each time(t&lt;=number of current output statement) and paste them. So, how many time ,at least, should kkk copy such that there are finally N lines of ‘6’?</p>
 <hr>
 <h2 id="题目分析-Analysis"><a href="#题目分析-Analysis" class="headerlink" title="题目分析(Analysis)"></a>题目分析(Analysis)</h2><p>我们通过分析可以发现：每次如果将全部语句复制并且粘贴，那么最终会有$2^k$条输出语句。根据贪心法则，当在k-1次操作并且$2^k&lt;=N$时，我们将复制全部语句然后粘贴上去。因此我们可以从1每次乘2然后每次判断一下是否到达条件。注意在k-1次操作，$2^k&gt;N$时，我们将ans+1之后直接退出。</p>
-<p>但是这样做是十分耗时的(即使能够AC也要100ms+)，我们还有一个更快速的方法。在这之前大家需要知道:<br>$$x&amp;(x-1)$$<br>该语句可以用于判断x是否是$2^k$，只需要判断一下是否是0即可。那么我们可以从$N$一直减到符合条件的$x$，然后用C语言中的log函数求当前的$k$是多少。注意C语言中log的底数是$e$(约等于2.718的那个)，因此我们通过换底公式:<br><img src="Copy-Paste/Log.png" alt="Formula"></p>
+<p>但是这样做是十分耗时的(即使能够AC也要100ms+)，我们还有一个更快速的方法。在这之前大家需要知道:<br>$$x&amp;(x-1)$$<br>该语句可以用于判断x是否是$2^k$，只需要判断一下是否是0即可。那么我们可以从$N$一直减到符合条件的$x$，然后用C语言中的log函数求当前的$k$是多少。注意C语言中log的底数是$e$(约等于2.718的那个)，因此我们通过换底公式:<br><img src="/2016/10/05/Copy-Paste/Log.png" alt="Formula"></p>
 <p>通过这个方法我们能够直接得出每一步都全部复制，复制到有$x$个语句时需要多少次。然后我们判断一下$N-x$是否大于$x$，如果大于$x$就需要复制两次，反之复制一次即可。</p>
 <hr>
 <h2 id="AC-代码"><a href="#AC-代码" class="headerlink" title="AC 代码"></a>AC 代码</h2><p>时间消耗: 101ms</p>
@@ -835,7 +846,7 @@ It will not impact the appearance and can give developers a lot of support :)
 
         <!--Copyright-->
         <div id="copyright">
-            Copyright&nbsp;©&nbsp;undefined&nbsp;-&nbsp;
+            Copyright&nbsp;©&nbsp;
             <script type="text/javascript">
                 var fd = new Date();
                 document.write(fd.getFullYear());
@@ -909,15 +920,6 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
-<!-- UC Browser Compatible -->
-<script>
-    var agent = navigator.userAgent.toLowerCase();
-    if(agent.indexOf('ucbrowser')>0) {
-        document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
-        alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
-    }
-</script>
-
 <!-- Window Load-->
 <script>
     $(window).load(function() {
@@ -942,10 +944,6 @@ It will not impact the appearance and can give developers a lot of support :)
             queue.execNext();
         },200);
     });
-</script>
-
-<script>
-console.log('\n %c © Material Theme | Version: 1.3.3 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
 </script>
 
                 </main>

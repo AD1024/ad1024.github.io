@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <!--
         © Material Theme
         https://github.com/viosey/hexo-theme-material
@@ -16,6 +15,9 @@
         Space Of AD1024
     </title>
 
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
     <!-- dns prefetch -->
     <meta http-equiv="x-dns-prefetch-control" content="on">
     
@@ -25,9 +27,8 @@
     
     
 
-    <!-- Meta & Info -->
     <meta http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#536DFE">
     <meta name="author" content="AD1024">
     <meta name="description" content="A Senior Student From Beijing National Day School">
@@ -38,7 +39,8 @@
     <link rel="icon" sizes="192x192" href="/img/favicon.png">
     <link rel="apple-touch-icon" href="/img/favicon.png">
 
-    <!--iOS --> 
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-title" content="Title">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -173,6 +175,15 @@
         <script src="/js/jquery.min.js"></script>
         <script src="/js/queue.js"></script>
     
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
 
     
 
@@ -380,7 +391,7 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <p>这是一个很有趣的问题，八数码问题。类似于华容道的规则。<br>在九宫格内给定数字1-8的摆放位置，0表示空地，相邻的数字可以移动进入0的位置。给定初始格局，求最少移动多少步可以达到目标状态。<br><a id="more"></a></p>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p><img src="EightNumbers-Problem/Problem.jpg" alt="八数码"></p>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p><img src="/2016/09/14/EightNumbers-Problem/Problem.jpg" alt="八数码"></p>
 <h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>网上很多题解使用双向BFS+Cantor展开判重写这题。事实上单向BFS+map判重也是可行的。我们可以把3*3的九宫格压缩为一个一维数组，交换规则有四个：上下、左右。判重时使用getSum()将整个数组转化为int存为map的键，值对应true/false。访问过改变标签。getSum()函数如下：</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">const</span> <span class="token keyword">int</span> Pow10<span class="token punctuation">[</span><span class="token number">15</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">,</span><span class="token number">1000</span><span class="token punctuation">,</span><span class="token number">10000</span><span class="token punctuation">,</span><span class="token number">100000</span><span class="token punctuation">,</span><span class="token number">1000000</span><span class="token punctuation">,</span><span class="token number">10000000</span><span class="token punctuation">,</span><span class="token number">100000000</span><span class="token punctuation">,</span><span class="token number">1000000000</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token keyword">inline</span> <span class="token keyword">int</span> <span class="token function">getSum</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -853,7 +864,7 @@ It will not impact the appearance and can give developers a lot of support :)
 
         <!--Copyright-->
         <div id="copyright">
-            Copyright&nbsp;©&nbsp;undefined&nbsp;-&nbsp;
+            Copyright&nbsp;©&nbsp;
             <script type="text/javascript">
                 var fd = new Date();
                 document.write(fd.getFullYear());
@@ -927,15 +938,6 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
-<!-- UC Browser Compatible -->
-<script>
-    var agent = navigator.userAgent.toLowerCase();
-    if(agent.indexOf('ucbrowser')>0) {
-        document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
-        alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
-    }
-</script>
-
 <!-- Window Load-->
 <script>
     $(window).load(function() {
@@ -960,10 +962,6 @@ It will not impact the appearance and can give developers a lot of support :)
             queue.execNext();
         },200);
     });
-</script>
-
-<script>
-console.log('\n %c © Material Theme | Version: 1.3.3 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
 </script>
 
                 </main>

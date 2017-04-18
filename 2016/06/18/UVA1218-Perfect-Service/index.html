@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <!--
         © Material Theme
         https://github.com/viosey/hexo-theme-material
@@ -16,6 +15,9 @@
         Space Of AD1024
     </title>
 
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
     <!-- dns prefetch -->
     <meta http-equiv="x-dns-prefetch-control" content="on">
     
@@ -25,9 +27,8 @@
     
     
 
-    <!-- Meta & Info -->
     <meta http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#536DFE">
     <meta name="author" content="AD1024">
     <meta name="description" content="A Senior Student From Beijing National Day School">
@@ -38,7 +39,8 @@
     <link rel="icon" sizes="192x192" href="/img/favicon.png">
     <link rel="apple-touch-icon" href="/img/favicon.png">
 
-    <!--iOS --> 
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-title" content="Title">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -173,6 +175,15 @@
         <script src="/js/jquery.min.js"></script>
         <script src="/js/queue.js"></script>
     
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
 
     
 
@@ -382,7 +393,7 @@
         <h2 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h2><blockquote>
 <p>Problem URL:<a href="http://acm.hust.edu.cn/vjudge/problem/viewProblem.action?id=36043" target="_blank" rel="external">Perfect Service</a></p>
 </blockquote>
-<p>A network is composed of N computers connected by N - 1 communication links such that any two computers can be communicated via a unique route. Two computers are said to be adjacent if there is a communication link between them. The neighbors of a computer is the set of computers which are adjacent to it. In order to quickly access and retrieve large amounts of information, we need to select some computers acting as servers to provide resources to their neighbors. Note that a server can serve all its neighbors. A set of servers in the network forms a perfect service if every client (non-server) is served by exactly one server. The problem is to find a minimum number of servers which forms a perfect service, and we call this number perfect service number.<br>We assume that N($\le$10000) is a positive integer and these N computers are numbered from 1 to N . For example, Figure 1 illustrates a network comprised of six computers, where black nodes represent servers and white nodes represent clients. In Figure 1(a), servers 3 and 5 do not form a perfect service because client 4 is adjacent to both servers 3 and 5 and thus it is served by two servers which contradicts the assumption. Conversely, servers 3 and 4 form a perfect service as shown in Figure 1(b). This set also has the minimum cardinality. Therefore, the perfect service number of this example equals two.<br><img src="/UVA1218-Perfect-Service/pic.png" alt="Figure 1"><br>Your task is to write a program to compute the perfect service number.<br>Input<br>The input consists of a number of test cases. The format of each test case is as follows: The first line contains one positive integer, N , which represents the number of computers in the network. The next N - 1 lines contain all of the communication links and one line for each link. Each line is represented by two positive integers separated by a single space. Finally, a ‘0’ at the (N + 1) -th line indicates the end of the first test case.<br>The next test case starts after the previous ending symbol ‘0’. A ‘-1’ indicates the end of the whole inputs.<br>Output<br>The output contains one line for each test case. Each line contains a positive integer, which is the perfect service number.</p>
+<p>A network is composed of N computers connected by N - 1 communication links such that any two computers can be communicated via a unique route. Two computers are said to be adjacent if there is a communication link between them. The neighbors of a computer is the set of computers which are adjacent to it. In order to quickly access and retrieve large amounts of information, we need to select some computers acting as servers to provide resources to their neighbors. Note that a server can serve all its neighbors. A set of servers in the network forms a perfect service if every client (non-server) is served by exactly one server. The problem is to find a minimum number of servers which forms a perfect service, and we call this number perfect service number.<br>We assume that N($\le$10000) is a positive integer and these N computers are numbered from 1 to N . For example, Figure 1 illustrates a network comprised of six computers, where black nodes represent servers and white nodes represent clients. In Figure 1(a), servers 3 and 5 do not form a perfect service because client 4 is adjacent to both servers 3 and 5 and thus it is served by two servers which contradicts the assumption. Conversely, servers 3 and 4 form a perfect service as shown in Figure 1(b). This set also has the minimum cardinality. Therefore, the perfect service number of this example equals two.<br><img src="/2016/06/18/UVA1218-Perfect-Service/pic.png" alt="Figure 1"><br>Your task is to write a program to compute the perfect service number.<br>Input<br>The input consists of a number of test cases. The format of each test case is as follows: The first line contains one positive integer, N , which represents the number of computers in the network. The next N - 1 lines contain all of the communication links and one line for each link. Each line is represented by two positive integers separated by a single space. Finally, a ‘0’ at the (N + 1) -th line indicates the end of the first test case.<br>The next test case starts after the previous ending symbol ‘0’. A ‘-1’ indicates the end of the whole inputs.<br>Output<br>The output contains one line for each test case. Each line contains a positive integer, which is the perfect service number.</p>
 <blockquote>
 <h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><p>6<br>1 3<br>2 3<br>3 4<br>4 5<br>4 6<br>0<br>2<br>1 2<br>-1</p>
 <h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><p>2<br>1</p>
@@ -804,7 +815,7 @@ It will not impact the appearance and can give developers a lot of support :)
 
         <!--Copyright-->
         <div id="copyright">
-            Copyright&nbsp;©&nbsp;undefined&nbsp;-&nbsp;
+            Copyright&nbsp;©&nbsp;
             <script type="text/javascript">
                 var fd = new Date();
                 document.write(fd.getFullYear());
@@ -878,15 +889,6 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
-<!-- UC Browser Compatible -->
-<script>
-    var agent = navigator.userAgent.toLowerCase();
-    if(agent.indexOf('ucbrowser')>0) {
-        document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
-        alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
-    }
-</script>
-
 <!-- Window Load-->
 <script>
     $(window).load(function() {
@@ -913,7 +915,7 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 </script>
 
-    <script type="text/javascript" src="/js/mathjax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="/js/mathjax.js"></script>
 
 
 
@@ -931,10 +933,6 @@ It will not impact the appearance and can give developers a lot of support :)
             queue.execNext();
         },200);
     });
-</script>
-
-<script>
-console.log('\n %c © Material Theme | Version: 1.3.3 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
 </script>
 
                 </main>
