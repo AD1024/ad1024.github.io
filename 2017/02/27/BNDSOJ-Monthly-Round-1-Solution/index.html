@@ -396,8 +396,8 @@
 <hr>
 <h3 id="Yulemiao"><a href="#Yulemiao" class="headerlink" title="Yulemiao"></a>Yulemiao</h3><h4 id="算法一："><a href="#算法一：" class="headerlink" title="算法一："></a>算法一：</h4><p>暴力模拟各个命令，复杂度$O(M \times Q)$。</p>
 <p>期望得分：30-40分</p>
-<h4 id="算法二："><a href="#算法二：" class="headerlink" title="算法二："></a>算法二：</h4><p>通过观察，我们可以发现整个命令是循环执行的。因此我们首先构造一个$(N+1) \times (N+1)$的单位矩阵$A$，令其第0行为每只yulemiao手中小鱼干的个数，$A<em>{x,i}$为第$i$只的yulemiao对应的命令（事实上交换是我们需要关注的操作）。当遇到命令1时，$A</em>{0,x}$+=1;遇到命令2时，将$A<em>{x,i}$全部设置为0;遇到命令3，将$A</em>{x,i}$与$A_{y,i}$交换。之后计算$A^M$进行矩阵快速幂，最后输出$A<em>0$即可。复杂度$O(log</em>{2}{M}+Q \times N)$。<br>P.S.:注意优化稀疏矩阵的乘法运算<br>期望得分：100分</p>
-<p>对于命令3的证明：由于$A<em>{x,i}$对应的为第$x$只yulemiao所对应的所有操作，因此交换前的所有命令相当于让第$y$只执行，因此将$A</em>{x,i}$与$A_{y,i}$具有正确性。</p>
+<h4 id="算法二："><a href="#算法二：" class="headerlink" title="算法二："></a>算法二：</h4><p>通过观察，我们可以发现整个命令是循环执行的。因此我们首先构造一个$(N+1) \times (N+1)$的单位矩阵$A$，令其第0行为每只yulemiao手中小鱼干的个数，$A_{x,i}$为第$i$只的yulemiao对应的命令（事实上交换是我们需要关注的操作）。当遇到命令1时，$A_{0,x}$+=1;遇到命令2时，将$A_{x,i}$全部设置为0;遇到命令3，将$A_{x,i}$与$A_{y,i}$交换。之后计算$A^M$进行矩阵快速幂，最后输出$A_0$即可。复杂度$O(log_{2}{M}+Q \times N)$。<br>P.S.:注意优化稀疏矩阵的乘法运算<br>期望得分：100分</p>
+<p>对于命令3的证明：由于$A_{x,i}$对应的为第$x$只yulemiao所对应的所有操作，因此交换前的所有命令相当于让第$y$只执行，因此将$A_{x,i}$与$A_{y,i}$具有正确性。</p>
 <hr>
 <h3 id="Yulemiao的yulemao做法"><a href="#Yulemiao的yulemao做法" class="headerlink" title="Yulemiao的yulemao做法"></a>Yulemiao的yulemao做法</h3><p>注意到题目中有交换，所以一轮过后每个元素都可以和它的下标相连，组成一个个联通块儿，每个块儿的周期为一次变动后变动的元素的个数，可以一次模拟后用并查集来处理</p>
 <p>因为有清零的操作且最初都是零，所以我们需要模拟两个周期来得到第一个周期结束后各个点的值和第二个周期结束后各个点的值，相减后得到增长</p>
@@ -570,7 +570,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/04/">April 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">March 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">February 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">January 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">December 2016<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">November 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">October 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">September 2016<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">August 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">July 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">June 2016<span class="sidebar_archives-count">20</span></a></li><li><a class="sidebar_archives-link" href="/archives/1970/01/">January 1970<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/archives/2017/04/">April 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">March 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">February 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">January 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">December 2016<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">November 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">October 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">September 2016<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">August 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">July 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">June 2016<span class="sidebar_archives-count">20</span></a></li><li><a class="sidebar_archives-link" href="/archives/1970/01/">January 1970<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -637,7 +637,7 @@
         <li>
             <a href="/archives">
                 Number of articles
-                <span class="sidebar-badge">61</span>
+                <span class="sidebar-badge">62</span>
             </a>
         </li>
         
@@ -883,7 +883,7 @@ It will not impact the appearance and can give developers a lot of support :)
     });
 </script>
 
-    <script type="text/javascript" src="/js/mathjax.js"></script>
+    <script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 
 
 

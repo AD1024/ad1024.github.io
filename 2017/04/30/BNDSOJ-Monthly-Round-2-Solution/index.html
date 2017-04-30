@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.4 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            BNDSOJ Monthly Round #2 Solution | 
+        
+        Space Of AD1024
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#536DFE">
+    <meta name="author" content="AD1024">
+    <meta name="description" content="A Senior Student From Beijing National Day School">
+    <meta name="keywords" content="null,OI,Learning in BNDS">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Space Of AD1024">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://ad1024.tech">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="BNDSOJ Monthly Round #2 Solution | Space Of AD1024">
+    <meta property="og:description" content="A Senior Student From Beijing National Day School">
+    <meta property="og:article:tag" content="OI"> <meta property="og:article:tag" content="Learning in BNDS"> 
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.en.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #3D5AFE;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #536DFE !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #536DFE !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #536DFE !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #3D5AFE;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+<link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#A-等式"><span class="post-toc-number">1.</span> <span class="post-toc-text">A. 等式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目描述"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">题目描述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输入描述"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">输入描述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输出描述"><span class="post-toc-number">1.0.3.</span> <span class="post-toc-text">输出描述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输入样例1："><span class="post-toc-number">1.0.4.</span> <span class="post-toc-text">输入样例1：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输出样例1："><span class="post-toc-number">1.0.5.</span> <span class="post-toc-text">输出样例1：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目分析"><span class="post-toc-number">1.0.6.</span> <span class="post-toc-text">题目分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#AC代码"><span class="post-toc-number">1.0.7.</span> <span class="post-toc-text">AC代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#B-部队调遣"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">B. 部队调遣</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目描述-1"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">题目描述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输入描述-1"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">输入描述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输出描述-1"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">输出描述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输入样例1：-1"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">输入样例1：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输出样例1：-1"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">输出样例1：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目分析-1"><span class="post-toc-number">1.1.6.</span> <span class="post-toc-text">题目分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#AC代码-1"><span class="post-toc-number">1.1.7.</span> <span class="post-toc-text">AC代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#C-队列维护"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">C.队列维护</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#问题描述"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">问题描述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输入"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">输入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输出"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输入样例"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">输入样例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输出样例"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">输出样例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例解释"><span class="post-toc-number">1.2.6.</span> <span class="post-toc-text">样例解释</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据范围"><span class="post-toc-number">1.2.7.</span> <span class="post-toc-text">数据范围</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例下载"><span class="post-toc-number">1.2.8.</span> <span class="post-toc-text">样例下载</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目分析-2"><span class="post-toc-number">1.2.9.</span> <span class="post-toc-text">题目分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#AC代码-2"><span class="post-toc-number">1.2.10.</span> <span class="post-toc-text">AC代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#D-队列间距"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">D.队列间距</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#问题描述-1"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">问题描述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输入-1"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">输入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输出-1"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输入样例-1"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">输入样例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#输出样例-1"><span class="post-toc-number">1.3.5.</span> <span class="post-toc-text">输出样例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例解释-1"><span class="post-toc-number">1.3.6.</span> <span class="post-toc-text">样例解释</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据范围-1"><span class="post-toc-number">1.3.7.</span> <span class="post-toc-text">数据范围</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#样例下载-1"><span class="post-toc-number">1.3.8.</span> <span class="post-toc-text">样例下载</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目分析-3"><span class="post-toc-number">1.3.9.</span> <span class="post-toc-text">题目分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#AC代码-3"><span class="post-toc-number">1.3.10.</span> <span class="post-toc-text">AC代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">总结</span></a></li></ol></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                BNDSOJ Monthly Round #2 Solution
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>AD1024</strong>
+        <span>Apr 30, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Learning-in-BNDS/">Learning in BNDS</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/OI/">OI</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=BNDSOJ Monthly Round #2 Solution&url=http://ad1024.tech//2017/04/30/BNDSOJ-Monthly-Round-2-Solution/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Weibo
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=BNDSOJ Monthly Round #2 Solution&url=http://ad1024.tech//2017/04/30/BNDSOJ-Monthly-Round-2-Solution/index.html&via=AD1024" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://ad1024.tech//2017/04/30/BNDSOJ-Monthly-Round-2-Solution/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://ad1024.tech//2017/04/30/BNDSOJ-Monthly-Round-2-Solution/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>本次月赛出题人为：</p>
+<p>Yulemao 和 MisakaTao</p>
+<p>不知道为什么第二次月赛人莫名其妙地很少，不过题还不错，因此发一篇blog记录一下。</p>
+<h1 id="A-等式"><a href="#A-等式" class="headerlink" title="A. 等式"></a>A. 等式</h1><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>已知数列 $A$ 为 $1$ 到 $N$ 的一种排列，现在与要你回答，是否存在一种排列使得 $\Sigma_{i = 1} ^ {N}|i - A_i| = M$</p>
+<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><p>第一行三个正整数 $n, m, q$，表示共有 $n$ 个据点，$m$ 组调动兵力的方法，$q$ 个询问。</p>
+<p>接下来m行每行三个正整数 $x, y, z$，表示在 $x$ 和 $y$ 据点之间一共有 $z$ 种方法调动兵力。</p>
+<p>再接下来 $q$ 行每行三个正整数 $f, t, p$，表示询问在 $f$ 和 $t$ 据点之间经过 $p$ 次兵力调动把 $f$ 据点的兵力调动到 $t$ 据点共有多少种方法。</p>
+<h3 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h3><p>共 $q$ 行，每行对应一个询问的输出。</p>
+<h3 id="输入样例1："><a href="#输入样例1：" class="headerlink" title="输入样例1："></a>输入样例1：</h3><pre>
+3 2 1
+1 2 3
+2 3 4
+1 3 2
+</pre>
+
+<h3 id="输出样例1："><a href="#输出样例1：" class="headerlink" title="输出样例1："></a>输出样例1：</h3><pre>
+12
+</pre>
+
+<h3 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h3><p>本题作为月赛第一题可能有些偏简单。注意到题目要求$\Sigma_{i = 1} ^ {N} |i - A_i|$，那么可以将题目看作：将若干对数字交换位置后与其位置差值绝对值之和。因此可以考虑3中情况：</p>
+<p>· 奇数位与奇数位交换</p>
+<p>· 奇数位与偶数为交换</p>
+<p>· 偶数位与偶数位交换</p>
+<p>第1、3中情况不用说，交换后之和一定是偶数。对于第二种情况，我们可以考虑：由于交换后一定会有另一组交换使得其绝对值差之和是奇数，那么奇数+奇数依旧是偶数。</p>
+<p>到这里我们就不难看出，首先判断$M$是否是偶数，然后再判断$M$是否在最大值范围内。</p>
+<p>当$N$为奇数时，$0 \leq M \leq \frac{(N*N-1)}{2}$</p>
+<p>当$N$为偶数时，$0 \leq M \leq \frac{N*N}{2}$</p>
+<h3 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h3><pre class="line-numbers language-c++"><code class="language-c++">#include <iostream>
+#include <cstdio>
+#include <cstring>
+#include <cstdlib>
+#include <algorithm>
+#include <cmath>
+using namespace std;
+
+typedef long long ll;
+
+ll N,M;
+
+int main(){
+    scanf("%lld%lld", &N, &M);
+    if(M == 0){
+        puts("YES");
+    }else if(M & 1){
+        puts("NO");
+    }else{
+        if(N & 1){
+            ll a = (N * N - 1) >> 1;
+            if(a < M){
+                puts("NO");
+            }else{
+                puts("YES");
+            }
+        }else{
+            ll a = (N * N) >> 1;
+            if(a < M){
+                puts("NO");
+            }else{
+                puts("YES");
+            }
+        }
+    }
+    return 0;
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="B-部队调遣"><a href="#B-部队调遣" class="headerlink" title="B. 部队调遣"></a>B. 部队调遣</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p>众所周知，leoleo是一名星际玩家（盲人），他非常热爱RTS游戏。这天他发现了一个非常好玩的游戏，这个游戏需要你在你的各个据点之间来回调动兵力以防止敌人的偷袭，当然每次调动也会有相应的消耗。然而leoleo并不在意消耗的事情，他在意的是他一共有多少种方法可以在某两个据点之间调动兵力。聪明的你能帮帮他吗？</p>
+<h3 id="输入描述-1"><a href="#输入描述-1" class="headerlink" title="输入描述"></a>输入描述</h3><p>第一行三个正整数 $n, m, q$，表示共有 $n$ 个据点，$m$ 组调动兵力的方法，$q$ 个询问。</p>
+<p>接下来m行每行三个正整数 $x, y, z$，表示在 $x$ 和 $y$ 据点之间一共有 $z$ 种方法调动兵力。</p>
+<p>再接下来 $q$ 行每行三个正整数 $f, t, p$，表示询问在 $f$ 和 $t$ 据点之间经过 $p$ 次兵力调动把 $f$ 据点的兵力调动到 $t$ 据点共有多少种方法。</p>
+<h3 id="输出描述-1"><a href="#输出描述-1" class="headerlink" title="输出描述"></a>输出描述</h3><p>共 $q$ 行，每行对应一个询问的输出。</p>
+<h3 id="输入样例1：-1"><a href="#输入样例1：-1" class="headerlink" title="输入样例1："></a>输入样例1：</h3><pre>
+3 2 1
+1 2 3
+2 3 4
+1 3 2
+</pre>
+
+<h3 id="输出样例1：-1"><a href="#输出样例1：-1" class="headerlink" title="输出样例1："></a>输出样例1：</h3><pre>
+12
+</pre>
+
+
+
+<h3 id="题目分析-1"><a href="#题目分析-1" class="headerlink" title="题目分析"></a>题目分析</h3><p>一眼dp，$f[i][j][k]$表示从第$i$个结点调遣到第$j$个结点$k$次的方案数。因此能轻松得到方程:$f[i][j][k]=f[i][j][k]+f[i][m][1] \times f[m][j][k-1]$</p>
+<h3 id="AC代码-1"><a href="#AC代码-1" class="headerlink" title="AC代码"></a>AC代码</h3><pre class="line-numbers language-c++"><code class="language-c++">#include <iostream>
+#include <cstdio>
+#include <cstring>
+#include <cstdlib>
+#include <algorithm>
+#include <cmath>
+
+#define MOD 331240001
+
+typedef long long ll;
+
+ll dp[75][75][75];
+// i -> j p
+// dp[i][j][p] = dp[i][j][p] + dp[k][j][p-1] * dp[i][k][1];
+
+int N,M,Q;
+inline int read(){
+    int a = 0;
+    int f = 1;
+    char ch = getchar();
+    while(ch > '9' || ch < '0'){
+        if(ch == '-') f = -1;
+        ch = getchar();
+    }
+    while(ch >= '0' && ch <= '9'){
+        a = a*10+ch-'0';
+        ch = getchar();
+    }
+    return a * f;
+}
+
+
+int main(){
+    N = read();
+    M = read();
+    Q = read();int f,t,p;
+    for(int i=1;i<=M;++i){
+        f=read();t=read();p=read();
+        dp[f][t][1] += p;
+        dp[t][f][1] += p;
+    }
+    for(int p=1;p<=55;++p){
+        for(int k=1;k<=N;++k){
+            for(int i=1;i<=N;++i){
+                for(int j=1;j<=N;++j){
+                    dp[i][j][p]+=dp[i][k][1]*dp[k][j][p-1];
+                    dp[i][j][p] %= MOD;
+                }
+            }
+        }
+    }
+    while(Q--){
+        f=read();t=read();p=read();
+        printf("%lld\n", dp[f][t][p]);
+    }
+    return 0;
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="C-队列维护"><a href="#C-队列维护" class="headerlink" title="C.队列维护"></a>C.队列维护</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>ET大哥经常训练他的分身。一天，他命令他的分身排好一队，但是因为天太黑了，所以大家都不是按照自己的序号站的位置。现在ET大哥知道编号为 $i$ 的分身会第 $i$ 个来排队，且会站在现有队列的第 $a_i$ 个人后面，他希望你能帮助他维护这个队列</p>
+<h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><p>第一行一个整数 $N$，表示分身的个数</p>
+<p>第二行共 $N$ 个整数 $a_i$ ，表示第 $i$ 个分身会站在第 $a_i$ 个人的后面</p>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><p>一行 $N$ 个整数，表示最终的队列</p>
+<h3 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例"></a>输入样例</h3><pre>
+5
+0 1 1 3 2
+</pre>
+
+<h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例"></a>输出样例</h3><pre>
+1 3 5 2 4
+</pre>
+
+<p><strong>样例2，3，4，5详见下载</strong></p>
+<h3 id="样例解释"><a href="#样例解释" class="headerlink" title="样例解释"></a>样例解释</h3><p>第一个人插在第 $0$ 个人后面，此时队列为 $1$</p>
+<p>第二个人插在第 $1$ 个人后面，此时队列为 $1, 2$</p>
+<p>第三个人插在第 $1$ 个人后面，此时队列为 $1, 3, 2$</p>
+<p>第四个人插在第 $3$ 个人后面，此时队列为 $1, 3, 2, 4$</p>
+<p>第五个人插在第 $2$ 个人后面，此时队列为 $1, 3, 5, 2, 4$</p>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>对于 $30\%$ 的数据，保证 $1 \le N \le 1000$</p>
+<p>另有 $10\%$ 的数据，有 $a_i = 0$</p>
+<p>另有 $10\%$ 的数据，有 $a_i = i - 1$</p>
+<p>对于 $100\%$ 的数据，保证 $1 \le N \le 2 \times 10 ^ 5$ ，$0 \le a_i &lt; i$</p>
+<p><strong>Time limit : 1s</strong></p>
+<p><strong>Memory limit : 256MB</strong></p>
+<h3 id="样例下载"><a href="#样例下载" class="headerlink" title="样例下载"></a>样例下载</h3><p><a href="http://bnds.tech/download.php?type=problem&amp;id=64" target="_blank" rel="external">Downloads</a></p>
+<h3 id="题目分析-2"><a href="#题目分析-2" class="headerlink" title="题目分析"></a>题目分析</h3><p>这题出得有点好。通过观察发现，如果我们倒着做，从后往前添加人，我们只需要找到第$A_i+1$个空格然后插进去就行。因此首先将所有位置留空，然后用一个权值线段树维护队列空位。每次插入是判断当前$A_i+1$是否比左区间包含的多，如果比左区间大，那么说明我们需要往右区间走（更多空位），如果小于等于左区间所包含的空位数，那么就往左走，一直走到叶子节点。最后从左到右输出叶子节点的值就行。</p>
+<h3 id="AC代码-2"><a href="#AC代码-2" class="headerlink" title="AC代码"></a>AC代码</h3><pre class="line-numbers language-c++"><code class="language-c++">#include <iostream>
+#include <cstdio>
+#include <stack>
+#include <cstring>
+#include <queue>
+#include <vector>
+#include <list>
+using namespace std;
+
+struct Node{
+    int lson,rson,w,v,p;
+}tree[1010000<<2];
+
+int N;
+int a[201000];
+int ans[201000];
+
+#define lson(x) x<<1
+#define rson(x) x<<1|1
+#define Mid(x,y) (x+y)>>1 
+#define v(x) tree[x].v
+#define w(x) tree[x].w
+
+inline void Maintain(int x){
+    w(x) = w(lson(x)) + w(rson(x));
+}
+
+void build(int rt,int l,int r){
+    tree[rt].lson = l;
+    tree[rt].rson = r;
+    if(l == r){
+        tree[rt].p = l;
+        tree[rt].w = 1;
+        return;
+    }
+    int mid = Mid(l,r);
+    build(lson(rt), l, mid);
+    build(rson(rt), mid+1, r);
+    Maintain(rt);
+}
+
+void insert(int rt, int w,int v){
+    // printf("%d\n", rt);
+    if(tree[rt].lson == tree[rt].rson){
+        tree[rt].v = v;
+        tree[rt].w = 0;
+        ans[tree[rt].p] = v;
+    }else{
+        // cout<<w(rt)<<endl;
+        if(w(lson(rt)) >= w){
+            insert(lson(rt), w, v);
+        }else{
+            insert(rson(rt), w - w(lson(rt)), v);
+        }
+        Maintain(rt);
+    }
+}
+
+int main(){
+    scanf("%d", &N);
+    build(1,1,N);
+    for(int i=1;i<=N;++i) scanf("%d", &a[i]);
+    for(int i=N;i>=1;--i){
+        insert(1, a[i]+1, i);
+    }
+    for(int i=1;i<=N;++i) 
+        cout<<ans[i]<<" ";
+    return 0;
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="D-队列间距"><a href="#D-队列间距" class="headerlink" title="D.队列间距"></a>D.队列间距</h2><h3 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h3><p>在排好队后，ET大哥发现大家每两个人之间的间距都不太一样，于是他想到一个有趣的问题，距离第 $M$ 小的间距应该是多少呢？</p>
+<p>现在共有 $N$ 个ET大哥的分身，对于第 $i$ 个分身，他的坐标为 $x_i$，他想知道第 $M$ 小的间距大小</p>
+<h3 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h3><p>第一行两个整数 $N$ 和 $M$，意义如题目中所述</p>
+<p>第二行共 $N$ 个整数 $x_i$ ，表示第 $i$ 个分身的坐标位置</p>
+<h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h3><p>一行一个整数，表示第 $M$ 小的距离大小</p>
+<h3 id="输入样例-1"><a href="#输入样例-1" class="headerlink" title="输入样例"></a>输入样例</h3><pre>
+5 8
+4 8 7 2 11
+</pre>
+
+<h3 id="输出样例-1"><a href="#输出样例-1" class="headerlink" title="输出样例"></a>输出样例</h3><pre>
+6
+</pre>
+
+<p><strong>样例2，3，4详见下载</strong></p>
+<h3 id="样例解释-1"><a href="#样例解释-1" class="headerlink" title="样例解释"></a>样例解释</h3><p>任意两个分身都能得到一个间距，全部算出后排序得到</p>
+<p>$1,2,3,3,4,4,5,6,7,9$</p>
+<p>故第八小的间距为 $6$</p>
+<h3 id="数据范围-1"><a href="#数据范围-1" class="headerlink" title="数据范围"></a>数据范围</h3><p>对于 $30\%$ 的数据，保证 $1 \le N \le 1000$</p>
+<p>另有 $10\%$ 的数据，任意两相邻人的距离差为定值</p>
+<p>另有 $10\%$ 的数据，有 $M \le 10$</p>
+<p>对于 $100\%$ 的数据，保证 $1 \le N \le 2.5 \times 10 ^ 5$ ，$1 \le M \le 2.5 \times 10 ^ 5$ ，$0 \le x_i \le 10 ^ 9$ 且没有两个人拥有同一坐标且保证 $M$ 存在</p>
+<p><strong>Time limit : 1s</strong></p>
+<p><strong>Memory limit : 256MB</strong></p>
+<p><strong>本题数据很水，大家要有 $100$ 分的梦想</strong></p>
+<h3 id="样例下载-1"><a href="#样例下载-1" class="headerlink" title="样例下载"></a>样例下载</h3><p><a href="http://bnds.tech/download.php?type=problem&amp;id=65" target="_blank" rel="external">Downloads</a> </p>
+<h3 id="题目分析-3"><a href="#题目分析-3" class="headerlink" title="题目分析"></a>题目分析</h3><p>注意到这是一个一维的结构，因此暴力很好上分….(写好了有70分)。首先明确一下暴力的方法：维护一个大小不超过$M$的大根堆，每次插入时判断插入的数据是否比堆顶大，如果比堆顶大直接扔掉，否则弹出堆顶元素然后加入新的元素。这样能在最后保证堆顶元素就是所有元素第$M$小的。同时暴力前先将所有数据排序，这样能保证当$dist[j]-dist[i](i&lt;j)$时就可以跳出循环。这样的暴力算法有70分。那么如何A这题呢？我们可以考虑分治。</p>
+<p>由于排序后，较小差值存在于相邻的元素之间，我们可以通过每次将数列一分为二，直到分到每块有$sqrt(N)$个元素，然后对每一块做暴力，之后合并结果。复杂度(比较玄学)$log\sqrt{N^2}$</p>
+<h3 id="AC代码-3"><a href="#AC代码-3" class="headerlink" title="AC代码"></a>AC代码</h3><pre class="line-numbers language-c++"><code class="language-c++">#include <iostream>
+#include <cstdio>
+#include <stack>
+#include <cstring>
+#include <queue>
+#include <algorithm>
+#include <vector>
+#include <cmath>
+using namespace std;
+
+#define lson(x) x<<1
+#define rson(x) x<<1|1
+#define fa(x) x>>1
+#define mid(x,y) (x+y) >> 1
+int M;
+
+priority_queue<int> H;
+
+inline int read(){
+    int a = 0;
+    char ch = getchar();
+    while(ch > '9' || ch < '0'){
+        ch = getchar();
+    }
+    while(ch >= '0' && ch <= '9'){
+        a = a*10+ch-'0';
+        ch = getchar();
+    }
+    return a;
+}
+
+int dist[300010];int N;
+
+inline bool insert(int x){
+    if(H.size() >= M){
+        if(H.top() > x){
+            H.pop();
+            H.push(x);
+            return true;
+        }else return false;
+    }else{
+        H.push(x);return true;
+    }
+}
+
+void work(int l,int r){
+    if(r - l + 1 <= sqrt(N)){
+        for(int i=l;i<r;++i){
+            for(int j=i+1;j<=r;++j){
+                if(!insert(dist[j] - dist[i])){
+                    break;
+                }
+            }
+        }
+    }else{
+        int mid = (l+r)>>1;
+        work(l,mid);
+        work(mid+1,r);
+        for(int i=mid;i>=l;--i){
+            for(int j=mid+1;j<=r;++j){
+                if(!insert(dist[j] - dist[i])){
+                    break;
+                }
+            }
+        }
+    }
+}
+
+
+int main(){
+    freopen("ex_distance2.in","r",stdin);
+    freopen("ex_distance2.out","w",stdout);
+    scanf("%d%d", &N, &M);
+    for(int i=1;i<=N;++i){
+        dist[i] = read();
+    }
+    sort(dist+1,dist+1+N);
+    work(1,N);
+    printf("%d", H.top());
+    return 0;
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总体来说T1 T2难度较低，基本都能A，T3有些思维含量，需要思考一段时间。T4暴力分给得有点多….总之300分对我来说感觉有点低了，还需要继续学习。</p>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/04/18/zkwIntervalTree/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Newer
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="AD1024's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        ccoderad@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                Home
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    Archives
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/04/">April 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">March 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">February 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">January 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">December 2016<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">November 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">October 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">September 2016<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">August 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">July 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">June 2016<span class="sidebar_archives-count">20</span></a></li><li><a class="sidebar_archives-link" href="/archives/1970/01/">January 1970<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/Algorithm-Template" title="Algorithm Templates">
+                
+                    <i class="material-icons sidebar-material-icons">assignment</i>
+                
+                Algorithm Templates
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallary" title="Moments">
+                
+                    <i class="material-icons sidebar-material-icons">photo</i>
+                
+                Moments
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/tags" title="Tag Cloud">
+                
+                    <i class="material-icons sidebar-material-icons">book</i>
+                
+                Tag Cloud
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="Friend Links">
+                
+                    <i class="material-icons sidebar-material-icons">people</i>
+                
+                Friend Links
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                Number of articles
+                <span class="sidebar-badge">62</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            Theme - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.svg);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.svg);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.svg);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/AD1024" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.svg);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/mike-he-94/activities" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-zhihu.svg);">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+        <a href="http://space.bilibili.com/11936677/#!/index" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-bilibili.svg);">
+                <span class="visuallyhidden">Bilibili</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Space Of AD1024
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

@@ -392,7 +392,8 @@
     
         <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>zkw线段树是一种非递归，处理区间问题的高效数据结构。与传统线段树不同，zkw线段树天然非递归，常数小，代码短，非常有学习价值。<br><a id="more"></a></p>
 <h2 id="符号约定"><a href="#符号约定" class="headerlink" title="符号约定"></a>符号约定</h2><p>tree[i]: 第i号节点。由于线段树为二叉树，所以满足对于节点i，其左儿子节点编号为i*2，右儿子节点编号为i*2+1<br>tree[i].l: 该节点维护区间的左端点<br>tree[i].r: 该节点维护区间的右端点<br>tree[i].max: 该节点维护区间的最大值<br>tree[i].min: 该节点维护区间的最小值<br>tree[i].sum: 该节点维护区间的区间和<br>N: 节点总数<br>mid(x,y): (x+y)/2<br>Maintain(int rt): 维护节点编号为rt的信息<br>read(): 读入数据</p>
-<h2 id="建树"><a href="#建树" class="headerlink" title="建树"></a>建树</h2><h3 id="传统线段树建树方法"><a href="#传统线段树建树方法" class="headerlink" title="传统线段树建树方法"></a>传统线段树建树方法</h3><p>传统线段树建树非常“朴素”。直接从根节点(通常为1)下去，一直递归到叶子然后输入信息。输入完一层就维护一下父节点。代码如下：</p>
+<h2 id="建树"><a href="#建树" class="headerlink" title="建树"></a>建树</h2><h3 id="传统线段树建树方法"><a href="#传统线段树建树方法" class="headerlink" title="传统线段树建树方法"></a>传统线段树建树方法</h3><p>传统线段树建树非常“朴素”。直接从根节点(通常为1)下去，一直递归到叶子然后输入信息。输入完一层就维护一下父节点。如下图所示，建树时遍历顺序为从1开始的前序遍历。<br><img src="/2017/04/18/zkwIntervalTree/tree_1.png" alt="Interval Tree"></p>
+<p>代码如下：</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">Build</span><span class="token punctuation">(</span><span class="token keyword">int</span> root<span class="token punctuation">,</span><span class="token keyword">int</span> l<span class="token punctuation">,</span><span class="token keyword">int</span> r<span class="token punctuation">)</span><span class="token punctuation">{</span>
     tree<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>l <span class="token operator">=</span> l<span class="token punctuation">;</span>tree<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>r <span class="token operator">=</span> r<span class="token punctuation">;</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>l <span class="token operator">==</span> r<span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -492,6 +493,14 @@
 
     <!-- Next Nav -->
     
+        <a href="/2017/04/30/BNDSOJ-Monthly-Round-2-Solution/" id="post_nav-older" class="next-content">
+            Older
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
 </nav>
 
         </div>
@@ -576,7 +585,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/04/">April 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">March 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">February 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">January 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">December 2016<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">November 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">October 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">September 2016<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">August 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">July 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">June 2016<span class="sidebar_archives-count">20</span></a></li><li><a class="sidebar_archives-link" href="/archives/1970/01/">January 1970<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/archives/2017/04/">April 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">March 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">February 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">January 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">December 2016<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">November 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">October 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">September 2016<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">August 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">July 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">June 2016<span class="sidebar_archives-count">20</span></a></li><li><a class="sidebar_archives-link" href="/archives/1970/01/">January 1970<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
@@ -643,7 +652,7 @@
         <li>
             <a href="/archives">
                 Number of articles
-                <span class="sidebar-badge">61</span>
+                <span class="sidebar-badge">62</span>
             </a>
         </li>
         
