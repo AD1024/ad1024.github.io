@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.3.4 -->
+
+    <!-- Title -->
+    
+    <title>
+        
+            HSCTF #4 WriteUp | 
+        
+        Space Of AD1024
+    </title>
+
+    <!-- Meta & Info -->
+    <meta charset="utf-8">
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    
+    
+    
+    
+    
+    
+
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#536DFE">
+    <meta name="author" content="AD1024">
+    <meta name="description" content="A Senior Student From Beijing National Day School">
+    <meta name="keywords" content="null,Algorithm">
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" sizes="192x192" href="/img/favicon.png">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!--iOS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-title" content="Title">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="480">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Space Of AD1024">
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://ad1024.tech">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="HSCTF #4 WriteUp | Space Of AD1024">
+    <meta property="og:description" content="A Senior Student From Beijing National Day School">
+    <meta property="og:article:tag" content="Algorithm"> 
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.en.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import CSS & jQuery -->
+    
+        <link rel="stylesheet" href="/css/material.min.css">
+        <link rel="stylesheet" href="/css/style.min.css">
+        <!-- Config CSS -->
+
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  }
+
+  a {
+    color: #3D5AFE;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #536DFE !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #536DFE !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #536DFE !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #3D5AFE;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/queue.js"></script>
+    
+
+    <!-- UC Browser Compatible -->
+    <script>
+        var agent = navigator.userAgent.toLowerCase();
+        if(agent.indexOf('ucbrowser')>0) {
+            document.write("<link rel=\"stylesheet\" href=\"/css/uc.css\">");
+            alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+        }
+    </script>
+
+    
+
+    
+
+
+    <!-- Bing Background -->
+    
+
+    <!-- Custom Head -->
+    
+<link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Coin-Flips"><span class="post-toc-number">1.</span> <span class="post-toc-text">Coin Flips</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Statement"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Statement</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Solution"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Solution</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Code"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Code</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Hidden-Polynomial"><span class="post-toc-number">2.</span> <span class="post-toc-text">Hidden Polynomial</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Statement-1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Statement</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Solution-1"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">Solution</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Code-1"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">Code</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Keithor"><span class="post-toc-number">3.</span> <span class="post-toc-text">Keithor</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Statement-2"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">Statement</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Solution-2"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">Solution</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Python-Exploitation-1"><span class="post-toc-number">4.</span> <span class="post-toc-text">Python Exploitation 1</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Statment"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">Statment</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Solution-3"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">Solution</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Easy-Stegosaurus"><span class="post-toc-number">5.</span> <span class="post-toc-text">Easy Stegosaurus</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Statement-3"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">Statement</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Solution-4"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">Solution</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#KE1TH"><span class="post-toc-number">6.</span> <span class="post-toc-text">KE1TH</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Statement-4"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">Statement</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Solution-5"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">Solution</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Keith-and-Dawg-2"><span class="post-toc-number">7.</span> <span class="post-toc-text">Keith and Dawg 2</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Statment-1"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">Statment</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Solution-6"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">Solution</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Code-2"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">Code</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Digital-Digits"><span class="post-toc-number">8.</span> <span class="post-toc-text">Digital Digits</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Statment-2"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">Statment</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Solution-7"><span class="post-toc-number">8.2.</span> <span class="post-toc-text">Solution</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Code-3"><span class="post-toc-number">8.3.</span> <span class="post-toc-text">Code</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Pascal’s-Triangle"><span class="post-toc-number">9.</span> <span class="post-toc-text">Pascal’s Triangle</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Statement-5"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">Statement</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Solution-8"><span class="post-toc-number">9.2.</span> <span class="post-toc-text">Solution</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Code-4"><span class="post-toc-number">9.3.</span> <span class="post-toc-text">Code</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Grid"><span class="post-toc-number">10.</span> <span class="post-toc-text">Grid</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Statement-6"><span class="post-toc-number">10.1.</span> <span class="post-toc-text">Statement</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Solution-9"><span class="post-toc-number">10.2.</span> <span class="post-toc-text">Solution</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Code-5"><span class="post-toc-number">10.3.</span> <span class="post-toc-text">Code</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Keith-And-Dawg-4"><span class="post-toc-number">11.</span> <span class="post-toc-text">Keith And Dawg 4</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Statement-7"><span class="post-toc-number">11.1.</span> <span class="post-toc-text">Statement</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Solution-10"><span class="post-toc-number">11.2.</span> <span class="post-toc-text">Solution</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Code-6"><span class="post-toc-number">11.3.</span> <span class="post-toc-text">Code</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Summery"><span class="post-toc-number">12.</span> <span class="post-toc-text">Summery</span></a></li></ol>
+
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script>
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                HSCTF #4 WriteUp
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>AD1024</strong>
+        <span>May 28, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Algorithm/">Algorithm</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=HSCTF #4 WriteUp&url=http://ad1024.tech//2017/05/28/HSCTF-4-WriteUp/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Weibo
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=HSCTF #4 WriteUp&url=http://ad1024.tech//2017/05/28/HSCTF-4-WriteUp/index.html&via=AD1024" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://ad1024.tech//2017/05/28/HSCTF-4-WriteUp/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://ad1024.tech//2017/05/28/HSCTF-4-WriteUp/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                Share to Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>My AP Computer Science teacher invited me to take part in this contest. It was really interesting and there were many high quality algorithm problems. The official write up comes up very slow; therefore, I decided to wirte this partial write up, which only contains problem I solved and some problems solved by my teacher.<br><a id="more"></a></p>
+<h2 id="Coin-Flips"><a href="#Coin-Flips" class="headerlink" title="Coin Flips"></a>Coin Flips</h2><p><strong>Category: Algorithm</strong><br><strong>Score: 100pt</strong><br><strong>Solved By AD1024</strong></p>
+<h3 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h3><p>Keith has been very bored with their job as an industrial couponer lately, and so they have decided to spend their time flipping coins. The results of their coin flips are <a href="/asset/static/hsctf4/data_6162614da1c7516eb36bc61fe5ddecd3706879a5b0c87120f7ada4739f5c4942.txt">in this file</a>. Keith now wants to know how many runs of flips they found. A run is any consecutive sequence of the same flip. For example, the flips 001111101011 have three runs of length one, two runs of length two, and one run of length five. Can you help Keith count runs? The flag is the number of runs of length one, the number of runs of length two, the number of runs of length three, etc. up to the longest run in the sequence, each separated by a comma and a space. </p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>Pure simulation programming problem. So EZ.</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;vector></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;fstream></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+ifstream <span class="token function">fin</span><span class="token punctuation">(</span><span class="token string">"coin.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ofstream <span class="token function">fout</span><span class="token punctuation">(</span><span class="token string">"coin.out"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> idx<span class="token punctuation">[</span><span class="token number">1010000</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+string x<span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    fin<span class="token operator">>></span>x<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> maxn <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">0x3f3f3f</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>x<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">char</span> t <span class="token operator">=</span> x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>t <span class="token operator">==</span> x<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token operator">++</span>k<span class="token punctuation">;</span><span class="token operator">++</span>i<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        maxn <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>maxn<span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        idx<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>maxn<span class="token punctuation">;</span><span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>idx<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            fout<span class="token operator">&lt;&lt;</span>idx<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">&lt;&lt;</span><span class="token string">", "</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="Hidden-Polynomial"><a href="#Hidden-Polynomial" class="headerlink" title="Hidden Polynomial"></a>Hidden Polynomial</h2><p><strong>Category: Cyptography</strong><br><strong>Score: 100pt</strong><br><strong>Solved By AD1024</strong></p>
+<h3 id="Statement-1"><a href="#Statement-1" class="headerlink" title="Statement"></a>Statement</h3><p>Alice is sending a top secret polynomial, $P(x)$, to Bob. You want to know the equation of $P(x)$. In your attempts to intercept their message, you discover only two facts about P(x):</p>
+<p>It’s coefficients are in the set ${0, 1, 2, …, 1000}$.<br>$P(2017) = 49189926321482294101673925793095$</p>
+<p>The flag will be $P(1)$. </p>
+<h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h3><p>Because $P(2017) = 49189926321482294101673925793095$.Therefore, we modulus it with 2017 and we get 1. This means that there is a constant of 1 in the polynomial.<br>Second, we minus the result with 2 and then modulus it with 2017 again. We get 2. This means that the coefficient of $x$ is 2.<br>After several trial, we can find the coefficients are: $1,2,3,5,8,13,\cdots$ which is the Fibonacci sequence.Then we just use brute force search to calculate $P(1)$</p>
+<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><pre class="line-numbers language-python"><code class="language-python">fib <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">*</span><span class="token number">1000</span>
+fib<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span>
+fib<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span>
+cur <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">101</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    fib<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>fib<span class="token punctuation">[</span>i<span class="token number">-1</span><span class="token punctuation">]</span><span class="token operator">+</span>fib<span class="token punctuation">[</span>i<span class="token number">-2</span><span class="token punctuation">]</span>
+
+ans <span class="token operator">=</span> <span class="token number">0</span>
+ans2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">while</span> fib<span class="token punctuation">[</span>cur<span class="token punctuation">]</span><span class="token operator">&lt;=</span><span class="token number">1000</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> ans <span class="token operator">==</span> <span class="token number">49189926321482294101673925793095</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>str<span class="token punctuation">(</span>fib<span class="token punctuation">[</span>cur<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>cur<span class="token number">-2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">break</span>
+    ans <span class="token operator">=</span> ans <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">2017</span><span class="token operator">**</span><span class="token punctuation">(</span>cur<span class="token number">-2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">*</span>fib<span class="token punctuation">[</span>cur<span class="token punctuation">]</span>
+    ans2 <span class="token operator">=</span> ans2 <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">**</span><span class="token punctuation">(</span>cur<span class="token number">-2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">*</span>fib<span class="token punctuation">[</span>cur<span class="token punctuation">]</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>str<span class="token punctuation">(</span>fib<span class="token punctuation">[</span>cur<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> str<span class="token punctuation">(</span>cur<span class="token number">-2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    cur<span class="token operator">+=</span><span class="token number">1</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>ans2<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="Keithor"><a href="#Keithor" class="headerlink" title="Keithor"></a>Keithor</h2><p><strong>Category: Cryptography</strong><br><strong>Score: 100pt</strong><br><strong>Solved By AD1024</strong></p>
+<h3 id="Statement-2"><a href="#Statement-2" class="headerlink" title="Statement"></a>Statement</h3><p>Too many hashes. Help Keith get to the flag! </p>
+<h3 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h3><p>The program we need to cope with is: <a href="/asset/src/hsctf4/keithor_e3fc6b49cf950591e4e56a9d9954473e494dd9073b26908f5ad2bd9ceef89551.py">OriginalSrc.py</a></p>
+<p>We find that the comparison is in base63 encrypted form. Thus first we decrypt the base64 string. Then we get a sequence of hashes:<br>    4f79807a7c47f697bd5f06beef955cfdf4fdaef8ade8edf707858fe4294d780d69d4d6a897d8598ce3142d207640ca51d8215d0d6c693873fd32c1f6e468750027b5db34b7d9ce0a79753ecc73da664a995889e0d36db4bfc68df9fc8da3d369b266e617a6158d16ccad4189f0a3dcae62d9b103b50b0d4337c96163471b423fc28f3cda29417b7280eb9321492075c5890dc033471cf91781a07001cea6696b32cdf56b2129bc76a83218bee52c830a8bfc09ec55ae372110c0cc8950ef577d32ed211d40307c3fd6684113341e603c<br>We know that MD5 encryption will return a hash string with a length of 32 and sha1 encryption will return a hash string with a length of 40. Therefore, we put the first 32 characters to some MD5 crack websites. We can get the string:<br>    NVL7OA<br>The flag is base64 encrypted form of this string:<br>    TlZMN09BCg</p>
+<hr>
+<h2 id="Python-Exploitation-1"><a href="#Python-Exploitation-1" class="headerlink" title="Python Exploitation 1"></a>Python Exploitation 1</h2><p><strong>Category: Exploitation</strong><br><strong>Score: 100pt</strong><br><strong>Solved By Mr.Tareen</strong></p>
+<h3 id="Statment"><a href="#Statment" class="headerlink" title="Statment"></a>Statment</h3><p>Seeing a non-web exploitation problem Keith prepared their binary and c knowledge, but to their surprise, it was <a href="/asset/src/hsctf4/python_exploitation_1.py">a .py</a>! Help Keith learn to exploit python programs.</p>
+<p>Netcat to 104.131.90.29:8005.</p>
+<p>Note- The flag can be mistaken for an error message. </p>
+<h3 id="Solution-3"><a href="#Solution-3" class="headerlink" title="Solution"></a>Solution</h3><p>We notice that the input statment:</p>
+<pre class="line-numbers language-python"><code class="language-python">inp <span class="token operator">=</span> input<span class="token punctuation">(</span><span class="token string">"Enter the password: "</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>dose not cast the input to any data type. Therefore, we diretctly input “thisisthepassword” and then we can get the flag.</p>
+<hr>
+<h2 id="Easy-Stegosaurus"><a href="#Easy-Stegosaurus" class="headerlink" title="Easy Stegosaurus"></a>Easy Stegosaurus</h2><p><strong>Category: Forensics</strong><br><strong>Score: 200pt</strong><br><strong>Solved By Mr.Tareen</strong></p>
+<h3 id="Statement-3"><a href="#Statement-3" class="headerlink" title="Statement"></a>Statement</h3><p>Keith infiltrated the scary evil organization ZORE, and had to fight a cloned stegosaurus!</p>
+<p>After killing the evil beast, they started to dissect the body for potential information. They found a usb containing two similar looking image files: one called <a href="/asset/image/hsctf4/logo_f99691b87b965f85c4b3a3c877667dae41a622b28a2854961e81c1110e0958b3.png">logo.png</a>, and one called <a href="/asset/image/hsctf4/changed_bc45f1089a5a88a6b429aa6f8b8a6954e71c02d45aab836b4fb43d34c34d563f.png">changed.png</a>.</p>
+<p>What secret information could be contained in these strange files?</p>
+<h3 id="Solution-4"><a href="#Solution-4" class="headerlink" title="Solution"></a>Solution</h3><p>Use “compare” command to compare the differences between two images and then output those differences to a new image, the flag will show up.</p>
+<hr>
+<h2 id="KE1TH"><a href="#KE1TH" class="headerlink" title="KE1TH"></a>KE1TH</h2><p><strong>Category: Reversal</strong><br><strong>Score: 200pt</strong><br><strong>Solved By AD1024</strong></p>
+<h3 id="Statement-4"><a href="#Statement-4" class="headerlink" title="Statement"></a>Statement</h3><p>Keith recently coded <a href="/asset/src/hsctf4/Keith_64823dfacef873e85d412ca2b2dd887bb5196a598901a3f98fc6d46e1ac633f9.class">a small authorization software</a> for their computer to hide personal files. Unfortunately, they hit their head and forgot their password. Now they must reverse engineer their software to regain their password. </p>
+<h3 id="Solution-5"><a href="#Solution-5" class="headerlink" title="Solution"></a>Solution</h3><p>This actually is pretty easy. We can use Android Studio to decompile A.class and then we can get:<a href="/asset/src/hsctf4/decompiled.java">decomp.java</a></p>
+<p>We can see that in the Constructor, the SecretKey has been initialized. </p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">this</span><span class="token punctuation">.</span>aes_cbc_pkcs5<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>key<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">IvParameterSpec</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>iv<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>And this line of code set the cipher to MODE_ENCRYPT. According to the documentation on the Internet, we can use Cipher to decrypt if we have the key and the byte array that is encrypted. Therefore, we use the string in Check() method and decrypt it:</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> String <span class="token function">decrypt</span><span class="token punctuation">(</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> en<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>aes_cbc_pkcs5<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span>Cipher<span class="token punctuation">.</span>DECRYPT_MODE<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>key<span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">IvParameterSpec</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>iv<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>aes_cbc_pkcs5<span class="token punctuation">.</span><span class="token function">doFinal</span><span class="token punctuation">(</span>en<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IllegalBlockSizeException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">BadPaddingException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InvalidKeyException</span> <span class="token operator">|</span> InvalidAlgorithmParameterException e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token string">""</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="Keith-and-Dawg-2"><a href="#Keith-and-Dawg-2" class="headerlink" title="Keith and Dawg 2"></a>Keith and Dawg 2</h2><p><strong>Category: Cryptography</strong><br><strong>Score: 200pt</strong><br><strong>Solved By AD1024</strong></p>
+<h3 id="Statment-1"><a href="#Statment-1" class="headerlink" title="Statment"></a>Statment</h3><p>\===================================================================================================<br>NOTE- Do Keith and Dawg 1 first.<br>\===================================================================================================<br>The next day.<br>Keith was walking down the street, still shaken up about the events of the previous day, when a white unmarked van driving at about 80 miles per hour drove by and stopped right in front of them. Suddenly, the door slid open and five men wearing suits jumped out, grabbed Keith, and dragged them back into the van.<br>“Who are you?!” Keith asked.<br>“I’m Agent Roshan Mahanth, of the NSA,” one man replied. “And we know what you’ve been up to.”<br>“I…I don’t know what you’re talking about,” Keith replied, but the sweat pouring out of their forehead gave them away.<br>“We also know that Jakob Degen, or Shady J Dawg, as you call him, is your ‘employer’, and that you two have been very busy lately. We know about the secret files Degen has. I’ve been undercover as Jazz Money Roshan Cash for the past two months, but I have been unable to gain access. Now, you have two options. Your first option is to cooperate with us and help us find a way to hack Degen’s security measures and recover evidence that we can use against him…”<br>“Ok, I’ll do it.”<br>“Good. You’ll hear from us soon.”<br>Keith was then tossed out of the van. They got up and walked home, wondering how they could possibly get past Degen’s security measures.<br>A few days later, Keith received a mysterious phone call from an unknown number. They hesitantly picked up the phone, “Mr. Keith. We have your first assignment. Go to the intersection between Quiche Street and Keif Afenue. You will find an envelope underneath the trash can. In it, you will find a flash drive with a hash we extracted associated with Jakob Degen’s account on a website he frequents. Unfortunately, we do not know his password, as only the md5 hash is stored on the database. We do know, however, that Degen’s keyboard is broken and only the q, w, e, r, t, and y keys are functioning. Report back when you find his password. Jazz Money out.”<br>Keith immediately grabbed their coat and ran down Keif Afenue to the intersection with Quiche Street. Sure enough, they found an envelope with a flash drive underneath the trash can. They walked home and began work.<br>Find the password.<br>To be continued…</p>
+<p>hash- b81b28baa97b04cf3508394d9a58caae<br>letters- q w e r t y </p>
+<h3 id="Solution-6"><a href="#Solution-6" class="headerlink" title="Solution"></a>Solution</h3><p>The story is pretty long and helpless. Actually, we solved this problem in the last day of the contest. We doubted that why there were so many teams solved it but we did not… Because we thought too much on the statment.<br>In fact, we can simplely enmumerate the length of the password and the data was too weak. If we run python program, we can get the flag in about 10 seconds. </p>
+<h3 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">from</span> hashlib <span class="token keyword">import</span> md5
+
+<span class="token keyword">global</span> chaList
+<span class="token keyword">global</span> tar
+
+<span class="token keyword">def</span> <span class="token function">search</span><span class="token punctuation">(</span>dep<span class="token punctuation">,</span> upper<span class="token punctuation">,</span> password<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> dep <span class="token operator">==</span> upper <span class="token punctuation">:</span>
+        <span class="token keyword">global</span> tar
+        res <span class="token operator">=</span> md5<span class="token punctuation">(</span>password<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> res <span class="token operator">==</span> tar <span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span>
+            exit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span> <span class="token punctuation">:</span>
+        <span class="token keyword">global</span> chaList
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> chaList <span class="token punctuation">:</span>
+            search<span class="token punctuation">(</span>dep<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> upper<span class="token punctuation">,</span> password<span class="token operator">+</span>i<span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    chaList <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'q'</span><span class="token punctuation">,</span><span class="token string">'w'</span><span class="token punctuation">,</span><span class="token string">'e'</span><span class="token punctuation">,</span><span class="token string">'r'</span><span class="token punctuation">,</span><span class="token string">'t'</span><span class="token punctuation">,</span><span class="token string">'y'</span><span class="token punctuation">]</span>
+    tar <span class="token operator">=</span> <span class="token string">'b81b28baa97b04cf3508394d9a58caae'</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        search<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>i<span class="token punctuation">,</span><span class="token string">''</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="Digital-Digits"><a href="#Digital-Digits" class="headerlink" title="Digital Digits"></a>Digital Digits</h2><p><strong>Category: Algorithm</strong><br><strong>Score: 300pt</strong><br><strong>Solved By AD1024</strong></p>
+<h3 id="Statment-2"><a href="#Statment-2" class="headerlink" title="Statment"></a>Statment</h3><p>Keith has found a long list of digits, and as is usual for algo problems<br> in HSCTF, they would like to perform some arbitrary computations upon<br>the list for no apparent reason. Keith’s favorite number is 5, so <a href="/asset/static/hsctf4/digital_0636b59ded5db7826112b3826694054e071c56d9ce7536a1bb149765dd6c5e28.in">in the attached list</a><br> of 500,000 digits, please find the number of subsequences for which the<br> digital root is 5. Report your answer modulo 1,000,000,003.</p>
+<p>Some terms:<br>Subsequence:<br> any (not necessarily consecutive) sequence of digits from the original<br>list where the digits are in their original order. For example, 135,<br>134, 123, and 25 are all subsequences of 12345.<br>Digital root: The function defined as </p>
+<p><img src="/2017/05/28/HSCTF-4-WriteUp/DigRt.png" alt="Function"></p>
+<p>Where the function dsum(x) is the sum of the digits of x. For example,<br>droot(12345) = droot(dsum(12345)) = droot(15) = droot(dsum(15)) = droot(6) = 6</p>
+<p>Example:<br>For the sequence 12345, the subsequences 5, 14, 23, and 2345 all have a digital root of 5. Therefore, the flag if 12345 were the list would be 4. </p>
+<h3 id="Solution-7"><a href="#Solution-7" class="headerlink" title="Solution"></a>Solution</h3><p>It’s a little bit hard. We can convert droot(x) to x%9. Then use dynamic programming:<br>Let dp[i][j] stands for the different ways such that sum=j by using first ith numbers.<br>Therefore:<br>$dp[i][s[i]]=1$<br>$dp[i][(j+s[i])%9]=(f[i][(j+s[i])%9] + f[i-1][j]) % MOD$<br>Then we need to transit all information in i-1:<br>$dp[i][j] = (dp[i][j] + dp[i-1][j]) % MOD$</p>
+<h3 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">d</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> x <span class="token operator">%</span> <span class="token number">9</span><span class="token operator">==</span><span class="token number">0</span><span class="token operator">?</span><span class="token number">9</span><span class="token operator">:</span>x <span class="token operator">%</span> <span class="token number">9</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>N<span class="token punctuation">;</span><span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span><span class="token number">9</span><span class="token punctuation">;</span><span class="token operator">++</span>j<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token function">d</span><span class="token punctuation">(</span>j<span class="token operator">+</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token function">d</span><span class="token punctuation">(</span>j<span class="token operator">+</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">+</span> f<span class="token punctuation">[</span>i<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">%</span> MOD<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span><span class="token number">9</span><span class="token punctuation">;</span><span class="token operator">++</span>j<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">+</span> f<span class="token punctuation">[</span>i<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">%</span> MOD<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="Pascal’s-Triangle"><a href="#Pascal’s-Triangle" class="headerlink" title="Pascal’s Triangle"></a>Pascal’s Triangle</h2><p><strong>Category: Algorithm</strong><br><strong>Score: 300pt</strong><br><strong>Solved By AD1024</strong></p>
+<h3 id="Statement-5"><a href="#Statement-5" class="headerlink" title="Statement"></a>Statement</h3><p><a href="/asset/static/hsctf4/PascalsTriangle_293eb01dfec8799fc21339f16b24b38bba261252b588c53a5347d30ebda708cf.pdf">Find problem’s PDF Here~</a></p>
+<h3 id="Solution-8"><a href="#Solution-8" class="headerlink" title="Solution"></a>Solution</h3><p>The second easiest algorithm problem in this contest. We just need to preprocess the Pascal’s triangle and then simulate the function.<br>We note that the maximum row number is $8000$, which is $2*p$ in the second input case. Thus we only need to preprocess first 8000 lines of the triangle. Also, the termination condtion is $n\leq p+k$ and $2\times p &gt; k$.</p>
+<h3 id="Code-4"><a href="#Code-4" class="headerlink" title="Code"></a>Code</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;cstdio></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;cstring></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;cstdlib></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;fstream></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;algorithm></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> C<span class="token punctuation">[</span><span class="token number">10001</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">10001</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token keyword">int</span> mod <span class="token operator">=</span> <span class="token number">1000000007</span><span class="token punctuation">;</span>
+
+<span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    C<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span>C<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+    C<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span><span class="token number">8010</span><span class="token punctuation">;</span><span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+        C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>j<span class="token operator">&lt;</span>i<span class="token punctuation">;</span><span class="token operator">++</span>j<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            C<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">(</span>C<span class="token punctuation">[</span>i<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">%</span>mod<span class="token operator">+</span>C<span class="token punctuation">[</span>i<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token number">-1</span><span class="token punctuation">]</span><span class="token operator">%</span>mod<span class="token punctuation">)</span> <span class="token operator">%</span> mod<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">inline</span> <span class="token keyword">long</span> <span class="token keyword">long</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span><span class="token keyword">int</span> k<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> n<span class="token operator">>=</span>k<span class="token operator">?</span><span class="token punctuation">(</span>C<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">:</span><span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">inline</span> <span class="token keyword">long</span> <span class="token keyword">long</span> <span class="token function">mathth</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span><span class="token keyword">int</span> p<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">int</span> k<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> ans <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>k<span class="token operator">+</span>p<span class="token operator">&lt;=</span>n <span class="token operator">or</span> <span class="token number">2</span><span class="token operator">*</span>p <span class="token operator">>=</span> k<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        ans <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">f</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span>p<span class="token operator">+</span>k<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token function">f</span><span class="token punctuation">(</span>p<span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">,</span>k<span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token punctuation">;</span>
+        ans <span class="token operator">%</span><span class="token operator">=</span> mod<span class="token punctuation">;</span>
+        <span class="token operator">++</span>k<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> ans<span class="token operator">%</span>mod<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> T<span class="token punctuation">;</span>
+    cin<span class="token operator">>></span>T<span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>T<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">int</span> n<span class="token punctuation">,</span>p<span class="token punctuation">;</span>cin<span class="token operator">>></span>n<span class="token operator">>></span>p<span class="token punctuation">;</span>
+        cout<span class="token operator">&lt;&lt;</span><span class="token function">mathth</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span>p<span class="token punctuation">)</span><span class="token operator">&lt;&lt;</span><span class="token string">" "</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="Grid"><a href="#Grid" class="headerlink" title="Grid"></a>Grid</h2><p><strong>Category: Algorithm</strong><br><strong>Score: 400pt</strong><br><strong>Solved By AD1024</strong></p>
+<h3 id="Statement-6"><a href="#Statement-6" class="headerlink" title="Statement"></a>Statement</h3><p>Keith starts at square (0,0) of a grid and wants to travel to (m, n) (where m,n are nonnegative integers) by moving either right or up by one unit. However, there are special circumstances - 1) there are certain points they cannot travel to, and 2) they is able to move down one unit, either once or never during their path, even if they have already reached (m, n). How many ways can they reach (m, n), mod 10000?</p>
+<p>The <a href="/asset/static/hsctf4/in.txt">input file</a> is in the format:<br>m<br>n<br>K<br>x1 y1<br>x2 y2<br>.<br>.<br>.<br>xk yk<br>where m, n are as specified, and K is the positive integer that equals the number of points he cannot travel to. The next K lines below it describe the list of the points he cannot travel to.<br>Clarification- Keith cannot move to negative coordinates and their movement is confined to the rectangle with diagonal (0,0) to (m,n). </p>
+<h3 id="Solution-9"><a href="#Solution-9" class="headerlink" title="Solution"></a>Solution</h3><p>A dynamic programming problem.<br>Note: Regard the index $(0,0)$ as the origin of the grid.<br>Define that $f[i][j]$ stands for different paths from $(0,0)$ to $(i,j)$<br>and $d[i][j]$ stands for different paths from$(i,j)$ to $(M,N)$<br>Therefore, the total number of different ways contain the down movement is $f[i][j]<em>d[i][j-1])%MOD$.<br>And the total different ways that don’t contain any down movement is $f[M][N]$.Add them together to get the answer.<br><em>*Note: Be careful when dealing with the direct</em></em></p>
+<h3 id="Code-5"><a href="#Code-5" class="headerlink" title="Code"></a>Code</h3><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;cstdio></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;cstring></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token keyword">int</span> mod <span class="token operator">=</span> <span class="token number">10000</span><span class="token punctuation">;</span>
+<span class="token keyword">typedef</span> <span class="token keyword">long</span> <span class="token keyword">long</span> ll<span class="token punctuation">;</span>
+
+ll f<span class="token punctuation">[</span><span class="token number">4010</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">4010</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+ll d<span class="token punctuation">[</span><span class="token number">4010</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">4010</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">bool</span> ban<span class="token punctuation">[</span><span class="token number">4010</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">4010</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> N<span class="token punctuation">,</span>M<span class="token punctuation">;</span>
+<span class="token keyword">int</span> K<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token function">freopen</span><span class="token punctuation">(</span><span class="token string">"in.txt"</span><span class="token punctuation">,</span><span class="token string">"r"</span><span class="token punctuation">,</span><span class="token constant">stdin</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    cin<span class="token operator">>></span>M<span class="token operator">>></span>N<span class="token punctuation">;</span>
+    cin<span class="token operator">>></span>K<span class="token punctuation">;</span>
+    <span class="token operator">++</span>M<span class="token punctuation">,</span><span class="token operator">++</span>N<span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>K<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">int</span> x<span class="token punctuation">,</span>y<span class="token punctuation">;</span>
+        cin<span class="token operator">>></span>x<span class="token operator">>></span>y<span class="token punctuation">;</span>
+        ban<span class="token punctuation">[</span>x<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>y<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">/*
+    ^
+    |
+N   |               (M,N)
+    |
+    |
+    |
+    +-------------------->
+(0,0)               (M,0)
+    */</span>
+    f<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>M<span class="token punctuation">;</span><span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span>i<span class="token operator">==</span><span class="token number">1</span><span class="token operator">?</span><span class="token number">2</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>N<span class="token punctuation">;</span><span class="token operator">++</span>j<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>ban<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>f<span class="token punctuation">[</span>i<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">%</span> mod <span class="token operator">+</span> f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token number">-1</span><span class="token punctuation">]</span> <span class="token operator">%</span> mod<span class="token punctuation">)</span> <span class="token operator">%</span> mod<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    d<span class="token punctuation">[</span>M<span class="token punctuation">]</span><span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span>M<span class="token punctuation">;</span>i<span class="token operator">>=</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token operator">--</span>i<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span>i<span class="token operator">==</span>M<span class="token operator">?</span>N<span class="token number">-1</span><span class="token operator">:</span>N<span class="token punctuation">;</span>j<span class="token operator">>=</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token operator">--</span>j<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>ban<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>d<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">%</span> mod <span class="token operator">+</span> d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">%</span> mod<span class="token punctuation">)</span> <span class="token operator">%</span> mod<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    ll ans <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>M<span class="token punctuation">;</span><span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>N<span class="token punctuation">;</span><span class="token operator">++</span>j<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>ban<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                ans <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">%</span> mod <span class="token operator">*</span> d<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token number">-1</span><span class="token punctuation">]</span> <span class="token operator">%</span> mod<span class="token punctuation">)</span> <span class="token operator">%</span> mod<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    cout<span class="token operator">&lt;&lt;</span><span class="token punctuation">(</span>ans <span class="token operator">+</span> f<span class="token punctuation">[</span>M<span class="token punctuation">]</span><span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">%</span>mod<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<hr>
+<h2 id="Keith-And-Dawg-4"><a href="#Keith-And-Dawg-4" class="headerlink" title="Keith And Dawg 4"></a>Keith And Dawg 4</h2><p><strong>Category: Reversal</strong><br><strong>Score: 400pt</strong><br><strong>Solved By AD1024</strong></p>
+<h3 id="Statement-7"><a href="#Statement-7" class="headerlink" title="Statement"></a>Statement</h3><p>===================================================================================================</p>
+<p>NOTE: Do Keith and Dawg 2 first.</p>
+<p>===================================================================================================<br>Three days passed without incident or contact from the mysterious agents of the NSA or Roshan Cash. Then, suddenly, Keith received an envelope by mail containing a flash drive and a note: Using the hash you reversed, we have accessed several of Degen’s accounts. We recovered several files, but they seem to consist of only random words that make no sense. It appears to be <a href="/asset/src/hsctf4/lock_798bdf9ecd2e05c24fee923e58200cd200b749da21cc04dcadb75001f52203ed.lolc">some sort of program</a>. -Jazz Money Roshan Cash </p>
+<h3 id="Solution-10"><a href="#Solution-10" class="headerlink" title="Solution"></a>Solution</h3><p>If we search “O HAI” or some other segments of codes on the Internet, we can find that the language actually called “LOLCODE”. But the lastest version of LOLCODE is 1.2 and this version is 1.4. Therefore we cannot use online pareser to cope with this problem.<br>But we can use the references on <a href="https://en.wikipedia.org/wiki/LOLCODE" target="_blank" rel="external">Wikipeida</a>. And there is a more detailed reference:<a href="http://esolangs.org/wiki/LOLCODE" target="_blank" rel="external">Escolang</a>. And we can get this translation:<a href="/asset/static/hsctf4/translate.txt">Translation.txt</a><br>Therefore we can translate the program into a readable code. Or we can directly analyze the program. </p>
+<pre class="line-numbers language-lolcode"><code class="language-lolcode"><span class="token keyword">O HAI IM</span> TABLE
+    <span class="token keyword">I HAS A</span> DAWG <span class="token keyword">ITZ</span> <span class="token symbol"><span class="token keyword">A</span> YARN</span>
+    <span class="token keyword">I HAS A</span> CAT2 <span class="token keyword">ITZ</span> <span class="token symbol"><span class="token keyword">A</span> NUMBR</span>
+    <span class="token keyword">I HAS A</span> DOG <span class="token keyword">ITZ</span> <span class="token symbol"><span class="token keyword">A</span> NUMBR</span>
+    <span class="token keyword">I HAS A</span> KAT <span class="token keyword">ITZ</span> <span class="token symbol"><span class="token keyword">A</span> NUMBAR</span>
+    <span class="token keyword">I HAS A</span> FELINE <span class="token keyword">ITZ</span> <span class="token symbol"><span class="token keyword">A</span> YARN</span>
+    <span class="token keyword">I HAS A</span> KIT <span class="token keyword">ITZ</span> <span class="token symbol"><span class="token keyword">A</span> NUMBAR</span>
+
+    DAWG <span class="token keyword">R</span> <span class="token string">"CAT"</span>
+    DOG <span class="token keyword">R</span> <span class="token number">17</span>
+    CAT2 <span class="token keyword">R</span> <span class="token number">672</span>
+    FELINE <span class="token keyword">R</span> <span class="token string">"A"</span>
+    KIT <span class="token keyword">R</span> <span class="token number">92</span>
+    KAT <span class="token keyword">R</span> <span class="token number">7</span>
+
+    <span class="token keyword">HOW IZ I</span> <span class="token function">CAT</span> <span class="token keyword">YR</span> NUM
+        <span class="token keyword">I HAS A</span> CAT3864 <span class="token keyword">ITZ</span> <span class="token keyword">MAEK</span> <span class="token operator">QUOSHUNT OF</span> ME<span class="token keyword">'Z</span> CAT2 <span class="token keyword">AN</span> NUM <span class="token symbol"><span class="token keyword">A</span> NUMBR</span>
+        <span class="token keyword">I HAS A</span> A59CAT0 <span class="token keyword">ITZ</span> <span class="token keyword">SRS</span> <span class="token keyword">SMOOSH</span> ME<span class="token keyword">'Z</span> DAWG <span class="token keyword">AN</span> <span class="token keyword">MAEK</span> <span class="token operator">PRODUKT OF</span> ME<span class="token keyword">'Z</span> KIT <span class="token keyword">AN</span> NUM <span class="token symbol"><span class="token keyword">A</span> NUMBR</span> <span class="token keyword">MKAY</span>
+        <span class="token keyword">FOUND YR</span> <span class="token keyword">SRS</span> <span class="token keyword">SMOOSH</span> ME<span class="token keyword">'Z</span> FELINE <span class="token keyword">AN</span> <span class="token keyword">MAEK</span> <span class="token operator">SUM OF</span> NUM <span class="token keyword">AN</span> ME<span class="token keyword">'Z</span> DOG <span class="token symbol"><span class="token keyword">A</span> YARN</span> <span class="token keyword">AN</span> ME<span class="token keyword">'Z</span> DAWG <span class="token keyword">AN</span> <span class="token keyword">MAEK</span> <span class="token operator">MOD OF</span> NUM <span class="token keyword">AN</span> ME<span class="token keyword">'Z</span> KAT <span class="token symbol"><span class="token keyword">A</span> YARN</span> <span class="token keyword">MKAY</span>
+    <span class="token keyword">IF U SAY SO</span>
+<span class="token keyword">KTHX</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>In this class, we can identify 6 member variables and one memeber method. And the initial values of member variables are assigned. So the major problem is the method called “CAT”. By using the translation text file, we can find that:</p>
+<pre class="line-numbers language-lolcode"><code class="language-lolcode"><span class="token keyword">I HAS A</span> CAT3864 <span class="token keyword">ITZ</span> <span class="token keyword">MAEK</span> <span class="token operator">QUOSHUNT OF</span> ME<span class="token keyword">'Z</span> CAT2 <span class="token keyword">AN</span> NUM <span class="token symbol"><span class="token keyword">A</span> NUMBR</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>can be converted to:</p>
+<pre class="line-numbers language-python"><code class="language-python">CAT3864 <span class="token operator">=</span> self<span class="token punctuation">.</span>CAT2 <span class="token operator">//</span> NUM
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>and </p>
+<pre class="line-numbers language-lolcode"><code class="language-lolcode"><span class="token keyword">I HAS A</span> A59CAT0 <span class="token keyword">ITZ</span> <span class="token keyword">SRS</span> <span class="token keyword">SMOOSH</span> ME<span class="token keyword">'Z</span> DAWG <span class="token keyword">AN</span> <span class="token keyword">MAEK</span> <span class="token operator">PRODUKT OF</span> ME<span class="token keyword">'Z</span> KIT <span class="token keyword">AN</span> NUM <span class="token symbol"><span class="token keyword">A</span> NUMBR</span> <span class="token keyword">MKAY</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>can be translated to:</p>
+<pre class="line-numbers language-python"><code class="language-python">A59CAT0 <span class="token operator">=</span> eval<span class="token punctuation">(</span>self<span class="token punctuation">.</span>DAWG <span class="token operator">+</span> str<span class="token punctuation">(</span>self<span class="token punctuation">.</span>KIT <span class="token operator">*</span> NUM<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>In order to correctly run the program, the result of eval() should have assigned a value. We notice that the value of DAWG is “CAT”, therefore the only possibility is to assgin the value of CAT3864 to A59CAT0. So we can assum the code might be:</p>
+<pre class="line-numbers language-python"><code class="language-python">CAT3864 <span class="token operator">=</span> self<span class="token punctuation">.</span>CAT2 <span class="token operator">//</span> NUM
+A59CAT0 <span class="token operator">=</span> CAT3864
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>In this case, we can know that the value of NUM must be 42.</p>
+<p>Keep going, the next line is:</p>
+<pre class="line-numbers language-lolcode"><code class="language-lolcode"><span class="token keyword">FOUND YR</span> <span class="token keyword">SRS</span> <span class="token keyword">SMOOSH</span> ME<span class="token keyword">'Z</span> FELINE <span class="token keyword">AN</span> <span class="token keyword">MAEK</span> <span class="token operator">SUM OF</span> NUM <span class="token keyword">AN</span> ME<span class="token keyword">'Z</span> DOG <span class="token symbol"><span class="token keyword">A</span> YARN</span> <span class="token keyword">AN</span> ME<span class="token keyword">'Z</span> DAWG <span class="token keyword">AN</span> <span class="token keyword">MAEK</span> <span class="token operator">MOD OF</span> NUM <span class="token keyword">AN</span> ME<span class="token keyword">'Z</span> KAT <span class="token symbol"><span class="token keyword">A</span> YARN</span> <span class="token keyword">MKAY</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>First we parse the result of SMOOSHL</p>
+<pre class="line-numbers language-python"><code class="language-python">result <span class="token operator">=</span> self<span class="token punctuation">.</span>FELINE <span class="token operator">+</span> str<span class="token punctuation">(</span>NUM <span class="token operator">+</span> self<span class="token punctuation">.</span>DOG<span class="token punctuation">)</span> <span class="token operator">+</span> self<span class="token punctuation">.</span>DAWG <span class="token operator">+</span> str<span class="token punctuation">(</span>NUM <span class="token operator">%</span> self<span class="token punctuation">.</span>CAT<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>We can find that the result is:A59CAT0. So the method can be simplified to:</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">CAT</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> NUM<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+    <span class="token keyword">return</span> self<span class="token punctuation">.</span>CAT2 <span class="token operator">//</span> NUM
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>Move on next class:</p>
+<pre class="line-numbers language-lolcode"><code class="language-lolcode"><span class="token keyword">O HAI IM</span> MATH
+    <span class="token keyword">HOW IZ I</span> <span class="token function">POWERIN</span> <span class="token keyword">YR</span> ABC <span class="token keyword">AN</span> <span class="token keyword">YR</span> DEF
+        <span class="token operator">BOTH SAEM</span> DEF <span class="token keyword">AN</span> <span class="token keyword">MAEK</span> DEF <span class="token symbol"><span class="token keyword">A</span> NUMBR</span><span class="token punctuation">,</span> <span class="token keyword">O RLY?</span>
+            <span class="token keyword">YA RLY</span>
+            <span class="token keyword">NO WAI</span>
+                <span class="token keyword">FOUND YR</span> <span class="token boolean">FAIL</span>
+        <span class="token keyword">OIC</span>
+        <span class="token keyword">I HAS A</span> INDEX <span class="token keyword">ITZ</span> <span class="token number">0</span>
+        <span class="token keyword">I HAS A</span> NUM <span class="token keyword">ITZ</span> ABC
+        <span class="token keyword">IM IN YR</span> <span class="token label string">HOUSE</span> <span class="token keyword">UPPIN</span> <span class="token keyword">YR</span> INDEX <span class="token keyword">TIL</span> <span class="token operator">BOTH SAEM</span> INDEX <span class="token keyword">AN</span> DEF
+            NUM <span class="token keyword">R</span> <span class="token operator">PRODUKT OF</span> NUM <span class="token keyword">AN</span> <span class="token operator">SUM OF</span> INDEX <span class="token keyword">AN</span> <span class="token number">1</span>
+        <span class="token keyword">IM OUTTA YR</span> <span class="token label string">HOUSE</span>
+        <span class="token keyword">FOUND YR</span> NUM
+    <span class="token keyword">IF U SAY SO</span>
+<span class="token keyword">KTHX</span>
+<span class="token keyword">I HAS A</span> MATHS <span class="token keyword">ITZ</span> <span class="token keyword">LIEK A</span> MATH
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>We find that there is only a memeber method in this class and it is called “POWERIN”. Then we can get:</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">MATH</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">POWERIN</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> ABC<span class="token punctuation">,</span> DEF<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        <span class="token keyword">if</span> DEF <span class="token operator">!=</span> int<span class="token punctuation">(</span>DEF<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span>
+        NUM <span class="token operator">=</span> ABC
+        INDEX <span class="token operator">=</span> <span class="token number">0</span>
+        <span class="token keyword">while</span> DEF <span class="token operator">!=</span> INDEX <span class="token punctuation">:</span>
+            NUM <span class="token operator">=</span> NUM <span class="token operator">*</span> <span class="token punctuation">(</span>INDEX <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            INDEX <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">return</span> NUM
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>We can translate the rest of code in this way.</p>
+<h3 id="Code-6"><a href="#Code-6" class="headerlink" title="Code"></a>Code</h3><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Table</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>DAWG <span class="token operator">=</span> <span class="token string">"CAT"</span>
+        self<span class="token punctuation">.</span>CAT2 <span class="token operator">=</span> <span class="token number">672</span>
+        self<span class="token punctuation">.</span>DOG <span class="token operator">=</span> <span class="token number">17</span>
+        self<span class="token punctuation">.</span>FELINE <span class="token operator">=</span> <span class="token string">"A"</span>
+        self<span class="token punctuation">.</span>KIT <span class="token operator">=</span> <span class="token number">92.0</span>
+        self<span class="token punctuation">.</span>KAT <span class="token operator">=</span> <span class="token number">7.0</span>
+
+    <span class="token keyword">def</span> <span class="token function">CAT</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> NUM<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>CAT2 <span class="token operator">//</span> NUM
+
+<span class="token keyword">global</span> TABLES
+<span class="token keyword">global</span> MATHS
+<span class="token keyword">class</span> <span class="token class-name">MATH</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">POWERIN</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> ABC<span class="token punctuation">,</span> DEF<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        <span class="token keyword">if</span> DEF <span class="token operator">!=</span> int<span class="token punctuation">(</span>DEF<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span>
+        NUM <span class="token operator">=</span> ABC
+        INDEX <span class="token operator">=</span> <span class="token number">0</span>
+        <span class="token keyword">while</span> DEF <span class="token operator">!=</span> INDEX <span class="token punctuation">:</span>
+            NUM <span class="token operator">=</span> NUM <span class="token operator">*</span> <span class="token punctuation">(</span>INDEX <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            INDEX <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">return</span> NUM
+
+<span class="token keyword">class</span> <span class="token class-name">PILE</span> <span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>LENGTH <span class="token operator">=</span> <span class="token number">0</span>
+        self<span class="token punctuation">.</span>MAX <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span>
+        self<span class="token punctuation">.</span>ITEMS <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">1000</span>
+    <span class="token keyword">def</span> <span class="token function">PUSHIN</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> ITEM<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>MAX <span class="token operator">!=</span> max<span class="token punctuation">(</span>self<span class="token punctuation">.</span>MAX<span class="token punctuation">,</span> self<span class="token punctuation">.</span>LENGTH<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>ITEMS<span class="token punctuation">[</span>self<span class="token punctuation">.</span>LENGTH<span class="token punctuation">]</span> <span class="token operator">=</span> ITEM
+            self<span class="token punctuation">.</span>MAX <span class="token operator">+=</span> <span class="token number">1</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>ITEMS<span class="token punctuation">[</span>self<span class="token punctuation">.</span>LENGTH<span class="token punctuation">]</span> <span class="token operator">=</span> ITEM
+        self<span class="token punctuation">.</span>LENGTH <span class="token operator">+=</span> <span class="token number">1</span>
+
+    <span class="token keyword">def</span> <span class="token function">POPPIN</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>LENGTH <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            self<span class="token punctuation">.</span>LENGTH <span class="token operator">-=</span> <span class="token number">1</span>
+            ITEM <span class="token operator">=</span> self<span class="token punctuation">.</span>ITEMS<span class="token punctuation">[</span>self<span class="token punctuation">.</span>LENGTH<span class="token punctuation">]</span>
+            <span class="token keyword">return</span> ITEM
+    <span class="token keyword">def</span> <span class="token function">GETTIN</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> INDEX<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        <span class="token keyword">if</span> INDEX <span class="token operator">==</span> min<span class="token punctuation">(</span>INDEX<span class="token punctuation">,</span> self<span class="token punctuation">.</span>LENGTH<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+            <span class="token keyword">return</span> self<span class="token punctuation">.</span>ITEMS<span class="token punctuation">[</span>INDEX<span class="token punctuation">]</span>
+
+    <span class="token keyword">def</span> <span class="token function">SIZIN</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+        <span class="token keyword">return</span> self<span class="token punctuation">.</span>LENGTH
+
+
+<span class="token keyword">def</span> <span class="token function">CHECKIN</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span> <span class="token punctuation">:</span>
+    C <span class="token operator">=</span> <span class="token boolean">True</span>
+    <span class="token keyword">global</span> MATHS
+    <span class="token keyword">if</span> p<span class="token punctuation">.</span>LENGTH <span class="token operator">==</span> <span class="token number">3</span> <span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>GETTIN<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">43</span> <span class="token operator">!=</span> <span class="token number">16807</span><span class="token operator">/</span><span class="token number">7</span><span class="token operator">/</span><span class="token number">7</span> <span class="token punctuation">:</span>
+            C <span class="token operator">=</span> <span class="token boolean">False</span>
+        <span class="token keyword">if</span> MATHS<span class="token punctuation">.</span>POWERIN<span class="token punctuation">(</span>p<span class="token punctuation">.</span>GETTIN<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> p<span class="token punctuation">.</span>GETTIN<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">/</span> p<span class="token punctuation">.</span>GETTIN<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">16560</span> <span class="token punctuation">:</span>
+            C <span class="token operator">=</span> <span class="token boolean">False</span>
+        <span class="token keyword">if</span> TABLES<span class="token punctuation">.</span>CAT<span class="token punctuation">(</span>p<span class="token punctuation">.</span>GETTIN<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">16</span> <span class="token punctuation">:</span>
+            C <span class="token operator">=</span> <span class="token boolean">False</span>
+    <span class="token keyword">return</span> C
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span> <span class="token punctuation">:</span>
+    <span class="token keyword">global</span> TABLES
+    <span class="token keyword">global</span> MATHS
+    PIN <span class="token operator">=</span> PILE<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    TABLES <span class="token operator">=</span> Table<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    MATHS <span class="token operator">=</span> MATH<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    NUMA <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    PIN<span class="token punctuation">.</span>PUSHIN<span class="token punctuation">(</span>NUMA<span class="token punctuation">)</span>
+    NUMB <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    PIN<span class="token punctuation">.</span>PUSHIN<span class="token punctuation">(</span>NUMB<span class="token punctuation">)</span>
+    NUMC <span class="token operator">=</span> int<span class="token punctuation">(</span>input<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    PIN<span class="token punctuation">.</span>PUSHIN<span class="token punctuation">(</span>NUMC<span class="token punctuation">)</span>
+
+    LOCK <span class="token operator">=</span> CHECKIN<span class="token punctuation">(</span>PIN<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> LOCK <span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Correct Flag'</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Not Correct'</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Therefore, we can calculate the value of $NUMA$ and we have already known the value of $NUMC$; therefore, we can calculate the value of $NUMB$. The flag will be the concatenation of $NUMA$, $NUMB$ and $NUMC$ </p>
+<h2 id="Summery"><a href="#Summery" class="headerlink" title="Summery"></a>Summery</h2><p>Our team, “Digital Dragons”, got 3950 points in total in this contest. (Actually I could have solved Keith and Dawg 5 but there was no time…) I think it’s pretty good. We got international ranking 33 and rank 23 if we were in America.(BTW: we got the same score of Princeton High School). And the competition was really interesting and worth to play. </p>
+
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+
+
+
+
+
+
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/04/30/BNDSOJ-Monthly-Round-2-Solution/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Newer
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="AD1024's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        ccoderad@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/" target="_self">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                Home
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    Archives
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/05/">May 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">April 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">March 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/02/">February 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/01/">January 2017<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">December 2016<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/11/">November 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">October 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/09/">September 2016<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/08/">August 2016<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/07/">July 2016<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/06/">June 2016<span class="sidebar_archives-count">20</span></a></li><li><a class="sidebar_archives-link" href="/archives/1970/01/">January 1970<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                Categories
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Algorithms/">Algorithms<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Algorithms/String-Processing/">String-Processing<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Android/">Android<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/BFS/">BFS<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/BNDSOJ-Monthly-Round/">BNDSOJ Monthly Round<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Contest-2016/">Contest-2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/DFS/">DFS<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Divide-And-Conquer/">Divide And Conquer<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Dynamic-Programming/">Dynamic Programming<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Graph-Theory/">Graph Theory<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/Graph-Theory/Shortest-Path/">Shortest Path<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Greedy/">Greedy<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Interval-Tree/">Interval Tree<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/LaTeX/">LaTeX<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Learning-in-BNDS/">Learning in BNDS<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/Learning-in-BNDS/CTF/">CTF<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Mathematics/">Mathematics<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/Search-Algorithms/">Search-Algorithms<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/categories/Search-Algorithms/DFS/">DFS<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/Simulation/">Simulation<span class="sidebar_archives-count">14</span></a></li><li><a class="sidebar_archives-link" href="/categories/String-Processing/">String-Processing<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/Tree-Structure/">Tree Structure<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Undefined/">Undefined<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Violin/">Violin<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/Algorithm-Template" title="Algorithm Templates">
+                
+                    <i class="material-icons sidebar-material-icons">assignment</i>
+                
+                Algorithm Templates
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallary" title="Moments">
+                
+                    <i class="material-icons sidebar-material-icons">photo</i>
+                
+                Moments
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/tags" title="Tag Cloud">
+                
+                    <i class="material-icons sidebar-material-icons">book</i>
+                
+                Tag Cloud
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="Friend Links">
+                
+                    <i class="material-icons sidebar-material-icons">people</i>
+                
+                Friend Links
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                Number of articles
+                <span class="sidebar-badge">63</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            Theme - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-twitter.svg);">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-facebook.svg);">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-gplus.svg);">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/AD1024" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-github.svg);">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/mike-he-94/activities" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-zhihu.svg);">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+        <a href="http://space.bilibili.com/11936677/#!/index" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn" style="background-image: url(/img/footer/footer_ico-bilibili.svg);">
+                <span class="visuallyhidden">Bilibili</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Telegram -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;
+            <script type="text/javascript">
+                var fd = new Date();
+                document.write(fd.getFullYear());
+            </script>
+            &nbsp;Space Of AD1024
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import File -->
+
+    <script src="/js/lazyload.min.js"></script>
+    <script src="/js/js.min.js"></script>
+
+
+
+    <script src="/js/nprogress.js"></script>
+
+
+<script type="text/javascript">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#FF4081'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #FF4081, 0 0 15px #FF4081'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#FF4081',
+        'border-left-color': '#FF4081'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Window Load-->
+<script>
+    $(window).load(function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+</script>
+
+<!-- MathJax Load-->
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+    <script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+
+
+
+<script>
+    <!-- Offer LazyLoad -->
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    <!-- Start Queue -->
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
