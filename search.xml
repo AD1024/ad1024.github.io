@@ -3,6 +3,157 @@
   
     
     <entry>
+      <title><![CDATA[NOIP2017提高组题解]]></title>
+      <url>/2017/11/15/NOIP2017%E9%A2%98%E8%A7%A3/</url>
+      <content type="html"><![CDATA[<p>NOIP 2017结束了，大家都考得怎么样？？感觉今年画风有些微妙：D1有些卡；D2又有点简单….</p>
+<a id="more"></a>
+<p>题目下载：</p>
+<ul>
+<li>Day 1: <a href="/asset/doc/NOIP2017_day1.pdf">NOIP2017_Day1.pdf</a></li>
+<li>Day 2: <a href="/asset/doc/NOIP2017_day2.pdf">NOIP2017_Day2.pdf</a></li>
+</ul>
+<h1 id="Day-1"><a href="#Day-1" class="headerlink" title="Day 1"></a>Day 1</h1><h2 id="T1-小凯的疑惑"><a href="#T1-小凯的疑惑" class="headerlink" title="T1 小凯的疑惑"></a>T1 小凯的疑惑</h2><ul>
+<li>难度：普及/提高-</li>
+<li>知识点：数论 / <del>抖机灵打表</del></li>
+</ul>
+<p>解法一：打表找规律，最后发现是$a\times b-a-b$</p>
+<p>解法二：数学证明</p>
+<p>根据贝祖定理，对于任意$m$一定有一组整数解使得$ax+by=m$。因此：$ax\equiv m(mod$ $b)$且 $x \equiv ma^{-1}(mod$ $b)$。因此对于任意$m$总可以找到一种表示方式使得$x\in [0,b-1]$。如果在这种表示方法中$y&lt;0$则$m=ax+by\leq a(b-1)-b=ab-a-b$。因此对于任意$m \leq ab-a-b$都有非负整数解。</p>
+<hr>
+<h2 id="T2-时间复杂度"><a href="#T2-时间复杂度" class="headerlink" title="T2 时间复杂度"></a>T2 时间复杂度</h2><ul>
+<li>难度：普及+/提高-</li>
+<li>知识点：模拟</li>
+</ul>
+<p>将所有内容读入之后首先判断F和E是否配对（栈）; 如果配对合法，进行dfs。分别处理$x$和$y$的所有关系最后取层数最大值作为结果。</p>
+<hr>
+<h2 id="T3-逛公园"><a href="#T3-逛公园" class="headerlink" title="T3 逛公园"></a>T3 逛公园</h2><ul>
+<li>难度：提高/提高+</li>
+<li>知识点：最短路 / 拓扑排序 / DP</li>
+</ul>
+<p>先在正图/反图上跑BFS然后把没用的点和边删掉。然后再跑一个BFS看看有没有0环。如果没有就跑堆优化的dijkstra处理$d(1, j)$。在剩下的DAG上进行dp：定义$dp[i,j]$表示从1到$i$最短路与差值为$j$时的路径条数。易得：$dp[i,j]=\sum dp[i^0,j]+\sum dp[i^0,j^0]$：上一次走最短路和不走最短路的路径数量之和。枚举$j$时从小到大沿着DAG的拓扑序枚举。</p>
+<p>时间复杂度：$O(mlogn+(n+m)k)$</p>
+<hr>
+<h1 id="Day-2"><a href="#Day-2" class="headerlink" title="Day 2"></a>Day 2</h1><h2 id="T1-奶酪"><a href="#T1-奶酪" class="headerlink" title="T1 奶酪"></a>T1 奶酪</h2><ul>
+<li>难度：普及-</li>
+<li>知识点：搜索 or 并查集</li>
+</ul>
+<p>解法一：可以先$O(n)$扫一遍空洞，把接触底部和顶部的筛选出来，然后从底部出发BFS一遍，看看是否访问到了顶部空洞。</p>
+<p>解法二：先扫一遍所有空洞，把接触底部和顶部的筛选出来。然后$O(n^2)$找出相连的空洞，加入并查集。最后看看是否有两个空洞，一个接触底部，另一个接触顶部，在同时在同一个集合里。</p>
+<p>时间复杂度：$O(n^2)$</p>
+<hr>
+<h2 id="宝藏"><a href="#宝藏" class="headerlink" title="宝藏"></a>宝藏</h2><ul>
+<li>难度：提高 / 提高-</li>
+<li>知识点：DP / 状态压缩</li>
+</ul>
+<p>用邻接矩阵存图，定义$len[i,j]$表示节点$i$连到集合$j$中点的最短边的长度，这个可以在$O(n^2\times 2^n)$的时间内求出。之后处理所有状态之间转移的最小代价以及状态，这部分需要$O(4^n)$的时间。处理之后进行DP。定义$f[i,j]$表示位于距离根节点距离$i$的结点，状态为$j$时的最小花费。然后枚举每一个结点为起点，找出最小值。</p>
+<p>时间复杂度：$O(n^2\times 2^n+(n+1)\times 4^n)$</p>
+<hr>
+<h2 id="列队"><a href="#列队" class="headerlink" title="列队"></a>列队</h2><ul>
+<li>难度：提高+/省选-</li>
+<li>知识点：树状数组 / 线段树 / <del>平衡树</del></li>
+</ul>
+<p>对于每一行前$m-1$个人开一个区间结点存储信息，每次二分要”删除”的位置，删掉。然后再单独维护最后一列的情况。每次补进来的直接插入到最后一列的最后一个位置。</p>
+<p>时间复杂度(大概是？)：$O(qlogn)$</p>
+]]></content>
+      
+        <categories>
+            
+            <category> NOIP </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Learning in BNDS </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Python爬虫笔记——从BNDS Idsp云平台爬取姓名数据]]></title>
+      <url>/2017/06/26/Python%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E4%BB%8EBNDS-Idsp%E4%BA%91%E5%B9%B3%E5%8F%B0%E7%88%AC%E5%8E%BB%E5%A7%93%E5%90%8D%E6%95%B0%E6%8D%AE/</url>
+      <content type="html"><![CDATA[<p>十一圈开发需要，做一下笔记。<br>声明：爬取的姓名数据库中仅包含学生姓名，性别，在校学号等不涉及学生个人敏感隐私信息的内容。<br><a id="more"></a></p>
+<h3 id="抓取思路"><a href="#抓取思路" class="headerlink" title="抓取思路"></a>抓取思路</h3><p>在平台中，有一个收发信功能。其中，在选择收信人时，全校老师或同学的名字都会被渲染在网页列表中。在Firefox抓取到的请求中发现，数据是以json形式传回的。因此可以通过模拟网页登录之后，请求返回数据的地址以获取到数据。</p>
+<h3 id="登录请求分析"><a href="#登录请求分析" class="headerlink" title="登录请求分析"></a>登录请求分析</h3><p>通过抓包发现，网页登录的请求头是:</p>
+<pre><code>Host    account.yunxiao.com
+User-Agent    Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:54.0) Gecko/20100101 Firefox/54.0
+Accept    */*
+Accept-Language    zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding    gzip, deflate, br
+Content-Type    application/x-www-form-urlencoded; charset=UTF-8
+X-Requested-With    XMLHttpRequest
+Referer    https://account.yunxiao.com/partner?service=http://bnds.joyschool.cn/Portal/LayoutD/CasLogin.aspx?ax=1
+Content-Length    165
+Cookie    bad_idfd02dfa0-03d9-11e7-9f6f-dd378eb06c1d=d0493ec2-20b5-11e7-a799-a9d204abcd4c; YXSSID=TGT-10679-7curzWXaxwZnAQCgcKt4WB7YbtXv6MgW9S2hgjKB5UBI4dq4bZ-passport.yunxiao.com
+Connection    keep-alive
+</code></pre><p>是一个POST请求。请求数据为:</p>
+<pre><code>loginName    {学号}
+password    {密码}
+domain    bnds
+captchaValue    
+rememberMe    false
+service    http://bnds.joyschool.cn/Portal/LayoutD/CasLogin.aspx?ax
+</code></pre><p>服务器对该请求的响应为：</p>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"service"</span><span class="token operator">:</span> <span class="token string">"http://bnds.joyschool.cn/Portal/LayoutD/CasLogin.aspx?ax&amp;ticket=ST-21073-VlqodewYfhStqWGnznchAfPkAMX5YNg6w0BAUCZoJuHcXBcS37-passport.yunxiao.com"</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>Set-Cookie为:</p>
+<pre><code>YXSSID    TGT-21072-jtCRzbY3I1lyLVC9zL66lK3Z9Q9ig1B2rRe2n2kSdV3gCipThe-passport.yunxiao.com
+Domain    .yunxiao.com
+Path    /
+Secure    true
+</code></pre><p>这样，我们就得到了必须参数之一:YXSSID，类似一个sessionId的东西。<br>通过访问返回json中的网址，我们又得到一个Set-Cookie：</p>
+<pre><code>.ASPXAUTH [A-Z0-9]+
+Path    /
+Http Only    true
+</code></pre><p>第二个参数.ASPXAUTH我们也得到了。<br>带着这个cookie然后访问一开始service字段中的网址，我们可以得到另外一个set-cookie:</p>
+<pre><code>ASP.NET_SessionId [a-z0-9]+
+</code></pre><p>将三个参数传入cookie后访问获取数据的网址我们就能得到想要的数据了。</p>
+<h3 id="抓取数据"><a href="#抓取数据" class="headerlink" title="抓取数据"></a>抓取数据</h3><p>通过在网页上访问“收发信”中“选择收件人”的列表，抓包中有这样一个请求:</p>
+<pre><code>POST /BaseInfos/RefStudentlist/LoadData HTTP/1.1
+Host    bnds.joyschool.cn
+Referer    http://bnds.joyschool.cn/BaseInfos/RefStudentlist/List?t=0&amp;hiddenCtl=StudentId&amp;title=%E5%86%99%E7%A7%81%E4%BF%A1&amp;ax=1&amp;selValue=&amp;selLabel=
+Content-Length    115
+Cookie    Hm_lvt_fdf30fe3fb5b16dd960c785e10e3a04e=1497399676,1497876419,1497880499,1498178577; .ASPXAUTH=[A-Z0-9]+; ASP.NET_SessionId=[a-z0-9]+; Hm_lpvt_fdf30fe3fb5b16dd960c785e10e3a04e=1498445271
+Connection    keep-alive
+</code></pre><p>POST数据为:</p>
+<pre><code>qc.ExtendedProperties.startTime    xxxx
+pageNo    1
+pageSize    20
+t    0
+extDic[0].key    text
+extDic[0].value    hello
+ax    1
+</code></pre><p>其中有用的是pageNo 和 pageSize。字面的意思，pageNo是第几页，pageSize是一页多少行(多少人)的数据。返回数据为:</p>
+<pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
+    tableData <span class="token operator">:</span><span class="token punctuation">{</span>
+        total <span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">0</span>-<span class="token number">9</span><span class="token punctuation">]</span>+<span class="token punctuation">,</span>
+        rows <span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>当无数据可返回时，rows字段是一个空Array。因此我们就可以循环抓取每一页的数据了。教师姓名同理。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Web </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Python </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[HSCTF #4 WriteUp]]></title>
       <url>/2017/05/28/HSCTF-4-WriteUp/</url>
       <content type="html"><![CDATA[<p>My AP Computer Science teacher invited me to take part in this contest. It was really interesting and there were many high quality algorithm problems. The official write up comes up very slow; therefore, I decided to wirte this partial write up, which only contains problem I solved and some problems solved by my teacher.<br><a id="more"></a></p>
