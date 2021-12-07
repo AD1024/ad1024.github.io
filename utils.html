@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8" />
+</head>
+<script type="text/javascript">
+    function createName() {
+        var nickname = document.getElementById("nickname-text").value;
+        var suffix = document.getElementById("suffix-text").value;
+        suffix = suffix.split("").reverse().join("");
+        var result = nickname + String.fromCharCode(8238) + suffix + String.fromCharCode(8237);
+        var ta = document.getElementById("result-text");
+        ta.value = result;
+        ta.select();
+        document.execCommand("copy");
+    }
+</script>
+
+<body>
+    <h3>使用方法:</h3>
+    <div>
+        填写昵称和后缀，点击"GO!"。结果会自动复制到剪切板(如果没有就手动复制结果吧:P)
+    </div>
+    <div style="padding-top: 15px">
+        <label for="nickname-text">
+            昵称:
+        </label>
+        <input type="text" id="nickname-text" />
+    </div>
+    <div style="padding-top: 15px">
+        <label for="nickname-text">
+            后缀:
+        </label>
+        <input type="text" id="suffix-text" />
+    </div>
+    <div style="padding-top: 15px">
+        <label for="result-text">结果:</label>
+        <div style="display:inline-block;">
+            <textarea id="result-text" cols="35" rows="1" readonly></textarea>
+        </div>
+    </div>
+    <div style="padding-top: 15px">
+        <button onClick="createName()">GO!(结果复制到剪切板)</button>
+    </div>
+</body>
