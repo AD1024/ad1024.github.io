@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DXART 200 A1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="wordcloud2.js"></script>
+    <style>
+        div.wrapper {
+            padding-top: 5px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h3>Unique</h3>
+    </center>
+    <div class="container-fluid" style="padding-top: 20px; margin: 20px">
+        I look around. I see nothing new but myself.
+    </div>
+    <div class="container-fluid" style="margin: 20px">
+        <center>I ask self, who are you?</center>
+    </div>
+    <div class="container-fluid" style="margin: 20px">
+        I answer by <button type="button" onclick="render_updated()" class="btn btn-outline-dark">SEEING</button> myself
+    </div>
+    <center><canvas id="first-canvas" width="2340" height="1200" style="width: 1170px; height: 520px;"></canvas></center>
+    <div id="second-step" style="visibility: hidden;" class="container-fluid" style="margin: 20px">
+        <center>This isn't good enough, so I put more in</center>
+        Now I think I can <button type="button" onclick="render_full()" class="btn btn-outline-dark">SEE CLEARER</button>
+    </div>
+    <script type="text/javascript">
+        function render_full() {
+            $("#first-canvas").css("visibility", "visible");
+            var content = "Mike He University of Washington Mike is a senior undergraduate student at Paul G. Allen School of Computer Science & Engineering Mike am interested in all aspects of PL and Mike specifically focus on optimizing Deep Learning compilers leveraging PL techniques Throughout my education at the University of Washington UW Mike has explored various aspects of Programming Languages PL and Deep Learning DL by working on Dynamic Tensor Rematerialization, a research project focusing on enabling DL training on memory-constrained devices Collaborating with researchers from Harvard and Princeton Mike have also focused on optimizing compilers mapping high-level programs down to domain-specific hardware. My goal at UW would be to further explore research about reliable compiler support for DL leveraging PL techniques Mike believe having good compiler support will be crucial to providing solid backing for future DL research as DL models become deeper and their workloads become more complicated requiring domain-specific accelerators Mike hope to use my research to build tools for DL researchers and practitioners to make better use of their devices and to democratize DL research by enabling a broader group of people to work on large-scale DL software/hardware projects";
+            let words = content.split(' ');
+            let count = {};
+            words.forEach((x, i) => {
+                if (x == "of" || x == "is" || x == "on" 
+                || x == "and" || x == "to" || x == "a" || x == "at"
+                || x == "for" || x == "by") {
+                    return;
+                }
+                if (x in count) {
+                    count[x] += 3;
+                } else {
+                    count[x] = 3;
+                }
+            });
+            let list = Object.entries(count);
+            WordCloud(document.getElementById("first-canvas"), 
+            {
+                gridSize: Math.round(16 * $('#first-canvas').width() / 1024),
+                weightFactor: function (size) {
+                    return Math.pow(size, 2.3) * $('#first-canvas').width() / 1024;
+                },
+                fontFamily: 'Times, serif',
+                list: list,
+                rotateRatio: 0.5,
+                rotationSteps: 2,
+            });
+        }
+
+        function render_updated() {
+            var content = "Mike He University of Washington I am a senior undergraduate student at Paul G. Allen School of Computer Science & Engineering I am interested in all aspects of PL and I specifically focus on optimizing Deep Learning compilers leveraging PL techniques";
+            let words = content.split(' ');
+            let count = {};
+            words.forEach((x, i) => {
+                if (x in count) {
+                    count[x] += 5;
+                } else {
+                    count[x] = 5;
+                }
+            });
+            let list = Object.entries(count);
+            WordCloud(document.getElementById("first-canvas"), 
+            {
+                gridSize: Math.round(16 * $('#first-canvas').width() / 1024),
+                weightFactor: function (size) {
+                    return Math.pow(size, 2.3) * $('#first-canvas').width() / 1024;
+                },
+                fontFamily: 'Times, serif',
+                list: list,
+                rotateRatio: 0.5,
+                rotationSteps: 2,
+            });
+            setTimeout(() => {
+                $("#second-step").css("visibility", "visible");
+            }, 700)
+        }
+    </script>
+</body>
