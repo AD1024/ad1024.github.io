@@ -9,6 +9,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="wordcloud2.js"></script>
     <style>
+        @font-face {
+            font-family: 'press_start_2pregular';
+            src: url('fonts/pressstart2p-regular-webfont.woff2') format('woff2'),
+                url('fonts/pressstart2p-regular-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'language_of_tellsisregular';
+            src: url('fonts/language_of_tellsis-regular-webfont.woff2') format('woff2'),
+                url('fonts/language_of_tellsis-regular-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
         div.wrapper {
             padding-top: 5px;
         }
@@ -24,21 +38,21 @@
 </head>
 <body>
     <center>
-        <h3>Unique</h3>
+        <h1 style="padding-top: 10px; font-family: press_start_2pregular, Arial, sans-serif;">Unique</h3>
     </center>
     <div class="container-fluid" style="padding-top: 20px; margin: 20px">
-        I look around. I see nothing new but myself.
+        I look around. I see nothing new but myself. People used to call here <strong style="font-family: press_start_2pregular, Arial, sans-serif;">METAVERSE</strong>.
     </div>
     <div class="container-fluid" style="margin: 20px">
-        <center>I ask self, who are you?</center>
+        <center>I ask self, <strong style="font-family: language_of_tellsisregular, Arial, sans-serif;">who are you?</strong></center>
     </div>
     <div class="container-fluid" style="margin: 20px">
-        I answer by <button type="button" onclick="render_updated()" class="btn btn-outline-dark">SEEING</button> myself
+        I answer by <button type="button" style="font-family: language_of_tellsisregular, Arial, sans-serif;" onclick="render_updated()" class="btn btn-outline-dark">SEEING</button> myself
     </div>
     <center><canvas id="first-canvas" width="2340" height="1200" style="width: 1170px; height: 520px;"></canvas></center>
     <div id="second-step" style="visibility: hidden;" class="container-fluid" style="margin: 20px">
-        <center>This isn't good enough, so I put more in</center>
-        Now I think I can <button type="button" onclick="render_full()" class="btn btn-outline-dark">SEE CLEARER</button>
+        <center>This isn't good enough, so I put more in and tell in an ancient language</center>
+        Now I think I can <button type="button" style="font-family: language_of_tellsisregular, Arial, sans-serif;" onclick="render_full()" class="btn btn-outline-dark">SEE CLEARER</button>
     </div>
     <script type="text/javascript">
         function render_full() {
@@ -90,7 +104,7 @@
                 weightFactor: function (size) {
                     return Math.pow(size, 2.3) * $('#first-canvas').width() / 1024;
                 },
-                fontFamily: 'Times, serif',
+                fontFamily: 'language_of_tellsisregular',
                 list: list,
                 rotateRatio: 0.5,
                 rotationSteps: 2,
