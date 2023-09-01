@@ -17,21 +17,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mike He's Homepage</title>
     <style>
+        * {
+            font-family: myFont;
+        }
+        @font-face {
+            font-family: 'myFont';
+            src: url(fonts/zh-cn.ttf);
+        }
         div.wrapper {
             padding-top: 5px;
         }
 
+        /* p {
+            color: rgb(79, 37, 34);
+        } */
+
         a {
             text-decoration: none;
+            color: rgb(201, 71, 55);
         }
 
         a:hover {
             text-decoration: underline;
+            color: rgb(58, 27, 25);
+        }
+        h4 {
+            color: rgb(123, 89, 94)
         }
         body {
-            padding: 10pt;
-            background-image: url('./bg.jpg');
+            padding: 50pt;
+            /* background-image: url('./bg.jpg'); */
             background-repeat: no-repeat;
+            background-color: rgb(199, 160, 133);
             background-attachment: fixed;
             background-size: cover;
             font-size: 15pt;
@@ -41,17 +58,17 @@
 
 <body>
     <!-- <center> -->
-        <div id="wrapper-all" style="background-color: rgba(255, 255, 255, 0.7);width: 93%; margin: auto;">
+        <div id="wrapper-all" style="background-color: rgba(252, 240, 225, 0.611);width: 93%; margin: auto;">
             <div class="container-fluid" style="width: 95%; padding: 5px;">
                 <div>
                     <div>
-                        <h3 style="text-align: center;">Mike (Deyuan) He</h3>
+                        <h3 style="text-align: center; color: rgb(113, 59, 55);">Mike (Deyuan) He</h3>
                     </div>
                     <img align="right" style="width: 400px; padding-left: 20px; padding-right: 20px;"
                         class="img-fluid rounded" src="photo.jpg" />
                     <br>
                 </div>
-                <div class="wrapper" style="padding: 10px;">
+                <div class="wrapper" style="padding: 10px; inline-size: auto;">
                     <h4><u>Bio</u></h4>
                     <p>I am a second-year Ph.D. student at the Department of Computer Science, Princeton University advised by Prof. <a href="https://www.cs.princeton.edu/~aartig/">Aarti Gupta</a>.
                     <p>Before joining Princeton, I did my undergraduate at <a href="https://www.cs.washington.edu">Paul
@@ -67,7 +84,7 @@
                         and I specifically focus on improving programming tools (e.g. compilers) leveraging PL
                         techniques such as term rewriting and formal verification.</p>
                         <!-- I am an incoming Compiler R&D Intern at <a href="https://taichi.graphics/">Taichi Graphics</a>. -->
-                    <p>My name is pronunced as <strong>/xɤˊ/ /tɤˊ/ /ɥœnˊ/</strong>. I would also like to be called as Mike.</p>
+                    <p>My name is pronunced as <code>/xɤˊ/ /tɤˊ/ /ɥœnˊ/</code>. I would also like to be called as Mike.</p>
                     <p><a href="./assets/resume.pdf">Resume</a> |
                         <!-- <a href="https://ad1024.space/Mike_He_Resume_zhCN.pdf">简历</a> | -->
                         <a href="https://github.com/AD1024">Github</a> |
@@ -78,9 +95,9 @@
                     <h4><u>Research Interests</u></h4>
                     <p>Programming Languages, Formal Methods, Compilers</p>
                     <h4><u>Contact</u></h4>
-                    <p><code>mikehe [at] princeton.edu</code></p>
+                    <p><code>(λx. λy. λz. y [at] x [dot] z) princeton mikehe edu</code></p>
                     <h4><u>Address</u></h4>
-                    <p><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Friend+Center+for+Engineering+Education,+7799+William+St,+Princeton,+NJ+08540/@40.350261,-74.65312,18.5z/data=!4m5!3m4!1s0x89c3e6c2c6e8d9f9:0x997e4572848080d8!8m2!3d40.3503111!4d-74.6527501">CS Building 244 & Friend Center for Engineering Education</a></p>
+                    <p><a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/Department+of+Computer+Science+at+Princeton+University/@40.350213,-74.6534945,18z/data=!4m6!3m5!1s0x89c3e6c2c9401969:0x144463eadd4648f2!8m2!3d40.350211!4d-74.652207!16s%2Fg%2F11bwqp_55j?entry=ttu">Computer Science Building 217</a></p>
                     <hr>
                     <!-- <b><u>News</u></b>
                     <div class="wrapper" style="padding-left: 30px;"> -->
@@ -91,21 +108,22 @@
                     <div class="wrapper"><h4><u>Publications / Pre-prints</u></h4></div>
                     <div class="wrapper" style="padding-left: 30px;">
                         <strong>Improving Term Extraction with Acyclic Constraints</strong><br>
-                        <strong>Mike He</strong>, Haichen Dong, Sharad Malik, Aarti Gupta<br>
+                        <u>Mike He</u>, Haichen Dong, Sharad Malik, Aarti Gupta<br>
                         PLDI EGRAPHS 2023 Workshop<br>
                         <a href="./assets/papers/EGRAPHS2023.pdf">[Paper]</a> 
                         <br>
                         <br>
                         <strong>Application-Level Validation of Accelerator Designs Using a Formal Software/Hardware Interface</strong><br>
-                        Bo-Yuan Huang, Steven Lyubomirsky, Yi Li, <strong>Mike He</strong>, Thierry Tambe, Gus Henry Smith, Akash Gaonkar, Vishal Canumalla, Gu-Yeon Wei, Aarti Gupta, Zachary Tatlock, Sharad Malik
-                        <br>
+                        Bo-Yuan Huang<sup>*</sup>, Steven Lyubomirsky<sup>*</sup>, Yi Li, <u>Mike He</u>, Thierry Tambe, Gus Henry Smith, Akash Gaonkar, Vishal Canumalla, Gu-Yeon Wei, Aarti Gupta, Zachary Tatlock, Sharad Malik
+                        <br>(*: Equal
+                        contribution)<br>
                         <a href="https://arxiv.org/abs/2203.00218"> [Pre-print] </a> <br>
                         <br>
                         <strong>Dynamic Tensor Rematerialization</strong><br>
                         Marisa Kirisame<sup>*</sup>, Steven Lyubomirsky<sup>*</sup>, Altan Haan<sup>*</sup>,
                         Jennifer
                         Brennan,
-                        <strong>Mike He</strong>, Jared Roesch, Tianqi Chen, Zachary Tatlock.<br>(*: Equal
+                        <u>Mike He</u>, Jared Roesch, Tianqi Chen, Zachary Tatlock.<br>(*: Equal
                         contribution)<br>
                         Spotlight Paper at ICLR 2021<br>
                         <a href="https://arxiv.org/abs/2006.09616"> [ArXiv] </a> <br>
@@ -113,12 +131,13 @@
                         <strong>From DSLs to Accelerator-Rich Platform Implementations: Addressing the Mapping Gap</strong><br>
                         Bo-Yuan Huang<sup>*</sup>, Steven Lyubomirsky<sup>*</sup>, Thierry
                         Tambe<sup>*</sup>, Yi Li,
-                        <strong>Mike He</strong>, Gus Henry Smith, Gu-Yeon Wei, Aarti Gupta, Sharad Malik, Zachary
+                        <u>Mike He</u>, Gus Henry Smith, Gu-Yeon Wei, Aarti Gupta, Sharad Malik, Zachary
                         Tatlock.<br>(*:
                         Equal
                         contribution)<br>
                         ASPLOS LATTE 2021 Workshop
                     </div>
+                    <br>
                     <div class="wrapper">
                         <h4><u>Talks &amp; Presentations</u></h4>
                         <ul>
