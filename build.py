@@ -22,7 +22,7 @@ def get_personal_data():
                     <span style="font-weight: bold;">Awards:</span>
                     <ul>
                         <li>2022: CRA Outstanding Undergraduate Researcher Award, Honorable Mention</li>
-                        <li>2020: Lynn Conway Research Award</li>
+                        <li>2020: Lynn Conway Research Award (DTR Team)</li>
                     </ul>
                 </div>
                 </p>
