@@ -1,0 +1,276 @@
+from pybtex.database.input import bibtex
+
+def get_personal_data():
+    name = ["Mike", "He"]
+    email = "dh7120@cs.princeton.edu"
+    twitter = "1SHL10"
+    github = "AD1024"
+    linkedin = "deyuan-mike-he"
+    bio_text = f"""
+                <p>
+                    I am a second-year Ph.D. student at the <a target="_blank" href="https://www.cs.princeton.edu/"> Department of Computer Science</a>, Princeton University advised by Prof. <a target="_blank" href="https://www.cs.princeton.edu/~aartig/"> Aarti Gupta</a>. Before joining Princeton, I obtained my B.S. in Computer Science from <a target="_blank" href="https://cs.washington.edu">University of Washington</a>. I was fortunate to work with Prof. <a target="_blank" href="https://ztatlock.net/">Zachary Tatlock</a> on formal methods, machine learning systems and equality saturation. My research focuses on building accessible tools for enabling practical formal methods on real-world systems. 
+                </p>
+                <p>
+                    <a href="./assets/cv.pdf" target="_blank" style="margin-right: 5px"><i class="fa fa-address-card fa-lg"></i> CV</a>
+                    <a href="mailto:{email}" style="margin-right: 5px"><i class="far fa-envelope-open fa-lg"></i> Mail</a>
+                    <a href="https://twitter.com/{twitter}" target="_blank" style="margin-right: 5px"><i class="fab fa-twitter fa-lg"></i> Twitter</a>
+                    <a href="https://scholar.google.com/citations?user=dhtWqm8AAAAJ" target="_blank" style="margin-right: 5px"><i class="fa-solid fa-book"></i> Scholar</a>
+                    <a href="https://github.com/{github}" target="_blank" style="margin-right: 5px"><i class="fab fa-github fa-lg"></i> Github</a>
+                    <a href="https://www.linkedin.com/in/{linkedin}" target="_blank" style="margin-right: 5px"><i class="fab fa-linkedin fa-lg"></i> LinkedIn</a>
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#demo" data-toggle="collapse" style="margin-left: -6px; margin-top: -2px;"><i class="fa-solid fa-trophy"></i>Awards</button>
+                    <div id="demo" class="collapse">
+                    <span style="font-weight: bold;">Awards:</span>
+                    <ul>
+                        <li>2022: CRA Outstanding Undergraduate Researcher Award, Honorable Mention</li>
+                        <li>2020: Lynn Conway Research Award</li>
+                    </ul>
+                </div>
+                </p>
+    """
+    footer = """
+            <div class="col-sm-12" style="">
+                <h4>Misc</h4>
+                <ul>
+                    <li>I love classical music and enjoy playing the violin. I've been playing the violin for about 20 years.
+                     I obtained Lv.9 certification issued by the Central Conservatory of Music when I was in middle school.
+                    Here is a <a target="_blank" href="assets/Meditation.mp3">sample recording</a> (Meditation from Thais) made in Dec. 2023.
+                    Some other recordings are available @ <a target="_blank" href="https://space.bilibili.com/11936677">Bilibili</a> (the website is in Chinese).</li>
+                    <li>I was a part-time translator / proofreading editor in <a target="_blank" href="https://www.youtube.com/channel/UCoSrY_IQQVpmIRZ9Xf-y93g">Gawr Gura</a>'s Chinese fansub team. Gura is a virtual streamer at YouTube affiliated with <a target="_blank" href="https://en.hololive.tv/member">Hololive Production</a> (EN).</li>
+                </ul>
+                <img src="https://s11.flagcounter.com/count2/IatI/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/"/>
+                <p>
+                    This website is adapted from a template generously provided by <a target="_blank" href="https://m-niemeyer.github.io/">Michael Niemeyer</a>.
+                </p>
+            </div>
+    """
+    return name, bio_text, footer
+
+def get_author_dict():
+    return {
+        
+        }
+
+def generate_person_html(persons, connection=", ", make_bold=True, make_bold_name='Mike He', add_links=True):
+    links = get_author_dict() if add_links else {}
+    s = ""
+    for p in persons:
+        string_part_i = ""
+        for name_part_i in p.get_part('first') + p.get_part('last'): 
+            if string_part_i != "":
+                string_part_i += " "
+            string_part_i += name_part_i
+        if string_part_i in links.keys():
+            string_part_i = f'<a href="{links[string_part_i]}" target="_blank">{string_part_i}</a>'
+        if make_bold and string_part_i == make_bold_name:
+            string_part_i = f'<span style="font-weight: bold";>{make_bold_name}</span>'
+        if p != persons[-1]:
+            string_part_i += connection
+        s += string_part_i
+    return s
+
+def get_paper_entry(entry_key, entry):
+    s = """<div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3">"""
+    s += f"""<img src="{entry.fields['img']}" class="img-fluid img-thumbnail" alt="Project image">"""
+    s += """</div><div class="col-sm-9">"""
+
+    if 'award' in entry.fields.keys():
+        s += f"""<a href="{entry.fields['html']}" target="_blank">{entry.fields['title']}</a> <span style="color: red;">({entry.fields['award']})</span><br>"""
+    else:
+        s += f"""<a href="{entry.fields['html']}" target="_blank">{entry.fields['title']}</a> <br>"""
+
+    s += f"""{generate_person_html(entry.persons['author'])} <br>"""
+    s += f"""<span style="font-style: italic;">{entry.fields['booktitle']}</span>, {entry.fields['year']} <br>"""
+
+    artefacts = {'html': 'Project Page', 'pdf': 'Paper', 'supp': 'Supplemental', 'video': 'Video', 'poster': 'Poster', 'code': 'Code'}
+    i = 0
+    for (k, v) in artefacts.items():
+        if k in entry.fields.keys():
+            if i > 0:
+                s += ' / '
+            s += f"""<a href="{entry.fields[k]}" target="_blank">{v}</a>"""
+            i += 1
+        else:
+            print(f'[{entry_key}] Warning: Field {k} missing!')
+
+    cite = "<pre><code>@InProceedings{" + f"{entry_key}, \n"
+    cite += "\tauthor = {" + f"{generate_person_html(entry.persons['author'], make_bold=False, add_links=False, connection=' and ')}" + "}, \n"
+    for entr in ['title', 'booktitle', 'year']:
+        cite += f"\t{entr} = " + "{" + f"{entry.fields[entr]}" + "}, \n"
+    cite += """}</pre></code>"""
+    s += " /" + f"""<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{entry_key}" aria-expanded="false" aria-controls="collapseExample" style="margin-left: -6px; margin-top: -2px;">Expand bibtex</button><div class="collapse" id="collapse{entry_key}"><div class="card card-body">{cite}</div></div>"""
+    s += """ </div> </div> </div>"""
+    return s
+
+def get_talk_entry(entry_key, entry):
+    s = """<div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3">"""
+    s += f"""<img src="{entry.fields['img']}" class="img-fluid img-thumbnail" alt="Project image">"""
+    s += """</div><div class="col-sm-9">"""
+    s += f"""<strong>{entry.fields['title']}</strong><br>"""
+    s += f"""<span style="font-style: italic;">{entry.fields['booktitle']}</span>, {entry.fields['year']} <br>"""
+
+    artefacts = {'slides': 'Slides', 'video': 'Recording'}
+    i = 0
+    for (k, v) in artefacts.items():
+        if k in entry.fields.keys():
+            if i > 0:
+                s += ' / '
+            s += f"""<a href="{entry.fields[k]}" target="_blank">{v}</a>"""
+            i += 1
+        else:
+            print(f'[{entry_key}] Warning: Field {k} missing!')
+    s += """ </div> </div> </div>"""
+    return s
+
+def get_intern_entry(entry_key, entry):
+    s = """<div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3">"""
+    s += f"""<a target="_blank" href="{entry.fields['company_link']}" ><img src="{entry.fields['img']}" width=128 height=128 class="img-fluid img-thumbnail" alt="Project image"></a>"""
+    s += """</div><div class="col-sm-9">"""
+    s += f"""<strong>{entry.fields['title']}</strong><br>"""
+    s += f"""<span style="font-style: italic;">{entry.fields['booktitle']}</span>, {entry.fields['date']}<br>"""
+    if 'mentor' in entry.fields.keys():
+        if 'mentor_page' in entry.fields.keys():
+            s += f"""<a href="{entry.fields['mentor_page']}" target="_blank"><span class="badge badge-pill badge-primary">Mentor: {entry.fields['mentor']}</span></a>"""
+        else:
+            s += f"""<span class="badge badge-pill badge-primary">Mentor: {entry.fields['mentor']}</span>"""
+        s += "<br>"
+    if 'location' in entry.fields.keys():
+        s += f"""<span class="badge badge-pill badge-secondary">{entry.fields['location']}</span>"""
+    s += """ </div> </div> </div>"""
+    return s
+
+def get_publications_html():
+    parser = bibtex.Parser()
+    bib_data = parser.parse_file('publication_list.bib')
+    keys = bib_data.entries.keys()
+    s = ""
+    for k in keys:
+        s+= get_paper_entry(k, bib_data.entries[k])
+    return s
+
+def get_talks_html():
+    parser = bibtex.Parser()
+    bib_data = parser.parse_file('talk_list.bib')
+    keys = bib_data.entries.keys()
+    s = ""
+    for k in keys:
+        s+= get_talk_entry(k, bib_data.entries[k])
+    return s
+
+def get_internship_html():
+    parser = bibtex.Parser()
+    bib_data = parser.parse_file('internships.bib')
+    keys = bib_data.entries.keys()
+    s = ""
+    for k in keys:
+        s+= get_intern_entry(k, bib_data.entries[k])
+    return s
+
+def get_professional_activities_html():
+    activities = {
+        'Artifact Evaluation Committee': ["PLDI'24", "POPL'24", "MLSys'23", "MICRO'21"],
+        'Reviewer': []
+    }
+    s = """<ul>"""
+    for (k, v) in activities.items():
+        if v:
+            s += f"<li><span style='font-weight: bold;'>{k}</span>: {', '.join(v)}</li>"
+    s += """</ul>"""
+    return s
+
+def get_index_html():
+    pub = get_publications_html()
+    talks = get_talks_html()
+    name, bio_text, footer = get_personal_data()
+    s = f"""
+    <!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <title>{name[0] + ' ' + name[1]}</title>
+  <link rel="icon" type="image/x-icon" href="pictures/AD1024.png">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="row" style="margin-top: 3em;">
+                    <div class="col-sm-12" style="margin-bottom: 1em;">
+                    <h3 class="display-4" style="text-align: center;"><span style="font-weight: bold;">{name[0]}</span> {name[1]}</h3>
+                    </div>
+                    <br>
+                    <div class="col-md-10" style="">
+                        {bio_text}
+                    </div>
+                    <div class="col-md-2" style="">
+                        <img src="assets/img/photo.png" class="img-thumbnail" width="280px" alt="Profile picture">
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 1em;">
+                    <div class="col-sm-12" style="">
+                        <h4>Publications</h4>
+                        {pub}
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 1em;">
+                    <div class="col-sm-12" style="">
+                        <h4>Experience</h4>
+                        {get_internship_html()}
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 3em;">
+                    <div class="col-sm-12" style="">
+                        <h4>Talks</h4>
+                        {talks}
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 3em;">
+                    <div class="col-sm-12" style="">
+                        <h4>Professional Activities</h4>
+                        {get_professional_activities_html()}
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 3em; margin-bottom: 1em;">
+                    {footer}
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div?
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+</body>
+
+</html>
+    """
+    return s
+
+
+def write_index_html(filename='index.html'):
+    s = get_index_html()
+    with open(filename, 'w') as f:
+        f.write(s)
+    print(f'Written index content to {filename}.')
+
+if __name__ == '__main__':
+    write_index_html('index.html')
