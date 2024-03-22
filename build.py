@@ -23,6 +23,9 @@ def get_personal_data():
                     <ul>
                         <li>2022: <a target="_blank" href="https://news.cs.washington.edu/2022/02/22/allen-school-undergraduates-recognized-by-the-computing-research-association-for-advancing-health-sensing-programming-languages-and-systems-research/">CRA Outstanding Undergraduate Researcher Award, Honorable Mention</a></li>
                         <li>2020: Lynn Conway Research Award (DTR Team)</li>
+                        <li>2019: JASSO Scholarship, Waseda University</li>
+                        <li>2018 &rarr; 2022: Annual Dean's List, University of Washington</li>
+                        <li>2016: NOIp 2nd Prize, Beijing Regional</li>
                     </ul>
                 </div>
                 </p>
@@ -138,8 +141,8 @@ def get_intern_entry(entry_key, entry):
 </a>
 </div>"""
     s += """</div><div class="col-sm-9">"""
-    s += f"""<strong>{entry.fields['title']}</strong><br>"""
-    s += f"""<span style="font-style: italic;">{entry.fields['booktitle']}</span>, {entry.fields['date']}<br>"""
+    s += f"""<strong>{entry.fields['company']}</strong>, {entry.fields['start_date']} &rarr; {entry.fields['end_date']}<br>"""
+    s += f"""<span style="font-style: italic;">{entry.fields['position']}</span><br>"""
     if 'mentor' in entry.fields.keys():
         if 'mentor_page' in entry.fields.keys():
             s += f"""<a href="{entry.fields['mentor_page']}" target="_blank"><span class="badge badge-pill badge-primary">Mentor: {entry.fields['mentor']}</span></a>"""
