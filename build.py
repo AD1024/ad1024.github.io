@@ -8,7 +8,7 @@ def get_personal_data():
     linkedin = "deyuan-mike-he"
     bio_text = f"""
                 <p>
-                    I am a second-year Ph.D. student at the <a target="_blank" href="https://www.cs.princeton.edu/"> Department of Computer Science</a>, Princeton University advised by Prof. <a target="_blank" href="https://www.cs.princeton.edu/~aartig/"> Aarti Gupta</a>. Before joining Princeton, I obtained my B.S. in Computer Science from <a target="_blank" href="https://cs.washington.edu">University of Washington</a>. I was fortunate to work with Prof. <a target="_blank" href="https://ztatlock.net/">Zachary Tatlock</a> on formal methods, machine learning systems and equality saturation. My research focuses on building accessible tools for enabling practical formal methods on real-world systems. 
+                    I am a second-year Ph.D. student at the <a target="_blank" href="https://www.cs.princeton.edu/"> Department of Computer Science</a>, Princeton University advised by Prof. <a target="_blank" href="https://www.cs.princeton.edu/~aartig/"> Aarti Gupta</a>. Before joining Princeton, I received my B.S. in Computer Science from the <a target="_blank" href="https://cs.washington.edu">University of Washington</a>. I was fortunate to work with Prof. <a target="_blank" href="https://ztatlock.net/">Zachary Tatlock</a> on formal methods, machine learning systems and equality saturation. My research focuses on building accessible tools for enabling practical formal methods on real-world systems. 
                 </p>
                 <p>
                     <a href="./assets/cv.pdf" target="_blank" style="margin-right: 5px"><i class="fa fa-address-card fa-lg"></i> CV</a>
