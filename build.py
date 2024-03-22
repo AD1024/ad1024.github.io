@@ -48,13 +48,36 @@ def get_personal_data():
     """
     return name, bio_text, footer
 
-def get_author_dict():
-    return {
-        
-        }
+def get_author_link(author):
+    author = ''.join(filter(lambda x: x.isalpha() or x in (' ', '-', '.'), author))
+    author = author.lower()
+    d = {
+        'Mike He': 'https://www.cs.princeton.edu/~dh7120/',
+        'Deyuan He': 'https://www.cs.princeton.edu/~dh7120/',
+        'Zachary Tatlock': 'https://ztatlock.net/',
+        'Aarti Gupta': 'https://www.cs.princeton.edu/~aartig/',
+        'Sharad Malik': 'https://www.princeton.edu/~sharad/',  
+        'Haichen Dong': 'https://haichendong.com/',
+        'Gus Smith': 'https://justg.us/',
+        'Vishal Canumalla': 'https://vcanumalla.github.io/',
+        'Steven Lyubomirsky': 'https://slyubomirsky.github.io/',
+        'Marisa Kirisame': 'https://marisa.moe/',
+        'Jennifer Brennan': 'https://jenniferbrennan.github.io/',
+        'Yi Li': 'https://ece.princeton.edu/people/yi-li',
+        'Gu-Yeon Wei': 'https://seas.harvard.edu/person/gu-yeon-wei',
+        'Thierry Tambe': 'https://thierrytambe.com/',
+        'Jared Roesch': 'https://jroesch.github.io/',
+        'Tianqi Chen': 'https://tqchen.com/',
+        'Bo-yuan Huang': 'https://boyuanhuang.com/',
+        'Akash Gaonkar': 'https://scholar.google.com/citations?user=Ccvj2usAAAAJ&hl=en',
+        'Altan Haan': 'https://altanh.com/',
+    }
+    d = {
+        k.lower(): v for k, v in d.items()
+    }
+    return d.get(author)
 
 def generate_person_html(persons, connection=", ", make_bold=True, make_bold_name='Mike He', add_links=True):
-    links = get_author_dict() if add_links else {}
     s = ""
     for p in persons:
         string_part_i = ""
@@ -62,8 +85,10 @@ def generate_person_html(persons, connection=", ", make_bold=True, make_bold_nam
             if string_part_i != "":
                 string_part_i += " "
             string_part_i += name_part_i
-        if string_part_i in links.keys():
-            string_part_i = f'<a href="{links[string_part_i]}" target="_blank">{string_part_i}</a>'
+        if add_links:
+            link = get_author_link(string_part_i)
+            if link and add_links:
+                string_part_i = f'<a href="{link}" target="_blank">{string_part_i}</a>'
         if make_bold and string_part_i == make_bold_name:
             string_part_i = f'<span style="font-weight: bold";>{make_bold_name}</span>'
         if p != persons[-1]:
@@ -77,9 +102,9 @@ def get_paper_entry(entry_key, entry):
     s += """</div><div class="col-sm-9">"""
 
     if 'award' in entry.fields.keys():
-        s += f"""<a href="{entry.fields['html']}" target="_blank">{entry.fields['title']}</a> <span style="color: red;">({entry.fields['award']})</span><br>"""
+        s += f"""<a style="font-size: 13pt" href="{entry.fields['html']}" target="_blank"><strong>{entry.fields['title']}</strong></a> <span style="color: red;">({entry.fields['award']})</span><br>"""
     else:
-        s += f"""<a href="{entry.fields['html']}" target="_blank">{entry.fields['title']}</a> <br>"""
+        s += f"""<a style="font-size: 13pt" href="{entry.fields['html']}" target="_blank"><strong>{entry.fields['title']}</strong></a> <br>"""
 
     s += f"""{generate_person_html(entry.persons['author'])} <br>"""
     s += f"""<span style="font-style: italic;">{entry.fields['booktitle']}</span>, {entry.fields['year']} <br>"""
@@ -221,6 +246,16 @@ def get_index_html():
 
   <title>{name[0] + ' ' + name[1]}</title>
   <link rel="icon" type="image/x-icon" href="pictures/AD1024.png">
+  <style>
+  a {{
+  text-decoration: underline solid transparent;
+  transition: text-decoration 0.3s ease;
+}}
+
+a:hover {{
+  text-decoration: underline solid Currentcolor;
+}}
+  </style>
 </head>
 
 <body>
@@ -243,6 +278,7 @@ def get_index_html():
                 <div class="row" style="margin-top: 1em;">
                     <div class="col-sm-12" style="">
                         <h4>Publications</h4>
+                        <div><p>(*: Equal contribution)</p></div>
                         {pub}
                     </div>
                 </div>
