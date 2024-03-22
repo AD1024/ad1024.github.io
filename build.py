@@ -11,15 +11,15 @@ def get_personal_data():
                     I am a second-year Ph.D. student at the <a target="_blank" href="https://www.cs.princeton.edu/"> Department of Computer Science</a>, Princeton University advised by Prof. <a target="_blank" href="https://www.cs.princeton.edu/~aartig/"> Aarti Gupta</a>. Before joining Princeton, I received my B.S. in Computer Science from the <a target="_blank" href="https://cs.washington.edu">University of Washington</a>. I was fortunate to work with Prof. <a target="_blank" href="https://ztatlock.net/">Zachary Tatlock</a> on formal methods, machine learning systems and equality saturation. My research focuses on building accessible tools for enabling practical formal methods on real-world systems. 
                 </p>
                 <p>
-                    <a href="./assets/cv.pdf" target="_blank" style="margin-right: 5px"><i class="fa fa-address-card fa-lg"></i> CV</a>
-                    <a href="mailto:{email}" style="margin-right: 5px"><i class="far fa-envelope-open fa-lg"></i> Mail</a>
-                    <a href="https://twitter.com/{twitter}" target="_blank" style="margin-right: 5px"><i class="fab fa-twitter fa-lg"></i> Twitter</a>
-                    <a href="https://scholar.google.com/citations?user=dhtWqm8AAAAJ" target="_blank" style="margin-right: 5px"><i class="fa-solid fa-book"></i> Scholar</a>
-                    <a href="https://github.com/{github}" target="_blank" style="margin-right: 5px"><i class="fab fa-github fa-lg"></i> Github</a>
-                    <a href="https://www.linkedin.com/in/{linkedin}" target="_blank" style="margin-right: 5px"><i class="fab fa-linkedin fa-lg"></i> LinkedIn</a>
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#demo" data-toggle="collapse" style="margin-left: -6px; margin-top: -2px;"><i class="fa-solid fa-trophy"></i>Awards</button>
+                    <a class="btn btn-link" type="button" href="./assets/cv.pdf" target="_blank" style="margin-right: 5px"><i class="fa fa-address-card fa-lg"></i> CV</a>
+                    <a class="btn btn-link" type="button" href="mailto:{email}" style="margin-right: 5px"><i class="far fa-envelope-open fa-lg"></i> Mail</a>
+                    <a class="btn btn-link" type="button" href="https://twitter.com/{twitter}" target="_blank" style="margin-right: 5px"><i class="fab fa-twitter fa-lg"></i> Twitter</a>
+                    <a class="btn btn-link" type="button" href="https://scholar.google.com/citations?user=dhtWqm8AAAAJ" target="_blank" style="margin-right: 5px"><i class="fa-solid fa-book"></i> Scholar</a>
+                    <a class="btn btn-link" type="button" href="https://github.com/{github}" target="_blank" style="margin-right: 5px"><i class="fab fa-github fa-lg"></i> Github</a>
+                    <a class="btn btn-link" type="button" href="https://www.linkedin.com/in/{linkedin}" target="_blank" style="margin-right: 5px"><i class="fab fa-linkedin fa-lg"></i> LinkedIn</a>
+                    <button data-mdb-ripple-init data-mdb-ripple-color="grey" class="btn btn-link" type="button" data-toggle="collapse" data-target="#demo" data-toggle="collapse"><i class="fa-solid fa-trophy"></i>Awards</button>
                     <div id="demo" class="collapse">
-                    <span style="font-weight: bold;">Awards:</span>
+                    <!-- <span style="font-weight: bold;">Awards:</span> -->
                     <ul>
                         <li>2022: <a target="_blank" href="https://news.cs.washington.edu/2022/02/22/allen-school-undergraduates-recognized-by-the-computing-research-association-for-advancing-health-sensing-programming-languages-and-systems-research/">CRA Outstanding Undergraduate Researcher Award, Honorable Mention</a></li>
                         <li>2020: Lynn Conway Research Award (DTR Team)</li>
@@ -85,9 +85,9 @@ def get_paper_entry(entry_key, entry):
     i = 0
     for (k, v) in artefacts.items():
         if k in entry.fields.keys():
-            if i > 0:
-                s += ' / '
-            s += f"""<a href="{entry.fields[k]}" target="_blank">{v}</a>"""
+            # if i > 0:
+            #     s += ' / '
+            s += f"""<a class="btn btn-link" type="button" href="{entry.fields[k]}" target="_blank">{v}</a>"""
             i += 1
         else:
             print(f'[{entry_key}] Warning: Field {k} missing!')
@@ -97,7 +97,7 @@ def get_paper_entry(entry_key, entry):
     for entr in ['title', 'booktitle', 'year']:
         cite += f"\t{entr} = " + "{" + f"{entry.fields[entr]}" + "}, \n"
     cite += """}</pre></code>"""
-    s += " /" + f"""<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{entry_key}" aria-expanded="false" aria-controls="collapseExample" style="margin-left: -6px; margin-top: -2px;">Expand bibtex</button><div class="collapse" id="collapse{entry_key}"><div class="card card-body">{cite}</div></div>"""
+    s += f"""<button data-mdb-ripple-init data-mdb-ripple-color="pink" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{entry_key}" aria-expanded="false" aria-controls="collapseExample" style="margin-left: -6px; margin-top: -2px;">Expand bibtex</button><div class="collapse" id="collapse{entry_key}"><div class="card card-body">{cite}</div></div>"""
     s += """ </div> </div> </div>"""
     return s
 
@@ -123,7 +123,20 @@ def get_talk_entry(entry_key, entry):
 
 def get_intern_entry(entry_key, entry):
     s = """<div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3">"""
-    s += f"""<a target="_blank" href="{entry.fields['company_link']}" ><img src="{entry.fields['img']}" width=128 height=128 class="img-fluid img-thumbnail" alt="Project image"></a>"""
+    s += f"""<div
+  class="bg-image hover-overlay shadow-1-strong rounded"
+  style="height: 128px; width: 128px;"
+  data-mdb-ripple-init
+  data-mdb-ripple-color="light"
+><img src="{entry.fields['img']}" width=128 height=128 class="img-fluid img-thumbnail" alt="company logo">
+<a target="_blank" href="{entry.fields['company_link']}">
+    <div class="mask" style="background: linear-gradient(
+        45deg,
+        hsla(168, 85%, 52%, 0.5),
+        hsla(263, 88%, 45%, 0.5) 100%
+      );"></div>
+</a>
+</div>"""
     s += """</div><div class="col-sm-9">"""
     s += f"""<strong>{entry.fields['title']}</strong><br>"""
     s += f"""<span style="font-style: italic;">{entry.fields['booktitle']}</span>, {entry.fields['date']}<br>"""
@@ -191,8 +204,16 @@ def get_index_html():
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.min.css"
+  rel="stylesheet"
+/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <title>{name[0] + ' ' + name[1]}</title>
@@ -259,6 +280,7 @@ def get_index_html():
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.umd.min.js"></script>
 </body>
 
 </html>
