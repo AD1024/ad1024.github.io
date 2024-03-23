@@ -1,5 +1,41 @@
 from pybtex.database.input import bibtex
 
+def friends():
+    # last entry is the color for badges
+    info_list = [
+        ('Yinsen (Tesla) Zhang', 'https://ice1000.org/', 'CMU', 'danger'),
+        ('Marisa Kirisame', 'https://marisa.moe/', 'Utah', 'danger'),
+        ('Yihong Zhang', 'https://effect.systems/', 'UW', 'primary'),
+        ('Yinwei Dai', 'https://yinwei-dai.com/', 'Princeton', 'warning'),
+        ('Haichen Dong', 'https://haichendong.com/', 'Princeton', 'warning'),
+        ('Gus Smith', 'https://justg.us/', 'UW', 'primary'),
+        ('Vishal Canumalla', 'https://vcanumalla.github.io/', 'Stanford', 'danger'),
+        ('Steven Lyubomirsky', 'https://slyubomirsky.github.io/', 'OctoML', 'primary'),
+        ('Altan Haan', 'https://altanh.com/', 'UC Berkeley', 'primary'),
+        ('Guanghao Ye', 'https://yeguanghao.xyz/', 'MIT', 'dark'),
+        ('Yi Li', 'https://ece.princeton.edu/people/yi-li', 'Princeton', 'warning'),
+        ('Muru Zhang', 'https://nanami18.github.io/', 'UW', 'primary'),
+        ('Shaoqi Wang', 'https://www.linkedin.com/in/shaoqiw/', 'NEU', 'danger'),
+        ('Thierry Tambe', 'https://thierrytambe.com/', 'Stanford', 'danger'),
+    ]
+    info_list = sorted(info_list, key=lambda x: x[0].split()[-1])
+    return info_list
+
+def gen_friend_list_html():
+    friend_list = friends()
+    s = []
+    for (name, link, school, color) in friend_list:
+        content = f"""
+<li class="list-group-item d-flex justify-content-between align-items-center">
+    <div>
+      <div class="fw-bold">{name}</div>
+      <a target="_blank" href="{link}" class="text-muted">{link}</a>
+    </div>
+    <span class="badge rounded-pill badge-{color}">{school}</span>
+  </li>"""
+        s.append(content)
+    return ''.join(s[:len(s) // 2]), ''.join(s[len(s) // 2:])
+
 def get_personal_data():
     name = ["Mike", "He"]
     email = "dh7120@cs.princeton.edu"
@@ -30,7 +66,8 @@ def get_personal_data():
                 </div>
                 </p>
     """
-    footer = """
+    friend_first_half, friend_second_half = gen_friend_list_html()
+    footer = f"""
             <div class="col-sm-12" style="">
                 <h4>Misc</h4>
                 <ul>
@@ -40,6 +77,17 @@ def get_personal_data():
                     Some other recordings are available @ <a target="_blank" href="https://space.bilibili.com/11936677">Bilibili</a> (the website is in Chinese).</li>
                     <li>I was a part-time translator / proofreading editor in <a target="_blank" href="https://www.youtube.com/channel/UCoSrY_IQQVpmIRZ9Xf-y93g">Gawr Gura</a>'s Chinese fansub team. Gura is a virtual streamer at YouTube affiliated with <a target="_blank" href="https://en.hololive.tv/member">Hololive Production</a> (EN).</li>
                 </ul>
+                <h4>Friends (by alphabetical order of last names)</h4>
+                <div class="row justify-content-center pe-3 ps-3">
+                    <ul class="col-sm-5 list-group list-group-light">
+                        {friend_first_half}
+                    </ul>
+                    <ul class="col-sm-5 list-group list-group-light">
+                        {friend_second_half}
+                    </ul>
+                </div>
+                <hr/>
+                <h4>Visitors are welcomed!</h4>
                 <img src="https://s11.flagcounter.com/count2/IatI/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/"/>
                 <p>
                     This website is adapted from a template generously provided by <a target="_blank" href="https://m-niemeyer.github.io/">Michael Niemeyer</a>.
@@ -52,7 +100,6 @@ def get_author_link(author):
     author = ''.join(filter(lambda x: x.isalpha() or x in (' ', '-', '.'), author))
     author = author.lower()
     d = {
-        'Mike He': 'https://www.cs.princeton.edu/~dh7120/',
         'Deyuan He': 'https://www.cs.princeton.edu/~dh7120/',
         'Zachary Tatlock': 'https://ztatlock.net/',
         'Aarti Gupta': 'https://www.cs.princeton.edu/~aartig/',
@@ -260,7 +307,7 @@ a:hover {{
 
 <body>
     <div class="container">
-        <div class="row">
+        <div class="row ps-2 pe-2">
             <div class="col-md-1"></div>
             <div class="col-md-10">
                 <div class="row" style="margin-top: 3em;">
