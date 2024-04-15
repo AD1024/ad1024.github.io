@@ -13,7 +13,7 @@ def friends():
         ('Steven Lyubomirsky', 'https://slyubomirsky.github.io/', 'OctoML', 'primary'),
         ('Altan Haan', 'https://altanh.com/', 'UC Berkeley', 'primary'),
         ('Guanghao Ye', 'https://yeguanghao.xyz/', 'MIT', 'dark'),
-        ('Yi Li', 'https://ece.princeton.edu/people/yi-li', 'Princeton', 'warning'),
+        ('Yi Li', 'https://ece.princeton.edu/people/yi-li', 'Meta', 'primary'),
         ('Muru Zhang', 'https://nanami18.github.io/', 'UW', 'primary'),
         ('Shaoqi Wang', 'https://www.linkedin.com/in/shaoqiw/', 'NEU', 'danger'),
         ('Thierry Tambe', 'https://thierrytambe.com/', 'Stanford', 'danger'),
