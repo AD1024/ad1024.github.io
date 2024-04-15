@@ -17,6 +17,7 @@ def friends():
         ('Muru Zhang', 'https://nanami18.github.io/', 'UW', 'primary'),
         ('Shaoqi Wang', 'https://www.linkedin.com/in/shaoqiw/', 'NEU', 'danger'),
         ('Thierry Tambe', 'https://thierrytambe.com/', 'Stanford', 'danger'),
+        ('Hobart Yang', 'https://discover304.top/', 'Edinburgh', 'primary'),
     ]
     info_list = sorted(info_list, key=lambda x: x[0].split()[-1])
     return info_list
