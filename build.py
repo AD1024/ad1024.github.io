@@ -258,7 +258,8 @@ def get_internship_html():
 def get_professional_activities_html():
     activities = {
         'Artifact Evaluation Committee': ["PLDI'24", "POPL'24", "MLSys'23", "MICRO'21"],
-        'Reviewer': []
+        'External Reviewer': ["OOPSLA'24"],
+        'PC': []
     }
     s = """<ul>"""
     for (k, v) in activities.items():
