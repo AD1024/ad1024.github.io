@@ -1,7 +1,7 @@
 from pybtex.database.input import bibtex
 
 def friends():
-    # last entry is the color for badges
+    # last entry is the color for badges colors
     info_list = [
         ('Yinsen (Tesla) Zhang', 'https://ice1000.org/', 'CMU', 'danger'),
         ('Marisa Kirisame', 'https://marisa.moe/', 'Utah', 'danger'),
@@ -17,7 +17,11 @@ def friends():
         ('Muru Zhang', 'https://nanami18.github.io/', 'UW', 'primary'),
         ('Shaoqi Wang', 'https://www.linkedin.com/in/shaoqiw/', 'NEU', 'danger'),
         ('Thierry Tambe', 'https://thierrytambe.com/', 'Stanford', 'danger'),
-        ('Hobart Yang', 'https://discover304.top/', 'Edinburgh', 'primary'),
+        ('Federico Mora Rocha', 'https://federico.morarocha.ca/', 'UC Berkeley', 'primary'),
+        ('Zhe Zhou', 'https://zhezhouzz.github.io/', 'Purdue', 'dark'),
+        ('Yifan Zhu', 'https://www.cs.rochester.edu/~yzhu104/Main.html', 'Rochester', 'primary'),
+        ('Yuyou Fan', 'https://www.linkedin.com/in/yuyou-fan-58085a18b', 'Utah', 'danger'),
+        ('Hobart Yang', 'https://discover304.top/', 'MBZUAI', 'light'), # reverted for pending affiliation
     ]
     info_list = sorted(info_list, key=lambda x: x[0].split()[-1])
     return info_list
@@ -45,7 +49,7 @@ def get_personal_data():
     linkedin = "deyuan-mike-he"
     bio_text = f"""
                 <p>
-                    I am a 2nd-year Ph.D. candidate at the <a target="_blank" href="https://www.cs.princeton.edu/"> Department of Computer Science</a>, Princeton University advised by Prof. <a target="_blank" href="https://www.cs.princeton.edu/~aartig/"> Aarti Gupta</a>. I also obtained a M.A. in Computer Science from Princeton University. Before joining Princeton, I received my B.S. in Computer Science from the <a target="_blank" href="https://cs.washington.edu">University of Washington</a>. I was fortunate to work with Prof. <a target="_blank" href="https://ztatlock.net/">Zachary Tatlock</a> on formal methods, machine learning systems and equality saturation. My research focuses on building accessible tools for enabling practical formal methods on real-world systems. Specifically, I am working on verification infrastructures for distributed systems. 
+                    I am a 3rd-year Ph.D. at the <a target="_blank" href="https://www.cs.princeton.edu/"> Department of Computer Science</a>, Princeton University advised by Prof. <a target="_blank" href="https://www.cs.princeton.edu/~aartig/"> Aarti Gupta</a>. I also obtained a M.A. in Computer Science from Princeton University. Before joining Princeton, I received my B.S. in Computer Science from the <a target="_blank" href="https://cs.washington.edu">University of Washington</a>. I was fortunate to work with Prof. <a target="_blank" href="https://ztatlock.net/">Zachary Tatlock</a> on formal methods, machine learning systems and equality saturation. My research focuses on building accessible tools for enabling practical formal methods on real-world systems. Specifically, I am working on verification infrastructures for distributed systems. 
                 </p>
                 <p>
                     <a class="btn btn-link" type="button" href="./assets/cv.pdf" target="_blank" style="margin-right: 5px"><i class="fa fa-address-card fa-lg"></i> CV</a>
@@ -79,7 +83,7 @@ def get_personal_data():
                     <li>I was a part-time translator / proofreading editor in <a target="_blank" href="https://www.youtube.com/channel/UCoSrY_IQQVpmIRZ9Xf-y93g">Gawr Gura</a>'s Chinese fansub team. Gura is a virtual streamer at YouTube affiliated with <a target="_blank" href="https://en.hololive.tv/member">Hololive Production</a> (EN).</li>
                     <li>My Erdős number is 4</li>
                 </ul>
-                <h4>Friends (by alphabetical order of last names)</h4>
+                <h4>Friends and Colleagues (by alphabetical order of last names)</h4>
                 <div class="row justify-content-center pe-3 ps-3">
                     <ul class="col-sm-5 list-group list-group-light">
                         {friend_first_half}
