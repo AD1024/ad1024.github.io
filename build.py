@@ -331,7 +331,7 @@ a:hover {{
                 </div>
                 <div class="row" style="margin-top: 1em;">
                     <div class="col-sm-12" style="">
-                        <h4>Publications</h4>
+                        <h4>Publications &amp; Workshops</h4>
                         <div><p>(*: Equal contribution)</p></div>
                         {pub}
                     </div>
