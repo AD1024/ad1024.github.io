@@ -261,7 +261,7 @@ def get_internship_html():
 
 def get_professional_activities_html():
     activities = {
-        'Artifact Evaluation Committee': ["PLDI'24", "POPL'24", "MLSys'23", "MICRO'21"],
+        'Artifact Evaluation Committee': ["POPL'25", "PLDI'24", "POPL'24", "MLSys'23", "MICRO'21"],
         'External Reviewer': ["OOPSLA'24"],
         'PC': []
     }
