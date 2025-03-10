@@ -22,6 +22,7 @@ def friends():
         ('Yifan Zhu', 'https://www.cs.rochester.edu/~yzhu104/Main.html', 'Rochester', 'primary'),
         ('Yuyou Fan', 'https://www.linkedin.com/in/yuyou-fan-58085a18b', 'Utah', 'danger'),
         ('Hobart Yang', 'https://discover304.top/', 'MBZUAI', 'light'), # reverted for pending affiliation
+        ('Chenyu Zhou', 'https://self.shiroha.info/', 'USC', 'danger')
     ]
     info_list = sorted(info_list, key=lambda x: x[0].split()[-1])
     return info_list
