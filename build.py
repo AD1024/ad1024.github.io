@@ -112,6 +112,7 @@ def get_author_link(author):
         'Aarti Gupta': 'https://www.cs.princeton.edu/~aartig/',
         'Sharad Malik': 'https://www.princeton.edu/~sharad/',  
         'Haichen Dong': 'https://haichendong.com/',
+        'Gus Henry Smith': 'https://justg.us/',
         'Gus Smith': 'https://justg.us/',
         'Vishal Canumalla': 'https://vcanumalla.github.io/',
         'Steven Lyubomirsky': 'https://slyubomirsky.github.io/',
@@ -125,6 +126,12 @@ def get_author_link(author):
         'Bo-yuan Huang': 'https://boyuanhuang.com/',
         'Akash Gaonkar': 'https://scholar.google.com/citations?user=Ccvj2usAAAAJ&hl=en',
         'Altan Haan': 'https://altanh.com/',
+        'Ankush Desai': 'https://ankushdesai.github.io/',
+        'Aishwarya Jagarapu': 'https://www.linkedin.com/in/aishwarya-jagarapu/',
+        'Doug Terry': 'https://www.amazon.science/author/douglas-terry',
+        'Andrew Cheung': 'https://ninehusky.github.io/',
+        'Scale AI': 'https://scale.com/',
+        'Center for AI Safety': 'https://safe.ai/',
     }
     d = {
         k.lower(): v for k, v in d.items()
@@ -135,7 +142,7 @@ def generate_person_html(persons, connection=", ", make_bold=True, make_bold_nam
     s = ""
     for p in persons:
         string_part_i = ""
-        for name_part_i in p.get_part('first') + p.get_part('last'): 
+        for name_part_i in p.get_part('first') + p.get_part('prelast') + p.get_part('middle') + p.get_part('last') + p.get_part('lineage'): 
             if string_part_i != "":
                 string_part_i += " "
             string_part_i += name_part_i
@@ -156,9 +163,9 @@ def get_paper_entry(entry_key, entry):
     s += """</div><div class="col-sm-9">"""
 
     if 'award' in entry.fields.keys():
-        s += f"""<a style="font-size: 13pt" href="{entry.fields['html']}" target="_blank"><strong>{entry.fields['title']}</strong></a> <span style="color: red;">({entry.fields['award']})</span><br>"""
+        s += f"""<a style="font-size: 13pt" href="{entry.fields.get('html', '')}" target="_blank"><strong>{entry.fields['title']}</strong></a> <span style="color: red;">({entry.fields['award']})</span><br>"""
     else:
-        s += f"""<a style="font-size: 13pt" href="{entry.fields['html']}" target="_blank"><strong>{entry.fields['title']}</strong></a> <br>"""
+        s += f"""<a style="font-size: 13pt" href="{entry.fields.get('html', '')}" target="_blank"><strong>{entry.fields['title']}</strong></a> <br>"""
 
     s += f"""{generate_person_html(entry.persons['author'])} <br>"""
     s += f"""<span style="font-style: italic;">{entry.fields['booktitle']}</span>, {entry.fields['year']} <br>"""
@@ -262,6 +269,7 @@ def get_internship_html():
 
 def get_professional_activities_html():
     activities = {
+        'Reviewer': ["IEEE Transactions on Mobile Computing", "Software Impacts"],
         'Artifact Evaluation Committee': ["POPL'25", "PLDI'24", "POPL'24", "MLSys'23", "MICRO'21"],
         'Sub-reviewer': ["OOPSLA'24"],
         'PC': []
@@ -332,7 +340,7 @@ a:hover {{
                 </div>
                 <div class="row" style="margin-top: 1em;">
                     <div class="col-sm-12" style="">
-                        <h4>Publications &amp; Workshops</h4>
+                        <h4>Publications &amp; Pre-prints</h4>
                         <div><p>(*: Equal contribution)</p></div>
                         {pub}
                     </div>
