@@ -335,7 +335,7 @@ a:hover {{
                         {bio_text}
                     </div>
                     <div class="col-md-2" style="">
-                        <img src="assets/img/photo.png" class="img-thumbnail" width="280px" alt="Profile picture">
+                        <img src="assets/img/photo_2025.jpg" class="img-thumbnail" width="280px" alt="Profile picture">
                     </div>
                 </div>
                 <div class="row" style="margin-top: 1em;">
