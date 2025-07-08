@@ -132,6 +132,7 @@ def get_author_link(author):
         'Andrew Cheung': 'https://ninehusky.github.io/',
         'Scale AI': 'https://scale.com/',
         'Center for AI Safety': 'https://safe.ai/',
+        'Zhendong Ang': 'https://ang9876.github.io/',
     }
     d = {
         k.lower(): v for k, v in d.items()
@@ -181,7 +182,7 @@ def get_paper_entry(entry_key, entry):
         else:
             print(f'[{entry_key}] Warning: Field {k} missing!')
 
-    cite = "<pre><code>@InProceedings{" + f"{entry_key}, \n"
+    cite = "<pre><code>@article{" + f"{entry_key}, \n"
     cite += "\tauthor = {" + f"{generate_person_html(entry.persons['author'], make_bold=False, add_links=False, connection=' and ')}" + "}, \n"
     for entr in ['title', 'booktitle', 'year']:
         cite += f"\t{entr} = " + "{" + f"{entry.fields[entr]}" + "}, \n"
