@@ -19,7 +19,7 @@ def friends():
         ('Thierry Tambe', 'https://thierrytambe.com/', 'Stanford', 'danger'),
         ('Federico Mora Rocha', 'https://federico.morarocha.ca/', 'UC Berkeley', 'primary'),
         ('Zhe Zhou', 'https://zhezhouzz.github.io/', 'Purdue', 'dark'),
-        ('Yifan Zhu', 'https://www.cs.rochester.edu/~yzhu104/Main.html', 'Rochester', 'primary'),
+        ('Yifan Zhu', 'https://www.cs.rochester.edu/~yzhu104/', 'UofR', 'primary'),
         ('Yuyou Fan', 'https://www.linkedin.com/in/yuyou-fan-58085a18b', 'Utah', 'danger'),
         ('Hobart Yang', 'https://discover304.top/', 'MBZUAI', 'light'), # reverted for pending affiliation
         ('Chenyu Zhou', 'https://self.shiroha.info/', 'USC', 'danger')
