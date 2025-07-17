@@ -253,6 +253,15 @@ def get_publications_html():
         s+= get_paper_entry(k, bib_data.entries[k])
     return s
 
+def get_workshop_html():
+    parser = bibtex.Parser()
+    bib_data = parser.parse_file('workshops.bib')
+    keys = bib_data.entries.keys()
+    s = ""
+    for k in keys:
+        s+= get_paper_entry(k, bib_data.entries[k])
+    return s
+
 def get_talks_html():
     parser = bibtex.Parser()
     bib_data = parser.parse_file('talk_list.bib')
@@ -347,6 +356,13 @@ a:hover {{
                         <h4>Publications &amp; Pre-prints</h4>
                         <div><p>(*: Equal contribution)</p></div>
                         {pub}
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 1em;">
+                    <div class="col-sm-12" style="">
+                        <h4>Workshops</h4>
+                        <div><p>(*: Equal contribution)</p></div>
+                        {get_workshop_html()}
                     </div>
                 </div>
                 <div class="row" style="margin-top: 1em;">
