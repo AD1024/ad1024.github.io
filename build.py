@@ -360,7 +360,7 @@ a:hover {{
                 </div>
                 <div class="row" style="margin-top: 1em;">
                     <div class="col-sm-12" style="">
-                        <h4>Workshops</h4>
+                        <h4>Workshops / Misc</h4>
                         <div><p>(*: Equal contribution)</p></div>
                         {get_workshop_html()}
                     </div>
