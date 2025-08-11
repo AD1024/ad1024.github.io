@@ -8,7 +8,7 @@ def friends():
         ('Yihong Zhang', 'https://effect.systems/', 'UW', 'primary'),
         ('Yinwei Dai', 'https://yinwei-dai.com/', 'Princeton', 'warning'),
         ('Haichen Dong', 'https://haichendong.com/', 'Princeton', 'warning'),
-        ('Gus Smith', 'https://justg.us/', 'UW', 'primary'),
+        ('Gus Smith', 'https://justg.us/', 'Chipstack', 'primary'),
         ('Vishal Canumalla', 'https://vcanumalla.github.io/', 'Stanford', 'danger'),
         ('Steven Lyubomirsky', 'https://slyubomirsky.github.io/', 'OctoML', 'primary'),
         ('Altan Haan', 'https://altanh.com/', 'UC Berkeley', 'primary'),
@@ -282,7 +282,7 @@ def get_internship_html():
 
 def get_professional_activities_html():
     activities = {
-        'Reviewer': ["IEEE TMC", "AAE'25@KDD", "SciPy'25", "Software Impacts"],
+        'Reviewer': ["IEEE TMC", "AAE'25@KDD", "SciPy'25"],
         'Artifact Evaluation Committee': ["POPL'25", "PLDI'24", "POPL'24", "MLSys'23", "MICRO'21"],
         'Sub-reviewer': ["OOPSLA'24"],
         'PC': []
