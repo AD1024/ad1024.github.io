@@ -84,7 +84,7 @@ def get_personal_data():
                      I received the Lv.9 certification issued by the Central Conservatory of Music when I was in middle school.
                     Here is a <a target="_blank" href="assets/Meditation.mp3">sample recording</a> (Meditation from Thais) made in Dec. 2023.
                     Some other recordings are available @ <a target="_blank" href="https://space.bilibili.com/11936677">Bilibili</a> (the website is in Chinese).</li>
-                    <li>I was a part-time translator / proofreading editor in <a target="_blank" href="https://www.youtube.com/channel/UCoSrY_IQQVpmIRZ9Xf-y93g">Gawr Gura</a>'s Chinese fansub team. Gura is a virtual streamer at YouTube affiliated with <a target="_blank" href="https://en.hololive.tv/member">Hololive Production</a> (EN).</li>
+                    <li>I was a part-time translator / proofreading editor in <a target="_blank" href="https://www.youtube.com/channel/UCoSrY_IQQVpmIRZ9Xf-y93g">Gawr Gura</a>'s Chinese fansub team. Gura, now graduated, was a virtual streamer at YouTube affiliated with <a target="_blank" href="https://en.hololive.tv/member">Hololive Production</a> (EN).</li>
                     <li>My Erdős number is 4</li>
                 </ul>
                 <h4>Friends and Colleagues (by alphabetical order of last names)</h4>
