@@ -250,7 +250,7 @@ def get_publications_html():
     keys = bib_data.entries.keys()
     s = ""
     for k in keys:
-        s+= get_paper_entry(k, bib_data.entries[k])
+        s += get_paper_entry(k, bib_data.entries[k])
     return s
 
 def get_workshop_html():
@@ -269,6 +269,39 @@ def get_talks_html():
     s = ""
     for k in keys:
         s+= get_talk_entry(k, bib_data.entries[k])
+    return s
+
+def get_education_entry(entry_key, entry):
+    s = """<div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3">"""
+    s += f"""<a target="_blank" href="{entry.fields['institution_link']}"><img src="{entry.fields['img']}" width=98 height=98 class="img-fluid" alt="institution logo"></a>"""
+    s += """</div><div class="col-sm-9">"""
+    if 'location' in entry.fields.keys():
+        location = entry.fields['location']
+    else:
+        location = ""
+    s += f"""<strong>{entry.fields['institution']}</strong>{(", " + location) if location else ", "} {entry.fields['start_date']} &rarr; {entry.fields['end_date']}<br>"""
+    s += f"""<span style="font-style: italic;">{entry.fields['degree']}</span><br>"""
+    if 'advisor' in entry.fields.keys():
+        if 'advisor_page' in entry.fields.keys():
+            s += f"""<a href="{entry.fields['advisor_page']}" target="_blank"><span class="badge badge-pill badge-primary">Advisor: {entry.fields['advisor']}</span></a>"""
+        else:
+            s += f"""<span class="badge badge-pill badge-primary">Advisor: {entry.fields['advisor']}</span>"""
+    if 'co_advisor' in entry.fields.keys():
+        if 'co_advisor_page' in entry.fields.keys():
+            s += f"""    <a href="{entry.fields['co_advisor_page']}" target="_blank"><span class="badge badge-pill badge-primary">Co-Advisor: {entry.fields['co_advisor']}</span></a>"""
+        else:
+            s += f"""<span class="badge badge-pill badge-primary">Co-Advisor: {entry.fields['co_advisor']}</span>"""
+        s += "<br>"
+    s += """ </div> </div> </div>"""
+    return s
+
+def get_education_html():
+    parser = bibtex.Parser()
+    bib_data = parser.parse_file('education.bib')
+    keys = bib_data.entries.keys()
+    s = ""
+    for k in keys:
+        s+= get_education_entry(k, bib_data.entries[k])
     return s
 
 def get_internship_html():
@@ -363,6 +396,12 @@ a:hover {{
                         <h4>Workshops / Misc</h4>
                         <div><p>(*: Equal contribution)</p></div>
                         {get_workshop_html()}
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 1em;">
+                    <div class="col-sm-12" style="">
+                        <h4>Education</h4>
+                        {get_education_html()}
                     </div>
                 </div>
                 <div class="row" style="margin-top: 1em;">
