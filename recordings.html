@@ -106,7 +106,7 @@
         <div class="row">
           <div class="col-sm-12">
             <h4>Violin Recordings</h4>
-            <p>A collection of my violin recordings over the years. Click on the tags below to filter by category. Collapsing cards/years will stop the playing audio.</p>
+            <p>A collection of my violin recordings over the years. Click on the tags below to filter by category. Collapsing cards/years will stop playing the audio.</p>
 
             <div class="mb-3">
               <strong>Filter by tags:</strong><br>
@@ -500,7 +500,6 @@
         const audio = recording.querySelector('audio');
         if (audio) {
           audio.pause();
-          audio.currentTime = 0;
         }
       }
 

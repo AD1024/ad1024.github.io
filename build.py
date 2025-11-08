@@ -58,7 +58,7 @@ def get_personal_data():
                 </p>
                 <p>Before joining Princeton, I studied at the <a target="_blank" href="https://cs.washington.edu">University of Washington</a>, where I was privileged to work with Prof. <a target="_blank" href="https://ztatlock.net/">Zachary Tatlock</a> on equality saturation and its applications to machine learning compilers.
                 </p>
-                <p>Outside of research, I enjoy playing the violin. You can find my archived recordings <a href="recordings.html">here</a>.</p>
+                <p>In my free time, I enjoy playing the violin (I've been playing it longer than coding). You can find my archived recordings <a href="recordings.html">here</a>.</p>
                 <p>
                     <a class="btn btn-link" type="button" href="./assets/cv.pdf" target="_blank" style="margin-right: 5px"><i class="fa fa-address-card fa-lg"></i> CV</a>
                     <a class="btn btn-link" type="button" href="mailto:{email}" style="margin-right: 5px"><i class="far fa-envelope-open fa-lg"></i> Mail</a>
@@ -675,7 +675,7 @@ def get_recordings_html():
         <div class="row">
           <div class="col-sm-12">
             <h4>Violin Recordings</h4>
-            <p>A collection of my violin recordings over the years. Click on the tags below to filter by category. Collapsing cards/years will stop the playing audio.</p>
+            <p>A collection of my violin recordings over the years. Click on the tags below to filter by category. Collapsing cards/years will stop playing the audio.</p>
 
             <div class="mb-3">
               <strong>Filter by tags:</strong><br>
@@ -734,7 +734,6 @@ def get_recordings_html():
         const audio = recording.querySelector('audio');
         if (audio) {{
           audio.pause();
-          audio.currentTime = 0;
         }}
       }}
 
