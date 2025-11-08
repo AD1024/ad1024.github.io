@@ -1,0 +1,133 @@
+[
+    {
+        "name": "Meditation from Thais",
+        "composer": "Jules Massenet",
+        "recording_date": "2023-12",
+        "file_path": "assets/recordings/Meditation.mp3",
+        "file_size_mb": "6.4",
+        "tag": ["Classical"]
+    },
+    {
+        "name": "Ave Maria",
+        "composer": "Franz Schubert",
+        "recording_date": "2023-12",
+        "file_path": "assets/recordings/Ave_Maria.mp3",
+        "file_size_mb": "9.1",
+        "tag": ["Classical"]
+    },
+    {
+        "name": "Silvermoon Hall",
+        "source": "Genshin Impact",
+        "composer": "HoYo-MiX",
+        "recording_date": "2025-08",
+        "file_path": "assets/recordings/silvermoon_hall.wav",
+        "file_size_mb": "22.0",
+        "tag": ["Game OST"]
+    },
+    {
+        "name": "Alicia",
+        "source": "Clair Obscur: Expedition 33",
+        "composer": "Lorien Testard",
+        "recording_date": "2025-09",
+        "file_path": "assets/recordings/alicia.wav",
+        "file_size_mb": "28.7",
+        "tag": ["Game OST"]
+    },
+    {
+        "name": "Kokoro no Senritsu",
+        "source": "Tari Tari",
+        "composer": "Shiro Hamaguchi",
+        "recording_date": "2023-03",
+        "file_path": "assets/recordings/kokoronosenritsu.mp3",
+        "file_size_mb": "5.1",
+        "tag": ["Anime OST"]
+    },
+    {
+        "name": "Fly Me to the Stars",
+        "source": "Revue Starlight",
+        "composer": "Hiro Hiroki",
+        "recording_date": "2024-05",
+        "file_path": "assets/recordings/flymetothestars.wav",
+        "file_size_mb": "32.8",
+        "tag": ["Anime OST"]
+    },
+    {
+        "name": "Zoltraak",
+        "source": "Frieren: Beyond Journey's End",
+        "composer": "Evan Call",
+        "recording_date": "2025-05",
+        "file_path": "assets/recordings/zoltraak.wav",
+        "file_size_mb": "23.8",
+        "tag": ["Anime OST"]
+    },
+    {
+        "name": "La vaguelette",
+        "source": "Genshin Impact",
+        "composer": "HoYo-MiX",
+        "recording_date": "2023-11",
+        "file_path": "assets/recordings/la_vaguelette.mp3",
+        "file_size_mb": "1.9",
+        "tag": ["Game OST"]
+    },
+    {
+        "name": "Haruhikage",
+        "source": "BanG Dream! It's MyGO!!!!!",
+        "composer": "Fujita Junpei | Togawa Sakiko",
+        "recording_date": "2024-04",
+        "file_path": "assets/recordings/haruhikage.wav",
+        "file_size_mb": "10.0",
+        "tag": ["Game OST"]
+    },
+    {
+        "name": "Cantabile",
+        "composer": "Nicolò Paganini",
+        "recording_date": "2023-11",
+        "file_path": "assets/recordings/Cantabile.mp3",
+        "file_size_mb": "4.9",
+        "tag": ["Classical"]
+    },
+    {
+        "name": "Lost at Sea",
+        "source": "Wuthering Waves",
+        "composer": "jkinss",
+        "recording_date": "2025-08",
+        "file_path": "assets/recordings/Lost_at_sea.mp3",
+        "file_size_mb": "4.1",
+        "tag": ["Game OST"]
+    },
+    {
+        "name": "Mizore and Ririka's Oboe Duet Etude",
+        "source": "Liz and the Blue Bird",
+        "composer": "Kitauji Koko Suisogaku-bu",
+        "recording_date": "2023-11",
+        "file_path": "assets/recordings/oboe_duet.mp3",
+        "file_size_mb": "2.5",
+        "tag": ["Anime OST"]
+    },
+    {
+        "name": "Bloom Intro",
+        "source": "Ender Lilies: Quietus of the Knights",
+        "composer": "Mili",
+        "recording_date": "2022-05",
+        "file_path": "assets/recordings/Bloom_intro.mp3",
+        "file_size_mb": "1.6",
+        "tag": ["Game OST"]
+    },
+    {
+        "name": "Unravel",
+        "source": "Tokyo Ghoul",
+        "composer": "TK from Ling tosite sigure",
+        "recording_date": "2015-08",
+        "file_path": "assets/recordings/Unravel.mp3",
+        "file_size_mb": "4.2",
+        "tag": ["Anime OST"]
+    },
+    {
+        "name": "Violin Concerto in E minor, Op. 64: I. Allegro molto appassionato (excerpt)",
+        "composer": "Felix Mendelssohn",
+        "recording_date": "2016-06",
+        "file_path": "assets/recordings/violin_concerto_in_e_minor.mp3",
+        "file_size_mb": "6.7",
+        "tag": ["Classical"]
+    }
+]

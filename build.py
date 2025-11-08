@@ -1,4 +1,6 @@
 from pybtex.database.input import bibtex
+import json
+from collections import defaultdict
 
 def friends():
     # last entry is the color for badges colors
@@ -10,18 +12,18 @@ def friends():
         ('Haichen Dong', 'https://haichendong.com/', 'Princeton', 'warning'),
         ('Gus Smith', 'https://justg.us/', 'Chipstack', 'primary'),
         ('Vishal Canumalla', 'https://vcanumalla.github.io/', 'Stanford', 'danger'),
-        ('Steven Lyubomirsky', 'https://slyubomirsky.github.io/', 'OctoML', 'primary'),
+        ('Steven Lyubomirsky', 'https://slyubomirsky.github.io/', 'NVIDIA', 'success'),
         ('Altan Haan', 'https://altanh.com/', 'UC Berkeley', 'primary'),
         ('Guanghao Ye', 'https://yeguanghao.xyz/', 'MIT', 'dark'),
         ('Yi Li', 'https://ece.princeton.edu/people/yi-li', 'Meta', 'primary'),
         ('Muru Zhang', 'https://nanami18.github.io/', 'USC', 'danger'),
-        ('Shaoqi Wang', 'https://www.linkedin.com/in/shaoqiw/', 'NEU', 'danger'),
+        ('Shaoqi Wang', 'https://www.linkedin.com/in/shaoqiw/', 'Microsoft', 'primary'),
         ('Thierry Tambe', 'https://thierrytambe.com/', 'Stanford', 'danger'),
         ('Federico Mora Rocha', 'https://federico.morarocha.ca/', 'AWS', 'warning'),
         ('Zhe Zhou', 'https://zhezhouzz.github.io/', 'Purdue', 'dark'),
         ('Yifan Zhu', 'https://www.cs.rochester.edu/~yzhu104/', 'UofR', 'primary'),
         ('Yuyou Fan', 'https://www.linkedin.com/in/yuyou-fan-58085a18b', 'Utah', 'danger'),
-        ('Hobart Yang', 'https://discover304.top/', 'MBZUAI', 'light'), # reverted for pending affiliation
+        ('Hobart Yang', 'https://discover304.top/', 'MBZUAI', 'light'),
         ('Chenyu Zhou', 'https://self.shiroha.info/', 'USC', 'danger')
     ]
     info_list = sorted(info_list, key=lambda x: x[0].split()[-1])
@@ -54,7 +56,9 @@ def get_personal_data():
                     I am broadly interested in programming languages, formal methods and compilers.
                     My current research focuses on practical formal and semi-formal methods for distributed systems and agentic systems, and I am working with the <a target="_blank" href="https://p-org.github.io/P">P ecosystem</a> for verifying and reasoning about distributed systems.
                 </p>
-                <p>Before joining Princeton, I studied at the <a target="_blank" href="https://cs.washington.edu">University of Washington</a>, where I was privileged to work with Prof. <a target="_blank" href="https://ztatlock.net/">Zachary Tatlock</a> on equality saturation and its applications to machine learning compilers.</p>
+                <p>Before joining Princeton, I studied at the <a target="_blank" href="https://cs.washington.edu">University of Washington</a>, where I was privileged to work with Prof. <a target="_blank" href="https://ztatlock.net/">Zachary Tatlock</a> on equality saturation and its applications to machine learning compilers.
+                </p>
+                <p>Outside of research, I enjoy playing the violin. You can find my archived recordings <a href="recordings.html">here</a>.</p>
                 <p>
                     <a class="btn btn-link" type="button" href="./assets/cv.pdf" target="_blank" style="margin-right: 5px"><i class="fa fa-address-card fa-lg"></i> CV</a>
                     <a class="btn btn-link" type="button" href="mailto:{email}" style="margin-right: 5px"><i class="far fa-envelope-open fa-lg"></i> Mail</a>
@@ -82,8 +86,8 @@ def get_personal_data():
                 <ul>
                     <li>I love classical music and enjoy playing the violin. I've been playing the violin for about 20 years.
                      I received the Lv.9 certification issued by the Central Conservatory of Music when I was in middle school.
-                    Here is a <a target="_blank" href="assets/Meditation.mp3">sample recording</a> (Meditation from Thais) made in Dec. 2023.
-                    Some other recordings are available @ <a target="_blank" href="https://space.bilibili.com/11936677">Bilibili</a> (the website is in Chinese).</li>
+                    You can find some of my recordings <a href="recordings.html">here</a>.
+                    Some video recordings are available @ <a target="_blank" href="https://space.bilibili.com/11936677">Bilibili</a> (the website is in Chinese).</li>
                     <li>I was a part-time translator / proofreading editor in <a target="_blank" href="https://www.youtube.com/channel/UCoSrY_IQQVpmIRZ9Xf-y93g">Gawr Gura</a>'s Chinese fansub team. Gura, now graduated, was a virtual streamer at YouTube affiliated with <a target="_blank" href="https://en.hololive.tv/member">Hololive Production</a> (EN).</li>
                     <li>My Erdős number is 4</li>
                 </ul>
@@ -455,5 +459,448 @@ def write_index_html(filename='index.html'):
         f.write(s)
     print(f'Written index content to {filename}.')
 
+def load_recordings():
+    """Load recordings from recordings.json"""
+    with open('recordings.json', 'r') as f:
+        return json.load(f)
+
+def get_recordings_by_year():
+    """Organize recordings by year"""
+    recordings = load_recordings()
+    by_year = defaultdict(list)
+
+    for recording in recordings:
+        # Extract year from recording_date (format: YYYY-MM)
+        year = recording['recording_date'].split('-')[0]
+        by_year[year].append(recording)
+
+    # Sort by year (descending)
+    return dict(sorted(by_year.items(), key=lambda x: x[0], reverse=True))
+
+def get_all_tags():
+    """Get all unique tags from recordings"""
+    recordings = load_recordings()
+    tags = set()
+    for recording in recordings:
+        if 'tag' in recording:
+            tags.update(recording['tag'])
+    return sorted(tags)
+
+def get_recordings_html():
+    """Generate HTML for recordings portfolio page"""
+    recordings_by_year = get_recordings_by_year()
+    all_tags = get_all_tags()
+
+    # Generate tag badges with filter functionality
+    tag_badges = []
+    tag_colors = {
+        'Classical': 'primary',
+        'Game OST': 'success',
+        'Anime OST': 'danger'
+    }
+
+    for tag in all_tags:
+        color = tag_colors.get(tag, 'secondary')
+        tag_badges.append(
+            f'<span class="badge badge-{color} tag-filter" style="cursor: pointer; margin: 2px;" data-tag="{tag}">{tag}</span>'
+        )
+
+    tags_html = ' '.join(tag_badges)
+
+    # Generate recordings by year
+    recordings_html = []
+    for year, recordings in recordings_by_year.items():
+        recordings_html.append(f'<h5 class="mt-4 year-title" data-year="{year}">{year}</h5>')
+
+        for recording in recordings:
+            # Build display name
+            display_name = recording['name']
+            if 'source' in recording:
+                display_name += f' <span style="font-style: italic;">(from {recording["source"]})</span>'
+
+            # Build tags
+            tags = recording.get('tag', [])
+            tag_html = []
+            for tag in tags:
+                color = tag_colors.get(tag, 'secondary')
+                tag_html.append(f'<span class="badge badge-{color} recording-tag">{tag}</span>')
+            tags_display = ' '.join(tag_html)
+
+            # Recording date
+            recording_date = recording['recording_date']
+
+            # Composer
+            composer = recording.get('composer', 'Unknown')
+
+            # File size
+            file_size = recording.get('file_size_mb', 'N/A')
+
+            # Audio file path
+            audio_path = recording['file_path']
+
+            # Create recording card with data attributes for filtering
+            tag_data = ','.join(tags)
+            recording_card = f'''
+<div class="recording-item card mb-2" data-tags="{tag_data}" data-year="{year}">
+    <div class="card-body">
+        <h6 class="card-title mb-0">
+            {display_name}
+            <span class="expand-icon">▼</span>
+        </h6>
+        <div class="recording-details">
+            <hr class="my-2">
+            <p class="card-text mb-1">
+                <strong>Composer:</strong> {composer}<br>
+                <strong>Recorded:</strong> {recording_date}<br>
+                <strong>Size:</strong> {file_size} MB<br>
+                {tags_display}
+            </p>
+            <audio controls preload="none" class="w-100 mt-2">
+                <source src="{audio_path}" type="audio/{'mpeg' if audio_path.endswith('.mp3') else 'wav'}">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+</div>'''
+            recordings_html.append(recording_card)
+
+    recordings_content = '\n'.join(recordings_html)
+
+    # Generate full page HTML
+    html = f'''<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <title>Mike He - Recordings</title>
+  <link rel="icon" type="image/x-icon" href="pictures/AD1024.png">
+
+  <style>
+    a {{
+      text-decoration: underline solid transparent;
+      transition: text-decoration 0.3s ease;
+    }}
+    a:hover {{
+      text-decoration: underline solid Currentcolor;
+    }}
+    .tag-filter {{
+      user-select: none;
+    }}
+    .tag-filter:hover {{
+      opacity: 0.8;
+    }}
+    .tag-filter.active {{
+      box-shadow: 0 0 0 2px #000;
+      font-weight: bold;
+    }}
+    .recording-item {{
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }}
+    .recording-item.hidden {{
+      display: none;
+    }}
+    .recording-item.year-collapsed {{
+      display: none;
+    }}
+    .recording-item:hover {{
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+    }}
+    .year-title {{
+      transition: opacity 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+    }}
+    .year-title:hover {{
+      color: #007bff;
+    }}
+    .year-title.hidden {{
+      display: none;
+    }}
+    .year-title::after {{
+      content: ' ▼';
+      font-size: 0.8em;
+      color: #666;
+      transition: transform 0.3s ease;
+      display: inline-block;
+    }}
+    .year-title.collapsed::after {{
+      transform: rotate(-90deg);
+    }}
+    .recording-details {{
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }}
+    .recording-item.expanded .recording-details {{
+      max-height: 300px;
+    }}
+    .expand-icon {{
+      transition: transform 0.3s ease;
+      float: right;
+      color: #666;
+    }}
+    .recording-item.expanded .expand-icon {{
+      transform: rotate(180deg);
+    }}
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row ps-2 pe-2">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="row" style="margin-top: 3em; margin-bottom: 2em;">
+          <div class="col-sm-12">
+            <h3 class="display-4" style="text-align: center;">
+              <a href="index.html" style="text-decoration: none; color: inherit;">
+                <span style="font-weight: bold;">Mike</span> He
+              </a>
+            </h3>
+            <p style="text-align: center;">
+              <a href="index.html">← Back to main page</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <h4>Violin Recordings</h4>
+            <p>A collection of my violin recordings over the years. Click on the tags below to filter by category. Collapsing cards/years will stop the playing audio.</p>
+
+            <div class="mb-3">
+              <strong>Filter by tags:</strong><br>
+              <span class="badge badge-secondary tag-filter active" style="cursor: pointer; margin: 2px;" data-tag="all">All</span>
+              {tags_html}
+            </div>
+
+            <div class="mb-3">
+              <button id="toggle-all-years" class="btn btn-sm btn-outline-primary">
+                <i class="fas fa-compress-alt"></i> Collapse All Years
+              </button>
+            </div>
+
+            <div id="recordings-container">
+              {recordings_content}
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin-top: 2em; margin-bottom: 2em;">
+          <div class="col-sm-12">
+            <hr/>
+            <p style="text-align: center;">
+              <a href="index.html">← Back to main page</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.umd.min.js"></script>
+
+  <script>
+    // Tag filtering functionality
+    document.addEventListener('DOMContentLoaded', function() {{
+      const tagFilters = document.querySelectorAll('.tag-filter');
+      const recordings = document.querySelectorAll('.recording-item');
+      const yearTitles = document.querySelectorAll('.year-title');
+      const toggleAllBtn = document.getElementById('toggle-all-years');
+      let allCollapsed = false;
+
+      // Helper function to stop audio in a recording card
+      function stopAudio(recording) {{
+        const audio = recording.querySelector('audio');
+        if (audio) {{
+          audio.pause();
+          audio.currentTime = 0;
+        }}
+      }}
+
+      // Toggle all years button
+      toggleAllBtn.addEventListener('click', function() {{
+        allCollapsed = !allCollapsed;
+
+        yearTitles.forEach(yearTitle => {{
+          const year = yearTitle.getAttribute('data-year');
+          const yearRecordings = Array.from(recordings).filter(
+            r => r.getAttribute('data-year') === year
+          );
+
+          if (allCollapsed) {{
+            // Collapse all years
+            yearTitle.classList.add('collapsed');
+            yearRecordings.forEach(recording => {{
+              recording.classList.add('year-collapsed');
+              if (recording.classList.contains('expanded')) {{
+                recording.classList.remove('expanded');
+                stopAudio(recording);
+              }}
+            }});
+          }} else {{
+            // Expand all years
+            yearTitle.classList.remove('collapsed');
+            yearRecordings.forEach(recording => {{
+              recording.classList.remove('year-collapsed');
+            }});
+          }}
+        }});
+
+        // Update button text and icon
+        if (allCollapsed) {{
+          toggleAllBtn.innerHTML = '<i class="fas fa-expand-alt"></i> Expand All Years';
+        }} else {{
+          toggleAllBtn.innerHTML = '<i class="fas fa-compress-alt"></i> Collapse All Years';
+        }}
+      }});
+
+      // Year collapse/expand functionality
+      yearTitles.forEach(yearTitle => {{
+        yearTitle.addEventListener('click', function() {{
+          const year = this.getAttribute('data-year');
+          const isCollapsed = this.classList.contains('collapsed');
+
+          // Toggle collapsed state
+          this.classList.toggle('collapsed');
+
+          // Find all recordings for this year
+          const yearRecordings = Array.from(recordings).filter(
+            r => r.getAttribute('data-year') === year
+          );
+
+          // Toggle visibility and stop audio if collapsing
+          yearRecordings.forEach(recording => {{
+            if (isCollapsed) {{
+              recording.classList.remove('year-collapsed');
+            }} else {{
+              recording.classList.add('year-collapsed');
+              // Stop audio and collapse card when hiding year
+              if (recording.classList.contains('expanded')) {{
+                recording.classList.remove('expanded');
+                stopAudio(recording);
+              }}
+            }}
+          }});
+
+          // Update the toggle-all button state based on current year states
+          const allYearsCollapsed = Array.from(yearTitles).every(yt => yt.classList.contains('collapsed'));
+          const noYearsCollapsed = Array.from(yearTitles).every(yt => !yt.classList.contains('collapsed'));
+
+          if (allYearsCollapsed) {{
+            allCollapsed = true;
+            toggleAllBtn.innerHTML = '<i class="fas fa-expand-alt"></i> Expand All Years';
+          }} else if (noYearsCollapsed) {{
+            allCollapsed = false;
+            toggleAllBtn.innerHTML = '<i class="fas fa-compress-alt"></i> Collapse All Years';
+          }}
+        }});
+      }});
+
+      // Expand/collapse recording cards
+      recordings.forEach(recording => {{
+        recording.addEventListener('click', function(e) {{
+          // Don't toggle if clicking on audio controls
+          if (e.target.tagName === 'AUDIO' || e.target.closest('audio')) {{
+            return;
+          }}
+
+          const wasExpanded = this.classList.contains('expanded');
+
+          // Collapse all other cards and stop their audio
+          recordings.forEach(other => {{
+            if (other !== this && other.classList.contains('expanded')) {{
+              other.classList.remove('expanded');
+              stopAudio(other);
+            }}
+          }});
+
+          // Toggle current card
+          if (wasExpanded) {{
+            this.classList.remove('expanded');
+            stopAudio(this);
+          }} else {{
+            this.classList.add('expanded');
+          }}
+        }});
+      }});
+
+      tagFilters.forEach(filter => {{
+        filter.addEventListener('click', function() {{
+          const selectedTag = this.getAttribute('data-tag');
+
+          // Update active state
+          tagFilters.forEach(f => f.classList.remove('active'));
+          this.classList.add('active');
+
+          // Filter recordings
+          recordings.forEach(recording => {{
+            const recordingTags = recording.getAttribute('data-tags').split(',');
+
+            if (selectedTag === 'all' || recordingTags.includes(selectedTag)) {{
+              recording.classList.remove('hidden');
+            }} else {{
+              recording.classList.add('hidden');
+              // Stop audio and collapse if being hidden
+              if (recording.classList.contains('expanded')) {{
+                recording.classList.remove('expanded');
+                stopAudio(recording);
+              }}
+            }}
+          }});
+
+          // Hide year titles if no recordings are visible for that year
+          yearTitles.forEach(yearTitle => {{
+            const year = yearTitle.getAttribute('data-year');
+            const recordingsInYear = Array.from(recordings).filter(
+              r => r.getAttribute('data-year') === year
+            );
+            const hasVisibleRecordings = recordingsInYear.some(
+              r => !r.classList.contains('hidden')
+            );
+
+            if (hasVisibleRecordings) {{
+              yearTitle.classList.remove('hidden');
+            }} else {{
+              yearTitle.classList.add('hidden');
+            }}
+          }});
+        }});
+      }});
+    }});
+  </script>
+</body>
+</html>'''
+
+    return html
+
+def write_recordings_html(filename='recordings.html'):
+    """Write recordings page to file"""
+    s = get_recordings_html()
+    with open(filename, 'w') as f:
+        f.write(s)
+    print(f'Written recordings content to {filename}.')
+
 if __name__ == '__main__':
     write_index_html('index.html')
+    write_recordings_html('recordings.html')
