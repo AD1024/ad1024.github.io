@@ -1,5 +1,14 @@
 [
     {
+        "name": "Lingering Summer Light",
+        "composer": "Bolin Chen",
+        "source": "Wuthering Waves",
+        "recording_date": "2025-12",
+        "file_path": "assets/recordings/lingering_summer_light.wav",
+        "file_size_mb": "55.3",
+        "tag": ["Game OST"]
+    },
+    {
         "name": "Meditation from Thais",
         "composer": "Jules Massenet",
         "recording_date": "2023-12",
