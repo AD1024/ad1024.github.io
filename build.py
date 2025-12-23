@@ -536,7 +536,7 @@ def get_recordings_html():
             file_size = recording.get('file_size_mb', 'N/A')
 
             # Audio file path
-            audio_path = recording['file_path']
+            audio_path = 'https://only.rs/' + recording['file_path']
 
             # Create recording card with data attributes for filtering
             tag_data = ','.join(tags)
@@ -555,10 +555,23 @@ def get_recordings_html():
                 <strong>Size:</strong> {file_size} MB<br>
                 {tags_display}
             </p>
-            <audio controls preload="none" class="w-100 mt-2">
+            <audio preload="none" class="w-100 mt-2 recording-audio">
                 <source src="{audio_path}" type="audio/{'mpeg' if audio_path.endswith('.mp3') else 'wav'}">
                 Your browser does not support the audio element.
             </audio>
+            <div class="music-player mt-2">
+                <button class="play-btn btn btn-primary btn-sm" data-mdb-ripple-init data-mdb-ripple-color="light">
+                    <i class="fas fa-play"></i>
+                </button>
+                <div class="timeline-container">
+                    <div class="timeline">
+                        <div class="playhead"></div>
+                    </div>
+                </div>
+                <span class="time-display">
+                    <span class="current-time">0:00</span> / <span class="duration">0:00</span>
+                </span>
+            </div>
         </div>
     </div>
 </div>'''
@@ -651,6 +664,64 @@ def get_recordings_html():
     .recording-item.expanded .expand-icon {{
       transform: rotate(180deg);
     }}
+    .music-player {{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      background: #f8f9fa;
+      border-radius: 8px;
+    }}
+    .play-btn {{
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }}
+    .play-btn:hover {{
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(0,123,255,0.4);
+    }}
+    .play-btn:active {{
+      transform: scale(0.95);
+    }}
+    .timeline-container {{
+      flex: 1;
+      padding: 0 10px;
+    }}
+    .timeline {{
+      width: 100%;
+      height: 6px;
+      background: #ddd;
+      border-radius: 3px;
+      position: relative;
+      cursor: pointer;
+    }}
+    .playhead {{
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      background: #007bff;
+      border-radius: 3px;
+      width: 0%;
+      transition: width 0.1s linear;
+    }}
+    .time-display {{
+      font-size: 0.85em;
+      color: #666;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }}
+    .recording-audio {{
+      display: none;
+    }}
   </style>
 </head>
 
@@ -735,8 +806,88 @@ def get_recordings_html():
         const audio = recording.querySelector('audio');
         if (audio) {{
           audio.pause();
+          audio.currentTime = 0;
+        }}
+        const playBtn = recording.querySelector('.play-btn');
+        if (playBtn) {{
+          playBtn.innerHTML = '<i class="fas fa-play"></i>';
+        }}
+        const playhead = recording.querySelector('.playhead');
+        if (playhead) {{
+          playhead.style.width = '0%';
         }}
       }}
+
+      // Initialize custom music players
+      recordings.forEach(recording => {{
+        const audio = recording.querySelector('.recording-audio');
+        const playBtn = recording.querySelector('.play-btn');
+        const timeline = recording.querySelector('.timeline');
+        const playhead = recording.querySelector('.playhead');
+        const currentTimeSpan = recording.querySelector('.current-time');
+        const durationSpan = recording.querySelector('.duration');
+
+        if (!audio || !playBtn) return;
+
+        // Format time helper
+        function formatTime(seconds) {{
+          const mins = Math.floor(seconds / 60);
+          const secs = Math.floor(seconds % 60);
+          return `${{mins}}:${{secs.toString().padStart(2, '0')}}`;
+        }}
+
+        // Load metadata
+        audio.addEventListener('loadedmetadata', function() {{
+          durationSpan.textContent = formatTime(audio.duration);
+        }});
+
+        // Update time display
+        audio.addEventListener('timeupdate', function() {{
+          const percentage = (audio.currentTime / audio.duration) * 100;
+          playhead.style.width = percentage + '%';
+          currentTimeSpan.textContent = formatTime(audio.currentTime);
+        }});
+
+        // Play/pause button
+        playBtn.addEventListener('click', function(e) {{
+          e.stopPropagation();
+
+          // Pause all other audios
+          document.querySelectorAll('.recording-audio').forEach(otherAudio => {{
+            if (otherAudio !== audio && !otherAudio.paused) {{
+              otherAudio.pause();
+              const otherRecording = otherAudio.closest('.recording-item');
+              if (otherRecording) {{
+                stopAudio(otherRecording);
+              }}
+            }}
+          }});
+
+          if (audio.paused) {{
+            audio.play();
+            playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+          }} else {{
+            audio.pause();
+            playBtn.innerHTML = '<i class="fas fa-play"></i>';
+          }}
+        }});
+
+        // Seek functionality
+        timeline.addEventListener('click', function(e) {{
+          e.stopPropagation();
+          const rect = timeline.getBoundingClientRect();
+          const clickX = e.clientX - rect.left;
+          const percentage = clickX / rect.width;
+          audio.currentTime = percentage * audio.duration;
+        }});
+
+        // Reset on end
+        audio.addEventListener('ended', function() {{
+          playBtn.innerHTML = '<i class="fas fa-play"></i>';
+          playhead.style.width = '0%';
+          audio.currentTime = 0;
+        }});
+      }});
 
       // Toggle all years button
       toggleAllBtn.addEventListener('click', function() {{
