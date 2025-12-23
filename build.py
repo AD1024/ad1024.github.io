@@ -806,15 +806,10 @@ def get_recordings_html():
         const audio = recording.querySelector('audio');
         if (audio) {{
           audio.pause();
-          audio.currentTime = 0;
         }}
         const playBtn = recording.querySelector('.play-btn');
         if (playBtn) {{
           playBtn.innerHTML = '<i class="fas fa-play"></i>';
-        }}
-        const playhead = recording.querySelector('.playhead');
-        if (playhead) {{
-          playhead.style.width = '0%';
         }}
       }}
 
