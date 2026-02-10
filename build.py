@@ -89,7 +89,7 @@ def get_personal_data():
                     You can find some of my recordings <a href="recordings.html">here</a>.
                     Some video recordings are available @ <a target="_blank" href="https://space.bilibili.com/11936677">Bilibili</a> (the website is in Chinese).</li>
                     <li>I was a part-time translator / proofreading editor in <a target="_blank" href="https://www.youtube.com/channel/UCoSrY_IQQVpmIRZ9Xf-y93g">Gawr Gura</a>'s Chinese fansub team. Gura, now graduated, was a virtual streamer at YouTube affiliated with <a target="_blank" href="https://en.hololive.tv/member">Hololive Production</a> (EN).</li>
-                    <li>My Erdős number is 4</li>
+                    <li>My Erdős number is 3: Mike He [3] &rarr; Sanjeev Arora [2] &rarr; László Babai [1] &rarr; Paul Erdős [0]</li>
                 </ul>
                 <h4>Friends and Colleagues (by alphabetical order of last names)</h4>
                 <div class="row justify-content-center pe-3 ps-3">
@@ -114,7 +114,7 @@ def get_author_link(author):
     author = ''.join(filter(lambda x: x.isalpha() or x in (' ', '-', '.'), author))
     author = author.lower()
     d = {
-        'Deyuan He': 'https://www.cs.princeton.edu/~dh7120/',
+        # 'Deyuan He': 'https://www.cs.princeton.edu/~dh7120/',
         'Zachary Tatlock': 'https://ztatlock.net/',
         'Aarti Gupta': 'https://www.cs.princeton.edu/~aartig/',
         'Sharad Malik': 'https://www.princeton.edu/~sharad/',  
@@ -140,13 +140,20 @@ def get_author_link(author):
         'Scale AI': 'https://scale.com/',
         'Center for AI Safety': 'https://safe.ai/',
         'Zhendong Ang': 'https://ang9876.github.io/',
+        'Haoyu Zhao': 'https://hyzhao.me/',
+        'Ziran Yang': 'https://ziranyang0.github.io/',
+        'Jiawei Li': 'https://ece.illinois.edu/about/directory/grad-students/jiaweil9',
+        'Zenan Li': 'https://lizn-zn.github.io/',
+        'Chi Jin': 'https://sites.google.com/view/cjin/home',
+        'Venugopal V. Veeravalli': 'https://vvv.ece.illinois.edu/',
+        'Sanjeev Arora': 'https://www.cs.princeton.edu/~arora/'
     }
     d = {
         k.lower(): v for k, v in d.items()
     }
     return d.get(author)
 
-def generate_person_html(persons, connection=", ", make_bold=True, make_bold_name='Mike He', add_links=True):
+def generate_person_html(persons, connection=", ", make_bold=True, make_bold_name={'Mike He', 'Deyuan He'}, add_links=True):
     s = ""
     for p in persons:
         string_part_i = ""
@@ -158,8 +165,8 @@ def generate_person_html(persons, connection=", ", make_bold=True, make_bold_nam
             link = get_author_link(string_part_i)
             if link and add_links:
                 string_part_i = f'<a href="{link}" target="_blank">{string_part_i}</a>'
-        if make_bold and string_part_i == make_bold_name:
-            string_part_i = f'<span style="font-weight: bold";>{make_bold_name}</span>'
+        if make_bold and ''.join(filter(lambda x: x.isalpha() or x in (' ', '-', '.'), string_part_i)) in make_bold_name:
+            string_part_i = f'<span style="font-weight: bold";>{string_part_i}</span>'
         if p != persons[-1]:
             string_part_i += connection
         s += string_part_i
@@ -176,7 +183,7 @@ def get_paper_entry(entry_key, entry):
         s += f"""<a style="font-size: 13pt" href="{entry.fields.get('html', '')}" target="_blank"><strong>{entry.fields['title']}</strong></a> <br>"""
 
     s += f"""{generate_person_html(entry.persons['author'])} <br>"""
-    s += f"""<span style="font-style: italic;">{entry.fields['booktitle']}</span>, {entry.fields['year']} <br>"""
+    s += f"""<span style="font-style: italic;">{entry.fields.get('booktitle', entry.fields.get('journal', 'Pre-print'))}</span>, {entry.fields['year']} <br>"""
 
     artefacts = {'html': 'Project Page', 'pdf': 'Paper', 'supp': 'Supplemental', 'video': 'Video', 'poster': 'Poster', 'code': 'Code'}
     i = 0
@@ -189,11 +196,15 @@ def get_paper_entry(entry_key, entry):
         else:
             print(f'[{entry_key}] Warning: Field {k} missing!')
 
-    cite = "<pre><code>@article{" + f"{entry_key}, \n"
-    cite += "\tauthor = {" + f"{generate_person_html(entry.persons['author'], make_bold=False, add_links=False, connection=' and ')}" + "}, \n"
-    for entr in ['title', 'booktitle', 'year']:
-        cite += f"\t{entr} = " + "{" + f"{entry.fields[entr]}" + "}, \n"
-    cite += """}</pre></code>"""
+    # cite = "<pre><code>@article{" + f"{entry_key}, \n"
+    # cite += "\tauthor = {" + f"{generate_person_html(entry.persons['author'], make_bold=False, add_links=False, connection=' and ')}" + "}, \n"
+    # for entr in ['title', 'booktitle', 'year']:
+    #     cite += f"\t{entr} = " + "{" + f"{entry.fields[entr]}" + "}, \n"
+    # cite += """}</pre></code>"""
+    for key in list(artefacts.keys()) + ['img', 'award']:
+        if key in entry.fields.keys():
+            del entry.fields[key]
+    cite = "<pre><code>{}</code></pre>".format(entry.to_string("bibtex"))
     s += f"""<button data-mdb-ripple-init data-mdb-ripple-color="pink" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{entry_key}" aria-expanded="false" aria-controls="collapseExample" style="margin-left: -6px; margin-top: -2px;">Expand bibtex</button><div class="collapse" id="collapse{entry_key}"><div class="card card-body">{cite}</div></div>"""
     s += """ </div> </div> </div>"""
     return s
@@ -397,7 +408,7 @@ a:hover {{
                 </div>
                 <div class="row" style="margin-top: 1em;">
                     <div class="col-sm-12" style="">
-                        <h4>Workshops / Misc</h4>
+                        <h4>Misc. Projects</h4>
                         <div><p>(*: Equal contribution)</p></div>
                         {get_workshop_html()}
                     </div>
