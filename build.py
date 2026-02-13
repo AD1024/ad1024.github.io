@@ -104,7 +104,7 @@ def get_personal_data():
                 <h4>Visitors are welcomed!</h4>
                 <img src="https://s11.flagcounter.com/count2/IatI/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/"/>
                 <p>
-                    This website is adapted from a template generously provided by <a target="_blank" href="https://m-niemeyer.github.io/">Michael Niemeyer</a>.
+                    This website is adapted from a template generously provided by <a target="_blank" href="https://m-niemeyer.github.io/">Michael Niemeyer</a>. The Logo of this website is designed by my friend, Melina.
                 </p>
             </div>
     """
@@ -449,14 +449,14 @@ a:hover {{
                 <div class="row" style="margin-top: 1em;">
                     <div class="col-sm-12" style="">
                         <h4>Conference / Journal Publications &amp; Pre-prints</h4>
-                        <div><p>(*: Equal contribution)</p></div>
+                        <div><p>(*: Core contributor)</p></div>
                         {pub}
                     </div>
                 </div>
                 <div class="row" style="margin-top: 1em;">
                     <div class="col-sm-12" style="">
                         <h4>Misc. Projects &amp Short Papers</h4>
-                        <div><p>(*: Equal contribution)</p></div>
+                        <div><p>(*: Core contributor)</p></div>
                         {get_workshop_html()}
                     </div>
                 </div>
