@@ -174,14 +174,14 @@ def generate_person_html(persons, connection=", ", make_bold=True, make_bold_nam
 
 def get_paper_entry(entry_key, entry):
     s = """<div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3">"""
-    s += f"""<img src="{entry.fields['img']}" class="img-fluid img-thumbnail" alt="Project image">"""
+    s += f"""<div class="thumb-zoom-container" style="--zoom-img: url('{entry.fields['img']}')"><img src="{entry.fields['img']}" class="img-fluid img-thumbnail" alt="Project image"></div>"""
     s += """</div><div class="col-sm-9">"""
 
+    link = entry.fields.get('html', entry.fields.get('pdf', ''))
     if 'award' in entry.fields.keys():
-        s += f"""<a style="font-size: 13pt" href="{entry.fields.get('html', '')}" target="_blank"><strong>{entry.fields['title']}</strong></a> <span style="color: red;">({entry.fields['award']})</span><br>"""
+        s += f"""<a style="font-size: 13pt" href="{link}" target="_blank"><strong>{entry.fields['title']}</strong></a> <span style="color: red;">({entry.fields['award']})</span><br>"""
     else:
-        s += f"""<a style="font-size: 13pt" href="{entry.fields.get('html', '')}" target="_blank"><strong>{entry.fields['title']}</strong></a> <br>"""
-
+        s += f"""<a style="font-size: 13pt" href="{link}" target="_blank"><strong>{entry.fields['title']}</strong></a> <br>"""
     s += f"""{generate_person_html(entry.persons['author'])} <br>"""
     s += f"""<span style="font-style: italic;">{entry.fields.get('booktitle', entry.fields.get('journal', 'Pre-print'))}</span>, {entry.fields['year']} <br>"""
 
@@ -379,6 +379,53 @@ def get_index_html():
 a:hover {{
   text-decoration: underline solid Currentcolor;
 }}
+.thumb-zoom-container {{
+  position: relative;
+}}
+.thumb-zoom-container img {{
+  transition: opacity 0.2s ease;
+}}
+.thumb-zoom-container:hover img {{
+  opacity: 0.85;
+}}
+.thumb-zoom-container::after {{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-image: inherit;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 4px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  z-index: 100;
+}}
+.thumb-zoom-container:hover::after {{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  margin-left: 10px;
+  width: 400px;
+  height: 300px;
+  background-image: var(--zoom-img);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  pointer-events: none;
+  z-index: 100;
+}}
   </style>
 </head>
 
@@ -401,14 +448,14 @@ a:hover {{
                 </div>
                 <div class="row" style="margin-top: 1em;">
                     <div class="col-sm-12" style="">
-                        <h4>Publications &amp; Pre-prints</h4>
+                        <h4>Conference / Journal Publications &amp; Pre-prints</h4>
                         <div><p>(*: Equal contribution)</p></div>
                         {pub}
                     </div>
                 </div>
                 <div class="row" style="margin-top: 1em;">
                     <div class="col-sm-12" style="">
-                        <h4>Misc. Projects</h4>
+                        <h4>Misc. Projects &amp Short Papers</h4>
                         <div><p>(*: Equal contribution)</p></div>
                         {get_workshop_html()}
                     </div>
