@@ -61,12 +61,15 @@ def get_personal_data():
                 <p>In my free time, I enjoy playing the violin (I've been playing it longer than coding). You can find my archived recordings <a href="recordings.html">here</a>.</p>
                 <p>
                     <a class="btn btn-link" type="button" href="./assets/cv.pdf" target="_blank" style="margin-right: 5px"><i class="fa fa-address-card fa-lg"></i> CV</a>
-                    <a class="btn btn-link" type="button" href="mailto:{email}" style="margin-right: 5px"><i class="far fa-envelope-open fa-lg"></i> Mail</a>
+                    <button data-mdb-ripple-init data-mdb-ripple-color="grey" class="btn btn-link" type="button" data-toggle="collapse" data-target="#emailCollapse" style="margin-right: 5px"><i class="far fa-envelope-open fa-lg"></i> Mail</button>
                     <a class="btn btn-link" type="button" href="https://twitter.com/{twitter}" target="_blank" style="margin-right: 5px"><i class="fab fa-twitter fa-lg"></i> Twitter</a>
                     <a class="btn btn-link" type="button" href="https://scholar.google.com/citations?user=dhtWqm8AAAAJ" target="_blank" style="margin-right: 5px"><i class="fa-solid fa-book"></i> Scholar</a>
                     <a class="btn btn-link" type="button" href="https://github.com/{github}" target="_blank" style="margin-right: 5px"><i class="fab fa-github fa-lg"></i> Github</a>
                     <a class="btn btn-link" type="button" href="https://www.linkedin.com/in/{linkedin}" target="_blank" style="margin-right: 5px"><i class="fab fa-linkedin fa-lg"></i> LinkedIn</a>
-                    <button data-mdb-ripple-init data-mdb-ripple-color="grey" class="btn btn-link" type="button" data-toggle="collapse" data-target="#demo" data-toggle="collapse"><i class="fa-solid fa-trophy"></i>Awards</button>
+                    <button data-mdb-ripple-init data-mdb-ripple-color="grey" class="btn btn-link" type="button" data-toggle="collapse" data-target="#demo"><i class="fa-solid fa-trophy"></i>Awards</button>
+                    <div id="emailCollapse" class="collapse">
+                        <div class="thumb-zoom-container" style="display: inline-block; --zoom-img: url('assets/email.png')"><img src="assets/email.png" alt="Email" style="height: 2em; vertical-align: middle;"></div>
+                    </div>
                     <div id="demo" class="collapse">
                     <!-- <span style="font-weight: bold;">Awards:</span> -->
                     <ul>
