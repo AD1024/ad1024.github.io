@@ -176,8 +176,8 @@ def generate_person_html(persons, connection=", ", make_bold=True, make_bold_nam
     return s
 
 def get_paper_entry(entry_key, entry):
-    s = """<div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3">"""
-    s += f"""<div class="thumb-zoom-container" style="--zoom-img: url('{entry.fields['img']}')"><img src="{entry.fields['img']}" class="img-fluid img-thumbnail" alt="Project image"></div>"""
+    s = """<div style="margin-bottom: 3em;"> <div class="row" style="align-items: stretch;"><div class="col-sm-3" style="display: flex;">"""
+    s += f"""<div class="thumb-zoom-container" style="--zoom-img: url('{entry.fields['img']}'); width: 100%;"><img src="{entry.fields['img']}" class="img-fluid img-thumbnail" alt="Project image" style="width: 100%; height: 100%; object-fit: cover;"></div>"""
     s += """</div><div class="col-sm-9">"""
 
     link = entry.fields.get('html', entry.fields.get('pdf', ''))
@@ -187,6 +187,31 @@ def get_paper_entry(entry_key, entry):
         s += f"""<a style="font-size: 13pt" href="{link}" target="_blank"><strong>{entry.fields['title']}</strong></a> <br>"""
     s += f"""{generate_person_html(entry.persons['author'])} <br>"""
     s += f"""<span style="font-style: italic;">{entry.fields.get('booktitle', entry.fields.get('journal', 'Pre-print'))}</span>, {entry.fields['year']} <br>"""
+
+    # Artifact evaluation badges
+    badge_urls = {
+        'artifact_available': 'https://www.acm.org/binaries/content/gallery/acm/publications/artifact-review-v1_1-badges/artifacts_available_v1_1.png',
+        'artifact_functional': 'https://www.acm.org/binaries/content/gallery/acm/publications/artifact-review-v1_1-badges/artifacts_evaluated_functional_v1_1.png',
+        'artifact_reusable': 'https://www.acm.org/binaries/content/gallery/acm/publications/artifact-review-v1_1-badges/artifacts_evaluated_reusable_v1_1.png',
+        'artifact_reproduced': 'https://www.acm.org/binaries/content/gallery/acm/publications/artifact-review-v1_1-badges/results_reproduced_v1_1.png',
+    }
+    badge_alts = {
+        'artifact_available': 'Artifacts Available',
+        'artifact_functional': 'Artifacts Evaluated — Functional',
+        'artifact_reusable': 'Artifacts Evaluated — Reusable',
+        'artifact_reproduced': 'Results Reproduced',
+    }
+    has_badges = any(k in entry.fields for k in badge_urls)
+    if has_badges:
+        s += '<div style="margin-top: 2px; margin-bottom: 4px;">'
+        for badge_key, badge_img in badge_urls.items():
+            if badge_key in entry.fields:
+                badge_html = f'<img src="{badge_img}" alt="{badge_alts[badge_key]}" style="height: 60px; margin-right: 6px;">'
+                if badge_key == 'artifact_available':
+                    s += f'<a href="{entry.fields[badge_key]}" target="_blank">{badge_html}</a>'
+                else:
+                    s += badge_html
+        s += '</div>'
 
     artefacts = {'html': 'Project Page', 'pdf': 'Paper', 'supp': 'Supplemental', 'video': 'Video', 'poster': 'Poster', 'code': 'Code'}
     i = 0
@@ -204,7 +229,7 @@ def get_paper_entry(entry_key, entry):
     # for entr in ['title', 'booktitle', 'year']:
     #     cite += f"\t{entr} = " + "{" + f"{entry.fields[entr]}" + "}, \n"
     # cite += """}</pre></code>"""
-    for key in list(artefacts.keys()) + ['img', 'award']:
+    for key in list(artefacts.keys()) + ['img', 'award'] + list(badge_urls.keys()):
         if key in entry.fields.keys():
             del entry.fields[key]
     cite = "<pre><code>{}</code></pre>".format(entry.to_string("bibtex"))
@@ -433,10 +458,10 @@ a:hover {{
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-xl">
         <div class="row ps-2 pe-2">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
                 <div class="row" style="margin-top: 3em;">
                     <div class="col-sm-12" style="margin-bottom: 1em;">
                     <h3 class="display-4" style="text-align: center;"><span style="font-weight: bold;">{name[0]}</span> {name[1]}</h3>
@@ -491,8 +516,8 @@ a:hover {{
                     {footer}
                 </div>
             </div>
-            <div class="col-md-1"></div>
-        </div?
+            <div class="col-lg-1"></div>
+        </div>
     </div>
 
     <!-- Optional JavaScript -->
@@ -787,10 +812,10 @@ def get_recordings_html():
 </head>
 
 <body>
-  <div class="container">
+  <div class="container-xl">
     <div class="row ps-2 pe-2">
-      <div class="col-md-1"></div>
-      <div class="col-md-10">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10">
         <div class="row" style="margin-top: 3em; margin-bottom: 2em;">
           <div class="col-sm-12">
             <h3 class="display-4" style="text-align: center;">
@@ -837,7 +862,7 @@ def get_recordings_html():
           </div>
         </div>
       </div>
-      <div class="col-md-1"></div>
+      <div class="col-lg-1"></div>
     </div>
   </div>
 
