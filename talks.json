@@ -1,0 +1,68 @@
+[
+  {
+    "id": "LMPL25",
+    "title": "Ranking Formal Specifications using LLMs",
+    "venue": "SPLASH/LMPL'25",
+    "year": "Oct 15, 2025",
+    "img": "assets/img/img-lmpl-2025.png",
+    "slides": "assets/talks/LMPL-Slides.pdf"
+  },
+  {
+    "id": "Generals",
+    "title": "Ph.D. General Examination",
+    "venue": "Princeton University",
+    "year": "April 16, 2024",
+    "img": "assets/img/img-generals.png",
+    "slides": "assets/talks/General_exam_pdf.pdf"
+  },
+  {
+    "id": "CatsTail",
+    "title": "CatsTail: Packet programs synthesis via Equality Saturation",
+    "venue": "Princeton University",
+    "year": "December 2023",
+    "img": "assets/img/img-catstail.png",
+    "slides": "assets/papers/COS539Report.pdf"
+  },
+  {
+    "id": "EGRAPHS23",
+    "title": "Improving Term Extraction with Acyclic Constraints",
+    "venue": "PLDI EGRAPHS'23",
+    "year": "June 2023",
+    "img": "assets/img/img-egraphs23.png",
+    "slides": "assets/egraphs_2023_presentation.pdf",
+    "video": "https://www.youtube.com/watch?v=6NIDzKKkpF0&list=PLyrlk8Xaylp4jwMYLGnf2BdVNVqoBHcEx&index=2"
+  },
+  {
+    "id": "TaichiGraphics",
+    "title": "Towards automated super-optimization for Taichi using Equality Saturation",
+    "venue": "Taichi Graphics",
+    "year": "January 2023",
+    "img": "assets/img/img-taichi-talk.png",
+    "slides": "assets/talks/Towards%20automated%20super-optimization%20for%20Taichi%20using%20Equality%20Saturation.pdf",
+    "video": "https://www.bilibili.com/video/BV1hG4y1w79u"
+  },
+  {
+    "id": "COS521",
+    "title": "Efficient E-Graph Extraction via Linear Programming",
+    "venue": "Princeton University",
+    "year": "December 2022",
+    "img": "assets/img/img-cos521.png",
+    "slides": "https://docs.google.com/presentation/d/1-asK1ehFM3LEygwvC6lI3W-CHrNfCXty/edit?usp=sharing&ouid=110868745366523457760&rtpof=true&sd=true"
+  },
+  {
+    "id": "IntelLabs2022",
+    "title": "Pyrope: towards correct-by-construction hardware modeling in Python/HeteroCL",
+    "venue": "Intel Labs",
+    "year": "June 2022",
+    "img": "assets/img/img-pyrope.png",
+    "slides": "assets/talks/Pyrope_slides.pptx"
+  },
+  {
+    "id": "SRCADA2021",
+    "title": "Correct & Flexible Compiler Support for Custom Accelerators",
+    "venue": "SRC ADA Center",
+    "year": "September 2021",
+    "img": "assets/img/img-ada-talk.png",
+    "slides": "https://docs.google.com/presentation/d/13YihSVXt-t_Lu7ddCy7zxNiqM6zA-Z1Q/edit"
+  }
+]

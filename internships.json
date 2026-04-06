@@ -1,0 +1,61 @@
+[
+  {
+    "id": "AWS25",
+    "company": "Automated Reasoning Group, Amazon Web Services",
+    "position": "Applied Scientist Intern",
+    "company_link": "https://www.amazon.science/research-areas/automated-reasoning",
+    "start_date": "May 2025",
+    "end_date": "Aug 2025",
+    "img": "assets/img/img-aws.jpeg",
+    "mentor": "Dr. Ankush Desai",
+    "mentor_page": "https://ankushdesai.github.io/",
+    "location": "Santa Clara, CA"
+  },
+  {
+    "id": "AWS24",
+    "company": "Database System Lab, Amazon Web Services",
+    "position": "Applied Scientist Intern",
+    "company_link": "https://aws.amazon.com/",
+    "start_date": "May 2024",
+    "end_date": "Aug 2024",
+    "img": "assets/img/img-aws.jpeg",
+    "mentor": "Dr. Ankush Desai",
+    "mentor_page": "https://ankushdesai.github.io/",
+    "location": "Santa Clara, CA"
+  },
+  {
+    "id": "Taichi23",
+    "company": "Taichi Graphics (Now Meshy.AI)",
+    "company_link": "https://taichi.graphics/",
+    "position": "Compiler R&D Intern",
+    "start_date": "June 2022",
+    "end_date": "Sep 2022",
+    "img": "assets/img/img-taichi-logo.jpg",
+    "mentor": "Zhanlue Yang, Yi Xu",
+    "location": "Remote and Beijing, China"
+  },
+  {
+    "id": "Intel23",
+    "company": "Strategic CAD Lab (Intel Labs)",
+    "company_link": "https://www.intel.com/content/www/us/en/research/overview.html",
+    "position": "Formal Verification Research Intern",
+    "start_date": "Mar 2022",
+    "end_date": "June 2022",
+    "img": "assets/img/img-intel.png",
+    "mentor": "Dr. Zhenkun Yang",
+    "mentor_page": "https://web.cecs.pdx.edu/~zhenkun/",
+    "location": "Remote and Hillsboro, OR"
+  },
+  {
+    "id": "UWPLSE",
+    "company": "Programming Language and Software Engineering Lab",
+    "company_link": "https://uwplse.org/",
+    "position": "Research Assistant",
+    "start_date": "Oct 2019",
+    "end_date": "June 2022",
+    "img": "assets/img/img-uwplse.png",
+    "mentor": "Dr. Steven Lybomirsky",
+    "mentor_page": "https://slyubomirsky.github.io/",
+    "location": "Seattle, WA"
+  }
+]

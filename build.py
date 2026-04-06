@@ -2,44 +2,31 @@ from pybtex.database.input import bibtex
 import json
 from collections import defaultdict
 
+def load_people_data():
+    with open('people.json', 'r') as f:
+        return json.load(f)
+
+_people_data = load_people_data()
+institution_color_map = _people_data['institution_colors']
+
 def friends():
-    # last entry is the color for badges colors
-    info_list = [
-        ('Yinsen (Tesla) Zhang', 'https://ice1000.org/', 'CMU', 'danger'),
-        ('Marisa Kirisame', 'https://marisa.moe/', 'Utah', 'danger'),
-        ('Yihong Zhang', 'https://effect.systems/', 'UW', 'primary'),
-        ('Yinwei Dai', 'https://yinwei-dai.com/', 'Princeton', 'warning'),
-        ('Haichen Dong', 'https://haichendong.com/', 'BlackSesame', 'dark'),
-        ('Gus Smith', 'https://justg.us/', 'Chipstack', 'primary'),
-        ('Vishal Canumalla', 'https://vcanumalla.github.io/', 'Stanford', 'danger'),
-        ('Steven Lyubomirsky', 'https://slyubomirsky.github.io/', 'NVIDIA', 'success'),
-        ('Altan Haan', 'https://altanh.com/', 'UC Berkeley', 'primary'),
-        ('Guanghao Ye', 'https://yeguanghao.xyz/', 'MIT', 'dark'),
-        ('Yi Li', 'https://ece.princeton.edu/people/yi-li', 'Meta', 'primary'),
-        ('Muru Zhang', 'https://nanami18.github.io/', 'USC', 'danger'),
-        ('Shaoqi Wang', 'https://www.linkedin.com/in/shaoqiw/', 'Microsoft', 'primary'),
-        ('Thierry Tambe', 'https://thierrytambe.com/', 'Stanford', 'danger'),
-        ('Federico Mora Rocha', 'https://federico.morarocha.ca/', 'AWS', 'warning'),
-        ('Zhe Zhou', 'https://zhezhouzz.github.io/', 'Purdue', 'dark'),
-        ('Yifan Zhu', 'https://www.cs.rochester.edu/~yzhu104/', 'UofR', 'primary'),
-        ('Yuyou Fan', 'https://www.linkedin.com/in/yuyou-fan-58085a18b', 'Utah', 'danger'),
-        ('Hobart Yang', 'https://discover304.top/', 'MBZUAI', 'light'),
-        ('Chenyu Zhou', 'https://self.shiroha.info/', 'USC', 'danger')
+    friend_list = [
+        (p['name'], p['url'], p.get('institution', ''))
+        for p in _people_data['people'] if p.get('show_in_list')
     ]
-    info_list = sorted(info_list, key=lambda x: x[0].split()[-1])
-    return info_list
+    return sorted(friend_list, key=lambda x: x[0].split()[-1])
 
 def gen_friend_list_html():
     friend_list = friends()
     s = []
-    for (name, link, school, color) in friend_list:
+    for (name, link, school) in friend_list:
         content = f"""
 <li class="list-group-item d-flex justify-content-between align-items-center">
     <div>
       <div class="fw-bold">{name}</div>
       <a target="_blank" href="{link}" class="text-muted">{link}</a>
     </div>
-    <span class="badge rounded-pill badge-{color}">{school}</span>
+    <span class="badge rounded-pill badge-{institution_color_map.get(school, 'secondary')}">{school}</span>
   </li>"""
         s.append(content)
     return ''.join(s[:len(s) // 2]), ''.join(s[len(s) // 2:])
@@ -113,48 +100,19 @@ def get_personal_data():
     """
     return name, bio_text, footer
 
+def _build_author_link_map():
+    d = {}
+    for p in _people_data['people']:
+        d[p['name'].lower()] = p['url']
+        for alias in p.get('aliases', []):
+            d[alias.lower()] = p['url']
+    return d
+
+_author_links = _build_author_link_map()
+
 def get_author_link(author):
     author = ''.join(filter(lambda x: x.isalpha() or x in (' ', '-', '.'), author))
-    author = author.lower()
-    d = {
-        # 'Deyuan He': 'https://www.cs.princeton.edu/~dh7120/',
-        'Zachary Tatlock': 'https://ztatlock.net/',
-        'Aarti Gupta': 'https://www.cs.princeton.edu/~aartig/',
-        'Sharad Malik': 'https://www.princeton.edu/~sharad/',  
-        'Haichen Dong': 'https://haichendong.com/',
-        'Gus Henry Smith': 'https://justg.us/',
-        'Gus Smith': 'https://justg.us/',
-        'Vishal Canumalla': 'https://vcanumalla.github.io/',
-        'Steven Lyubomirsky': 'https://slyubomirsky.github.io/',
-        'Marisa Kirisame': 'https://marisa.moe/',
-        'Jennifer Brennan': 'https://jenniferbrennan.github.io/',
-        'Yi Li': 'https://ece.princeton.edu/people/yi-li',
-        'Gu-Yeon Wei': 'https://seas.harvard.edu/person/gu-yeon-wei',
-        'Thierry Tambe': 'https://thierrytambe.com/',
-        'Jared Roesch': 'https://jroesch.github.io/',
-        'Tianqi Chen': 'https://tqchen.com/',
-        'Bo-yuan Huang': 'https://boyuanhuang.com/',
-        'Akash Gaonkar': 'https://scholar.google.com/citations?user=Ccvj2usAAAAJ&hl=en',
-        'Altan Haan': 'https://altanh.com/',
-        'Ankush Desai': 'https://ankushdesai.github.io/',
-        'Aishwarya Jagarapu': 'https://www.linkedin.com/in/aishwarya-jagarapu/',
-        'Doug Terry': 'https://www.amazon.science/author/douglas-terry',
-        'Andrew Cheung': 'https://ninehusky.github.io/',
-        'Scale AI': 'https://scale.com/',
-        'Center for AI Safety': 'https://safe.ai/',
-        'Zhendong Ang': 'https://ang9876.github.io/',
-        'Haoyu Zhao': 'https://hyzhao.me/',
-        'Ziran Yang': 'https://ziranyang0.github.io/',
-        'Jiawei Li': 'https://ece.illinois.edu/about/directory/grad-students/jiaweil9',
-        'Zenan Li': 'https://lizn-zn.github.io/',
-        'Chi Jin': 'https://sites.google.com/view/cjin/home',
-        'Venugopal V. Veeravalli': 'https://vvv.ece.illinois.edu/',
-        'Sanjeev Arora': 'https://www.cs.princeton.edu/~arora/'
-    }
-    d = {
-        k.lower(): v for k, v in d.items()
-    }
-    return d.get(author)
+    return _author_links.get(author.lower())
 
 def generate_person_html(persons, connection=", ", make_bold=True, make_bold_name={'Mike He', 'Deyuan He'}, add_links=True):
     s = ""
@@ -237,35 +195,35 @@ def get_paper_entry(entry_key, entry):
     s += """ </div> </div> </div>"""
     return s
 
-def get_talk_entry(entry_key, entry):
+def get_talk_entry(entry):
     s = """<div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3">"""
-    s += f"""<img src="{entry.fields['img']}" class="img-fluid img-thumbnail" alt="Project image">"""
+    s += f"""<img src="{entry['img']}" class="img-fluid img-thumbnail" alt="Project image">"""
     s += """</div><div class="col-sm-9">"""
-    s += f"""<strong>{entry.fields['title']}</strong><br>"""
-    s += f"""<span style="font-style: italic;">{entry.fields['booktitle']}</span>, {entry.fields['year']} <br>"""
+    s += f"""<strong>{entry['title']}</strong><br>"""
+    s += f"""<span style="font-style: italic;">{entry['venue']}</span>, {entry['year']} <br>"""
 
     artefacts = {'slides': 'Slides', 'video': 'Recording'}
     i = 0
     for (k, v) in artefacts.items():
-        if k in entry.fields.keys():
+        if k in entry:
             if i > 0:
                 s += ' / '
-            s += f"""<a href="{entry.fields[k]}" target="_blank">{v}</a>"""
+            s += f"""<a href="{entry[k]}" target="_blank">{v}</a>"""
             i += 1
         else:
-            print(f'[{entry_key}] Warning: Field {k} missing!')
+            print(f'[{entry["id"]}] Warning: Field {k} missing!')
     s += """ </div> </div> </div>"""
     return s
 
-def get_intern_entry(entry_key, entry):
+def get_intern_entry(entry):
     s = """<div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3">"""
     s += f"""<div
   class="bg-image hover-overlay shadow-1-strong rounded"
   style="height: 128px; width: 128px;"
   data-mdb-ripple-init
   data-mdb-ripple-color="light"
-><img src="{entry.fields['img']}" width=128 height=128 class="img-fluid img-thumbnail" alt="company logo">
-<a target="_blank" href="{entry.fields['company_link']}">
+><img src="{entry['img']}" width=128 height=128 class="img-fluid img-thumbnail" alt="company logo">
+<a target="_blank" href="{entry['company_link']}">
     <div class="mask" style="background: linear-gradient(
         45deg,
         hsla(168, 85%, 52%, 0.5),
@@ -274,16 +232,16 @@ def get_intern_entry(entry_key, entry):
 </a>
 </div>"""
     s += """</div><div class="col-sm-9">"""
-    s += f"""<strong>{entry.fields['company']}</strong>, {entry.fields['start_date']} &rarr; {entry.fields['end_date']}<br>"""
-    s += f"""<span style="font-style: italic;">{entry.fields['position']}</span><br>"""
-    if 'mentor' in entry.fields.keys():
-        if 'mentor_page' in entry.fields.keys():
-            s += f"""<a href="{entry.fields['mentor_page']}" target="_blank"><span class="badge badge-pill badge-primary">Mentor: {entry.fields['mentor']}</span></a>"""
+    s += f"""<strong>{entry['company']}</strong>, {entry['start_date']} &rarr; {entry['end_date']}<br>"""
+    s += f"""<span style="font-style: italic;">{entry['position']}</span><br>"""
+    if 'mentor' in entry:
+        if 'mentor_page' in entry:
+            s += f"""<a href="{entry['mentor_page']}" target="_blank"><span class="badge badge-pill badge-primary">Mentor: {entry['mentor']}</span></a>"""
         else:
-            s += f"""<span class="badge badge-pill badge-primary">Mentor: {entry.fields['mentor']}</span>"""
+            s += f"""<span class="badge badge-pill badge-primary">Mentor: {entry['mentor']}</span>"""
         s += "<br>"
-    if 'location' in entry.fields.keys():
-        s += f"""<span class="badge badge-pill badge-secondary">{entry.fields['location']}</span>"""
+    if 'location' in entry:
+        s += f"""<span class="badge badge-pill badge-secondary">{entry['location']}</span>"""
     s += """ </div> </div> </div>"""
     return s
 
@@ -306,55 +264,40 @@ def get_workshop_html():
     return s
 
 def get_talks_html():
-    parser = bibtex.Parser()
-    bib_data = parser.parse_file('talk_list.bib')
-    keys = bib_data.entries.keys()
-    s = ""
-    for k in keys:
-        s+= get_talk_entry(k, bib_data.entries[k])
-    return s
+    with open('talks.json', 'r') as f:
+        talks = json.load(f)
+    return ''.join(get_talk_entry(t) for t in talks)
 
-def get_education_entry(entry_key, entry):
+def get_education_entry(entry):
     s = """<div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3">"""
-    s += f"""<a target="_blank" href="{entry.fields['institution_link']}"><img src="{entry.fields['img']}" width=98 height=98 class="img-fluid" alt="institution logo"></a>"""
+    s += f"""<a target="_blank" href="{entry['institution_link']}"><img src="{entry['img']}" width=98 height=98 class="img-fluid" alt="institution logo"></a>"""
     s += """</div><div class="col-sm-9">"""
-    if 'location' in entry.fields.keys():
-        location = entry.fields['location']
-    else:
-        location = ""
-    s += f"""<strong>{entry.fields['institution']}</strong>{(", " + location) if location else ", "} {entry.fields['start_date']} &rarr; {entry.fields['end_date']}<br>"""
-    s += f"""<span style="font-style: italic;">{entry.fields['degree']}</span><br>"""
-    if 'advisor' in entry.fields.keys():
-        if 'advisor_page' in entry.fields.keys():
-            s += f"""<a href="{entry.fields['advisor_page']}" target="_blank"><span class="badge badge-pill badge-primary">Advisor: {entry.fields['advisor']}</span></a>"""
+    location = entry.get('location', '')
+    s += f"""<strong>{entry['institution']}</strong>{(", " + location) if location else ", "} {entry['start_date']} &rarr; {entry['end_date']}<br>"""
+    s += f"""<span style="font-style: italic;">{entry['degree']}</span><br>"""
+    if 'advisor' in entry:
+        if 'advisor_page' in entry:
+            s += f"""<a href="{entry['advisor_page']}" target="_blank"><span class="badge badge-pill badge-primary">Advisor: {entry['advisor']}</span></a>"""
         else:
-            s += f"""<span class="badge badge-pill badge-primary">Advisor: {entry.fields['advisor']}</span>"""
-    if 'co_advisor' in entry.fields.keys():
-        if 'co_advisor_page' in entry.fields.keys():
-            s += f"""    <a href="{entry.fields['co_advisor_page']}" target="_blank"><span class="badge badge-pill badge-primary">Co-Advisor: {entry.fields['co_advisor']}</span></a>"""
+            s += f"""<span class="badge badge-pill badge-primary">Advisor: {entry['advisor']}</span>"""
+    if 'co_advisor' in entry:
+        if 'co_advisor_page' in entry:
+            s += f"""    <a href="{entry['co_advisor_page']}" target="_blank"><span class="badge badge-pill badge-primary">Co-Advisor: {entry['co_advisor']}</span></a>"""
         else:
-            s += f"""<span class="badge badge-pill badge-primary">Co-Advisor: {entry.fields['co_advisor']}</span>"""
+            s += f"""<span class="badge badge-pill badge-primary">Co-Advisor: {entry['co_advisor']}</span>"""
         s += "<br>"
     s += """ </div> </div> </div>"""
     return s
 
 def get_education_html():
-    parser = bibtex.Parser()
-    bib_data = parser.parse_file('education.bib')
-    keys = bib_data.entries.keys()
-    s = ""
-    for k in keys:
-        s+= get_education_entry(k, bib_data.entries[k])
-    return s
+    with open('education.json', 'r') as f:
+        entries = json.load(f)
+    return ''.join(get_education_entry(e) for e in entries)
 
 def get_internship_html():
-    parser = bibtex.Parser()
-    bib_data = parser.parse_file('internships.bib')
-    keys = bib_data.entries.keys()
-    s = ""
-    for k in keys:
-        s+= get_intern_entry(k, bib_data.entries[k])
-    return s
+    with open('internships.json', 'r') as f:
+        entries = json.load(f)
+    return ''.join(get_intern_entry(e) for e in entries)
 
 def get_professional_activities_html():
     activities = {
