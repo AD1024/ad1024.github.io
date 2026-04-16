@@ -25,7 +25,10 @@
     "Harvard": "danger",
     "Intel": "primary",
     "Google": "primary",
-    "NUS": "primary"
+    "NUS": "primary",
+    "UToronto": "primary",
+    "UPenn": "primary",
+    "OpenAI": "dark"
   },
   "people": [
     {"name": "Yinsen (Tesla) Zhang", "url": "https://ice1000.org/", "institution": "CMU", "show_in_list": true},
@@ -37,7 +40,7 @@
     {"name": "Vishal Canumalla", "url": "https://vcanumalla.github.io/", "institution": "Stanford", "show_in_list": true},
     {"name": "Steven Lyubomirsky", "url": "https://slyubomirsky.github.io/", "institution": "NVIDIA", "show_in_list": true},
     {"name": "Altan Haan", "url": "https://altanh.com/", "institution": "UC Berkeley", "show_in_list": true},
-    {"name": "Guanghao Ye", "url": "https://yeguanghao.xyz/", "institution": "MIT", "show_in_list": true},
+    {"name": "Guanghao Ye", "url": "https://yeguanghao.xyz/", "institution": "OpenAI", "show_in_list": true},
     {"name": "Yi Li", "url": "https://ece.princeton.edu/people/yi-li", "institution": "Meta", "show_in_list": true},
     {"name": "Muru Zhang", "url": "https://nanami18.github.io/", "institution": "USC", "show_in_list": true},
     {"name": "Shaoqi Wang", "url": "https://www.linkedin.com/in/shaoqiw/", "institution": "Microsoft", "show_in_list": true},
@@ -74,6 +77,11 @@
     {"name": "Scale AI", "url": "https://scale.com/", "show_in_list": false},
     {"name": "Center for AI Safety", "url": "https://safe.ai/", "show_in_list": false},
     {"name": "Zhendong Ang", "institution": "NUS", "url": "https://ang9876.github.io/", "show_in_list": true},
-    {"name": "Venugopal V. Veeravalli", "institution": "UIUC", "url": "https://vvv.ece.illinois.edu/", "show_in_list": true}
+    {"name": "Venugopal V. Veeravalli", "institution": "UIUC", "url": "https://vvv.ece.illinois.edu/", "show_in_list": true},
+    {"name": "Xujie Si", "url": "https://www.cs.toronto.edu/~six/", "institution": "UToronto", "show_in_list": true},
+    {"name": "Osbert Bastani", "url": "https://obastani.github.io/", "institution": "UPenn", "show_in_list": true},
+    {"name": "Marcus Min", "url": "https://marcusm117.github.io/", "institution": "UPenn", "show_in_list": true},
+    {"name": "Zhaoyu Li", "url":"https://www.zhaoyu-li.com/", "institution": "UToronto", "show_in_list": true},
+    {"name": "Zixuan Yi", "url": "https://zixy17.github.io/", "institution": "UPenn", "show_in_list": true}
   ]
 }

@@ -1,5 +1,13 @@
 [
   {
+    "id": "GTSpecyTalk",
+    "title": "Specy: Learning Specifications for Distributed Systems from Event Traces",
+    "venue": "Georgia Tech - Dependently Typed Talk",
+    "year": "April 13, 2026",
+    "img": "assets/img/img-specy.png",
+    "slides": "assets/talks/SpecySlides.pdf"
+  },
+  {
     "id": "LMPL25",
     "title": "Ranking Formal Specifications using LLMs",
     "venue": "SPLASH/LMPL'25",
