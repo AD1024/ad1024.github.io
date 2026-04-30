@@ -403,8 +403,7 @@ a:hover {{
 <body>
     <div class="container-xl">
         <div class="row ps-2 pe-2">
-            <div class="col-lg-1"></div>
-            <div class="col-lg-10">
+            <div class="col-lg-12">
                 <div class="row" style="margin-top: 3em;">
                     <div class="col-sm-12" style="margin-bottom: 1em;">
                     <h3 class="display-4" style="text-align: center;"><span style="font-weight: bold;">{name[0]}</span> {name[1]}</h3>
@@ -459,7 +458,6 @@ a:hover {{
                     {footer}
                 </div>
             </div>
-            <div class="col-lg-1"></div>
         </div>
     </div>
 
