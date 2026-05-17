@@ -301,9 +301,9 @@ def get_internship_html():
 
 def get_professional_activities_html():
     activities = {
-        'Reviewer': ["IEEE TMC", "AAE'25@KDD", "SciPy'25"],
-        'Artifact Evaluation Committee': ["POPL'25", "PLDI'24", "POPL'24", "MLSys'23", "MICRO'21"],
-        'Sub-reviewer': ["OOPSLA'24"],
+        'Reviewer': ["NeurIPS", "IEEE TMC", "AAE@KDD", "SciPy"],
+        'Artifact Evaluation': ["POPL", "PLDI", "MLSys", "MICRO"],
+        'Sub-reviewer': [],
         'PC': []
     }
     s = """<ul>"""
