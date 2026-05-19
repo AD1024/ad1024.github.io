@@ -215,6 +215,25 @@ def get_talk_entry(entry):
     s += """ </div> </div> </div>"""
     return s
 
+def _get_intern_stint_html(stint):
+    s = ""
+    header = stint.get('team') or stint.get('position', '')
+    if 'team' in stint:
+        s += f"""<strong>{stint['team']}</strong>, {stint['start_date']} &rarr; {stint['end_date']}<br>"""
+        s += f"""<span style="font-style: italic;">{stint['position']}</span><br>"""
+    else:
+        s += f"""{stint['start_date']} &rarr; {stint['end_date']}<br>"""
+        s += f"""<span style="font-style: italic;">{stint['position']}</span><br>"""
+    if 'mentor' in stint:
+        if 'mentor_page' in stint:
+            s += f"""<a href="{stint['mentor_page']}" target="_blank"><span class="badge badge-pill badge-primary">Mentor: {stint['mentor']}</span></a>"""
+        else:
+            s += f"""<span class="badge badge-pill badge-primary">Mentor: {stint['mentor']}</span>"""
+        s += " "
+    if 'location' in stint:
+        s += f"""<span class="badge badge-pill badge-secondary">{stint['location']}</span>"""
+    return s
+
 def get_intern_entry(entry):
     s = """<div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3">"""
     s += f"""<div
@@ -232,16 +251,25 @@ def get_intern_entry(entry):
 </a>
 </div>"""
     s += """</div><div class="col-sm-9">"""
-    s += f"""<strong>{entry['company']}</strong>, {entry['start_date']} &rarr; {entry['end_date']}<br>"""
-    s += f"""<span style="font-style: italic;">{entry['position']}</span><br>"""
-    if 'mentor' in entry:
-        if 'mentor_page' in entry:
-            s += f"""<a href="{entry['mentor_page']}" target="_blank"><span class="badge badge-pill badge-primary">Mentor: {entry['mentor']}</span></a>"""
-        else:
-            s += f"""<span class="badge badge-pill badge-primary">Mentor: {entry['mentor']}</span>"""
-        s += "<br>"
-    if 'location' in entry:
-        s += f"""<span class="badge badge-pill badge-secondary">{entry['location']}</span>"""
+
+    if 'stints' in entry:
+        s += f"""<strong>{entry['company']}</strong><br>"""
+        stints = entry['stints']
+        for i, stint in enumerate(stints):
+            divider = "" if i == len(stints) - 1 else """<hr style="margin: 0.6em 0; border-top: 1px dashed #ccc;">"""
+            s += f"""<div style="margin-top: 0.4em;">{_get_intern_stint_html(stint)}</div>{divider}"""
+    else:
+        s += f"""<strong>{entry['company']}</strong>, {entry['start_date']} &rarr; {entry['end_date']}<br>"""
+        s += f"""<span style="font-style: italic;">{entry['position']}</span><br>"""
+        if 'mentor' in entry:
+            if 'mentor_page' in entry:
+                s += f"""<a href="{entry['mentor_page']}" target="_blank"><span class="badge badge-pill badge-primary">Mentor: {entry['mentor']}</span></a>"""
+            else:
+                s += f"""<span class="badge badge-pill badge-primary">Mentor: {entry['mentor']}</span>"""
+            s += "<br>"
+        if 'location' in entry:
+            s += f"""<span class="badge badge-pill badge-secondary">{entry['location']}</span>"""
+
     s += """ </div> </div> </div>"""
     return s
 

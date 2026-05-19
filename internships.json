@@ -1,27 +1,38 @@
 [
   {
-    "id": "AWS25",
-    "company": "Automated Reasoning Group, Amazon Web Services",
-    "position": "Applied Scientist Intern",
-    "company_link": "https://www.amazon.science/research-areas/automated-reasoning",
-    "start_date": "May 2025",
-    "end_date": "Aug 2025",
-    "img": "assets/img/img-aws.jpeg",
-    "mentor": "Dr. Ankush Desai",
-    "mentor_page": "https://ankushdesai.github.io/",
-    "location": "Santa Clara, CA"
-  },
-  {
-    "id": "AWS24",
-    "company": "Database System Lab, Amazon Web Services",
-    "position": "Applied Scientist Intern",
+    "id": "AWS",
+    "company": "Amazon Web Services",
     "company_link": "https://aws.amazon.com/",
-    "start_date": "May 2024",
-    "end_date": "Aug 2024",
     "img": "assets/img/img-aws.jpeg",
-    "mentor": "Dr. Ankush Desai",
-    "mentor_page": "https://ankushdesai.github.io/",
-    "location": "Santa Clara, CA"
+    "stints": [
+      {
+        "team": "Agentic Automated Reasoning",
+        "position": "Applied Scientist Intern",
+        "start_date": "May 2026",
+        "end_date": "Aug 2026",
+        "mentor": "Dr. Siva Somayyajula",
+        "mentor_page": "https://www.linkedin.com/in/sivasomayyajula",
+        "location": "Boston, MA"
+      },
+      {
+        "team": "Automated Reasoning Group",
+        "position": "Applied Scientist Intern",
+        "start_date": "May 2025",
+        "end_date": "Aug 2025",
+        "mentor": "Dr. Ankush Desai",
+        "mentor_page": "https://ankushdesai.github.io/",
+        "location": "Santa Clara, CA"
+      },
+      {
+        "team": "Database System Lab",
+        "position": "Applied Scientist Intern",
+        "start_date": "May 2024",
+        "end_date": "Aug 2024",
+        "mentor": "Dr. Ankush Desai",
+        "mentor_page": "https://ankushdesai.github.io/",
+        "location": "Santa Clara, CA"
+      }
+    ]
   },
   {
     "id": "Taichi23",
