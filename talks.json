@@ -1,5 +1,13 @@
 [
   {
+    "id": "AlgoVeriICML26",
+    "title": "AlgoVeri: An Aligned Benchmark for Verified Code Generation on Classical Algorithms",
+    "venue": "ICML'26",
+    "year": "July 2026",
+    "img": "assets/img/img-algoveri-poster.jpg",
+    "poster": "assets/talks/AlgoVeri_poster.pdf"
+  },
+  {
     "id": "GTSpecyTalk",
     "title": "Specy: Learning Specifications for Distributed Systems from Event Traces",
     "venue": "Georgia Tech - Dependently Typed Talk",
