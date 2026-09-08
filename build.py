@@ -21,15 +21,164 @@ def gen_friend_list_html():
     s = []
     for (name, link, school) in friend_list:
         content = f"""
-<li class="list-group-item d-flex justify-content-between align-items-center">
-    <div>
+<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
+    <div class="friend-info">
       <div class="fw-bold">{name}</div>
-      <a target="_blank" href="{link}" class="text-muted">{link}</a>
+      <a target="_blank" href="{link}" class="text-muted friend-link">{link}</a>
     </div>
     <span class="badge rounded-pill badge-{institution_color_map.get(school, 'secondary')}">{school}</span>
   </li>"""
         s.append(content)
     return ''.join(s[:len(s) // 2]), ''.join(s[len(s) // 2:])
+
+# Interactive lambda-calculus email reveal. Kept as a plain (non-f) string so
+# the CSS/JS braces stay literal; it is spliced into the bio f-string verbatim.
+EMAIL_REDUCER = """
+<div id="lambda-mail" class="lambda-mail" aria-live="polite">
+  <div class="lambda-term" id="lambda-term"></div>
+  <div class="lambda-controls">
+    <button type="button" class="btn btn-sm btn-outline-secondary lambda-btn" id="lambda-prev">&larr; Prev</button>
+    <button type="button" class="btn btn-sm btn-primary lambda-btn" id="lambda-next"><i class="fa-solid fa-bolt"></i> &beta;-reduce</button>
+    <button type="button" class="btn btn-sm btn-link lambda-btn" id="lambda-reset">Reset</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary lambda-btn" id="lambda-copy" style="display: none;"><i class="fa-regular fa-copy"></i> Copy email</button>
+  </div>
+  <div class="lambda-hint" id="lambda-hint">Don't see it? Try running it.</div>
+</div>
+<style>
+.lambda-mail { margin-top: 0.5rem; }
+.lambda-term {
+  font-family: 'SFMono-Regular', Consolas, Menlo, monospace;
+  font-size: 1.05rem;
+  padding: 0.6rem 0.8rem;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  display: inline-block;
+  white-space: nowrap;
+  overflow-x: auto;
+  max-width: 100%;
+}
+.lambda-term .lam { color: #6f42c1; font-weight: 700; }
+.lambda-term .a1 { color: #c0392b; }
+.lambda-term .a2 { color: #2980b9; }
+.lambda-term .a3 { color: #1e8449; }
+.lambda-term .just-subst {
+  background: #fff3cd;
+  border-radius: 3px;
+  padding: 0 2px;
+  animation: lambdaFlash 0.7s ease;
+}
+@keyframes lambdaFlash {
+  from { background: #ffe08a; }
+  to { background: #fff3cd; }
+}
+.lambda-term a.email-link { text-decoration: none; color: inherit; }
+.lambda-term a.email-link:hover { text-decoration: underline; }
+.lambda-controls { margin-top: 0.5rem; display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap; }
+.lambda-hint { margin-top: 0.35rem; font-size: 0.85rem; color: #6c757d; font-style: italic; }
+.lambda-mail .lambda-btn:disabled { opacity: 0.45; cursor: default; }
+</style>
+<script>
+(function () {
+  var termEl = document.getElementById('lambda-term');
+  var prevBtn = document.getElementById('lambda-prev');
+  var nextBtn = document.getElementById('lambda-next');
+  var resetBtn = document.getElementById('lambda-reset');
+  var copyBtn = document.getElementById('lambda-copy');
+  var hintEl = document.getElementById('lambda-hint');
+  if (!termEl || !nextBtn) return;
+
+  var L = '<span class="lam">λ</span>';
+  // Each step is the term after one β-reduction; the newly substituted
+  // argument carries .just-subst so you can see what got plugged in.
+  var steps = [
+    '(' + L + '<span class="a1">x</span>.' + L + '<span class="a2">y</span>.' + L + '<span class="a3">z</span>. <span class="a3">z</span>@<span class="a1">x</span>.<span class="a2">y</span>) <span class="a1">princeton</span> <span class="a2">edu</span> <span class="a3">mikehe</span>',
+    '(' + L + '<span class="a2">y</span>.' + L + '<span class="a3">z</span>. <span class="a3">z</span>@<span class="a1 just-subst">princeton</span>.<span class="a2">y</span>) <span class="a2">edu</span> <span class="a3">mikehe</span>',
+    '(' + L + '<span class="a3">z</span>. <span class="a3">z</span>@<span class="a1">princeton</span>.<span class="a2 just-subst">edu</span>) <span class="a3">mikehe</span>',
+    '<span class="a3 just-subst">mikehe</span>@<span class="a1">princeton</span>.<span class="a2">edu</span>'
+  ];
+  // Address kept as char codes so no plaintext / mailto: string ever appears in
+  // the page source for email harvesters to scrape. Assembled only on click.
+  var enc = [109,105,107,101,104,101,64,112,114,105,110,99,101,116,111,110,46,101,100,117];
+  function decode() {
+    var s = '';
+    for (var k = 0; k < enc.length; k++) { s += String.fromCharCode(enc[k]); }
+    return s;
+  }
+
+  // Clipboard copy with a graceful fallback for browsers without the async API.
+  function copyEmail() {
+    var addr = decode();
+    function done() {
+      var old = copyBtn.innerHTML;
+      copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied';
+      setTimeout(function () { copyBtn.innerHTML = old; }, 1500);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(addr).then(done, function () { legacyCopy(addr); done(); });
+    } else {
+      legacyCopy(addr);
+      done();
+    }
+  }
+  function legacyCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'absolute';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+  if (copyBtn) copyBtn.addEventListener('click', copyEmail);
+
+  var i = 0;
+
+  function render() {
+    var atFinal = (i === steps.length - 1);
+    if (atFinal) {
+      // href starts as "#" so no mailto: appears in the source. It is filled in
+      // with the real address on the first genuine user interaction (hover /
+      // focus / touch / right-click), which restores native left/middle-click,
+      // drag, and "Copy Link Address" while keeping crawlers out.
+      termEl.innerHTML = '<a class="email-link" href="#" id="lambda-email-link" role="button">' + steps[i] + '</a>';
+      var link = document.getElementById('lambda-email-link');
+      if (link) {
+        var armed = false;
+        function arm() {
+          if (armed) return;
+          armed = true;
+          link.setAttribute('href', 'mailto:' + decode());
+        }
+        ['mouseenter', 'focus', 'touchstart', 'pointerdown', 'contextmenu'].forEach(function (ev) {
+          link.addEventListener(ev, arm);
+        });
+        // If activation somehow beats arming, navigate explicitly.
+        link.addEventListener('click', function (e) {
+          if (!armed) { e.preventDefault(); arm(); window.location.href = 'mailto:' + decode(); }
+        });
+      }
+      nextBtn.innerHTML = 'normal form ✓';
+      hintEl.innerHTML = '🎉 There it is — click the address to email me, or copy it.';
+    } else {
+      termEl.innerHTML = steps[i];
+      nextBtn.innerHTML = '<i class="fa-solid fa-bolt"></i> β-reduce';
+      hintEl.innerHTML = "Don't see it? Try running it.";
+    }
+    prevBtn.disabled = (i === 0);
+    nextBtn.disabled = atFinal;
+    if (copyBtn) copyBtn.style.display = atFinal ? '' : 'none';
+  }
+
+  nextBtn.addEventListener('click', function () { if (i < steps.length - 1) { i++; render(); } });
+  prevBtn.addEventListener('click', function () { if (i > 0) { i--; render(); } });
+  resetBtn.addEventListener('click', function () { i = 0; render(); });
+  render();
+})();
+</script>
+"""
 
 def get_personal_data():
     name = ["Mike", "He"]
@@ -48,14 +197,14 @@ def get_personal_data():
                 <p>In my free time, I enjoy playing the violin (I've been playing it longer than coding). You can find my archived recordings <a href="recordings.html">here</a>.</p>
                 <p>
                     <a class="btn btn-link" type="button" href="./assets/cv.pdf" target="_blank" style="margin-right: 5px"><i class="fa fa-address-card fa-lg"></i> CV</a>
-                    <button data-mdb-ripple-init data-mdb-ripple-color="grey" class="btn btn-link" type="button" data-toggle="collapse" data-target="#emailCollapse" style="margin-right: 5px"><i class="far fa-envelope-open fa-lg"></i> Mail</button>
+                    <button data-mdb-ripple-init data-mdb-ripple-color="grey" class="btn btn-link" type="button" data-toggle="collapse" data-target="#emailCollapse" style="margin-right: 5px"><i class="far fa-envelope-open fa-lg"></i> λ-Mail</button>
                     <a class="btn btn-link" type="button" href="https://twitter.com/{twitter}" target="_blank" style="margin-right: 5px"><i class="fab fa-twitter fa-lg"></i> Twitter</a>
                     <a class="btn btn-link" type="button" href="https://scholar.google.com/citations?hl=en&user=dhtWqm8AAAAJ&view_op=list_works&sortby=pubdate" target="_blank" style="margin-right: 5px"><i class="fa-solid fa-book"></i> Scholar</a>
-                    <a class="btn btn-link" type="button" href="https://github.com/{github}" target="_blank" style="margin-right: 5px"><i class="fab fa-github fa-lg"></i> Github</a>
+                    <a class="btn btn-link" type="button" href="https://github.com/{github}" target="_blank" style="margin-right: 5px"><i class="fab fa-github fa-lg"></i> GitHub</a>
                     <a class="btn btn-link" type="button" href="https://www.linkedin.com/in/{linkedin}" target="_blank" style="margin-right: 5px"><i class="fab fa-linkedin fa-lg"></i> LinkedIn</a>
                     <button data-mdb-ripple-init data-mdb-ripple-color="grey" class="btn btn-link" type="button" data-toggle="collapse" data-target="#demo"><i class="fa-solid fa-trophy"></i>Awards</button>
                     <div id="emailCollapse" class="collapse">
-                        <div class="thumb-zoom-container" style="display: inline-block; --zoom-img: url('assets/email.png')"><img src="assets/email.png" alt="Email" style="height: 2em; vertical-align: middle;"></div>
+                        {EMAIL_REDUCER}
                     </div>
                     <div id="demo" class="collapse">
                     <!-- <span style="font-weight: bold;">Awards:</span> -->
@@ -92,7 +241,7 @@ def get_personal_data():
                 </div>
                 <hr/>
                 <h4>Visitors are welcomed!</h4>
-                <img src="https://s11.flagcounter.com/count2/IatI/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/"/>
+                <img src="https://s11.flagcounter.com/count2/IatI/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" loading="lazy" alt="Flag counter"/>
                 <p>
                     This website is adapted from a template generously provided by <a target="_blank" href="https://m-niemeyer.github.io/">Michael Niemeyer</a>. The Logo of this website is designed by my friend, Melina.
                 </p>
@@ -135,7 +284,7 @@ def generate_person_html(persons, connection=", ", make_bold=True, make_bold_nam
 
 def get_paper_entry(entry_key, entry):
     s = """<div style="margin-bottom: 3em;"> <div class="row" style="align-items: stretch;"><div class="col-sm-3" style="display: flex;">"""
-    s += f"""<div class="thumb-zoom-container" style="--zoom-img: url('{entry.fields['img']}'); width: 100%;"><img src="{entry.fields['img']}" class="img-fluid img-thumbnail" alt="Project image" style="width: 100%; height: 100%; object-fit: cover;"></div>"""
+    s += f"""<div class="thumb-zoom-container" style="--zoom-img: url('{entry.fields['img']}'); width: 100%;"><img src="{entry.fields['img']}" class="img-fluid img-thumbnail" loading="lazy" alt="Project image" style="width: 100%; height: 100%; object-fit: cover;"></div>"""
     s += """</div><div class="col-sm-9">"""
 
     link = entry.fields.get('html', entry.fields.get('pdf', ''))
@@ -164,7 +313,7 @@ def get_paper_entry(entry_key, entry):
         s += '<div style="margin-top: 2px; margin-bottom: 4px;">'
         for badge_key, badge_img in badge_urls.items():
             if badge_key in entry.fields:
-                badge_html = f'<img src="{badge_img}" alt="{badge_alts[badge_key]}" style="height: 60px; margin-right: 6px;">'
+                badge_html = f'<img src="{badge_img}" alt="{badge_alts[badge_key]}" loading="lazy" style="height: 60px; margin-right: 6px;">'
                 if badge_key == 'artifact_available':
                     s += f'<a href="{entry.fields[badge_key]}" target="_blank">{badge_html}</a>'
                 else:
@@ -197,12 +346,12 @@ def get_paper_entry(entry_key, entry):
 
 def get_talk_entry(entry):
     s = """<div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3">"""
-    s += f"""<img src="{entry['img']}" class="img-fluid img-thumbnail" alt="Project image">"""
+    s += f"""<img src="{entry['img']}" class="img-fluid img-thumbnail" loading="lazy" alt="Project image">"""
     s += """</div><div class="col-sm-9">"""
     s += f"""<strong>{entry['title']}</strong><br>"""
     s += f"""<span style="font-style: italic;">{entry['venue']}</span>, {entry['year']} <br>"""
 
-    artefacts = {'slides': 'Slides', 'video': 'Recording'}
+    artefacts = {'slides': 'Slides', 'poster': 'Poster', 'video': 'Recording'}
     i = 0
     for (k, v) in artefacts.items():
         if k in entry:
@@ -241,7 +390,7 @@ def get_intern_entry(entry):
   style="height: 128px; width: 128px;"
   data-mdb-ripple-init
   data-mdb-ripple-color="light"
-><img src="{entry['img']}" width=128 height=128 class="img-fluid img-thumbnail" alt="company logo">
+><img src="{entry['img']}" width=128 height=128 class="img-fluid img-thumbnail" loading="lazy" alt="company logo">
 <a target="_blank" href="{entry['company_link']}">
     <div class="mask" style="background: linear-gradient(
         45deg,
@@ -298,7 +447,7 @@ def get_talks_html():
 
 def get_education_entry(entry):
     s = """<div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3">"""
-    s += f"""<a target="_blank" href="{entry['institution_link']}"><img src="{entry['img']}" width=98 height=98 class="img-fluid" alt="institution logo"></a>"""
+    s += f"""<a target="_blank" href="{entry['institution_link']}"><img src="{entry['img']}" width=98 height=98 class="img-fluid" loading="lazy" alt="institution logo"></a>"""
     s += """</div><div class="col-sm-9">"""
     location = entry.get('location', '')
     s += f"""<strong>{entry['institution']}</strong>{(", " + location) if location else ", "} {entry['start_date']} &rarr; {entry['end_date']}<br>"""
@@ -378,6 +527,39 @@ def get_index_html():
 a:hover {{
   text-decoration: underline solid Currentcolor;
 }}
+/* Floated into the text flow so it stays beside the bio at every width
+   instead of dropping below the icon row when the grid stacks. */
+.profile-photo {{
+  float: right;
+  width: 190px;
+  margin: 0 0 1rem 1.5rem;
+}}
+.bio-col {{
+  display: flow-root; /* contain the float */
+}}
+/* MDB uppercases button labels by default; keep the self-intro button row
+   (CV, λ-Mail, Twitter, ...) in the case it was authored in. */
+.bio-col .btn {{
+  text-transform: none;
+}}
+/* Long profile URLs can't shrink inside the flex row, which pushed the
+   institution badge past the viewport on narrow screens. */
+.friend-info {{
+  min-width: 0;
+}}
+.friend-link {{
+  overflow-wrap: anywhere;
+}}
+.friend-info .badge, .list-group-item > .badge {{
+  white-space: normal;
+}}
+@media (max-width: 767.98px) {{
+  .profile-photo {{
+    width: 38%;
+    max-width: 160px;
+    margin: 0 0 0.5rem 1rem;
+  }}
+}}
 .thumb-zoom-container {{
   position: relative;
 }}
@@ -437,11 +619,9 @@ a:hover {{
                     <h3 class="display-4" style="text-align: center;"><span style="font-weight: bold;">{name[0]}</span> {name[1]}</h3>
                     </div>
                     <br>
-                    <div class="col-md-10" style="">
+                    <div class="col-12 bio-col">
+                        <img src="assets/img/photo_2025_web.jpg" class="img-thumbnail profile-photo" width="483" height="600" alt="Profile picture">
                         {bio_text}
-                    </div>
-                    <div class="col-md-2" style="">
-                        <img src="assets/img/photo_2025.jpg" class="img-thumbnail" width="280px" alt="Profile picture">
                     </div>
                 </div>
                 <div class="row" style="margin-top: 1em;">
