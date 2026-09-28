@@ -476,7 +476,7 @@ def get_index_html():
         <section class="hero" aria-labelledby="name">
             <div class="hero-intro"><p class="eyebrow">Ph.D. student · Princeton University</p>
                 <h1 id="name">{' '.join(name)}<span class="accent">.</span></h1>
-                <p class="research-focus">Programming languages. Formal methods.<br>Systems we can reason about.</p>
+                <p class="research-focus">Formal Methods for and with LLM Agents</p>
             </div>
             <figure class="portrait"><img src="assets/img/photo_2025_web.jpg" alt="Mike He" width="483" height="600"><figcaption>Princeton, New Jersey</figcaption></figure>
             <div class="bio">{bio_text}</div>
