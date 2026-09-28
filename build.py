@@ -1,13 +1,15 @@
 from pybtex.database.input import bibtex
 import json
 from collections import defaultdict
+from copy import deepcopy
+from datetime import datetime
+from html import escape
 
 def load_people_data():
     with open('people.json', 'r') as f:
         return json.load(f)
 
 _people_data = load_people_data()
-institution_color_map = _people_data['institution_colors']
 
 def friends():
     friend_list = [
@@ -17,19 +19,11 @@ def friends():
     return sorted(friend_list, key=lambda x: x[0].split()[-1])
 
 def gen_friend_list_html():
-    friend_list = friends()
-    s = []
-    for (name, link, school) in friend_list:
-        content = f"""
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">{name}</div>
-      <a target="_blank" href="{link}" class="text-muted friend-link">{link}</a>
-    </div>
-    <span class="badge rounded-pill badge-{institution_color_map.get(school, 'secondary')}">{school}</span>
-  </li>"""
-        s.append(content)
-    return ''.join(s[:len(s) // 2]), ''.join(s[len(s) // 2:])
+    return ''.join(
+        f'<li><a href="{escape(link, quote=True)}" target="_blank">{escape(name)}</a>'
+        f'<span>{escape(school)}</span></li>'
+        for name, link, school in friends()
+    )
 
 # Interactive lambda-calculus email reveal. Kept as a plain (non-f) string so
 # the CSS/JS braces stay literal; it is spliced into the bio f-string verbatim.
@@ -38,9 +32,9 @@ EMAIL_REDUCER = """
   <div class="lambda-term" id="lambda-term"></div>
   <div class="lambda-controls">
     <button type="button" class="btn btn-sm btn-outline-secondary lambda-btn" id="lambda-prev">&larr; Prev</button>
-    <button type="button" class="btn btn-sm btn-primary lambda-btn" id="lambda-next"><i class="fa-solid fa-bolt"></i> &beta;-reduce</button>
+    <button type="button" class="btn btn-sm btn-primary lambda-btn" id="lambda-next">↳ &beta;-reduce</button>
     <button type="button" class="btn btn-sm btn-link lambda-btn" id="lambda-reset">Reset</button>
-    <button type="button" class="btn btn-sm btn-outline-secondary lambda-btn" id="lambda-copy" style="display: none;"><i class="fa-regular fa-copy"></i> Copy email</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary lambda-btn" id="lambda-copy" style="display: none;"> Copy email</button>
   </div>
   <div class="lambda-hint" id="lambda-hint">Don't see it? Try running it.</div>
 </div>
@@ -111,7 +105,7 @@ EMAIL_REDUCER = """
     var addr = decode();
     function done() {
       var old = copyBtn.innerHTML;
-      copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied';
+      copyBtn.innerHTML = '✓ Copied';
       setTimeout(function () { copyBtn.innerHTML = old; }, 1500);
     }
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -164,7 +158,7 @@ EMAIL_REDUCER = """
       hintEl.innerHTML = '🎉 There it is — click the address to email me, or copy it.';
     } else {
       termEl.innerHTML = steps[i];
-      nextBtn.innerHTML = '<i class="fa-solid fa-bolt"></i> β-reduce';
+      nextBtn.innerHTML = '↳ β-reduce';
       hintEl.innerHTML = "Don't see it? Try running it.";
     }
     prevBtn.disabled = (i === 0);
@@ -182,70 +176,54 @@ EMAIL_REDUCER = """
 
 def get_personal_data():
     name = ["Mike", "He"]
-    email = "dh7120@cs.princeton.edu"
-    twitter = "1SHL10"
-    github = "AD1024"
-    linkedin = "deyuan-mike-he"
     bio_text = f"""
-                <p>
-                    I am a Ph.D. student at the <a target="_blank" href="https://pl.cs.princeton.edu/">Princeton Programming Languages Group</a> advised by Prof. <a target="_blank" href="https://www.cs.princeton.edu/~aartig/"> Aarti Gupta</a>.
+<p>
+                    I am a Ph.D. student at the <a href="https://pl.cs.princeton.edu/" target="_blank">Princeton Programming Languages Group</a> advised by Prof. <a href="https://www.cs.princeton.edu/~aartig/" target="_blank"> Aarti Gupta</a>.
                     I am broadly interested in programming languages, formal methods and compilers.
-                    My current research focuses on practical formal and semi-formal methods for distributed systems and agentic systems, and I am working with the <a target="_blank" href="https://p-org.github.io/P">P ecosystem</a> for verifying and reasoning about distributed systems.
+                    My current research focuses on practical formal and semi-formal methods for distributed systems and agentic systems, and I am working with the <a href="https://p-org.github.io/P" target="_blank">P ecosystem</a> for verifying and reasoning about distributed systems.
                 </p>
-                <p>Before joining Princeton, I studied at the <a target="_blank" href="https://cs.washington.edu">University of Washington</a>, where I was privileged to work with Prof. <a target="_blank" href="https://ztatlock.net/">Zachary Tatlock</a> on equality saturation and its applications to machine learning compilers.
+<p>Before joining Princeton, I studied at the <a href="https://cs.washington.edu" target="_blank">University of Washington</a>, where I was privileged to work with Prof. <a href="https://ztatlock.net/" target="_blank">Zachary Tatlock</a> on equality saturation and its applications to machine learning compilers.
                 </p>
-                <p>In my free time, I enjoy playing the violin (I've been playing it longer than coding). You can find my archived recordings <a href="recordings.html">here</a>.</p>
-                <p>
-                    <a class="btn btn-link" type="button" href="./assets/cv.pdf" target="_blank" style="margin-right: 5px"><i class="fa fa-address-card fa-lg"></i> CV</a>
-                    <button data-mdb-ripple-init data-mdb-ripple-color="grey" class="btn btn-link" type="button" data-toggle="collapse" data-target="#emailCollapse" style="margin-right: 5px"><i class="far fa-envelope-open fa-lg"></i> λ-Mail</button>
-                    <a class="btn btn-link" type="button" href="https://twitter.com/{twitter}" target="_blank" style="margin-right: 5px"><i class="fab fa-twitter fa-lg"></i> Twitter</a>
-                    <a class="btn btn-link" type="button" href="https://scholar.google.com/citations?hl=en&user=dhtWqm8AAAAJ&view_op=list_works&sortby=pubdate" target="_blank" style="margin-right: 5px"><i class="fa-solid fa-book"></i> Scholar</a>
-                    <a class="btn btn-link" type="button" href="https://github.com/{github}" target="_blank" style="margin-right: 5px"><i class="fab fa-github fa-lg"></i> GitHub</a>
-                    <a class="btn btn-link" type="button" href="https://www.linkedin.com/in/{linkedin}" target="_blank" style="margin-right: 5px"><i class="fab fa-linkedin fa-lg"></i> LinkedIn</a>
-                    <button data-mdb-ripple-init data-mdb-ripple-color="grey" class="btn btn-link" type="button" data-toggle="collapse" data-target="#demo"><i class="fa-solid fa-trophy"></i>Awards</button>
-                    <div id="emailCollapse" class="collapse">
-                        {EMAIL_REDUCER}
-                    </div>
-                    <div id="demo" class="collapse">
-                    <!-- <span style="font-weight: bold;">Awards:</span> -->
-                    <ul>
-                        <li>2022: <a target="_blank" href="https://news.cs.washington.edu/2022/02/22/allen-school-undergraduates-recognized-by-the-computing-research-association-for-advancing-health-sensing-programming-languages-and-systems-research/">CRA Outstanding Undergraduate Researcher Award, Honorable Mention</a></li>
-                        <li>2020: Lynn Conway Research Award (DTR Team)</li>
-                        <li>2019: JASSO Scholarship, Waseda University</li>
-                        <li>2018 &rarr; 2022: Annual Dean's List, University of Washington</li>
-                        <li>2016: NOIp 2nd Prize, Beijing Regional</li>
-                    </ul>
-                </div>
-                </p>
+<p>In my free time, I enjoy playing the violin (I've been playing it longer than coding). You can find my archived recordings <a href="recordings.html">here</a>.</p>
+    <div class="contact-links" aria-label="Contact and profiles">
+        <a class="cv-link" href="assets/cv.pdf" target="_blank">Curriculum vitae <span aria-hidden="true">↗</span></a>
+        <a href="https://scholar.google.com/citations?hl=en&user=dhtWqm8AAAAJ&view_op=list_works&sortby=pubdate" target="_blank">Scholar</a>
+        <a href="https://github.com/AD1024" target="_blank">GitHub</a>
+        <a href="https://twitter.com/1SHL10" target="_blank">Twitter</a>
+        <a href="https://www.linkedin.com/in/deyuan-mike-he" target="_blank">LinkedIn</a>
+    </div>
+    <div class="bio-disclosures">
+        <details class="email-disclosure"><summary>λ-Mail</summary>{EMAIL_REDUCER}</details>
+        <details class="awards-disclosure"><summary>Awards &amp; honors</summary><ul>
+<li>2022: <a href="https://news.cs.washington.edu/2022/02/22/allen-school-undergraduates-recognized-by-the-computing-research-association-for-advancing-health-sensing-programming-languages-and-systems-research/" target="_blank">CRA Outstanding Undergraduate Researcher Award, Honorable Mention</a></li>
+<li>2020: Lynn Conway Research Award (DTR Team)</li>
+<li>2019: JASSO Scholarship, Waseda University</li>
+<li>2018 → 2022: Annual Dean's List, University of Washington</li>
+<li>2016: NOIp 2nd Prize, Beijing Regional</li>
+</ul></details>
+    </div>
     """
-    friend_first_half, friend_second_half = gen_friend_list_html()
     footer = f"""
-            <div class="col-sm-12" style="">
-                <h4>Misc</h4>
-                <ul>
-                    <li>I love classical music and enjoy playing the violin. I've been playing the violin for about 20 years.
+    <section class="site-section personal-section" aria-labelledby="beyond-research">
+        <div class="section-heading"><h2 id="beyond-research">Beyond research</h2><a class="text-link" href="recordings.html">Violin recordings <span aria-hidden="true">↗</span></a></div>
+        <div class="personal-intro"><p>Classical music, the violin, and a few other things.</p></div>
+        <details class="personal-details"><summary>A little more about me</summary><ul>
+<li>I love classical music and enjoy playing the violin. I've been playing the violin for about 20 years.
                      I received the Lv.9 certification issued by the Central Conservatory of Music when I was in middle school.
                     You can find some of my recordings <a href="recordings.html">here</a>.
-                    Some video recordings are available @ <a target="_blank" href="https://space.bilibili.com/11936677">Bilibili</a> (the website is in Chinese).</li>
-                    <li>I was a part-time translator / proofreading editor in <a target="_blank" href="https://www.youtube.com/channel/UCoSrY_IQQVpmIRZ9Xf-y93g">Gawr Gura</a>'s Chinese fansub team. Gura, now graduated, was a virtual streamer at YouTube affiliated with <a target="_blank" href="https://en.hololive.tv/member">Hololive Production</a> (EN).</li>
-                    <li>My Erdős number is 3: Mike He [3] &rarr; Sanjeev Arora [2] &rarr; László Babai [1] &rarr; Paul Erdős [0]</li>
-                </ul>
-                <h4>Friends and Colleagues (by alphabetical order of last names)</h4>
-                <div class="row justify-content-center pe-3 ps-3">
-                    <ul class="col-sm-5 list-group list-group-light">
-                        {friend_first_half}
-                    </ul>
-                    <ul class="col-sm-5 list-group list-group-light">
-                        {friend_second_half}
-                    </ul>
-                </div>
-                <hr/>
-                <h4>Visitors are welcomed!</h4>
-                <img src="https://s11.flagcounter.com/count2/IatI/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" loading="lazy" alt="Flag counter"/>
-                <p>
-                    This website is adapted from a template generously provided by <a target="_blank" href="https://m-niemeyer.github.io/">Michael Niemeyer</a>. The Logo of this website is designed by my friend, Melina.
-                </p>
-            </div>
+                    Some video recordings are available @ <a href="https://space.bilibili.com/11936677" target="_blank">Bilibili</a> (the website is in Chinese).</li>
+<li>I was a part-time translator / proofreading editor in <a href="https://www.youtube.com/channel/UCoSrY_IQQVpmIRZ9Xf-y93g" target="_blank">Gawr Gura</a>'s Chinese fansub team. Gura, now graduated, was a virtual streamer at YouTube affiliated with <a href="https://en.hololive.tv/member" target="_blank">Hololive Production</a>.</li>
+<li>My Erdős number is 3: Mike He [3] → Sanjeev Arora [2] → László Babai [1] → Paul Erdős [0]</li>
+</ul></details>
+        <details class="personal-details"><summary>Friends &amp; colleagues</summary>
+            <p class="small-note">In alphabetical order of last name.</p>
+            <ul class="friends-list">{gen_friend_list_html()}</ul>
+        </details>
+        <details class="personal-details"><summary>Visitors from around the world</summary><img alt="Flag counter" loading="lazy" src="https://s11.flagcounter.com/count2/IatI/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/"/></details>
+        <div class="credits"><p>
+                    This website is adapted from a template generously provided by <a href="https://m-niemeyer.github.io/" target="_blank">Michael Niemeyer</a>. The Logo of this website is designed by my friend, Melina.
+                </p></div>
+    </section>
     """
     return name, bio_text, footer
 
@@ -264,207 +242,175 @@ def get_author_link(author):
     return _author_links.get(author.lower())
 
 def generate_person_html(persons, connection=", ", make_bold=True, make_bold_name={'Mike He', 'Deyuan He'}, add_links=True):
-    s = ""
-    for p in persons:
-        string_part_i = ""
-        for name_part_i in p.get_part('first') + p.get_part('prelast') + p.get_part('middle') + p.get_part('last') + p.get_part('lineage'): 
-            if string_part_i != "":
-                string_part_i += " "
-            string_part_i += name_part_i
-        if add_links:
-            link = get_author_link(string_part_i)
-            if link and add_links:
-                string_part_i = f'<a href="{link}" target="_blank">{string_part_i}</a>'
-        if make_bold and ''.join(filter(lambda x: x.isalpha() or x in (' ', '-', '.'), string_part_i)) in make_bold_name:
-            string_part_i = f'<span style="font-weight: bold";>{string_part_i}</span>'
-        if p != persons[-1]:
-            string_part_i += connection
-        s += string_part_i
-    return s
+    names = []
+    for person in persons:
+        name = ' '.join(part for kind in ('first', 'prelast', 'middle', 'last', 'lineage') for part in person.get_part(kind))
+        label = escape(name)
+        link = get_author_link(name) if add_links else None
+        if link:
+            label = f'<a href="{escape(link, quote=True)}" target="_blank">{label}</a>'
+        if make_bold and name.rstrip('*') in make_bold_name:
+            label = f'<strong>{label}</strong>'
+        names.append(label)
+    return connection.join(names)
 
-def get_paper_entry(entry_key, entry):
-    s = """<div style="margin-bottom: 3em;"> <div class="row" style="align-items: stretch;"><div class="col-sm-3" style="display: flex;">"""
-    s += f"""<div class="thumb-zoom-container" style="--zoom-img: url('{entry.fields['img']}'); width: 100%;"><img src="{entry.fields['img']}" class="img-fluid img-thumbnail" loading="lazy" alt="Project image" style="width: 100%; height: 100%; object-fit: cover;"></div>"""
-    s += """</div><div class="col-sm-9">"""
-
-    link = entry.fields.get('html', entry.fields.get('pdf', ''))
-    if 'award' in entry.fields.keys():
-        s += f"""<a style="font-size: 13pt" href="{link}" target="_blank"><strong>{entry.fields['title']}</strong></a> <span style="color: red;">({entry.fields['award']})</span><br>"""
-    else:
-        s += f"""<a style="font-size: 13pt" href="{link}" target="_blank"><strong>{entry.fields['title']}</strong></a> <br>"""
-    s += f"""{generate_person_html(entry.persons['author'])} <br>"""
-    s += f"""<span style="font-style: italic;">{entry.fields.get('booktitle', entry.fields.get('journal', 'Pre-print'))}</span>, {entry.fields['year']} <br>"""
-
-    # Artifact evaluation badges
-    badge_urls = {
-        'artifact_available': 'https://www.acm.org/binaries/content/gallery/acm/publications/artifact-review-v1_1-badges/artifacts_available_v1_1.png',
-        'artifact_functional': 'https://www.acm.org/binaries/content/gallery/acm/publications/artifact-review-v1_1-badges/artifacts_evaluated_functional_v1_1.png',
-        'artifact_reusable': 'https://www.acm.org/binaries/content/gallery/acm/publications/artifact-review-v1_1-badges/artifacts_evaluated_reusable_v1_1.png',
-        'artifact_reproduced': 'https://www.acm.org/binaries/content/gallery/acm/publications/artifact-review-v1_1-badges/results_reproduced_v1_1.png',
+def get_paper_entry(entry_key, entry, heading_level=4):
+    fields = entry.fields
+    title = escape(fields['title'])
+    link = fields.get('html') or fields.get('pdf')
+    title_html = f'<a href="{escape(link, quote=True)}" target="_blank">{title}</a>' if link else title
+    award = f'<span class="award-label">{escape(fields["award"])}</span>' if fields.get('award') else ''
+    artefacts = {'html': 'Project', 'pdf': 'Paper', 'supp': 'Supplemental', 'video': 'Video', 'poster': 'Poster', 'code': 'Code'}
+    links = ''.join(
+        f'<a href="{escape(fields[key], quote=True)}" target="_blank">{label} <span aria-hidden="true">↗</span></a>'
+        for key, label in artefacts.items() if fields.get(key)
+    )
+    badge_names = {
+        'artifact_available': ('artifacts_available', 'Artifacts Available'),
+        'artifact_functional': ('artifacts_evaluated_functional', 'Artifacts Evaluated — Functional'),
+        'artifact_reusable': ('artifacts_evaluated_reusable', 'Artifacts Evaluated — Reusable'),
+        'artifact_reproduced': ('results_reproduced', 'Results Reproduced'),
     }
-    badge_alts = {
-        'artifact_available': 'Artifacts Available',
-        'artifact_functional': 'Artifacts Evaluated — Functional',
-        'artifact_reusable': 'Artifacts Evaluated — Reusable',
-        'artifact_reproduced': 'Results Reproduced',
-    }
-    has_badges = any(k in entry.fields for k in badge_urls)
-    if has_badges:
-        s += '<div style="margin-top: 2px; margin-bottom: 4px;">'
-        for badge_key, badge_img in badge_urls.items():
-            if badge_key in entry.fields:
-                badge_html = f'<img src="{badge_img}" alt="{badge_alts[badge_key]}" loading="lazy" style="height: 60px; margin-right: 6px;">'
-                if badge_key == 'artifact_available':
-                    s += f'<a href="{entry.fields[badge_key]}" target="_blank">{badge_html}</a>'
-                else:
-                    s += badge_html
-        s += '</div>'
+    badges = []
+    for key, (filename, label) in badge_names.items():
+        if key in fields:
+            badge = f'<img src="https://www.acm.org/binaries/content/gallery/acm/publications/artifact-review-v1_1-badges/{filename}_v1_1.png" alt="{label}" loading="lazy">'
+            if key == 'artifact_available':
+                badge = f'<a href="{escape(fields[key], quote=True)}" target="_blank">{badge}</a>'
+            badges.append(badge)
+    badge_html = '<div class="artifact-badges">' + ''.join(badges) + '</div>' if badges else ''
+    citation = deepcopy(entry)
+    for key in list(artefacts) + ['img', 'award'] + list(badge_names):
+        citation.fields.pop(key, None)
+    cite = escape(citation.to_string('bibtex'))
+    venue = escape(fields.get('booktitle', fields.get('journal', 'Preprint')))
+    return f"""
+    <article class="publication" id="paper-{escape(entry_key, quote=True)}">
+        <div class="publication-body">
+            <div class="publication-venue">{venue} · {escape(fields['year'])} {award}</div>
+            <h{heading_level} class="publication-title">{title_html}</h{heading_level}>
+            <p class="publication-authors">{generate_person_html(entry.persons['author'])}</p>
+            {badge_html}
+            <div class="publication-links">{links}
+                <details class="citation"><summary>BibTeX</summary><pre><code>{cite}</code></pre></details>
+            </div>
+        </div>
+    </article>"""
 
-    artefacts = {'html': 'Project Page', 'pdf': 'Paper', 'supp': 'Supplemental', 'video': 'Video', 'poster': 'Poster', 'code': 'Code'}
-    i = 0
-    for (k, v) in artefacts.items():
-        if k in entry.fields.keys():
-            # if i > 0:
-            #     s += ' / '
-            s += f"""<a class="btn btn-link" type="button" href="{entry.fields[k]}" target="_blank">{v}</a>"""
-            i += 1
-        else:
-            print(f'[{entry_key}] Warning: Field {k} missing!')
-
-    # cite = "<pre><code>@article{" + f"{entry_key}, \n"
-    # cite += "\tauthor = {" + f"{generate_person_html(entry.persons['author'], make_bold=False, add_links=False, connection=' and ')}" + "}, \n"
-    # for entr in ['title', 'booktitle', 'year']:
-    #     cite += f"\t{entr} = " + "{" + f"{entry.fields[entr]}" + "}, \n"
-    # cite += """}</pre></code>"""
-    for key in list(artefacts.keys()) + ['img', 'award'] + list(badge_urls.keys()):
-        if key in entry.fields.keys():
-            del entry.fields[key]
-    cite = "<pre><code>{}</code></pre>".format(entry.to_string("bibtex"))
-    s += f"""<button data-mdb-ripple-init data-mdb-ripple-color="pink" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{entry_key}" aria-expanded="false" aria-controls="collapseExample" style="margin-left: -6px; margin-top: -2px;">Expand bibtex</button><div class="collapse" id="collapse{entry_key}"><div class="card card-body">{cite}</div></div>"""
-    s += """ </div> </div> </div>"""
-    return s
-
-def get_talk_entry(entry):
-    s = """<div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3">"""
-    s += f"""<img src="{entry['img']}" class="img-fluid img-thumbnail" loading="lazy" alt="Project image">"""
-    s += """</div><div class="col-sm-9">"""
-    s += f"""<strong>{entry['title']}</strong><br>"""
-    s += f"""<span style="font-style: italic;">{entry['venue']}</span>, {entry['year']} <br>"""
-
-    artefacts = {'slides': 'Slides', 'poster': 'Poster', 'video': 'Recording'}
-    i = 0
-    for (k, v) in artefacts.items():
-        if k in entry:
-            if i > 0:
-                s += ' / '
-            s += f"""<a href="{entry[k]}" target="_blank">{v}</a>"""
-            i += 1
-        else:
-            print(f'[{entry["id"]}] Warning: Field {k} missing!')
-    s += """ </div> </div> </div>"""
-    return s
+def get_talk_entry(entry, heading_level=3):
+    links = ''.join(
+        f'<a href="{escape(entry[key], quote=True)}" target="_blank">{label} <span aria-hidden="true">↗</span></a>'
+        for key, label in {'slides': 'Slides', 'poster': 'Poster', 'video': 'Recording'}.items() if entry.get(key)
+    )
+    return f"""
+    <article class="talk" id="talk-{escape(entry['id'], quote=True)}">
+        <div class="talk-date">{escape(entry['year'])}</div>
+        <div class="talk-body"><h{heading_level}>{escape(entry['title'])}</h{heading_level}><p>{escape(entry['venue'])}</p><div class="resource-links">{links}</div></div>
+        <img src="{escape(entry['img'], quote=True)}" alt="Figure for {escape(entry['title'], quote=True)}" loading="lazy">
+    </article>"""
 
 def _get_intern_stint_html(stint):
-    s = ""
-    header = stint.get('team') or stint.get('position', '')
-    if 'team' in stint:
-        s += f"""<strong>{stint['team']}</strong>, {stint['start_date']} &rarr; {stint['end_date']}<br>"""
-        s += f"""<span style="font-style: italic;">{stint['position']}</span><br>"""
-    else:
-        s += f"""{stint['start_date']} &rarr; {stint['end_date']}<br>"""
-        s += f"""<span style="font-style: italic;">{stint['position']}</span><br>"""
-    if 'mentor' in stint:
-        if 'mentor_page' in stint:
-            s += f"""<a href="{stint['mentor_page']}" target="_blank"><span class="badge badge-pill badge-primary">Mentor: {stint['mentor']}</span></a>"""
-        else:
-            s += f"""<span class="badge badge-pill badge-primary">Mentor: {stint['mentor']}</span>"""
-        s += " "
-    if 'location' in stint:
-        s += f"""<span class="badge badge-pill badge-secondary">{stint['location']}</span>"""
-    return s
+    team = f'<p class="career-team">{escape(stint["team"])}</p>' if stint.get('team') else ''
+    mentor = escape(stint.get('mentor', ''))
+    if stint.get('mentor_page'):
+        mentor = f'<a href="{escape(stint["mentor_page"], quote=True)}" target="_blank">{mentor}</a>'
+    mentor_html = f'<p class="career-note">Mentor: {mentor}</p>' if mentor else ''
+    location = f' · {escape(stint["location"])}' if stint.get('location') else ''
+    return f"""<div class="career-stint">
+        <p class="career-date">{escape(stint['start_date'])} – {escape(stint['end_date'])}{location}</p>
+        {team}<p>{escape(stint['position'])}</p>{mentor_html}
+    </div>"""
 
 def get_intern_entry(entry):
-    s = """<div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3">"""
-    s += f"""<div
-  class="bg-image hover-overlay shadow-1-strong rounded"
-  style="height: 128px; width: 128px;"
-  data-mdb-ripple-init
-  data-mdb-ripple-color="light"
-><img src="{entry['img']}" width=128 height=128 class="img-fluid img-thumbnail" loading="lazy" alt="company logo">
-<a target="_blank" href="{entry['company_link']}">
-    <div class="mask" style="background: linear-gradient(
-        45deg,
-        hsla(168, 85%, 52%, 0.5),
-        hsla(263, 88%, 45%, 0.5) 100%
-      );"></div>
-</a>
-</div>"""
-    s += """</div><div class="col-sm-9">"""
+    stints = ''.join(_get_intern_stint_html(stint) for stint in entry.get('stints', [entry]))
+    return f"""<article class="career-entry">
+        <img src="{escape(entry['img'], quote=True)}" alt="" loading="lazy">
+        <div><h4><a href="{escape(entry['company_link'], quote=True)}" target="_blank">{escape(entry['company'])}</a></h4>{stints}</div>
+    </article>"""
 
-    if 'stints' in entry:
-        s += f"""<strong>{entry['company']}</strong><br>"""
-        stints = entry['stints']
-        for i, stint in enumerate(stints):
-            divider = "" if i == len(stints) - 1 else """<hr style="margin: 0.6em 0; border-top: 1px dashed #ccc;">"""
-            s += f"""<div style="margin-top: 0.4em;">{_get_intern_stint_html(stint)}</div>{divider}"""
-    else:
-        s += f"""<strong>{entry['company']}</strong>, {entry['start_date']} &rarr; {entry['end_date']}<br>"""
-        s += f"""<span style="font-style: italic;">{entry['position']}</span><br>"""
-        if 'mentor' in entry:
-            if 'mentor_page' in entry:
-                s += f"""<a href="{entry['mentor_page']}" target="_blank"><span class="badge badge-pill badge-primary">Mentor: {entry['mentor']}</span></a>"""
-            else:
-                s += f"""<span class="badge badge-pill badge-primary">Mentor: {entry['mentor']}</span>"""
-            s += "<br>"
-        if 'location' in entry:
-            s += f"""<span class="badge badge-pill badge-secondary">{entry['location']}</span>"""
+def load_publications():
+    """Combine both bibliographies, newest year first; retain order within a year."""
+    entries = {}
+    for filename in ('publication_list.bib', 'workshops.bib'):
+        bib_data = bibtex.Parser().parse_file(filename)
+        for key, entry in bib_data.entries.items():
+            if key in entries:
+                raise ValueError(f'Duplicate publication key: {key}')
+            entries[key] = entry
+    return sorted(entries.items(), key=lambda item: int(item[1].fields['year']), reverse=True)
 
-    s += """ </div> </div> </div>"""
-    return s
+def get_selected_publications_html():
+    """Category and paper order are configured in selected_publications.json."""
+    entries = dict(load_publications())
+    with open('selected_publications.json', encoding='utf-8') as f:
+        categories = json.load(f)
+    sections = []
+    selected_keys = set()
+    for index, (category, keys) in enumerate(categories.items(), start=1):
+        papers = []
+        for key in keys:
+            if key not in entries:
+                raise ValueError(f'Unknown selected publication: {key}')
+            if key in selected_keys:
+                raise ValueError(f'Duplicate selected publication: {key}')
+            selected_keys.add(key)
+            papers.append(get_paper_entry(key, entries[key]))
+        sections.append(f"""
+        <section class="research-category" aria-labelledby="selected-category-{index}">
+            <h3 id="selected-category-{index}" class="category-heading"><span aria-hidden="true">0{index}</span>{escape(category)}</h3>
+            {''.join(papers)}
+        </section>""")
+    return ''.join(sections)
 
-def get_publications_html():
-    parser = bibtex.Parser()
-    bib_data = parser.parse_file('publication_list.bib')
-    keys = bib_data.entries.keys()
-    s = ""
-    for k in keys:
-        s += get_paper_entry(k, bib_data.entries[k])
-    return s
+def get_publications_page_html():
+    papers = ''.join(get_paper_entry(key, entry, heading_level=2) for key, entry in load_publications())
+    content = f"""<main id="main" class="page-shell archive-page">
+        <header class="archive-header"><p class="eyebrow">Research</p><h1>Publications<span class="accent">.</span></h1>
+        <p>Conference and journal publications, preprints, workshop papers, and other contributions.</p>
+        <p class="small-note">* denotes a core contributor.</p></header>
+        <div class="publication-list">{papers}</div>
+        <a class="back-link" href="index.html">← Back to home</a>
+    </main>"""
+    return get_page_html(content, 'Publications | Mike He', active='publications')
 
-def get_workshop_html():
-    parser = bibtex.Parser()
-    bib_data = parser.parse_file('workshops.bib')
-    keys = bib_data.entries.keys()
-    s = ""
-    for k in keys:
-        s+= get_paper_entry(k, bib_data.entries[k])
-    return s
+def get_talk_date(talk):
+    """Parse the full/abbreviated month dates used in talks.json."""
+    for date_format in ('%B %d, %Y', '%b %d, %Y', '%B %Y', '%b %Y'):
+        try:
+            return datetime.strptime(talk['year'], date_format)
+        except ValueError:
+            continue
+    raise ValueError(f"Unsupported date for talk {talk['id']}: {talk['year']}")
 
-def get_talks_html():
+def get_talks_html(limit=None, heading_level=3):
     with open('talks.json', 'r') as f:
-        talks = json.load(f)
-    return ''.join(get_talk_entry(t) for t in talks)
+        talks = sorted(json.load(f), key=get_talk_date, reverse=True)
+    return ''.join(get_talk_entry(t, heading_level=heading_level) for t in talks[:limit])
+
+def get_talks_page_html():
+    content = f"""<main id="main" class="page-shell archive-page">
+        <header class="archive-header"><p class="eyebrow">Presentations &amp; conversations</p><h1>Talks<span class="accent">.</span></h1>
+        <p>Research talks, conference presentations, and posters.</p></header>
+        <div class="talk-list">{get_talks_html(heading_level=2)}</div>
+        <a class="back-link" href="index.html">← Back to home</a>
+    </main>"""
+    return get_page_html(content, 'Talks | Mike He', active='talks')
 
 def get_education_entry(entry):
-    s = """<div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3">"""
-    s += f"""<a target="_blank" href="{entry['institution_link']}"><img src="{entry['img']}" width=98 height=98 class="img-fluid" loading="lazy" alt="institution logo"></a>"""
-    s += """</div><div class="col-sm-9">"""
-    location = entry.get('location', '')
-    s += f"""<strong>{entry['institution']}</strong>{(", " + location) if location else ", "} {entry['start_date']} &rarr; {entry['end_date']}<br>"""
-    s += f"""<span style="font-style: italic;">{entry['degree']}</span><br>"""
-    if 'advisor' in entry:
-        if 'advisor_page' in entry:
-            s += f"""<a href="{entry['advisor_page']}" target="_blank"><span class="badge badge-pill badge-primary">Advisor: {entry['advisor']}</span></a>"""
-        else:
-            s += f"""<span class="badge badge-pill badge-primary">Advisor: {entry['advisor']}</span>"""
-    if 'co_advisor' in entry:
-        if 'co_advisor_page' in entry:
-            s += f"""    <a href="{entry['co_advisor_page']}" target="_blank"><span class="badge badge-pill badge-primary">Co-Advisor: {entry['co_advisor']}</span></a>"""
-        else:
-            s += f"""<span class="badge badge-pill badge-primary">Co-Advisor: {entry['co_advisor']}</span>"""
-        s += "<br>"
-    s += """ </div> </div> </div>"""
-    return s
+    advisors = []
+    for key, label in (('advisor', 'Advisor'), ('co_advisor', 'Co-advisor')):
+        if entry.get(key):
+            name = escape(entry[key])
+            if entry.get(key + '_page'):
+                name = f'<a href="{escape(entry[key + "_page"], quote=True)}" target="_blank">{name}</a>'
+            advisors.append(f'<p class="career-note">{label}: {name}</p>')
+    location = f' · {escape(entry["location"])}' if entry.get('location') else ''
+    return f"""<article class="career-entry">
+        <img src="{escape(entry['img'], quote=True)}" alt="" loading="lazy">
+        <div><h4><a href="{escape(entry['institution_link'], quote=True)}" target="_blank">{escape(entry['institution'])}</a></h4>
+        <p class="career-date">{escape(entry['start_date'])} – {escape(entry['end_date'])}{location}</p>
+        <p>{entry['degree']}</p>{''.join(advisors)}</div>
+    </article>"""
 
 def get_education_html():
     with open('education.json', 'r') as f:
@@ -490,209 +436,88 @@ def get_professional_activities_html():
     s += """</ul>"""
     return s
 
-def get_index_html():
-    pub = get_publications_html()
-    talks = get_talks_html()
-    name, bio_text, footer = get_personal_data()
-    s = f"""
-    <!doctype html>
+def get_page_html(content, title, active='home'):
+    """Shared, dependency-free layout for the homepage and research archives."""
+    navigation = ''.join(
+        f'<a href="{url}"' + (' aria-current="page"' if active == key else '') + f'>{label}</a>'
+        for key, label, url in (
+            ('home', 'About', 'index.html'),
+            ('publications', 'Publications', 'publications.html'),
+            ('talks', 'Talks', 'talks.html'),
+        )
+    )
+    s = f"""<!doctype html>
 <html lang="en">
-
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS -->
-  <!-- Google Fonts -->
-<link
-  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-  rel="stylesheet"
-/>
-<!-- MDB -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.min.css"
-  rel="stylesheet"
-/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <title>{name[0] + ' ' + name[1]}</title>
-  <link rel="icon" type="image/x-icon" href="pictures/AD1024.png">
-  <style>
-  a {{
-  text-decoration: underline solid transparent;
-  transition: text-decoration 0.3s ease;
-}}
-
-a:hover {{
-  text-decoration: underline solid Currentcolor;
-}}
-/* Floated into the text flow so it stays beside the bio at every width
-   instead of dropping below the icon row when the grid stacks. */
-.profile-photo {{
-  float: right;
-  width: 190px;
-  margin: 0 0 1rem 1.5rem;
-}}
-.bio-col {{
-  display: flow-root; /* contain the float */
-}}
-/* MDB uppercases button labels by default; keep the self-intro button row
-   (CV, λ-Mail, Twitter, ...) in the case it was authored in. */
-.bio-col .btn {{
-  text-transform: none;
-}}
-/* Long profile URLs can't shrink inside the flex row, which pushed the
-   institution badge past the viewport on narrow screens. */
-.friend-info {{
-  min-width: 0;
-}}
-.friend-link {{
-  overflow-wrap: anywhere;
-}}
-.friend-info .badge, .list-group-item > .badge {{
-  white-space: normal;
-}}
-@media (max-width: 767.98px) {{
-  .profile-photo {{
-    width: 38%;
-    max-width: 160px;
-    margin: 0 0 0.5rem 1rem;
-  }}
-}}
-.thumb-zoom-container {{
-  position: relative;
-}}
-.thumb-zoom-container img {{
-  transition: opacity 0.2s ease;
-}}
-.thumb-zoom-container:hover img {{
-  opacity: 0.85;
-}}
-.thumb-zoom-container::after {{
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background-image: inherit;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  border-radius: 4px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.2s ease;
-  z-index: 100;
-}}
-.thumb-zoom-container:hover::after {{
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 100%;
-  transform: translateY(-50%);
-  margin-left: 10px;
-  width: 400px;
-  height: 300px;
-  background-image: var(--zoom-img);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: white;
-  border-radius: 4px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  opacity: 1;
-  pointer-events: none;
-  z-index: 100;
-}}
-  </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Mike He — Ph.D. student at Princeton working on programming languages, formal methods, distributed systems, and safe AI agents.">
+    <title>{escape(title)}</title>
+    <link rel="icon" type="image/x-icon" href="pictures/AD1024.png">
+    <link rel="stylesheet" href="assets/site.css">
 </head>
-
 <body>
-    <div class="container-xl">
-        <div class="row ps-2 pe-2">
-            <div class="col-lg-12">
-                <div class="row" style="margin-top: 3em;">
-                    <div class="col-sm-12" style="margin-bottom: 1em;">
-                    <h3 class="display-4" style="text-align: center;"><span style="font-weight: bold;">{name[0]}</span> {name[1]}</h3>
-                    </div>
-                    <br>
-                    <div class="col-12 bio-col">
-                        <img src="assets/img/photo_2025_web.jpg" class="img-thumbnail profile-photo" width="483" height="600" alt="Profile picture">
-                        {bio_text}
-                    </div>
-                </div>
-                <div class="row" style="margin-top: 1em;">
-                    <div class="col-sm-12" style="">
-                        <h4>Conference / Journal Publications &amp; Pre-prints</h4>
-                        <div><p>(*: Core contributor)</p></div>
-                        {pub}
-                    </div>
-                </div>
-                <div class="row" style="margin-top: 1em;">
-                    <div class="col-sm-12" style="">
-                        <h4>Misc. Projects &amp Short Papers</h4>
-                        <div><p>(*: Core contributor)</p></div>
-                        {get_workshop_html()}
-                    </div>
-                </div>
-                <div class="row" style="margin-top: 1em;">
-                    <div class="col-sm-12" style="">
-                        <h4>Education</h4>
-                        {get_education_html()}
-                    </div>
-                </div>
-                <div class="row" style="margin-top: 1em;">
-                    <div class="col-sm-12" style="">
-                        <h4>Experience</h4>
-                        {get_internship_html()}
-                    </div>
-                </div>
-                <div class="row" style="margin-top: 3em;">
-                    <div class="col-sm-12" style="">
-                        <h4>Talks</h4>
-                        {talks}
-                    </div>
-                </div>
-                <div class="row" style="margin-top: 3em;">
-                    <div class="col-sm-12" style="">
-                        <h4>Professional Activities</h4>
-                        {get_professional_activities_html()}
-                    </div>
-                </div>
-                <div class="row" style="margin-top: 3em; margin-bottom: 1em;">
-                    {footer}
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.umd.min.js"></script>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header page-shell">
+        <a class="wordmark" href="index.html" aria-label="Mike He home">mh<span class="accent">.</span></a>
+        <nav aria-label="Main navigation">{navigation}</nav>
+    </header>
+    {content}
+    <footer class="site-footer page-shell"><span>Mike He <span class="footer-dot">/</span> Princeton University</span><a href="#main">Back to top ↑</a></footer>
 </body>
-
 </html>
-    """
-    return s
+"""
+    return '\n'.join(line.rstrip() for line in s.split('\n'))
 
+def get_index_html():
+    name, bio_text, footer = get_personal_data()
+    content = f"""
+    <main id="main" class="page-shell">
+        <section class="hero" aria-labelledby="name">
+            <div class="hero-intro"><p class="eyebrow">Ph.D. student · Princeton University</p>
+                <h1 id="name">{' '.join(name)}<span class="accent">.</span></h1>
+                <p class="research-focus">Programming languages. Formal methods.<br>Systems we can reason about.</p>
+            </div>
+            <figure class="portrait"><img src="assets/img/photo_2025_web.jpg" alt="Mike He" width="483" height="600"><figcaption>Princeton, New Jersey</figcaption></figure>
+            <div class="bio">{bio_text}</div>
+        </section>
+        <section class="site-section research-section" aria-labelledby="publications">
+            <div class="section-heading"><h2 id="publications">Selected Publications</h2><a class="text-link" href="publications.html">All publications <span aria-hidden="true">↗</span></a></div>
+            <p class="section-note">* denotes a core contributor.</p>
+            {get_selected_publications_html()}
+        </section>
+        <section class="site-section" aria-labelledby="talks">
+            <div class="section-heading"><h2 id="talks">Recent Talks</h2><a class="text-link" href="talks.html">All talks <span aria-hidden="true">↗</span></a></div>
+            <div class="talk-list">{get_talks_html(limit=3)}</div>
+        </section>
+        <section class="site-section" aria-labelledby="background">
+            <div class="section-heading"><h2 id="background">Background</h2><a class="text-link" href="assets/cv.pdf" target="_blank">Full CV <span aria-hidden="true">↗</span></a></div>
+            <div class="background-grid">
+                <div><h3 class="eyebrow column-heading">Education</h3>{get_education_html()}
+                    <div class="service"><h3 class="eyebrow column-heading">Professional Activities</h3>{get_professional_activities_html()}</div>
+                </div>
+                <div><h3 class="eyebrow column-heading">Experience</h3>{get_internship_html()}</div>
+            </div>
+        </section>
+        {footer}
+    </main>"""
+    return get_page_html(content, ' '.join(name))
 
 def write_index_html(filename='index.html'):
     s = get_index_html()
     with open(filename, 'w') as f:
         f.write(s)
     print(f'Written index content to {filename}.')
+
+def write_publications_html(filename='publications.html'):
+    with open(filename, 'w', encoding='utf-8') as f:
+        f.write(get_publications_page_html())
+    print(f'Written publications content to {filename}.')
+
+def write_talks_html(filename='talks.html'):
+    with open(filename, 'w', encoding='utf-8') as f:
+        f.write(get_talks_page_html())
+    print(f'Written talks content to {filename}.')
 
 def load_recordings():
     """Load recordings from recordings.json"""
@@ -722,558 +547,69 @@ def get_all_tags():
     return sorted(tags)
 
 def get_recordings_html():
-    """Generate HTML for recordings portfolio page"""
+    """A keyboard- and touch-accessible recording archive with native audio controls."""
     recordings_by_year = get_recordings_by_year()
-    all_tags = get_all_tags()
-
-    # Generate tag badges with filter functionality
-    tag_badges = []
-    tag_colors = {
-        'Classical': 'primary',
-        'Game OST': 'success',
-        'Anime OST': 'danger'
-    }
-
-    for tag in all_tags:
-        color = tag_colors.get(tag, 'secondary')
-        tag_badges.append(
-            f'<span class="badge badge-{color} tag-filter" style="cursor: pointer; margin: 2px;" data-tag="{tag}">{tag}</span>'
-        )
-
-    tags_html = ' '.join(tag_badges)
-
-    # Generate recordings by year
-    recordings_html = []
+    tag_buttons = ''.join(
+        f'<button type="button" class="tag-filter" data-tag="{escape(tag, quote=True)}" aria-pressed="false">{escape(tag)}</button>'
+        for tag in get_all_tags()
+    )
+    years_html = []
+    total = 0
     for year, recordings in recordings_by_year.items():
-        recordings_html.append(f'<h5 class="mt-4 year-title" data-year="{year}">{year}</h5>')
-
-        for recording in recordings:
-            # Build display name
-            display_name = recording['name']
-            if 'source' in recording:
-                display_name += f' <span style="font-style: italic;">(from {recording["source"]})</span>'
-
-            # Build tags
+        tracks = []
+        for recording in sorted(recordings, key=lambda item: item['recording_date'], reverse=True):
+            total += 1
+            name = escape(recording['name'])
+            source = f'<span class="recording-source">{escape(recording["source"])}</span>' if recording.get('source') else ''
             tags = recording.get('tag', [])
-            tag_html = []
-            for tag in tags:
-                color = tag_colors.get(tag, 'secondary')
-                tag_html.append(f'<span class="badge badge-{color} recording-tag">{tag}</span>')
-            tags_display = ' '.join(tag_html)
-
-            # Recording date
-            recording_date = recording['recording_date']
-
-            # Composer
-            composer = recording.get('composer', 'Unknown')
-
-            # File size
-            file_size = recording.get('file_size_mb', 'N/A')
-
-            # Audio file path
+            tag_data = escape(json.dumps(tags), quote=True)
+            tag_html = ''.join(f'<span class="recording-tag">{escape(tag)}</span>' for tag in tags)
             audio_path = 'https://only.rs/' + recording['file_path']
-
-            # Create recording card with data attributes for filtering
-            tag_data = ','.join(tags)
-            recording_card = f'''
-<div class="recording-item card mb-2" data-tags="{tag_data}" data-year="{year}">
-    <div class="card-body">
-        <h6 class="card-title mb-0">
-            {display_name}
-            <span class="expand-icon">▼</span>
-        </h6>
-        <div class="recording-details">
-            <hr class="my-2">
-            <p class="card-text mb-1">
-                <strong>Composer:</strong> {composer}<br>
-                <strong>Recorded:</strong> {recording_date}<br>
-                <strong>Size:</strong> {file_size} MB<br>
-                {tags_display}
-            </p>
-            <audio preload="none" class="w-100 mt-2 recording-audio">
-                <source src="{audio_path}" type="audio/{'mpeg' if audio_path.endswith('.mp3') else 'wav'}">
-                Your browser does not support the audio element.
-            </audio>
-            <div class="music-player mt-2">
-                <button class="play-btn btn btn-primary btn-sm" data-mdb-ripple-init data-mdb-ripple-color="light">
-                    <i class="fas fa-play"></i>
-                </button>
-                <div class="timeline-container">
-                    <div class="timeline">
-                        <div class="playhead"></div>
-                    </div>
+            audio_type = 'mpeg' if audio_path.lower().endswith('.mp3') else 'wav'
+            date = datetime.strptime(recording['recording_date'], '%Y-%m').strftime('%b %Y')
+            size = f'<span>{escape(str(recording["file_size_mb"]))} MB</span>' if recording.get('file_size_mb') else ''
+            tracks.append(f"""
+            <details class="recording-item" data-tags="{tag_data}">
+                <summary><span class="recording-date">{date}</span><span class="recording-label"><span class="recording-name">{name}</span>{source}</span></summary>
+                <div class="recording-details">
+                    <div class="recording-metadata"><span>{escape(recording.get('composer', 'Unknown composer'))}</span>{size}{tag_html}</div>
+                    <audio controls preload="none" class="recording-audio" aria-label="{name}">
+                        <source src="{escape(audio_path, quote=True)}" type="audio/{audio_type}">
+                        Your browser does not support the audio player.
+                    </audio>
+                    <p class="audio-error" role="status" hidden>Audio could not be loaded. Try the direct audio link below.</p>
+                    <a class="recording-download" href="{escape(audio_path, quote=True)}" target="_blank">Open audio file ↗</a>
                 </div>
-                <span class="time-display">
-                    <span class="current-time">0:00</span> / <span class="duration">0:00</span>
-                </span>
+            </details>""")
+        years_html.append(f"""
+        <details class="recording-year" open>
+            <summary><span class="recording-year-label">{escape(year)}</span> <span class="year-count">{len(recordings)} recording{'s' if len(recordings) != 1 else ''}</span></summary>
+            <div class="year-tracks">{''.join(tracks)}</div>
+        </details>""")
+    content = f"""
+    <main id="main" class="page-shell archive-page recordings-page">
+        <header class="archive-header">
+            <p class="eyebrow">Beyond research</p>
+            <h1>Recordings<span class="accent">.</span></h1>
+            <p class="recordings-lead">A violin, and a lifelong love of music.</p>
+            <p>I have been playing the violin since 2003, long before I started coding. This is a collection of classical pieces and music from games and anime, recorded over the years.</p>
+            <details class="recording-story"><summary>A little musical background</summary>
+                <p>I was a member of the Philharmonic Orchestra affiliated with the Beijing National Day School from 2012 to 2018 and played as the Principal Second Violin during my high school years. I also played in a quintet ensemble, the Clavichord, with my high school friends for three years.</p>
+                <p>My technique isn't what it used to be since college began, when I started studying computer science extensively, but these pieces represent my musical journey.</p>
+            </details>
+        </header>
+        <div class="recordings-toolbar">
+            <div class="recording-filters" role="group" aria-label="Filter recordings by category">
+                <button type="button" class="tag-filter" data-tag="all" aria-pressed="true">All recordings</button>{tag_buttons}
             </div>
+            <div class="recording-list-controls"><p id="recording-count" role="status">{total} recordings</p><button type="button" id="toggle-all-years" aria-expanded="true" aria-controls="recordings-container">Collapse all years</button></div>
         </div>
-    </div>
-</div>'''
-            recordings_html.append(recording_card)
-
-    recordings_content = '\n'.join(recordings_html)
-
-    # Generate full page HTML
-    html = f'''<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
-  <!-- MDB -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.min.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <title>Mike He - Recordings</title>
-  <link rel="icon" type="image/x-icon" href="pictures/AD1024.png">
-
-  <style>
-    a {{
-      text-decoration: underline solid transparent;
-      transition: text-decoration 0.3s ease;
-    }}
-    a:hover {{
-      text-decoration: underline solid Currentcolor;
-    }}
-    .tag-filter {{
-      user-select: none;
-    }}
-    .tag-filter:hover {{
-      opacity: 0.8;
-    }}
-    .tag-filter.active {{
-      box-shadow: 0 0 0 2px #000;
-      font-weight: bold;
-    }}
-    .recording-item {{
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }}
-    .recording-item.hidden {{
-      display: none;
-    }}
-    .recording-item.year-collapsed {{
-      display: none;
-    }}
-    .recording-item:hover {{
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-      transform: translateY(-2px);
-    }}
-    .year-title {{
-      transition: opacity 0.3s ease;
-      cursor: pointer;
-      user-select: none;
-    }}
-    .year-title:hover {{
-      color: #007bff;
-    }}
-    .year-title.hidden {{
-      display: none;
-    }}
-    .year-title::after {{
-      content: ' ▼';
-      font-size: 0.8em;
-      color: #666;
-      transition: transform 0.3s ease;
-      display: inline-block;
-    }}
-    .year-title.collapsed::after {{
-      transform: rotate(-90deg);
-    }}
-    .recording-details {{
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-    }}
-    .recording-item.expanded .recording-details {{
-      max-height: 300px;
-    }}
-    .expand-icon {{
-      transition: transform 0.3s ease;
-      float: right;
-      color: #666;
-    }}
-    .recording-item.expanded .expand-icon {{
-      transform: rotate(180deg);
-    }}
-    .music-player {{
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px;
-      background: #f8f9fa;
-      border-radius: 8px;
-    }}
-    .play-btn {{
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      flex-shrink: 0;
-      transition: all 0.3s ease;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }}
-    .play-btn:hover {{
-      transform: scale(1.1);
-      box-shadow: 0 4px 12px rgba(0,123,255,0.4);
-    }}
-    .play-btn:active {{
-      transform: scale(0.95);
-    }}
-    .timeline-container {{
-      flex: 1;
-      padding: 0 10px;
-    }}
-    .timeline {{
-      width: 100%;
-      height: 6px;
-      background: #ddd;
-      border-radius: 3px;
-      position: relative;
-      cursor: pointer;
-    }}
-    .playhead {{
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 100%;
-      background: #007bff;
-      border-radius: 3px;
-      width: 0%;
-      transition: width 0.1s linear;
-    }}
-    .time-display {{
-      font-size: 0.85em;
-      color: #666;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }}
-    .recording-audio {{
-      display: none;
-    }}
-  </style>
-</head>
-
-<body>
-  <div class="container-xl">
-    <div class="row ps-2 pe-2">
-      <div class="col-lg-1"></div>
-      <div class="col-lg-10">
-        <div class="row" style="margin-top: 3em; margin-bottom: 2em;">
-          <div class="col-sm-12">
-            <h3 class="display-4" style="text-align: center;">
-              <a href="index.html" style="text-decoration: none; color: inherit;">
-                <span style="font-weight: bold;">Mike</span> He
-              </a>
-            </h3>
-            <p style="text-align: center;">
-              <a href="index.html">← Back to main page</a>
-            </p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-12">
-            <h4>Violin Recording Archive</h4>
-            <p>I have been playing the violin since 2003, way before I started coding. I was a member of the Philharmonic Orchestra affiliated with the Beijing National Day School from 2012 to 2018 and played as the Principal Second Violin during my high school years. I also played in a quintet ensemble (named the Clavichord) with my high school friends for 3 years.</p>
-            <p>Here's a collection of my violin recordings from over the years. My technique isn't what it used to be since college began (when I started studying computer science extensively), but these pieces represent my musical journey. Filter by category using the tags below—collapsing any section will pause the audio. Moreover, it guarantees "Mutual exclusion": <strong>at most one audio can be played at a time.</strong></p>
-
-            <div class="mb-3">
-              <strong>Filter by tags:</strong><br>
-              <span class="badge badge-secondary tag-filter active" style="cursor: pointer; margin: 2px;" data-tag="all">All</span>
-              {tags_html}
-            </div>
-
-            <div class="mb-3">
-              <button id="toggle-all-years" class="btn btn-sm btn-outline-primary">
-                <i class="fas fa-compress-alt"></i> Collapse All Years
-              </button>
-            </div>
-
-            <div id="recordings-container">
-              {recordings_content}
-            </div>
-          </div>
-        </div>
-
-        <div class="row" style="margin-top: 2em; margin-bottom: 2em;">
-          <div class="col-sm-12">
-            <hr/>
-            <p style="text-align: center;">
-              <a href="index.html">← Back to main page</a>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-1"></div>
-    </div>
-  </div>
-
-  <!-- JavaScript -->
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.umd.min.js"></script>
-
-  <script>
-    // Tag filtering functionality
-    document.addEventListener('DOMContentLoaded', function() {{
-      const tagFilters = document.querySelectorAll('.tag-filter');
-      const recordings = document.querySelectorAll('.recording-item');
-      const yearTitles = document.querySelectorAll('.year-title');
-      const toggleAllBtn = document.getElementById('toggle-all-years');
-      let allCollapsed = false;
-
-      // Helper function to stop audio in a recording card
-      function stopAudio(recording) {{
-        const audio = recording.querySelector('audio');
-        if (audio) {{
-          audio.pause();
-        }}
-        const playBtn = recording.querySelector('.play-btn');
-        if (playBtn) {{
-          playBtn.innerHTML = '<i class="fas fa-play"></i>';
-        }}
-      }}
-
-      // Initialize custom music players
-      recordings.forEach(recording => {{
-        const audio = recording.querySelector('.recording-audio');
-        const playBtn = recording.querySelector('.play-btn');
-        const timeline = recording.querySelector('.timeline');
-        const playhead = recording.querySelector('.playhead');
-        const currentTimeSpan = recording.querySelector('.current-time');
-        const durationSpan = recording.querySelector('.duration');
-
-        if (!audio || !playBtn) return;
-
-        // Format time helper
-        function formatTime(seconds) {{
-          const mins = Math.floor(seconds / 60);
-          const secs = Math.floor(seconds % 60);
-          return `${{mins}}:${{secs.toString().padStart(2, '0')}}`;
-        }}
-
-        // Load metadata
-        audio.addEventListener('loadedmetadata', function() {{
-          durationSpan.textContent = formatTime(audio.duration);
-        }});
-
-        // Update time display
-        audio.addEventListener('timeupdate', function() {{
-          const percentage = (audio.currentTime / audio.duration) * 100;
-          playhead.style.width = percentage + '%';
-          currentTimeSpan.textContent = formatTime(audio.currentTime);
-        }});
-
-        // Play/pause button
-        playBtn.addEventListener('click', function(e) {{
-          e.stopPropagation();
-
-          // Pause all other audios
-          document.querySelectorAll('.recording-audio').forEach(otherAudio => {{
-            if (otherAudio !== audio && !otherAudio.paused) {{
-              otherAudio.pause();
-              const otherRecording = otherAudio.closest('.recording-item');
-              if (otherRecording) {{
-                stopAudio(otherRecording);
-              }}
-            }}
-          }});
-
-          if (audio.paused) {{
-            audio.play();
-            playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-          }} else {{
-            audio.pause();
-            playBtn.innerHTML = '<i class="fas fa-play"></i>';
-          }}
-        }});
-
-        // Seek functionality
-        timeline.addEventListener('click', function(e) {{
-          e.stopPropagation();
-          const rect = timeline.getBoundingClientRect();
-          const clickX = e.clientX - rect.left;
-          const percentage = clickX / rect.width;
-          audio.currentTime = percentage * audio.duration;
-        }});
-
-        // Reset on end
-        audio.addEventListener('ended', function() {{
-          playBtn.innerHTML = '<i class="fas fa-play"></i>';
-          playhead.style.width = '0%';
-          audio.currentTime = 0;
-        }});
-      }});
-
-      // Toggle all years button
-      toggleAllBtn.addEventListener('click', function() {{
-        allCollapsed = !allCollapsed;
-
-        yearTitles.forEach(yearTitle => {{
-          const year = yearTitle.getAttribute('data-year');
-          const yearRecordings = Array.from(recordings).filter(
-            r => r.getAttribute('data-year') === year
-          );
-
-          if (allCollapsed) {{
-            // Collapse all years
-            yearTitle.classList.add('collapsed');
-            yearRecordings.forEach(recording => {{
-              recording.classList.add('year-collapsed');
-              if (recording.classList.contains('expanded')) {{
-                recording.classList.remove('expanded');
-                stopAudio(recording);
-              }}
-            }});
-          }} else {{
-            // Expand all years
-            yearTitle.classList.remove('collapsed');
-            yearRecordings.forEach(recording => {{
-              recording.classList.remove('year-collapsed');
-            }});
-          }}
-        }});
-
-        // Update button text and icon
-        if (allCollapsed) {{
-          toggleAllBtn.innerHTML = '<i class="fas fa-expand-alt"></i> Expand All Years';
-        }} else {{
-          toggleAllBtn.innerHTML = '<i class="fas fa-compress-alt"></i> Collapse All Years';
-        }}
-      }});
-
-      // Year collapse/expand functionality
-      yearTitles.forEach(yearTitle => {{
-        yearTitle.addEventListener('click', function() {{
-          const year = this.getAttribute('data-year');
-          const isCollapsed = this.classList.contains('collapsed');
-
-          // Toggle collapsed state
-          this.classList.toggle('collapsed');
-
-          // Find all recordings for this year
-          const yearRecordings = Array.from(recordings).filter(
-            r => r.getAttribute('data-year') === year
-          );
-
-          // Toggle visibility and stop audio if collapsing
-          yearRecordings.forEach(recording => {{
-            if (isCollapsed) {{
-              recording.classList.remove('year-collapsed');
-            }} else {{
-              recording.classList.add('year-collapsed');
-              // Stop audio and collapse card when hiding year
-              if (recording.classList.contains('expanded')) {{
-                recording.classList.remove('expanded');
-                stopAudio(recording);
-              }}
-            }}
-          }});
-
-          // Update the toggle-all button state based on current year states
-          const allYearsCollapsed = Array.from(yearTitles).every(yt => yt.classList.contains('collapsed'));
-          const noYearsCollapsed = Array.from(yearTitles).every(yt => !yt.classList.contains('collapsed'));
-
-          if (allYearsCollapsed) {{
-            allCollapsed = true;
-            toggleAllBtn.innerHTML = '<i class="fas fa-expand-alt"></i> Expand All Years';
-          }} else if (noYearsCollapsed) {{
-            allCollapsed = false;
-            toggleAllBtn.innerHTML = '<i class="fas fa-compress-alt"></i> Collapse All Years';
-          }}
-        }});
-      }});
-
-      // Expand/collapse recording cards
-      recordings.forEach(recording => {{
-        recording.addEventListener('click', function(e) {{
-          // Don't toggle if clicking on audio controls
-          if (e.target.tagName === 'AUDIO' || e.target.closest('audio')) {{
-            return;
-          }}
-
-          const wasExpanded = this.classList.contains('expanded');
-
-          // Collapse all other cards and stop their audio
-          recordings.forEach(other => {{
-            if (other !== this && other.classList.contains('expanded')) {{
-              other.classList.remove('expanded');
-              stopAudio(other);
-            }}
-          }});
-
-          // Toggle current card
-          if (wasExpanded) {{
-            this.classList.remove('expanded');
-            stopAudio(this);
-          }} else {{
-            this.classList.add('expanded');
-          }}
-        }});
-      }});
-
-      tagFilters.forEach(filter => {{
-        filter.addEventListener('click', function() {{
-          const selectedTag = this.getAttribute('data-tag');
-
-          // Update active state
-          tagFilters.forEach(f => f.classList.remove('active'));
-          this.classList.add('active');
-
-          // Filter recordings
-          recordings.forEach(recording => {{
-            const recordingTags = recording.getAttribute('data-tags').split(',');
-
-            if (selectedTag === 'all' || recordingTags.includes(selectedTag)) {{
-              recording.classList.remove('hidden');
-            }} else {{
-              recording.classList.add('hidden');
-              // Stop audio and collapse if being hidden
-              if (recording.classList.contains('expanded')) {{
-                recording.classList.remove('expanded');
-                stopAudio(recording);
-              }}
-            }}
-          }});
-
-          // Hide year titles if no recordings are visible for that year
-          yearTitles.forEach(yearTitle => {{
-            const year = yearTitle.getAttribute('data-year');
-            const recordingsInYear = Array.from(recordings).filter(
-              r => r.getAttribute('data-year') === year
-            );
-            const hasVisibleRecordings = recordingsInYear.some(
-              r => !r.classList.contains('hidden')
-            );
-
-            if (hasVisibleRecordings) {{
-              yearTitle.classList.remove('hidden');
-            }} else {{
-              yearTitle.classList.add('hidden');
-            }}
-          }});
-        }});
-      }});
-    }});
-  </script>
-</body>
-</html>'''
-
-    return html
+        <div id="recordings-container">{''.join(years_html)}</div>
+        <a class="back-link" href="index.html">← Back to home</a>
+    </main>
+    <script src="assets/recordings.js" defer></script>
+"""
+    return get_page_html(content, 'Recordings | Mike He', active='recordings')
 
 def write_recordings_html(filename='recordings.html'):
     """Write recordings page to file"""
@@ -1284,4 +620,6 @@ def write_recordings_html(filename='recordings.html'):
 
 if __name__ == '__main__':
     write_index_html('index.html')
+    write_publications_html('publications.html')
+    write_talks_html('talks.html')
     write_recordings_html('recordings.html')

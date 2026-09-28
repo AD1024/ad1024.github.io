@@ -2,4 +2,4 @@ all:
 	python3 build.py
 
 clean:
-	rm -f index.html
+	rm -f index.html publications.html talks.html

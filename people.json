@@ -28,7 +28,8 @@
     "NUS": "primary",
     "UToronto": "primary",
     "UPenn": "primary",
-    "OpenAI": "dark"
+    "OpenAI": "dark",
+    "FSU": "danger"
   },
   "people": [
     {"name": "Yinsen (Tesla) Zhang", "url": "https://ice1000.org/", "institution": "CMU", "show_in_list": true},
@@ -82,6 +83,7 @@
     {"name": "Osbert Bastani", "url": "https://obastani.github.io/", "institution": "UPenn", "show_in_list": true},
     {"name": "Marcus Min", "url": "https://marcusm117.github.io/", "institution": "UPenn", "show_in_list": true},
     {"name": "Zhaoyu Li", "url":"https://www.zhaoyu-li.com/", "institution": "UToronto", "show_in_list": true},
-    {"name": "Zixuan Yi", "url": "https://zixy17.github.io/", "institution": "UPenn", "show_in_list": true}
+    {"name": "Zixuan Yi", "url": "https://zixy17.github.io/", "institution": "UPenn", "show_in_list": true},
+    {"name": "Grigory Fedyukovich", "url": "https://www.cs.fsu.edu/~grigory/", "institution": "FSU", "show_in_list": true}
   ]
 }

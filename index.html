@@ -1,156 +1,52 @@
-
-    <!doctype html>
+<!doctype html>
 <html lang="en">
-
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS -->
-  <!-- Google Fonts -->
-<link
-  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-  rel="stylesheet"
-/>
-<!-- MDB -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.min.css"
-  rel="stylesheet"
-/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <title>Mike He</title>
-  <link rel="icon" type="image/x-icon" href="pictures/AD1024.png">
-  <style>
-  a {
-  text-decoration: underline solid transparent;
-  transition: text-decoration 0.3s ease;
-}
-
-a:hover {
-  text-decoration: underline solid Currentcolor;
-}
-/* Floated into the text flow so it stays beside the bio at every width
-   instead of dropping below the icon row when the grid stacks. */
-.profile-photo {
-  float: right;
-  width: 190px;
-  margin: 0 0 1rem 1.5rem;
-}
-.bio-col {
-  display: flow-root; /* contain the float */
-}
-/* MDB uppercases button labels by default; keep the self-intro button row
-   (CV, λ-Mail, Twitter, ...) in the case it was authored in. */
-.bio-col .btn {
-  text-transform: none;
-}
-/* Long profile URLs can't shrink inside the flex row, which pushed the
-   institution badge past the viewport on narrow screens. */
-.friend-info {
-  min-width: 0;
-}
-.friend-link {
-  overflow-wrap: anywhere;
-}
-.friend-info .badge, .list-group-item > .badge {
-  white-space: normal;
-}
-@media (max-width: 767.98px) {
-  .profile-photo {
-    width: 38%;
-    max-width: 160px;
-    margin: 0 0 0.5rem 1rem;
-  }
-}
-.thumb-zoom-container {
-  position: relative;
-}
-.thumb-zoom-container img {
-  transition: opacity 0.2s ease;
-}
-.thumb-zoom-container:hover img {
-  opacity: 0.85;
-}
-.thumb-zoom-container::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background-image: inherit;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  border-radius: 4px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.2s ease;
-  z-index: 100;
-}
-.thumb-zoom-container:hover::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 100%;
-  transform: translateY(-50%);
-  margin-left: 10px;
-  width: 400px;
-  height: 300px;
-  background-image: var(--zoom-img);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: white;
-  border-radius: 4px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  opacity: 1;
-  pointer-events: none;
-  z-index: 100;
-}
-  </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Mike He — Ph.D. student at Princeton working on programming languages, formal methods, distributed systems, and safe AI agents.">
+    <title>Mike He</title>
+    <link rel="icon" type="image/x-icon" href="pictures/AD1024.png">
+    <link rel="stylesheet" href="assets/site.css">
 </head>
-
 <body>
-    <div class="container-xl">
-        <div class="row ps-2 pe-2">
-            <div class="col-lg-12">
-                <div class="row" style="margin-top: 3em;">
-                    <div class="col-sm-12" style="margin-bottom: 1em;">
-                    <h3 class="display-4" style="text-align: center;"><span style="font-weight: bold;">Mike</span> He</h3>
-                    </div>
-                    <br>
-                    <div class="col-12 bio-col">
-                        <img src="assets/img/photo_2025_web.jpg" class="img-thumbnail profile-photo" width="483" height="600" alt="Profile picture">
-                        
-                <p>
-                    I am a Ph.D. student at the <a target="_blank" href="https://pl.cs.princeton.edu/">Princeton Programming Languages Group</a> advised by Prof. <a target="_blank" href="https://www.cs.princeton.edu/~aartig/"> Aarti Gupta</a>.
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header page-shell">
+        <a class="wordmark" href="index.html" aria-label="Mike He home">mh<span class="accent">.</span></a>
+        <nav aria-label="Main navigation"><a href="index.html" aria-current="page">About</a><a href="publications.html">Publications</a><a href="talks.html">Talks</a></nav>
+    </header>
+
+    <main id="main" class="page-shell">
+        <section class="hero" aria-labelledby="name">
+            <div class="hero-intro"><p class="eyebrow">Ph.D. student · Princeton University</p>
+                <h1 id="name">Mike He<span class="accent">.</span></h1>
+                <p class="research-focus">Programming languages. Formal methods.<br>Systems we can reason about.</p>
+            </div>
+            <figure class="portrait"><img src="assets/img/photo_2025_web.jpg" alt="Mike He" width="483" height="600"><figcaption>Princeton, New Jersey</figcaption></figure>
+            <div class="bio">
+<p>
+                    I am a Ph.D. student at the <a href="https://pl.cs.princeton.edu/" target="_blank">Princeton Programming Languages Group</a> advised by Prof. <a href="https://www.cs.princeton.edu/~aartig/" target="_blank"> Aarti Gupta</a>.
                     I am broadly interested in programming languages, formal methods and compilers.
-                    My current research focuses on practical formal and semi-formal methods for distributed systems and agentic systems, and I am working with the <a target="_blank" href="https://p-org.github.io/P">P ecosystem</a> for verifying and reasoning about distributed systems.
+                    My current research focuses on practical formal and semi-formal methods for distributed systems and agentic systems, and I am working with the <a href="https://p-org.github.io/P" target="_blank">P ecosystem</a> for verifying and reasoning about distributed systems.
                 </p>
-                <p>Before joining Princeton, I studied at the <a target="_blank" href="https://cs.washington.edu">University of Washington</a>, where I was privileged to work with Prof. <a target="_blank" href="https://ztatlock.net/">Zachary Tatlock</a> on equality saturation and its applications to machine learning compilers.
+<p>Before joining Princeton, I studied at the <a href="https://cs.washington.edu" target="_blank">University of Washington</a>, where I was privileged to work with Prof. <a href="https://ztatlock.net/" target="_blank">Zachary Tatlock</a> on equality saturation and its applications to machine learning compilers.
                 </p>
-                <p>In my free time, I enjoy playing the violin (I've been playing it longer than coding). You can find my archived recordings <a href="recordings.html">here</a>.</p>
-                <p>
-                    <a class="btn btn-link" type="button" href="./assets/cv.pdf" target="_blank" style="margin-right: 5px"><i class="fa fa-address-card fa-lg"></i> CV</a>
-                    <button data-mdb-ripple-init data-mdb-ripple-color="grey" class="btn btn-link" type="button" data-toggle="collapse" data-target="#emailCollapse" style="margin-right: 5px"><i class="far fa-envelope-open fa-lg"></i> λ-Mail</button>
-                    <a class="btn btn-link" type="button" href="https://twitter.com/1SHL10" target="_blank" style="margin-right: 5px"><i class="fab fa-twitter fa-lg"></i> Twitter</a>
-                    <a class="btn btn-link" type="button" href="https://scholar.google.com/citations?hl=en&user=dhtWqm8AAAAJ&view_op=list_works&sortby=pubdate" target="_blank" style="margin-right: 5px"><i class="fa-solid fa-book"></i> Scholar</a>
-                    <a class="btn btn-link" type="button" href="https://github.com/AD1024" target="_blank" style="margin-right: 5px"><i class="fab fa-github fa-lg"></i> GitHub</a>
-                    <a class="btn btn-link" type="button" href="https://www.linkedin.com/in/deyuan-mike-he" target="_blank" style="margin-right: 5px"><i class="fab fa-linkedin fa-lg"></i> LinkedIn</a>
-                    <button data-mdb-ripple-init data-mdb-ripple-color="grey" class="btn btn-link" type="button" data-toggle="collapse" data-target="#demo"><i class="fa-solid fa-trophy"></i>Awards</button>
-                    <div id="emailCollapse" class="collapse">
-                        
+<p>In my free time, I enjoy playing the violin (I've been playing it longer than coding). You can find my archived recordings <a href="recordings.html">here</a>.</p>
+    <div class="contact-links" aria-label="Contact and profiles">
+        <a class="cv-link" href="assets/cv.pdf" target="_blank">Curriculum vitae <span aria-hidden="true">↗</span></a>
+        <a href="https://scholar.google.com/citations?hl=en&user=dhtWqm8AAAAJ&view_op=list_works&sortby=pubdate" target="_blank">Scholar</a>
+        <a href="https://github.com/AD1024" target="_blank">GitHub</a>
+        <a href="https://twitter.com/1SHL10" target="_blank">Twitter</a>
+        <a href="https://www.linkedin.com/in/deyuan-mike-he" target="_blank">LinkedIn</a>
+    </div>
+    <div class="bio-disclosures">
+        <details class="email-disclosure"><summary>λ-Mail</summary>
 <div id="lambda-mail" class="lambda-mail" aria-live="polite">
   <div class="lambda-term" id="lambda-term"></div>
   <div class="lambda-controls">
     <button type="button" class="btn btn-sm btn-outline-secondary lambda-btn" id="lambda-prev">&larr; Prev</button>
-    <button type="button" class="btn btn-sm btn-primary lambda-btn" id="lambda-next"><i class="fa-solid fa-bolt"></i> &beta;-reduce</button>
+    <button type="button" class="btn btn-sm btn-primary lambda-btn" id="lambda-next">↳ &beta;-reduce</button>
     <button type="button" class="btn btn-sm btn-link lambda-btn" id="lambda-reset">Reset</button>
-    <button type="button" class="btn btn-sm btn-outline-secondary lambda-btn" id="lambda-copy" style="display: none;"><i class="fa-regular fa-copy"></i> Copy email</button>
+    <button type="button" class="btn btn-sm btn-outline-secondary lambda-btn" id="lambda-copy" style="display: none;"> Copy email</button>
   </div>
   <div class="lambda-hint" id="lambda-hint">Don't see it? Try running it.</div>
 </div>
@@ -221,7 +117,7 @@ a:hover {
     var addr = decode();
     function done() {
       var old = copyBtn.innerHTML;
-      copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied';
+      copyBtn.innerHTML = '✓ Copied';
       setTimeout(function () { copyBtn.innerHTML = old; }, 1500);
     }
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -274,7 +170,7 @@ a:hover {
       hintEl.innerHTML = '🎉 There it is — click the address to email me, or copy it.';
     } else {
       termEl.innerHTML = steps[i];
-      nextBtn.innerHTML = '<i class="fa-solid fa-bolt"></i> β-reduce';
+      nextBtn.innerHTML = '↳ β-reduce';
       hintEl.innerHTML = "Don't see it? Try running it.";
     }
     prevBtn.disabled = (i === 0);
@@ -288,588 +184,232 @@ a:hover {
   render();
 })();
 </script>
+</details>
+        <details class="awards-disclosure"><summary>Awards &amp; honors</summary><ul>
+<li>2022: <a href="https://news.cs.washington.edu/2022/02/22/allen-school-undergraduates-recognized-by-the-computing-research-association-for-advancing-health-sensing-programming-languages-and-systems-research/" target="_blank">CRA Outstanding Undergraduate Researcher Award, Honorable Mention</a></li>
+<li>2020: Lynn Conway Research Award (DTR Team)</li>
+<li>2019: JASSO Scholarship, Waseda University</li>
+<li>2018 → 2022: Annual Dean's List, University of Washington</li>
+<li>2016: NOIp 2nd Prize, Beijing Regional</li>
+</ul></details>
+    </div>
+    </div>
+        </section>
+        <section class="site-section research-section" aria-labelledby="publications">
+            <div class="section-heading"><h2 id="publications">Selected Publications</h2><a class="text-link" href="publications.html">All publications <span aria-hidden="true">↗</span></a></div>
+            <p class="section-note">* denotes a core contributor.</p>
 
-                    </div>
-                    <div id="demo" class="collapse">
-                    <!-- <span style="font-weight: bold;">Awards:</span> -->
-                    <ul>
-                        <li>2022: <a target="_blank" href="https://news.cs.washington.edu/2022/02/22/allen-school-undergraduates-recognized-by-the-computing-research-association-for-advancing-health-sensing-programming-languages-and-systems-research/">CRA Outstanding Undergraduate Researcher Award, Honorable Mention</a></li>
-                        <li>2020: Lynn Conway Research Award (DTR Team)</li>
-                        <li>2019: JASSO Scholarship, Waseda University</li>
-                        <li>2018 &rarr; 2022: Annual Dean's List, University of Washington</li>
-                        <li>2016: NOIp 2nd Prize, Beijing Regional</li>
-                    </ul>
-                </div>
-                </p>
-    
-                    </div>
-                </div>
-                <div class="row" style="margin-top: 1em;">
-                    <div class="col-sm-12" style="">
-                        <h4>Conference / Journal Publications &amp; Pre-prints</h4>
-                        <div><p>(*: Core contributor)</p></div>
-                        <div style="margin-bottom: 3em;"> <div class="row" style="align-items: stretch;"><div class="col-sm-3" style="display: flex;"><div class="thumb-zoom-container" style="--zoom-img: url('assets/img/img-soteria.png'); width: 100%;"><img src="assets/img/img-soteria.png" class="img-fluid img-thumbnail" loading="lazy" alt="Project image" style="width: 100%; height: 100%; object-fit: cover;"></div></div><div class="col-sm-9"><a style="font-size: 13pt" href="" target="_blank"><strong>Soteria: Formally Verified Planning with Runtime Enforcement for Safe LLM Agents</strong></a> <span style="color: red;">(Oral)</span><br><span style="font-weight: bold";>Mike He</span>, <a href="https://ankushdesai.github.io/" target="_blank">Ankush Desai</a>, <a href="https://www.princeton.edu/~sharad/" target="_blank">Sharad Malik</a>, <a href="https://www.cs.princeton.edu/~aartig/" target="_blank">Aarti Gupta</a> <br><span style="font-style: italic;">Neural Information Processing Systems (NeurIPS), To Appear</span>, 2026 <br><a class="btn btn-link" type="button" href="" target="_blank">Paper</a><a class="btn btn-link" type="button" href="" target="_blank">Code</a><button data-mdb-ripple-init data-mdb-ripple-color="pink" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsehe2026soteria" aria-expanded="false" aria-controls="collapseExample" style="margin-left: -6px; margin-top: -2px;">Expand bibtex</button><div class="collapse" id="collapsehe2026soteria"><div class="card card-body"><pre><code>@inproceedings{he2026soteria,
-    author = "He, Mike and Desai, Ankush and Malik, Sharad and Gupta, Aarti",
-    title = "Soteria: Formally Verified Planning with Runtime Enforcement for Safe LLM Agents",
-    booktitle = "Neural Information Processing Systems (NeurIPS), To Appear",
-    year = "2026",
-    url = ""
+        <section class="research-category" aria-labelledby="selected-category-1">
+            <h3 id="selected-category-1" class="category-heading"><span aria-hidden="true">01</span>Formal Methods for Systems</h3>
+
+    <article class="publication" id="paper-he2026specy">
+        <div class="publication-body">
+            <div class="publication-venue">Object-Oriented Programming, Systems, Languages, and Applications (OOPSLA) · 2026 </div>
+            <h4 class="publication-title"><a href="https://www.cs.princeton.edu/~dh7120/assets/papers/PInfer_OOPSLA.pdf" target="_blank">Specy: Learning Specifications for Distributed Systems from Event Traces</a></h4>
+            <p class="publication-authors"><strong>Mike He</strong>, <a href="https://ankushdesai.github.io/" target="_blank">Ankush Desai</a>, <a href="https://www.linkedin.com/in/aishwarya-jagarapu/" target="_blank">Aishwarya Jagarapu</a>, <a href="https://www.amazon.science/author/douglas-terry" target="_blank">Doug Terry</a>, <a href="https://www.princeton.edu/~sharad/" target="_blank">Sharad Malik</a>, <a href="https://www.cs.princeton.edu/~aartig/" target="_blank">Aarti Gupta</a></p>
+
+            <div class="publication-links"><a href="https://www.cs.princeton.edu/~dh7120/assets/papers/PInfer_OOPSLA.pdf" target="_blank">Paper <span aria-hidden="true">↗</span></a><a href="https://github.com/AD1024/PInfer-OOPSLA-Artifact" target="_blank">Code <span aria-hidden="true">↗</span></a>
+                <details class="citation"><summary>BibTeX</summary><pre><code>@inproceedings{he2026specy,
+    author = &quot;He, Mike and Desai, Ankush and Jagarapu, Aishwarya and Terry, Doug and Malik, Sharad and Gupta, Aarti&quot;,
+    title = &quot;Specy: Learning Specifications for Distributed Systems from Event Traces&quot;,
+    booktitle = &quot;Object-Oriented Programming, Systems, Languages, and Applications (OOPSLA)&quot;,
+    year = &quot;2026&quot;,
+    url = &quot;https://2026.splashcon.org/details/oopsla-2026/10/Specy-Learning-Specifications-for-Distributed-Systems-from-Event-Traces&quot;
 }
-</code></pre></div></div> </div> </div> </div><div style="margin-bottom: 3em;"> <div class="row" style="align-items: stretch;"><div class="col-sm-3" style="display: flex;"><div class="thumb-zoom-container" style="--zoom-img: url('assets/img/img-specy.png'); width: 100%;"><img src="assets/img/img-specy.png" class="img-fluid img-thumbnail" loading="lazy" alt="Project image" style="width: 100%; height: 100%; object-fit: cover;"></div></div><div class="col-sm-9"><a style="font-size: 13pt" href="https://www.cs.princeton.edu/~dh7120/assets/papers/PInfer_OOPSLA.pdf" target="_blank"><strong>Specy: Learning Specifications for Distributed Systems from Event Traces</strong></a> <br><span style="font-weight: bold";>Mike He</span>, <a href="https://ankushdesai.github.io/" target="_blank">Ankush Desai</a>, <a href="https://www.linkedin.com/in/aishwarya-jagarapu/" target="_blank">Aishwarya Jagarapu</a>, <a href="https://www.amazon.science/author/douglas-terry" target="_blank">Doug Terry</a>, <a href="https://www.princeton.edu/~sharad/" target="_blank">Sharad Malik</a>, <a href="https://www.cs.princeton.edu/~aartig/" target="_blank">Aarti Gupta</a> <br><span style="font-style: italic;">Object-Oriented Programming, Systems, Languages, and Applications (OOPSLA)</span>, 2026 <br><a class="btn btn-link" type="button" href="https://www.cs.princeton.edu/~dh7120/assets/papers/PInfer_OOPSLA.pdf" target="_blank">Paper</a><a class="btn btn-link" type="button" href="https://github.com/AD1024/PInfer-OOPSLA-Artifact" target="_blank">Code</a><button data-mdb-ripple-init data-mdb-ripple-color="pink" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsehe2026specy" aria-expanded="false" aria-controls="collapseExample" style="margin-left: -6px; margin-top: -2px;">Expand bibtex</button><div class="collapse" id="collapsehe2026specy"><div class="card card-body"><pre><code>@inproceedings{he2026specy,
-    author = "He, Mike and Desai, Ankush and Jagarapu, Aishwarya and Terry, Doug and Malik, Sharad and Gupta, Aarti",
-    title = "Specy: Learning Specifications for Distributed Systems from Event Traces",
-    booktitle = "Object-Oriented Programming, Systems, Languages, and Applications (OOPSLA)",
-    year = "2026",
-    url = "https://2026.splashcon.org/details/oopsla-2026/10/Specy-Learning-Specifications-for-Distributed-Systems-from-Event-Traces"
-}
-</code></pre></div></div> </div> </div> </div><div style="margin-bottom: 3em;"> <div class="row" style="align-items: stretch;"><div class="col-sm-3" style="display: flex;"><div class="thumb-zoom-container" style="--zoom-img: url('assets/img/img-algoveri.png'); width: 100%;"><img src="assets/img/img-algoveri.png" class="img-fluid img-thumbnail" loading="lazy" alt="Project image" style="width: 100%; height: 100%; object-fit: cover;"></div></div><div class="col-sm-9"><a style="font-size: 13pt" href="https://www.arxiv.org/abs/2602.09464" target="_blank"><strong>AlgoVeri: An Aligned Benchmark for Verified Code Generation on Classical Algorithms</strong></a> <span style="color: red;">(Spotlight)</span><br><a href="https://hyzhao.me/" target="_blank">Haoyu Zhao*</a>, <a href="https://ziranyang0.github.io/" target="_blank">Ziran Yang*</a>, <a href="https://ece.illinois.edu/about/directory/grad-students/jiaweil9" target="_blank">Jiawei Li*</a>, <span style="font-weight: bold";>Deyuan He*</span>, <a href="https://lizn-zn.github.io/" target="_blank">Zenan Li*</a>, <a href="https://sites.google.com/view/cjin/home" target="_blank">Chi Jin</a>, <a href="https://vvv.ece.illinois.edu/" target="_blank">Venugopal V. Veeravalli</a>, <a href="https://www.cs.princeton.edu/~aartig/" target="_blank">Aarti Gupta</a>, <a href="https://www.cs.princeton.edu/~arora/" target="_blank">Sanjeev Arora</a> <br><span style="font-style: italic;">International Conference on Machine Learning (ICML)</span>, 2026 <br><a class="btn btn-link" type="button" href="https://www.arxiv.org/abs/2602.09464" target="_blank">Paper</a><a class="btn btn-link" type="button" href="https://github.com/haoyuzhao123/algoveri" target="_blank">Code</a><button data-mdb-ripple-init data-mdb-ripple-color="pink" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsezhao2026algoveri" aria-expanded="false" aria-controls="collapseExample" style="margin-left: -6px; margin-top: -2px;">Expand bibtex</button><div class="collapse" id="collapsezhao2026algoveri"><div class="card card-body"><pre><code>@article{zhao2026algoveri,
-    author = "Zhao*, Haoyu and Yang*, Ziran and Li*, Jiawei and He*, Deyuan and Zenan Li* and Jin, Chi and Veeravalli, Venugopal V. and Gupta, Aarti and Arora, Sanjeev",
-    title = "AlgoVeri: An Aligned Benchmark for Verified Code Generation on Classical Algorithms",
-    booktitle = "International Conference on Machine Learning (ICML)",
-    year = "2026",
-    url = "https://www.arxiv.org/abs/2602.09464"
-}
-</code></pre></div></div> </div> </div> </div><div style="margin-bottom: 3em;"> <div class="row" style="align-items: stretch;"><div class="col-sm-3" style="display: flex;"><div class="thumb-zoom-container" style="--zoom-img: url('assets/img/img-tla.png'); width: 100%;"><img src="assets/img/img-tla.png" class="img-fluid img-thumbnail" loading="lazy" alt="Project image" style="width: 100%; height: 100%; object-fit: cover;"></div></div><div class="col-sm-9"><a style="font-size: 13pt" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6922158" target="_blank"><strong>Theory-Level Autoformalization: From Isolated Statements to Unified Formal Knowledge Bases</strong></a> <span style="color: red;">(Spotlight)</span><br><a href="https://marcusm117.github.io/" target="_blank">Marcus Min</a>, <span style="font-weight: bold";>Mike He</span>, <a href="https://www.zhaoyu-li.com/" target="_blank">Zhaoyu Li</a>, <a href="https://zixy17.github.io/" target="_blank">Zixuan Yi</a>, <a href="https://www.princeton.edu/~sharad/" target="_blank">Sharad Malik</a>, <a href="https://www.cs.princeton.edu/~aartig/" target="_blank">Aarti Gupta</a>, <a href="https://www.cs.toronto.edu/~six/" target="_blank">Xujie Si</a>, <a href="https://obastani.github.io/" target="_blank">Osbert Bastani</a> <br><span style="font-style: italic;">International Conference on Machine Learning (ICML), Position Track</span>, 2026 <br><a class="btn btn-link" type="button" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6922158" target="_blank">Paper</a><button data-mdb-ripple-init data-mdb-ripple-color="pink" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsemin2026tla" aria-expanded="false" aria-controls="collapseExample" style="margin-left: -6px; margin-top: -2px;">Expand bibtex</button><div class="collapse" id="collapsemin2026tla"><div class="card card-body"><pre><code>@misc{min2026tla,
-    author = "Min, Marcus and He, Mike and Li, Zhaoyu and Yi, Zixuan and Malik, Sharad and Gupta, Aarti and Si, Xujie and Bastani, Osbert",
-    title = "Theory-Level Autoformalization: From Isolated Statements to Unified Formal Knowledge Bases",
-    year = "2026",
-    booktitle = "International Conference on Machine Learning (ICML), Position Track",
-    url = "https://papers.ssrn.com/sol3/papers.cfm?abstract\_id=6922158"
-}
-</code></pre></div></div> </div> </div> </div><div style="margin-bottom: 3em;"> <div class="row" style="align-items: stretch;"><div class="col-sm-3" style="display: flex;"><div class="thumb-zoom-container" style="--zoom-img: url('assets/img/img-goedel-code-prover.svg'); width: 100%;"><img src="assets/img/img-goedel-code-prover.svg" class="img-fluid img-thumbnail" loading="lazy" alt="Project image" style="width: 100%; height: 100%; object-fit: cover;"></div></div><div class="col-sm-9"><a style="font-size: 13pt" href="https://goedelcodeprover.github.io/" target="_blank"><strong>Göedel-Code-Prover: Hierarchical Proof Search for Open State-of-the-Art Code Verification</strong></a> <br><a href="https://lizn-zn.github.io/" target="_blank">Zenan Li*</a>, <a href="https://ziranyang0.github.io/" target="_blank">Ziran Yang*</a>, <span style="font-weight: bold";>Deyuan He</span>, <a href="https://hyzhao.me/" target="_blank">Haoyu Zhao</a>, <a href="https://www.linkedin.com/in/andrew-zhao-a10312159/" target="_blank">Andrew Zhao</a>, <a href="https://shangetang.github.io/" target="_blank">Shange Tang</a>, <a href="https://yangky11.github.io/" target="_blank">Kaiyu Yang</a>, <a href="https://www.cs.princeton.edu/~aartig/" target="_blank">Aarti Gupta</a>, <a href="https://people.inf.ethz.ch/suz/" target="_blank">Zhendong Su</a>, <a href="https://sites.google.com/view/cjin/home" target="_blank">Chi Jin</a> <br><span style="font-style: italic;">Conference on Language Modeling (COLM)</span>, 2026 <br><a class="btn btn-link" type="button" href="https://goedelcodeprover.github.io/" target="_blank">Project Page</a><a class="btn btn-link" type="button" href="https://arxiv.org/pdf/2603.19329.pdf" target="_blank">Paper</a><a class="btn btn-link" type="button" href="https://github.com/goedelcodeprover/Goedel-Code-Prover" target="_blank">Code</a><button data-mdb-ripple-init data-mdb-ripple-color="pink" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseli2026goedelcodeproverhierarchicalproofsearch" aria-expanded="false" aria-controls="collapseExample" style="margin-left: -6px; margin-top: -2px;">Expand bibtex</button><div class="collapse" id="collapseli2026goedelcodeproverhierarchicalproofsearch"><div class="card card-body"><pre><code>@misc{li2026goedelcodeproverhierarchicalproofsearch,
-    author = "Li*, Zenan and Yang*, Ziran and He, Deyuan and Zhao, Haoyu and Zhao, Andrew and Tang, Shange and Yang, Kaiyu and Gupta, Aarti and Su, Zhendong and Jin, Chi",
-    title = "Göedel-Code-Prover: Hierarchical Proof Search for Open State-of-the-Art Code Verification",
-    year = "2026",
-    eprint = "2603.19329",
-    archivePrefix = "arXiv",
-    primaryClass = "cs.SE",
-    booktitle = "Conference on Language Modeling (COLM)",
-    url = "https://arxiv.org/abs/2603.19329"
-}
-</code></pre></div></div> </div> </div> </div><div style="margin-bottom: 3em;"> <div class="row" style="align-items: stretch;"><div class="col-sm-3" style="display: flex;"><div class="thumb-zoom-container" style="--zoom-img: url('assets/img/img-3la.png'); width: 100%;"><img src="assets/img/img-3la.png" class="img-fluid img-thumbnail" loading="lazy" alt="Project image" style="width: 100%; height: 100%; object-fit: cover;"></div></div><div class="col-sm-9"><a style="font-size: 13pt" href="https://dl.acm.org/doi/10.1145/3639051" target="_blank"><strong>Application-level Validation of Accelerator Designs Using a Formal Software/Hardware Interface</strong></a> <br><a href="https://boyuanhuang.com/" target="_blank">Bo-Yuan Huang</a>, <a href="https://slyubomirsky.github.io/" target="_blank">Steven Lyubomirsky</a>, <a href="https://ece.princeton.edu/people/yi-li" target="_blank">Yi Li</a>, <span style="font-weight: bold";>Mike He</span>, <a href="https://justg.us/" target="_blank">Gus Henry Smith</a>, <a href="https://thierrytambe.com/" target="_blank">Thierry Tambe</a>, <a href="https://scholar.google.com/citations?user=Ccvj2usAAAAJ&hl=en" target="_blank">Akash Gaonkar</a>, <a href="https://vcanumalla.github.io/" target="_blank">Vishal Canumalla</a>, <a href="https://ninehusky.github.io/" target="_blank">Andrew Cheung</a>, <a href="https://seas.harvard.edu/person/gu-yeon-wei" target="_blank">Gu-Yeon Wei</a>, <a href="https://www.cs.princeton.edu/~aartig/" target="_blank">Aarti Gupta</a>, <a href="https://ztatlock.net/" target="_blank">Zachary Tatlock</a>, <a href="https://www.princeton.edu/~sharad/" target="_blank">Sharad Malik</a> <br><span style="font-style: italic;">ACM Trans. Des. Autom. Electron. Syst. (TODAES)</span>, 2024 <br><a class="btn btn-link" type="button" href="https://dl.acm.org/doi/10.1145/3639051" target="_blank">Project Page</a><a class="btn btn-link" type="button" href="https://dl.acm.org/doi/pdf/10.1145/3639051" target="_blank">Paper</a><button data-mdb-ripple-init data-mdb-ripple-color="pink" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsehuang233la" aria-expanded="false" aria-controls="collapseExample" style="margin-left: -6px; margin-top: -2px;">Expand bibtex</button><div class="collapse" id="collapsehuang233la"><div class="card card-body"><pre><code>@article{huang233la,
-    author = "Huang, Bo-Yuan and Lyubomirsky, Steven and Li, Yi and He, Mike and Smith, Gus Henry and Tambe, Thierry and Gaonkar, Akash and Canumalla, Vishal and Cheung, Andrew and Wei, Gu-Yeon and Gupta, Aarti and Tatlock, Zachary and Malik, Sharad",
-    title = "Application-level Validation of Accelerator Designs Using a Formal Software/Hardware Interface",
-    year = "2024",
-    issue_date = "March 2024",
-    publisher = "Association for Computing Machinery",
-    address = "New York, NY, USA",
-    volume = "29",
-    number = "2",
-    issn = "1084-4309",
-    url = "https://doi.org/10.1145/3639051",
-    doi = "10.1145/3639051",
-    abstract = "Ideally, accelerator development should be as easy as software development. Several recent design languages/tools are working toward this goal, but actually testing early designs on real applications end-to-end remains prohibitively difficult due to the costs of building specialized compiler and simulator support. We propose a new first-in-class, mostly automated methodology termed “3LA” to enable end-to-end testing of prototype accelerator designs on unmodified source applications. A key contribution of 3LA is the use of a formal software/hardware interface that specifies an accelerator’s operations and their semantics. Specifically, we leverage the Instruction-level Abstraction (ILA) formal specification for accelerators that has been successfully used thus far for accelerator implementation verification. We show how the ILA for accelerators serves as a software/hardware interface, similar to the Instruction Set Architecture for processors, that can be used for automated development of compilers and instruction-level simulators. Another key contribution of this work is to show how ILA-based accelerator semantics enables extending recent work on equality saturation to auto-generate basic compiler support for prototype accelerators in a technique we term “flexible matching.” By combining flexible matching with simulators auto-generated from ILA specifications, our approach enables end-to-end evaluation with modest engineering effort. We detail several case studies of 3LA, which uncovered an unknown flaw in a recently published accelerator and facilitated its fix.",
-    journal = "ACM Trans. Des. Autom. Electron. Syst. (TODAES)",
-    month = "February",
-    articleno = "35",
-    numpages = "25",
-    keywords = "Accelerator, domain-specific language, compilation, validation, software/hardware interface"
-}
-</code></pre></div></div> </div> </div> </div><div style="margin-bottom: 3em;"> <div class="row" style="align-items: stretch;"><div class="col-sm-3" style="display: flex;"><div class="thumb-zoom-container" style="--zoom-img: url('assets/img/img-dtr.png'); width: 100%;"><img src="assets/img/img-dtr.png" class="img-fluid img-thumbnail" loading="lazy" alt="Project image" style="width: 100%; height: 100%; object-fit: cover;"></div></div><div class="col-sm-9"><a style="font-size: 13pt" href="https://sampl.cs.washington.edu/projects/dtr.html" target="_blank"><strong>Dynamic Tensor Rematerialization</strong></a> <span style="color: red;">(Spotlight)</span><br><a href="https://marisa.moe/" target="_blank">Marisa Kirisame*</a>, <a href="https://slyubomirsky.github.io/" target="_blank">Steven Lyubomirsky*</a>, <a href="https://altanh.com/" target="_blank">Altan Haan*</a>, <a href="https://jenniferbrennan.github.io/" target="_blank">Jennifer Brennan</a>, <span style="font-weight: bold";>Mike He</span>, <a href="https://jroesch.github.io/" target="_blank">Jared Roesch</a>, <a href="https://tqchen.com/" target="_blank">Tianqi Chen</a>, <a href="https://ztatlock.net/" target="_blank">Zachary Tatlock</a> <br><span style="font-style: italic;">International Conference on Learning Representations (ICLR)</span>, 2021 <br><a class="btn btn-link" type="button" href="https://sampl.cs.washington.edu/projects/dtr.html" target="_blank">Project Page</a><a class="btn btn-link" type="button" href="https://arxiv.org/pdf/2006.09616.pdf" target="_blank">Paper</a><a class="btn btn-link" type="button" href="https://github.com/uwsampl/dtr-prototype" target="_blank">Code</a><button data-mdb-ripple-init data-mdb-ripple-color="pink" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsekirisame2021dynamic" aria-expanded="false" aria-controls="collapseExample" style="margin-left: -6px; margin-top: -2px;">Expand bibtex</button><div class="collapse" id="collapsekirisame2021dynamic"><div class="card card-body"><pre><code>@inproceedings{kirisame2021dynamic,
-    author = "Kirisame*, Marisa and Lyubomirsky*, Steven and Haan*, Altan and Brennan, Jennifer and He, Mike and Roesch, Jared and Chen, Tianqi and Tatlock, Zachary",
-    title = "Dynamic Tensor Rematerialization",
-    booktitle = "International Conference on Learning Representations (ICLR)",
-    year = "2021",
-    url = "https://openreview.net/forum?id=Vfs\_2RnOD0H"
-}
-</code></pre></div></div> </div> </div> </div>
-                    </div>
-                </div>
-                <div class="row" style="margin-top: 1em;">
-                    <div class="col-sm-12" style="">
-                        <h4>Misc. Projects &amp Short Papers</h4>
-                        <div><p>(*: Core contributor)</p></div>
-                        <div style="margin-bottom: 3em;"> <div class="row" style="align-items: stretch;"><div class="col-sm-3" style="display: flex;"><div class="thumb-zoom-container" style="--zoom-img: url('assets/img/img-hle.png'); width: 100%;"><img src="assets/img/img-hle.png" class="img-fluid img-thumbnail" loading="lazy" alt="Project image" style="width: 100%; height: 100%; object-fit: cover;"></div></div><div class="col-sm-9"><a style="font-size: 13pt" href="https://lastexam.ai/" target="_blank"><strong>A benchmark of expert-level academic questions to assess AI capabilities</strong></a> <br><a href="https://safe.ai/" target="_blank">Center for AI Safety</a>, <a href="https://scale.com/" target="_blank">Scale AI</a>, HLE Contributors Consortium <br><span style="font-style: italic;">Nature</span>, 2026 <br><a class="btn btn-link" type="button" href="https://lastexam.ai/" target="_blank">Project Page</a><a class="btn btn-link" type="button" href="https://doi.org/10.1038/s41586-025-09962-4" target="_blank">Paper</a><a class="btn btn-link" type="button" href="https://github.com/centerforaisafety/hle" target="_blank">Code</a><button data-mdb-ripple-init data-mdb-ripple-color="pink" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsehle2026" aria-expanded="false" aria-controls="collapseExample" style="margin-left: -6px; margin-top: -2px;">Expand bibtex</button><div class="collapse" id="collapsehle2026"><div class="card card-body"><pre><code>@article{hle2026,
-    author = "for AI Safety, Center and AI, Scale and Consortium, HLE Contributors",
-    abstract = "Benchmarks are important tools for tracking the rapid advancements in large language model (LLM) capabilities. However, benchmarks are not keeping pace in difficulty: LLMs now achieve more than 90{\\%} accuracy on popular benchmarks such as Measuring Massive Multitask Language Understanding1, limiting informed measurement of state-of-the-art LLM capabilities. Here, in response, we introduce Humanity's Last Exam (HLE), a multi-modal benchmark at the frontier of human knowledge, designed to be an expert-level closed-ended academic benchmark with broad subject coverage. HLE consists of 2,500 questions across dozens of subjects, including mathematics, humanities and the natural sciences. HLE is developed globally by subject-matter experts and consists of multiple-choice and short-answer questions suitable for automated grading. Each question has a known solution that is unambiguous and easily verifiable but cannot be quickly answered by internet retrieval. State-of-the-art LLMs demonstrate low accuracy and calibration on HLE, highlighting a marked gap between current LLM capabilities and the expert human frontier on closed-ended academic questions. To inform research and policymaking upon a clear understanding of model capabilities, we publicly release HLE at https://lastexam.ai.",
-    date = "2026/01/01",
-    date-added = "2026-01-30 08:32:32 -0500",
-    date-modified = "2026-01-30 08:54:45 -0500",
-    doi = "10.1038/s41586-025-09962-4",
-    id = "Phan2026",
-    isbn = "1476-4687",
-    journal = "Nature",
-    number = "8099",
-    booktitle = "Nature",
-    pages = "1139--1146",
-    title = "A benchmark of expert-level academic questions to assess AI capabilities",
-    url = "https://doi.org/10.1038/s41586-025-09962-4",
-    volume = "649",
-    year = "2026",
-    bdsk-url-1 = "https://doi.org/10.1038/s41586-025-09962-4"
-}
-</code></pre></div></div> </div> </div> </div><div style="margin-bottom: 3em;"> <div class="row" style="align-items: stretch;"><div class="col-sm-3" style="display: flex;"><div class="thumb-zoom-container" style="--zoom-img: url('assets/img/img-lmpl-2025.png'); width: 100%;"><img src="assets/img/img-lmpl-2025.png" class="img-fluid img-thumbnail" loading="lazy" alt="Project image" style="width: 100%; height: 100%; object-fit: cover;"></div></div><div class="col-sm-9"><a style="font-size: 13pt" href="https://dl.acm.org/doi/10.1145/3759425.3763386" target="_blank"><strong>Ranking Formal Specifications using LLMs</strong></a> <br><span style="font-weight: bold";>Mike He</span>, <a href="https://ang9876.github.io/" target="_blank">Zhendong Ang</a>, <a href="https://ankushdesai.github.io/" target="_blank">Ankush Desai</a>, <a href="https://www.cs.princeton.edu/~aartig/" target="_blank">Aarti Gupta</a> <br><span style="font-style: italic;">Proceedings of the 1st ACM SIGPLAN International Workshop on Language Models and Programming Languages</span>, 2025 <br><a class="btn btn-link" type="button" href="https://dl.acm.org/doi/10.1145/3759425.3763386" target="_blank">Project Page</a><a class="btn btn-link" type="button" href="https://dl.acm.org/doi/pdf/10.1145/3759425.3763386" target="_blank">Paper</a><a class="btn btn-link" type="button" href="https://github.com/p-org/P/tree/experimental/pinfer/Src/PInfer/Scripts" target="_blank">Code</a><button data-mdb-ripple-init data-mdb-ripple-color="pink" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsehe2025lmpl" aria-expanded="false" aria-controls="collapseExample" style="margin-left: -6px; margin-top: -2px;">Expand bibtex</button><div class="collapse" id="collapsehe2025lmpl"><div class="card card-body"><pre><code>@inproceedings{he2025lmpl,
-    author = "He, Mike and Ang, Zhendong and Desai, Ankush and Gupta, Aarti",
-    title = "Ranking Formal Specifications using LLMs",
-    year = "2025",
-    isbn = "9798400721489",
-    publisher = "Association for Computing Machinery",
-    address = "New York, NY, USA",
-    url = "https://doi.org/10.1145/3759425.3763386",
-    doi = "10.1145/3759425.3763386",
-    abstract = "Formal specifications are essential for reasoning about the correctness of complex systems. While recent advances have explored automatically learning such specifications, the challenge of distinguishing meaningful, non-trivial specifications from a vast and noisy pool of learned candidates remains largely open. In this position paper, we present an approach for specification ranking, aimed at identifying the most critical specifications that contribute to overall system correctness. To this end, we develop a four-metric rating framework that quantifies the importance of a specification. Our approach leverages the reasoning capabilities of Large Language Models to rank specifications from a set of automatically learned candidates. We evaluate the proposed method on a set of specifications inferred for 11 open-source and 3 proprietary distributed system benchmarks, demonstrating its effectiveness in ranking critical specifications.",
-    booktitle = "Proceedings of the 1st ACM SIGPLAN International Workshop on Language Models and Programming Languages",
-    pages = "51–56",
-    numpages = "6",
-    keywords = "Agentic workflows, Ranking specifications",
-    location = "Singapore, Singapore",
-    series = "LMPL '25"
-}
-</code></pre></div></div> </div> </div> </div><div style="margin-bottom: 3em;"> <div class="row" style="align-items: stretch;"><div class="col-sm-3" style="display: flex;"><div class="thumb-zoom-container" style="--zoom-img: url('assets/img/img-egraphs23.png'); width: 100%;"><img src="assets/img/img-egraphs23.png" class="img-fluid img-thumbnail" loading="lazy" alt="Project image" style="width: 100%; height: 100%; object-fit: cover;"></div></div><div class="col-sm-9"><a style="font-size: 13pt" href="https://pldi23.sigplan.org/details/egraphs-2023-papers/3/Improving-Term-Extraction-with-Acyclic-Constraints" target="_blank"><strong>Improving Term Extraction with Acyclic Constraints</strong></a> <br><span style="font-weight: bold";>Mike He</span>, <a href="https://haichendong.com/" target="_blank">Haichen Dong</a>, <a href="https://www.princeton.edu/~sharad/" target="_blank">Sharad Malik</a>, <a href="https://www.cs.princeton.edu/~aartig/" target="_blank">Aarti Gupta</a> <br><span style="font-style: italic;">E-Graph Research, Applications, Practices, and Human-factors Symposium (PLDI/EGRAPHS'23)</span>, 2023 <br><a class="btn btn-link" type="button" href="https://pldi23.sigplan.org/details/egraphs-2023-papers/3/Improving-Term-Extraction-with-Acyclic-Constraints" target="_blank">Project Page</a><a class="btn btn-link" type="button" href="https://www.cs.princeton.edu/~dh7120/assets/papers/EGRAPHS2023.pdf" target="_blank">Paper</a><a class="btn btn-link" type="button" href="https://github.com/AD1024/flexmatch/blob/egraphs2023/flexmatch/src/maxsat_extract.rs" target="_blank">Code</a><button data-mdb-ripple-init data-mdb-ripple-color="pink" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsehe23extraction" aria-expanded="false" aria-controls="collapseExample" style="margin-left: -6px; margin-top: -2px;">Expand bibtex</button><div class="collapse" id="collapsehe23extraction"><div class="card card-body"><pre><code>@article{he23extraction,
-    author = "He, Mike and Dong, Haichen and Malik, Sharad and Gupta, Aarti",
-    title = "Improving Term Extraction with Acyclic Constraints",
-    booktitle = "E-Graph Research, Applications, Practices, and Human-factors Symposium (PLDI/EGRAPHS'23)",
-    year = "2023",
-    url = ""
-}
-</code></pre></div></div> </div> </div> </div><div style="margin-bottom: 3em;"> <div class="row" style="align-items: stretch;"><div class="col-sm-3" style="display: flex;"><div class="thumb-zoom-container" style="--zoom-img: url('assets/img/img-latte.png'); width: 100%;"><img src="assets/img/img-latte.png" class="img-fluid img-thumbnail" loading="lazy" alt="Project image" style="width: 100%; height: 100%; object-fit: cover;"></div></div><div class="col-sm-9"><a style="font-size: 13pt" href="https://vlsiarch.eecs.harvard.edu/publications/dsls-accelerator-rich-platform-implementations-addressing-mapping-gap" target="_blank"><strong>From DSLs to Accelerator-rich Platform Implementations: Addressing the Mapping Gap</strong></a> <br><a href="https://boyuanhuang.com/" target="_blank">Bo-Yuan Huang*</a>, <a href="https://slyubomirsky.github.io/" target="_blank">Steven Lyubomirsky*</a>, <a href="https://thierrytambe.com/" target="_blank">Thierry Tambe*</a>, <a href="https://ece.princeton.edu/people/yi-li" target="_blank">Yi Li</a>, <span style="font-weight: bold";>Mike He</span>, <a href="https://justg.us/" target="_blank">Gus Smith</a>, <a href="https://seas.harvard.edu/person/gu-yeon-wei" target="_blank">Gu-Yeon Wei</a>, <a href="https://www.cs.princeton.edu/~aartig/" target="_blank">Aarti Gupta</a>, <a href="https://www.princeton.edu/~sharad/" target="_blank">Sharad Malik</a>, <a href="https://ztatlock.net/" target="_blank">Zachary Tatlock</a> <br><span style="font-style: italic;">Workshop on Languages, Tools, and Techniques for Accelerator Design (LATTE'21)</span>, 2021 <br><a class="btn btn-link" type="button" href="https://vlsiarch.eecs.harvard.edu/publications/dsls-accelerator-rich-platform-implementations-addressing-mapping-gap" target="_blank">Project Page</a><a class="btn btn-link" type="button" href="https://vlsiarch.eecs.harvard.edu/publications/dsls-accelerator-rich-platform-implementations-addressing-mapping-gap" target="_blank">Paper</a><a class="btn btn-link" type="button" href="https://vlsiarch.eecs.harvard.edu/sites/hwpi.harvard.edu/files/vlsiarch/files/slides.pdf?m=1651755768" target="_blank">Poster</a><button data-mdb-ripple-init data-mdb-ripple-color="pink" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsehuang21latte" aria-expanded="false" aria-controls="collapseExample" style="margin-left: -6px; margin-top: -2px;">Expand bibtex</button><div class="collapse" id="collapsehuang21latte"><div class="card card-body"><pre><code>@article{huang21latte,
-    author = "Huang*, Bo-Yuan and Lyubomirsky*, Steven and Tambe*, Thierry and Li, Yi and He, Mike and Smith, Gus and Wei, Gu-Yeon and Gupta, Aarti and Malik, Sharad and Tatlock, Zachary",
-    title = "From DSLs to Accelerator-rich Platform Implementations: Addressing the Mapping Gap",
-    booktitle = "Workshop on Languages, Tools, and Techniques for Accelerator Design (LATTE'21)",
-    year = "2021",
-    url = "https://capra.cs.cornell.edu/latte21/paper/30.pdf"
-}
-</code></pre></div></div> </div> </div> </div>
-                    </div>
-                </div>
-                <div class="row" style="margin-top: 1em;">
-                    <div class="col-sm-12" style="">
-                        <h4>Education</h4>
-                        <div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3"><a target="_blank" href="https://cs.princeton.edu"><img src="assets/img/img-princeton.png" width=98 height=98 class="img-fluid" loading="lazy" alt="institution logo"></a></div><div class="col-sm-9"><strong>Princeton University</strong>, Princeton, NJ 2022 &rarr; est. 2027<br><span style="font-style: italic;">Ph.D. in Computer Science<br>M.A. in Computer Science</span><br><a href="https://www.cs.princeton.edu/~aartig/" target="_blank"><span class="badge badge-pill badge-primary">Advisor: Prof. Aarti Gupta</span></a>    <a href="https://www.princeton.edu/~sharad/" target="_blank"><span class="badge badge-pill badge-primary">Co-Advisor: Prof. Sharad Malik</span></a><br> </div> </div> </div><div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3"><a target="_blank" href="https://cs.washington.edu"><img src="assets/img/img-uw.png" width=98 height=98 class="img-fluid" loading="lazy" alt="institution logo"></a></div><div class="col-sm-9"><strong>University of Washington</strong>, Seattle, WA 2018 &rarr; 2022<br><span style="font-style: italic;">B.S. in Computer Science</span><br><a href="https://ztatlock.net/" target="_blank"><span class="badge badge-pill badge-primary">Advisor: Prof. Zachary Tatlock</span></a> </div> </div> </div>
-                    </div>
-                </div>
-                <div class="row" style="margin-top: 1em;">
-                    <div class="col-sm-12" style="">
-                        <h4>Experience</h4>
-                        <div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3"><div
-  class="bg-image hover-overlay shadow-1-strong rounded"
-  style="height: 128px; width: 128px;"
-  data-mdb-ripple-init
-  data-mdb-ripple-color="light"
-><img src="assets/img/img-aws.jpeg" width=128 height=128 class="img-fluid img-thumbnail" loading="lazy" alt="company logo">
-<a target="_blank" href="https://aws.amazon.com/">
-    <div class="mask" style="background: linear-gradient(
-        45deg,
-        hsla(168, 85%, 52%, 0.5),
-        hsla(263, 88%, 45%, 0.5) 100%
-      );"></div>
-</a>
-</div></div><div class="col-sm-9"><strong>Amazon Web Services</strong><br><div style="margin-top: 0.4em;"><strong>Agentic Automated Reasoning</strong>, May 2026 &rarr; Aug 2026<br><span style="font-style: italic;">Applied Scientist Intern</span><br><a href="https://www.linkedin.com/in/sivasomayyajula" target="_blank"><span class="badge badge-pill badge-primary">Mentor: Dr. Siva Somayyajula</span></a> <span class="badge badge-pill badge-secondary">Boston, MA</span></div><hr style="margin: 0.6em 0; border-top: 1px dashed #ccc;"><div style="margin-top: 0.4em;"><strong>Automated Reasoning Group</strong>, May 2025 &rarr; Aug 2025<br><span style="font-style: italic;">Applied Scientist Intern</span><br><a href="https://ankushdesai.github.io/" target="_blank"><span class="badge badge-pill badge-primary">Mentor: Dr. Ankush Desai</span></a> <span class="badge badge-pill badge-secondary">Santa Clara, CA</span></div><hr style="margin: 0.6em 0; border-top: 1px dashed #ccc;"><div style="margin-top: 0.4em;"><strong>Database System Lab</strong>, May 2024 &rarr; Aug 2024<br><span style="font-style: italic;">Applied Scientist Intern</span><br><a href="https://ankushdesai.github.io/" target="_blank"><span class="badge badge-pill badge-primary">Mentor: Dr. Ankush Desai</span></a> <span class="badge badge-pill badge-secondary">Santa Clara, CA</span></div> </div> </div> </div><div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3"><div
-  class="bg-image hover-overlay shadow-1-strong rounded"
-  style="height: 128px; width: 128px;"
-  data-mdb-ripple-init
-  data-mdb-ripple-color="light"
-><img src="assets/img/img-taichi-logo.jpg" width=128 height=128 class="img-fluid img-thumbnail" loading="lazy" alt="company logo">
-<a target="_blank" href="https://taichi.graphics/">
-    <div class="mask" style="background: linear-gradient(
-        45deg,
-        hsla(168, 85%, 52%, 0.5),
-        hsla(263, 88%, 45%, 0.5) 100%
-      );"></div>
-</a>
-</div></div><div class="col-sm-9"><strong>Taichi Graphics (Now Meshy.AI)</strong>, June 2022 &rarr; Sep 2022<br><span style="font-style: italic;">Compiler R&D Intern</span><br><span class="badge badge-pill badge-primary">Mentor: Zhanlue Yang, Yi Xu</span><br><span class="badge badge-pill badge-secondary">Remote and Beijing, China</span> </div> </div> </div><div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3"><div
-  class="bg-image hover-overlay shadow-1-strong rounded"
-  style="height: 128px; width: 128px;"
-  data-mdb-ripple-init
-  data-mdb-ripple-color="light"
-><img src="assets/img/img-intel.png" width=128 height=128 class="img-fluid img-thumbnail" loading="lazy" alt="company logo">
-<a target="_blank" href="https://www.intel.com/content/www/us/en/research/overview.html">
-    <div class="mask" style="background: linear-gradient(
-        45deg,
-        hsla(168, 85%, 52%, 0.5),
-        hsla(263, 88%, 45%, 0.5) 100%
-      );"></div>
-</a>
-</div></div><div class="col-sm-9"><strong>Strategic CAD Lab (Intel Labs)</strong>, Mar 2022 &rarr; June 2022<br><span style="font-style: italic;">Formal Verification Research Intern</span><br><a href="https://web.cecs.pdx.edu/~zhenkun/" target="_blank"><span class="badge badge-pill badge-primary">Mentor: Dr. Zhenkun Yang</span></a><br><span class="badge badge-pill badge-secondary">Remote and Hillsboro, OR</span> </div> </div> </div><div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3"><div
-  class="bg-image hover-overlay shadow-1-strong rounded"
-  style="height: 128px; width: 128px;"
-  data-mdb-ripple-init
-  data-mdb-ripple-color="light"
-><img src="assets/img/img-uwplse.png" width=128 height=128 class="img-fluid img-thumbnail" loading="lazy" alt="company logo">
-<a target="_blank" href="https://uwplse.org/">
-    <div class="mask" style="background: linear-gradient(
-        45deg,
-        hsla(168, 85%, 52%, 0.5),
-        hsla(263, 88%, 45%, 0.5) 100%
-      );"></div>
-</a>
-</div></div><div class="col-sm-9"><strong>Programming Language and Software Engineering Lab</strong>, Oct 2019 &rarr; June 2022<br><span style="font-style: italic;">Research Assistant</span><br><a href="https://slyubomirsky.github.io/" target="_blank"><span class="badge badge-pill badge-primary">Mentor: Dr. Steven Lybomirsky</span></a><br><span class="badge badge-pill badge-secondary">Seattle, WA</span> </div> </div> </div>
-                    </div>
-                </div>
-                <div class="row" style="margin-top: 3em;">
-                    <div class="col-sm-12" style="">
-                        <h4>Talks</h4>
-                        <div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3"><img src="assets/img/img-algoveri-poster.jpg" class="img-fluid img-thumbnail" loading="lazy" alt="Project image"></div><div class="col-sm-9"><strong>AlgoVeri: An Aligned Benchmark for Verified Code Generation on Classical Algorithms</strong><br><span style="font-style: italic;">ICML'26</span>, July 2026 <br><a href="assets/talks/AlgoVeri_poster.pdf" target="_blank">Poster</a> </div> </div> </div><div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3"><img src="assets/img/img-specy.png" class="img-fluid img-thumbnail" loading="lazy" alt="Project image"></div><div class="col-sm-9"><strong>Specy: Learning Specifications for Distributed Systems from Event Traces</strong><br><span style="font-style: italic;">Georgia Tech - Dependently Typed Talk</span>, April 13, 2026 <br><a href="assets/talks/SpecySlides.pdf" target="_blank">Slides</a> </div> </div> </div><div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3"><img src="assets/img/img-lmpl-2025.png" class="img-fluid img-thumbnail" loading="lazy" alt="Project image"></div><div class="col-sm-9"><strong>Ranking Formal Specifications using LLMs</strong><br><span style="font-style: italic;">SPLASH/LMPL'25</span>, Oct 15, 2025 <br><a href="assets/talks/LMPL-Slides.pdf" target="_blank">Slides</a> </div> </div> </div><div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3"><img src="assets/img/img-generals.png" class="img-fluid img-thumbnail" loading="lazy" alt="Project image"></div><div class="col-sm-9"><strong>Ph.D. General Examination</strong><br><span style="font-style: italic;">Princeton University</span>, April 16, 2024 <br><a href="assets/talks/General_exam_pdf.pdf" target="_blank">Slides</a> </div> </div> </div><div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3"><img src="assets/img/img-catstail.png" class="img-fluid img-thumbnail" loading="lazy" alt="Project image"></div><div class="col-sm-9"><strong>CatsTail: Packet programs synthesis via Equality Saturation</strong><br><span style="font-style: italic;">Princeton University</span>, December 2023 <br><a href="assets/papers/COS539Report.pdf" target="_blank">Slides</a> </div> </div> </div><div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3"><img src="assets/img/img-egraphs23.png" class="img-fluid img-thumbnail" loading="lazy" alt="Project image"></div><div class="col-sm-9"><strong>Improving Term Extraction with Acyclic Constraints</strong><br><span style="font-style: italic;">PLDI EGRAPHS'23</span>, June 2023 <br><a href="assets/egraphs_2023_presentation.pdf" target="_blank">Slides</a> / <a href="https://www.youtube.com/watch?v=6NIDzKKkpF0&list=PLyrlk8Xaylp4jwMYLGnf2BdVNVqoBHcEx&index=2" target="_blank">Recording</a> </div> </div> </div><div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3"><img src="assets/img/img-taichi-talk.png" class="img-fluid img-thumbnail" loading="lazy" alt="Project image"></div><div class="col-sm-9"><strong>Towards automated super-optimization for Taichi using Equality Saturation</strong><br><span style="font-style: italic;">Taichi Graphics</span>, January 2023 <br><a href="assets/talks/Towards%20automated%20super-optimization%20for%20Taichi%20using%20Equality%20Saturation.pdf" target="_blank">Slides</a> / <a href="https://www.bilibili.com/video/BV1hG4y1w79u" target="_blank">Recording</a> </div> </div> </div><div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3"><img src="assets/img/img-cos521.png" class="img-fluid img-thumbnail" loading="lazy" alt="Project image"></div><div class="col-sm-9"><strong>Efficient E-Graph Extraction via Linear Programming</strong><br><span style="font-style: italic;">Princeton University</span>, December 2022 <br><a href="https://docs.google.com/presentation/d/1-asK1ehFM3LEygwvC6lI3W-CHrNfCXty/edit?usp=sharing&ouid=110868745366523457760&rtpof=true&sd=true" target="_blank">Slides</a> </div> </div> </div><div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3"><img src="assets/img/img-pyrope.png" class="img-fluid img-thumbnail" loading="lazy" alt="Project image"></div><div class="col-sm-9"><strong>Pyrope: towards correct-by-construction hardware modeling in Python/HeteroCL</strong><br><span style="font-style: italic;">Intel Labs</span>, June 2022 <br><a href="assets/talks/Pyrope_slides.pptx" target="_blank">Slides</a> </div> </div> </div><div style="margin-bottom: 3em;"> <div class="row"><div class="col-sm-3"><img src="assets/img/img-ada-talk.png" class="img-fluid img-thumbnail" loading="lazy" alt="Project image"></div><div class="col-sm-9"><strong>Correct & Flexible Compiler Support for Custom Accelerators</strong><br><span style="font-style: italic;">SRC ADA Center</span>, September 2021 <br><a href="https://docs.google.com/presentation/d/13YihSVXt-t_Lu7ddCy7zxNiqM6zA-Z1Q/edit" target="_blank">Slides</a> </div> </div> </div>
-                    </div>
-                </div>
-                <div class="row" style="margin-top: 3em;">
-                    <div class="col-sm-12" style="">
-                        <h4>Professional Activities</h4>
-                        <ul><li><span style='font-weight: bold;'>Reviewer</span>: NeurIPS, IEEE TMC, AAE@KDD, SciPy</li><li><span style='font-weight: bold;'>Artifact Evaluation</span>: POPL, PLDI, MLSys, MICRO</li></ul>
-                    </div>
-                </div>
-                <div class="row" style="margin-top: 3em; margin-bottom: 1em;">
-                    
-            <div class="col-sm-12" style="">
-                <h4>Misc</h4>
-                <ul>
-                    <li>I love classical music and enjoy playing the violin. I've been playing the violin for about 20 years.
-                     I received the Lv.9 certification issued by the Central Conservatory of Music when I was in middle school.
-                    You can find some of my recordings <a href="recordings.html">here</a>.
-                    Some video recordings are available @ <a target="_blank" href="https://space.bilibili.com/11936677">Bilibili</a> (the website is in Chinese).</li>
-                    <li>I was a part-time translator / proofreading editor in <a target="_blank" href="https://www.youtube.com/channel/UCoSrY_IQQVpmIRZ9Xf-y93g">Gawr Gura</a>'s Chinese fansub team. Gura, now graduated, was a virtual streamer at YouTube affiliated with <a target="_blank" href="https://en.hololive.tv/member">Hololive Production</a> (EN).</li>
-                    <li>My Erdős number is 3: Mike He [3] &rarr; Sanjeev Arora [2] &rarr; László Babai [1] &rarr; Paul Erdős [0]</li>
-                </ul>
-                <h4>Friends and Colleagues (by alphabetical order of last names)</h4>
-                <div class="row justify-content-center pe-3 ps-3">
-                    <ul class="col-sm-5 list-group list-group-light">
-                        
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Zhendong Ang</div>
-      <a target="_blank" href="https://ang9876.github.io/" class="text-muted friend-link">https://ang9876.github.io/</a>
-    </div>
-    <span class="badge rounded-pill badge-primary">NUS</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Sanjeev Arora</div>
-      <a target="_blank" href="https://www.cs.princeton.edu/~arora/" class="text-muted friend-link">https://www.cs.princeton.edu/~arora/</a>
-    </div>
-    <span class="badge rounded-pill badge-warning">Princeton</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Osbert Bastani</div>
-      <a target="_blank" href="https://obastani.github.io/" class="text-muted friend-link">https://obastani.github.io/</a>
-    </div>
-    <span class="badge rounded-pill badge-primary">UPenn</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Jennifer Brennan</div>
-      <a target="_blank" href="https://jenniferbrennan.github.io/" class="text-muted friend-link">https://jenniferbrennan.github.io/</a>
-    </div>
-    <span class="badge rounded-pill badge-primary">Google</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Vishal Canumalla</div>
-      <a target="_blank" href="https://vcanumalla.github.io/" class="text-muted friend-link">https://vcanumalla.github.io/</a>
-    </div>
-    <span class="badge rounded-pill badge-danger">Stanford</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Tianqi Chen</div>
-      <a target="_blank" href="https://tqchen.com/" class="text-muted friend-link">https://tqchen.com/</a>
-    </div>
-    <span class="badge rounded-pill badge-danger">CMU</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Yinwei Dai</div>
-      <a target="_blank" href="https://yinwei-dai.com/" class="text-muted friend-link">https://yinwei-dai.com/</a>
-    </div>
-    <span class="badge rounded-pill badge-warning">Princeton</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Ankush Desai</div>
-      <a target="_blank" href="https://ankushdesai.github.io/" class="text-muted friend-link">https://ankushdesai.github.io/</a>
-    </div>
-    <span class="badge rounded-pill badge-primary">Snowflake</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Haichen Dong</div>
-      <a target="_blank" href="https://haichendong.com/" class="text-muted friend-link">https://haichendong.com/</a>
-    </div>
-    <span class="badge rounded-pill badge-dark">BlackSesame</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Yuyou Fan</div>
-      <a target="_blank" href="https://www.linkedin.com/in/yuyou-fan-58085a18b" class="text-muted friend-link">https://www.linkedin.com/in/yuyou-fan-58085a18b</a>
-    </div>
-    <span class="badge rounded-pill badge-danger">Utah</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Altan Haan</div>
-      <a target="_blank" href="https://altanh.com/" class="text-muted friend-link">https://altanh.com/</a>
-    </div>
-    <span class="badge rounded-pill badge-primary">UC Berkeley</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Bo-yuan Huang</div>
-      <a target="_blank" href="https://boyuanhuang.com/" class="text-muted friend-link">https://boyuanhuang.com/</a>
-    </div>
-    <span class="badge rounded-pill badge-primary">Intel</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Chi Jin</div>
-      <a target="_blank" href="https://sites.google.com/view/cjin/home" class="text-muted friend-link">https://sites.google.com/view/cjin/home</a>
-    </div>
-    <span class="badge rounded-pill badge-warning">Princeton</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Marisa Kirisame</div>
-      <a target="_blank" href="https://marisa.moe/" class="text-muted friend-link">https://marisa.moe/</a>
-    </div>
-    <span class="badge rounded-pill badge-danger">Utah</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Yi Li</div>
-      <a target="_blank" href="https://ece.princeton.edu/people/yi-li" class="text-muted friend-link">https://ece.princeton.edu/people/yi-li</a>
-    </div>
-    <span class="badge rounded-pill badge-primary">Meta</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Zenan Li</div>
-      <a target="_blank" href="https://lizn-zn.github.io/" class="text-muted friend-link">https://lizn-zn.github.io/</a>
-    </div>
-    <span class="badge rounded-pill badge-primary">ETH Zurich</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Jiawei Li</div>
-      <a target="_blank" href="https://ece.illinois.edu/about/directory/grad-students/jiaweil9" class="text-muted friend-link">https://ece.illinois.edu/about/directory/grad-students/jiaweil9</a>
-    </div>
-    <span class="badge rounded-pill badge-warning">UIUC</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Zhaoyu Li</div>
-      <a target="_blank" href="https://www.zhaoyu-li.com/" class="text-muted friend-link">https://www.zhaoyu-li.com/</a>
-    </div>
-    <span class="badge rounded-pill badge-primary">UToronto</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Steven Lyubomirsky</div>
-      <a target="_blank" href="https://slyubomirsky.github.io/" class="text-muted friend-link">https://slyubomirsky.github.io/</a>
-    </div>
-    <span class="badge rounded-pill badge-success">NVIDIA</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Marcus Min</div>
-      <a target="_blank" href="https://marcusm117.github.io/" class="text-muted friend-link">https://marcusm117.github.io/</a>
-    </div>
-    <span class="badge rounded-pill badge-primary">UPenn</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Federico Mora Rocha</div>
-      <a target="_blank" href="https://federico.morarocha.ca/" class="text-muted friend-link">https://federico.morarocha.ca/</a>
-    </div>
-    <span class="badge rounded-pill badge-warning">AWS</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Jared Roesch</div>
-      <a target="_blank" href="https://jroesch.github.io/" class="text-muted friend-link">https://jroesch.github.io/</a>
-    </div>
-    <span class="badge rounded-pill badge-success">NVIDIA</span>
-  </li>
-                    </ul>
-                    <ul class="col-sm-5 list-group list-group-light">
-                        
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Xujie Si</div>
-      <a target="_blank" href="https://www.cs.toronto.edu/~six/" class="text-muted friend-link">https://www.cs.toronto.edu/~six/</a>
-    </div>
-    <span class="badge rounded-pill badge-primary">UToronto</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Gus Smith</div>
-      <a target="_blank" href="https://justg.us/" class="text-muted friend-link">https://justg.us/</a>
-    </div>
-    <span class="badge rounded-pill badge-primary">Chipstack</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Zhendong Su</div>
-      <a target="_blank" href="https://people.inf.ethz.ch/suz/" class="text-muted friend-link">https://people.inf.ethz.ch/suz/</a>
-    </div>
-    <span class="badge rounded-pill badge-primary">ETH Zurich</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Thierry Tambe</div>
-      <a target="_blank" href="https://thierrytambe.com/" class="text-muted friend-link">https://thierrytambe.com/</a>
-    </div>
-    <span class="badge rounded-pill badge-danger">Stanford</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Shange Tang</div>
-      <a target="_blank" href="https://shangetang.github.io/" class="text-muted friend-link">https://shangetang.github.io/</a>
-    </div>
-    <span class="badge rounded-pill badge-warning">Princeton</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Zachary Tatlock</div>
-      <a target="_blank" href="https://ztatlock.net/" class="text-muted friend-link">https://ztatlock.net/</a>
-    </div>
-    <span class="badge rounded-pill badge-primary">UW</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Doug Terry</div>
-      <a target="_blank" href="https://www.amazon.science/author/douglas-terry" class="text-muted friend-link">https://www.amazon.science/author/douglas-terry</a>
-    </div>
-    <span class="badge rounded-pill badge-primary">LinkedIn</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Venugopal V. Veeravalli</div>
-      <a target="_blank" href="https://vvv.ece.illinois.edu/" class="text-muted friend-link">https://vvv.ece.illinois.edu/</a>
-    </div>
-    <span class="badge rounded-pill badge-warning">UIUC</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Shaoqi Wang</div>
-      <a target="_blank" href="https://www.linkedin.com/in/shaoqiw/" class="text-muted friend-link">https://www.linkedin.com/in/shaoqiw/</a>
-    </div>
-    <span class="badge rounded-pill badge-primary">Microsoft</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Gu-Yeon Wei</div>
-      <a target="_blank" href="https://seas.harvard.edu/person/gu-yeon-wei" class="text-muted friend-link">https://seas.harvard.edu/person/gu-yeon-wei</a>
-    </div>
-    <span class="badge rounded-pill badge-danger">Harvard</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Hobart Yang</div>
-      <a target="_blank" href="https://discover304.top/" class="text-muted friend-link">https://discover304.top/</a>
-    </div>
-    <span class="badge rounded-pill badge-light">MBZUAI</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Kaiyu Yang</div>
-      <a target="_blank" href="https://yangky11.github.io/" class="text-muted friend-link">https://yangky11.github.io/</a>
-    </div>
-    <span class="badge rounded-pill badge-success">MiroMind</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Ziran Yang</div>
-      <a target="_blank" href="https://ziranyang0.github.io/" class="text-muted friend-link">https://ziranyang0.github.io/</a>
-    </div>
-    <span class="badge rounded-pill badge-warning">Princeton</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Guanghao Ye</div>
-      <a target="_blank" href="https://yeguanghao.xyz/" class="text-muted friend-link">https://yeguanghao.xyz/</a>
-    </div>
-    <span class="badge rounded-pill badge-dark">OpenAI</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Zixuan Yi</div>
-      <a target="_blank" href="https://zixy17.github.io/" class="text-muted friend-link">https://zixy17.github.io/</a>
-    </div>
-    <span class="badge rounded-pill badge-primary">UPenn</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Yinsen (Tesla) Zhang</div>
-      <a target="_blank" href="https://ice1000.org/" class="text-muted friend-link">https://ice1000.org/</a>
-    </div>
-    <span class="badge rounded-pill badge-danger">CMU</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Yihong Zhang</div>
-      <a target="_blank" href="https://effect.systems/" class="text-muted friend-link">https://effect.systems/</a>
-    </div>
-    <span class="badge rounded-pill badge-primary">UW</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Muru Zhang</div>
-      <a target="_blank" href="https://nanami18.github.io/" class="text-muted friend-link">https://nanami18.github.io/</a>
-    </div>
-    <span class="badge rounded-pill badge-danger">USC</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Haoyu Zhao</div>
-      <a target="_blank" href="https://hyzhao.me/" class="text-muted friend-link">https://hyzhao.me/</a>
-    </div>
-    <span class="badge rounded-pill badge-warning">Princeton</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Andrew Zhao</div>
-      <a target="_blank" href="https://www.linkedin.com/in/andrew-zhao-a10312159/" class="text-muted friend-link">https://www.linkedin.com/in/andrew-zhao-a10312159/</a>
-    </div>
-    <span class="badge rounded-pill badge-warning">Princeton</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Zhe Zhou</div>
-      <a target="_blank" href="https://zhezhouzz.github.io/" class="text-muted friend-link">https://zhezhouzz.github.io/</a>
-    </div>
-    <span class="badge rounded-pill badge-dark">Purdue</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Chenyu Zhou</div>
-      <a target="_blank" href="https://self.shiroha.info/" class="text-muted friend-link">https://self.shiroha.info/</a>
-    </div>
-    <span class="badge rounded-pill badge-danger">USC</span>
-  </li>
-<li class="list-group-item d-flex justify-content-between align-items-center gap-2">
-    <div class="friend-info">
-      <div class="fw-bold">Yifan Zhu</div>
-      <a target="_blank" href="https://www.cs.rochester.edu/~yzhu104/" class="text-muted friend-link">https://www.cs.rochester.edu/~yzhu104/</a>
-    </div>
-    <span class="badge rounded-pill badge-primary">UofR</span>
-  </li>
-                    </ul>
-                </div>
-                <hr/>
-                <h4>Visitors are welcomed!</h4>
-                <img src="https://s11.flagcounter.com/count2/IatI/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" loading="lazy" alt="Flag counter"/>
-                <p>
-                    This website is adapted from a template generously provided by <a target="_blank" href="https://m-niemeyer.github.io/">Michael Niemeyer</a>. The Logo of this website is designed by my friend, Melina.
-                </p>
-            </div>
-    
-                </div>
+</code></pre></details>
             </div>
         </div>
-    </div>
+    </article>
+    <article class="publication" id="paper-he2026soteria">
+        <div class="publication-body">
+            <div class="publication-venue">Neural Information Processing Systems (NeurIPS), To Appear · 2026 <span class="award-label">Oral</span></div>
+            <h4 class="publication-title">Soteria: Formally Verified Planning with Runtime Enforcement for Safe LLM Agents</h4>
+            <p class="publication-authors"><strong>Mike He</strong>, <a href="https://ankushdesai.github.io/" target="_blank">Ankush Desai</a>, <a href="https://www.princeton.edu/~sharad/" target="_blank">Sharad Malik</a>, <a href="https://www.cs.princeton.edu/~aartig/" target="_blank">Aarti Gupta</a></p>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.umd.min.js"></script>
+            <div class="publication-links">
+                <details class="citation"><summary>BibTeX</summary><pre><code>@inproceedings{he2026soteria,
+    author = &quot;He, Mike and Desai, Ankush and Malik, Sharad and Gupta, Aarti&quot;,
+    title = &quot;Soteria: Formally Verified Planning with Runtime Enforcement for Safe LLM Agents&quot;,
+    booktitle = &quot;Neural Information Processing Systems (NeurIPS), To Appear&quot;,
+    year = &quot;2026&quot;,
+    url = &quot;&quot;
+}
+</code></pre></details>
+            </div>
+        </div>
+    </article>
+    <article class="publication" id="paper-gaonkar2026bolt">
+        <div class="publication-body">
+            <div class="publication-venue">ArXiV · 2026 </div>
+            <h4 class="publication-title"><a href="https://arxiv.org/abs/2609.30651v1" target="_blank">Verification of Compiler-to-Accelerator Mappings for Machine Learning Accelerators</a></h4>
+            <p class="publication-authors"><a href="https://scholar.google.com/citations?user=Ccvj2usAAAAJ&amp;hl=en" target="_blank">Akash Gaonkar</a>, <strong>Mike He</strong>, <a href="https://ece.princeton.edu/people/yi-li" target="_blank">Yi Li</a>, <a href="https://boyuanhuang.com/" target="_blank">Bo-Yuan Huang</a>, <a href="https://ninehusky.github.io/" target="_blank">Andrew Cheung</a>, <a href="https://vcanumalla.github.io/" target="_blank">Vishal Canumalla</a>, <a href="https://justg.us/" target="_blank">Gus Smith</a>, <a href="https://ztatlock.net/" target="_blank">Zachary Tatlock</a>, <a href="https://www.cs.fsu.edu/~grigory/" target="_blank">Grigory Fedyukovich</a>, <a href="https://www.princeton.edu/~sharad/" target="_blank">Sharad Malik</a>, <a href="https://www.cs.princeton.edu/~aartig/" target="_blank">Aarti Gupta</a></p>
+
+            <div class="publication-links"><a href="https://arxiv.org/abs/2609.30651v1" target="_blank">Paper <span aria-hidden="true">↗</span></a>
+                <details class="citation"><summary>BibTeX</summary><pre><code>@inproceedings{gaonkar2026bolt,
+    author = &quot;Gaonkar, Akash and He, Mike and Li, Yi and Huang, Bo-Yuan and Cheung, Andrew and Canumalla, Vishal and Smith, Gus and Tatlock, Zachary and Fedyukovich, Grigory and Malik, Sharad and Gupta, Aarti&quot;,
+    title = &quot;Verification of Compiler-to-Accelerator Mappings for Machine Learning Accelerators&quot;,
+    booktitle = &quot;ArXiV&quot;,
+    year = &quot;2026&quot;,
+    url = &quot;https://arxiv.org/abs/2609.30651v1&quot;
+}
+</code></pre></details>
+            </div>
+        </div>
+    </article>
+        </section>
+        <section class="research-category" aria-labelledby="selected-category-2">
+            <h3 id="selected-category-2" class="category-heading"><span aria-hidden="true">02</span>LLMs with Formal Methods</h3>
+
+    <article class="publication" id="paper-li2026goedelcodeproverhierarchicalproofsearch">
+        <div class="publication-body">
+            <div class="publication-venue">Conference on Language Modeling (COLM) · 2026 </div>
+            <h4 class="publication-title"><a href="https://goedelcodeprover.github.io/" target="_blank">Göedel-Code-Prover: Hierarchical Proof Search for Open State-of-the-Art Code Verification</a></h4>
+            <p class="publication-authors"><a href="https://lizn-zn.github.io/" target="_blank">Zenan Li*</a>, <a href="https://ziranyang0.github.io/" target="_blank">Ziran Yang*</a>, <strong>Deyuan He</strong>, <a href="https://hyzhao.me/" target="_blank">Haoyu Zhao</a>, <a href="https://www.linkedin.com/in/andrew-zhao-a10312159/" target="_blank">Andrew Zhao</a>, <a href="https://shangetang.github.io/" target="_blank">Shange Tang</a>, <a href="https://yangky11.github.io/" target="_blank">Kaiyu Yang</a>, <a href="https://www.cs.princeton.edu/~aartig/" target="_blank">Aarti Gupta</a>, <a href="https://people.inf.ethz.ch/suz/" target="_blank">Zhendong Su</a>, <a href="https://sites.google.com/view/cjin/home" target="_blank">Chi Jin</a></p>
+
+            <div class="publication-links"><a href="https://goedelcodeprover.github.io/" target="_blank">Project <span aria-hidden="true">↗</span></a><a href="https://arxiv.org/pdf/2603.19329.pdf" target="_blank">Paper <span aria-hidden="true">↗</span></a><a href="https://github.com/goedelcodeprover/Goedel-Code-Prover" target="_blank">Code <span aria-hidden="true">↗</span></a>
+                <details class="citation"><summary>BibTeX</summary><pre><code>@misc{li2026goedelcodeproverhierarchicalproofsearch,
+    author = &quot;Li*, Zenan and Yang*, Ziran and He, Deyuan and Zhao, Haoyu and Zhao, Andrew and Tang, Shange and Yang, Kaiyu and Gupta, Aarti and Su, Zhendong and Jin, Chi&quot;,
+    title = &quot;Göedel-Code-Prover: Hierarchical Proof Search for Open State-of-the-Art Code Verification&quot;,
+    year = &quot;2026&quot;,
+    eprint = &quot;2603.19329&quot;,
+    archivePrefix = &quot;arXiv&quot;,
+    primaryClass = &quot;cs.SE&quot;,
+    booktitle = &quot;Conference on Language Modeling (COLM)&quot;,
+    url = &quot;https://arxiv.org/abs/2603.19329&quot;
+}
+</code></pre></details>
+            </div>
+        </div>
+    </article>
+    <article class="publication" id="paper-zhao2026algoveri">
+        <div class="publication-body">
+            <div class="publication-venue">International Conference on Machine Learning (ICML) · 2026 <span class="award-label">Spotlight</span></div>
+            <h4 class="publication-title"><a href="https://www.arxiv.org/abs/2602.09464" target="_blank">AlgoVeri: An Aligned Benchmark for Verified Code Generation on Classical Algorithms</a></h4>
+            <p class="publication-authors"><a href="https://hyzhao.me/" target="_blank">Haoyu Zhao*</a>, <a href="https://ziranyang0.github.io/" target="_blank">Ziran Yang*</a>, <a href="https://ece.illinois.edu/about/directory/grad-students/jiaweil9" target="_blank">Jiawei Li*</a>, <strong>Deyuan He*</strong>, <a href="https://lizn-zn.github.io/" target="_blank">Zenan Li*</a>, <a href="https://sites.google.com/view/cjin/home" target="_blank">Chi Jin</a>, <a href="https://vvv.ece.illinois.edu/" target="_blank">Venugopal V. Veeravalli</a>, <a href="https://www.cs.princeton.edu/~aartig/" target="_blank">Aarti Gupta</a>, <a href="https://www.cs.princeton.edu/~arora/" target="_blank">Sanjeev Arora</a></p>
+
+            <div class="publication-links"><a href="https://www.arxiv.org/abs/2602.09464" target="_blank">Paper <span aria-hidden="true">↗</span></a><a href="https://github.com/haoyuzhao123/algoveri" target="_blank">Code <span aria-hidden="true">↗</span></a>
+                <details class="citation"><summary>BibTeX</summary><pre><code>@article{zhao2026algoveri,
+    author = &quot;Zhao*, Haoyu and Yang*, Ziran and Li*, Jiawei and He*, Deyuan and Zenan Li* and Jin, Chi and Veeravalli, Venugopal V. and Gupta, Aarti and Arora, Sanjeev&quot;,
+    title = &quot;AlgoVeri: An Aligned Benchmark for Verified Code Generation on Classical Algorithms&quot;,
+    booktitle = &quot;International Conference on Machine Learning (ICML)&quot;,
+    year = &quot;2026&quot;,
+    url = &quot;https://www.arxiv.org/abs/2602.09464&quot;
+}
+</code></pre></details>
+            </div>
+        </div>
+    </article>
+    <article class="publication" id="paper-min2026tla">
+        <div class="publication-body">
+            <div class="publication-venue">International Conference on Machine Learning (ICML), Position Track · 2026 <span class="award-label">Spotlight</span></div>
+            <h4 class="publication-title"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6922158" target="_blank">Theory-Level Autoformalization: From Isolated Statements to Unified Formal Knowledge Bases</a></h4>
+            <p class="publication-authors"><a href="https://marcusm117.github.io/" target="_blank">Marcus Min</a>, <strong>Mike He</strong>, <a href="https://www.zhaoyu-li.com/" target="_blank">Zhaoyu Li</a>, <a href="https://zixy17.github.io/" target="_blank">Zixuan Yi</a>, <a href="https://www.princeton.edu/~sharad/" target="_blank">Sharad Malik</a>, <a href="https://www.cs.princeton.edu/~aartig/" target="_blank">Aarti Gupta</a>, <a href="https://www.cs.toronto.edu/~six/" target="_blank">Xujie Si</a>, <a href="https://obastani.github.io/" target="_blank">Osbert Bastani</a></p>
+
+            <div class="publication-links"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6922158" target="_blank">Paper <span aria-hidden="true">↗</span></a>
+                <details class="citation"><summary>BibTeX</summary><pre><code>@misc{min2026tla,
+    author = &quot;Min, Marcus and He, Mike and Li, Zhaoyu and Yi, Zixuan and Malik, Sharad and Gupta, Aarti and Si, Xujie and Bastani, Osbert&quot;,
+    title = &quot;Theory-Level Autoformalization: From Isolated Statements to Unified Formal Knowledge Bases&quot;,
+    year = &quot;2026&quot;,
+    booktitle = &quot;International Conference on Machine Learning (ICML), Position Track&quot;,
+    url = &quot;https://papers.ssrn.com/sol3/papers.cfm?abstract\_id=6922158&quot;
+}
+</code></pre></details>
+            </div>
+        </div>
+    </article>
+        </section>
+        </section>
+        <section class="site-section" aria-labelledby="talks">
+            <div class="section-heading"><h2 id="talks">Recent Talks</h2><a class="text-link" href="talks.html">All talks <span aria-hidden="true">↗</span></a></div>
+            <div class="talk-list">
+    <article class="talk" id="talk-AlgoVeriICML26">
+        <div class="talk-date">July 2026</div>
+        <div class="talk-body"><h3>AlgoVeri: An Aligned Benchmark for Verified Code Generation on Classical Algorithms</h3><p>ICML&#x27;26</p><div class="resource-links"><a href="assets/talks/AlgoVeri_poster.pdf" target="_blank">Poster <span aria-hidden="true">↗</span></a></div></div>
+        <img src="assets/img/img-algoveri-poster.jpg" alt="Figure for AlgoVeri: An Aligned Benchmark for Verified Code Generation on Classical Algorithms" loading="lazy">
+    </article>
+    <article class="talk" id="talk-GTSpecyTalk">
+        <div class="talk-date">April 13, 2026</div>
+        <div class="talk-body"><h3>Specy: Learning Specifications for Distributed Systems from Event Traces</h3><p>Georgia Tech - Dependently Typed Talk</p><div class="resource-links"><a href="assets/talks/SpecySlides.pdf" target="_blank">Slides <span aria-hidden="true">↗</span></a></div></div>
+        <img src="assets/img/img-specy.png" alt="Figure for Specy: Learning Specifications for Distributed Systems from Event Traces" loading="lazy">
+    </article>
+    <article class="talk" id="talk-LMPL25">
+        <div class="talk-date">Oct 15, 2025</div>
+        <div class="talk-body"><h3>Ranking Formal Specifications using LLMs</h3><p>SPLASH/LMPL&#x27;25</p><div class="resource-links"><a href="assets/talks/LMPL-Slides.pdf" target="_blank">Slides <span aria-hidden="true">↗</span></a></div></div>
+        <img src="assets/img/img-lmpl-2025.png" alt="Figure for Ranking Formal Specifications using LLMs" loading="lazy">
+    </article></div>
+        </section>
+        <section class="site-section" aria-labelledby="background">
+            <div class="section-heading"><h2 id="background">Background</h2><a class="text-link" href="assets/cv.pdf" target="_blank">Full CV <span aria-hidden="true">↗</span></a></div>
+            <div class="background-grid">
+                <div><h3 class="eyebrow column-heading">Education</h3><article class="career-entry">
+        <img src="assets/img/img-princeton.png" alt="" loading="lazy">
+        <div><h4><a href="https://cs.princeton.edu" target="_blank">Princeton University</a></h4>
+        <p class="career-date">2022 – est. 2027 · Princeton, NJ</p>
+        <p>Ph.D. in Computer Science<br>M.A. in Computer Science</p><p class="career-note">Advisor: <a href="https://www.cs.princeton.edu/~aartig/" target="_blank">Prof. Aarti Gupta</a></p><p class="career-note">Co-advisor: <a href="https://www.princeton.edu/~sharad/" target="_blank">Prof. Sharad Malik</a></p></div>
+    </article><article class="career-entry">
+        <img src="assets/img/img-uw.png" alt="" loading="lazy">
+        <div><h4><a href="https://cs.washington.edu" target="_blank">University of Washington</a></h4>
+        <p class="career-date">2018 – 2022 · Seattle, WA</p>
+        <p>B.S. in Computer Science</p><p class="career-note">Advisor: <a href="https://ztatlock.net/" target="_blank">Prof. Zachary Tatlock</a></p></div>
+    </article>
+                    <div class="service"><h3 class="eyebrow column-heading">Professional Activities</h3><ul><li><span style='font-weight: bold;'>Reviewer</span>: NeurIPS, IEEE TMC, AAE@KDD, SciPy</li><li><span style='font-weight: bold;'>Artifact Evaluation</span>: POPL, PLDI, MLSys, MICRO</li></ul></div>
+                </div>
+                <div><h3 class="eyebrow column-heading">Experience</h3><article class="career-entry">
+        <img src="assets/img/img-aws.jpeg" alt="" loading="lazy">
+        <div><h4><a href="https://aws.amazon.com/" target="_blank">Amazon Web Services</a></h4><div class="career-stint">
+        <p class="career-date">May 2026 – Aug 2026 · Boston, MA</p>
+        <p class="career-team">Agentic Automated Reasoning</p><p>Applied Scientist Intern</p><p class="career-note">Mentor: <a href="https://www.linkedin.com/in/sivasomayyajula" target="_blank">Dr. Siva Somayyajula</a></p>
+    </div><div class="career-stint">
+        <p class="career-date">May 2025 – Aug 2025 · Santa Clara, CA</p>
+        <p class="career-team">Automated Reasoning Group</p><p>Applied Scientist Intern</p><p class="career-note">Mentor: <a href="https://ankushdesai.github.io/" target="_blank">Dr. Ankush Desai</a></p>
+    </div><div class="career-stint">
+        <p class="career-date">May 2024 – Aug 2024 · Santa Clara, CA</p>
+        <p class="career-team">Database System Lab</p><p>Applied Scientist Intern</p><p class="career-note">Mentor: <a href="https://ankushdesai.github.io/" target="_blank">Dr. Ankush Desai</a></p>
+    </div></div>
+    </article><article class="career-entry">
+        <img src="assets/img/img-taichi-logo.jpg" alt="" loading="lazy">
+        <div><h4><a href="https://taichi.graphics/" target="_blank">Taichi Graphics (Now Meshy.AI)</a></h4><div class="career-stint">
+        <p class="career-date">June 2022 – Sep 2022 · Remote and Beijing, China</p>
+        <p>Compiler R&amp;D Intern</p><p class="career-note">Mentor: Zhanlue Yang, Yi Xu</p>
+    </div></div>
+    </article><article class="career-entry">
+        <img src="assets/img/img-intel.png" alt="" loading="lazy">
+        <div><h4><a href="https://www.intel.com/content/www/us/en/research/overview.html" target="_blank">Strategic CAD Lab (Intel Labs)</a></h4><div class="career-stint">
+        <p class="career-date">Mar 2022 – June 2022 · Remote and Hillsboro, OR</p>
+        <p>Formal Verification Research Intern</p><p class="career-note">Mentor: <a href="https://web.cecs.pdx.edu/~zhenkun/" target="_blank">Dr. Zhenkun Yang</a></p>
+    </div></div>
+    </article><article class="career-entry">
+        <img src="assets/img/img-uwplse.png" alt="" loading="lazy">
+        <div><h4><a href="https://uwplse.org/" target="_blank">Programming Language and Software Engineering Lab</a></h4><div class="career-stint">
+        <p class="career-date">Oct 2019 – June 2022 · Seattle, WA</p>
+        <p>Research Assistant</p><p class="career-note">Mentor: <a href="https://slyubomirsky.github.io/" target="_blank">Dr. Steven Lybomirsky</a></p>
+    </div></div>
+    </article></div>
+            </div>
+        </section>
+
+    <section class="site-section personal-section" aria-labelledby="beyond-research">
+        <div class="section-heading"><h2 id="beyond-research">Beyond research</h2><a class="text-link" href="recordings.html">Violin recordings <span aria-hidden="true">↗</span></a></div>
+        <div class="personal-intro"><p>Classical music, the violin, and a few other things.</p></div>
+        <details class="personal-details"><summary>A little more about me</summary><ul>
+<li>I love classical music and enjoy playing the violin. I've been playing the violin for about 20 years.
+                     I received the Lv.9 certification issued by the Central Conservatory of Music when I was in middle school.
+                    You can find some of my recordings <a href="recordings.html">here</a>.
+                    Some video recordings are available @ <a href="https://space.bilibili.com/11936677" target="_blank">Bilibili</a> (the website is in Chinese).</li>
+<li>I was a part-time translator / proofreading editor in <a href="https://www.youtube.com/channel/UCoSrY_IQQVpmIRZ9Xf-y93g" target="_blank">Gawr Gura</a>'s Chinese fansub team. Gura, now graduated, was a virtual streamer at YouTube affiliated with <a href="https://en.hololive.tv/member" target="_blank">Hololive Production</a>.</li>
+<li>My Erdős number is 3: Mike He [3] → Sanjeev Arora [2] → László Babai [1] → Paul Erdős [0]</li>
+</ul></details>
+        <details class="personal-details"><summary>Friends &amp; colleagues</summary>
+            <p class="small-note">In alphabetical order of last name.</p>
+            <ul class="friends-list"><li><a href="https://ang9876.github.io/" target="_blank">Zhendong Ang</a><span>NUS</span></li><li><a href="https://www.cs.princeton.edu/~arora/" target="_blank">Sanjeev Arora</a><span>Princeton</span></li><li><a href="https://obastani.github.io/" target="_blank">Osbert Bastani</a><span>UPenn</span></li><li><a href="https://jenniferbrennan.github.io/" target="_blank">Jennifer Brennan</a><span>Google</span></li><li><a href="https://vcanumalla.github.io/" target="_blank">Vishal Canumalla</a><span>Stanford</span></li><li><a href="https://tqchen.com/" target="_blank">Tianqi Chen</a><span>CMU</span></li><li><a href="https://yinwei-dai.com/" target="_blank">Yinwei Dai</a><span>Princeton</span></li><li><a href="https://ankushdesai.github.io/" target="_blank">Ankush Desai</a><span>Snowflake</span></li><li><a href="https://haichendong.com/" target="_blank">Haichen Dong</a><span>BlackSesame</span></li><li><a href="https://www.linkedin.com/in/yuyou-fan-58085a18b" target="_blank">Yuyou Fan</a><span>Utah</span></li><li><a href="https://www.cs.fsu.edu/~grigory/" target="_blank">Grigory Fedyukovich</a><span>FSU</span></li><li><a href="https://altanh.com/" target="_blank">Altan Haan</a><span>UC Berkeley</span></li><li><a href="https://boyuanhuang.com/" target="_blank">Bo-yuan Huang</a><span>Intel</span></li><li><a href="https://sites.google.com/view/cjin/home" target="_blank">Chi Jin</a><span>Princeton</span></li><li><a href="https://marisa.moe/" target="_blank">Marisa Kirisame</a><span>Utah</span></li><li><a href="https://ece.princeton.edu/people/yi-li" target="_blank">Yi Li</a><span>Meta</span></li><li><a href="https://lizn-zn.github.io/" target="_blank">Zenan Li</a><span>ETH Zurich</span></li><li><a href="https://ece.illinois.edu/about/directory/grad-students/jiaweil9" target="_blank">Jiawei Li</a><span>UIUC</span></li><li><a href="https://www.zhaoyu-li.com/" target="_blank">Zhaoyu Li</a><span>UToronto</span></li><li><a href="https://slyubomirsky.github.io/" target="_blank">Steven Lyubomirsky</a><span>NVIDIA</span></li><li><a href="https://marcusm117.github.io/" target="_blank">Marcus Min</a><span>UPenn</span></li><li><a href="https://federico.morarocha.ca/" target="_blank">Federico Mora Rocha</a><span>AWS</span></li><li><a href="https://jroesch.github.io/" target="_blank">Jared Roesch</a><span>NVIDIA</span></li><li><a href="https://www.cs.toronto.edu/~six/" target="_blank">Xujie Si</a><span>UToronto</span></li><li><a href="https://justg.us/" target="_blank">Gus Smith</a><span>Chipstack</span></li><li><a href="https://people.inf.ethz.ch/suz/" target="_blank">Zhendong Su</a><span>ETH Zurich</span></li><li><a href="https://thierrytambe.com/" target="_blank">Thierry Tambe</a><span>Stanford</span></li><li><a href="https://shangetang.github.io/" target="_blank">Shange Tang</a><span>Princeton</span></li><li><a href="https://ztatlock.net/" target="_blank">Zachary Tatlock</a><span>UW</span></li><li><a href="https://www.amazon.science/author/douglas-terry" target="_blank">Doug Terry</a><span>LinkedIn</span></li><li><a href="https://vvv.ece.illinois.edu/" target="_blank">Venugopal V. Veeravalli</a><span>UIUC</span></li><li><a href="https://www.linkedin.com/in/shaoqiw/" target="_blank">Shaoqi Wang</a><span>Microsoft</span></li><li><a href="https://seas.harvard.edu/person/gu-yeon-wei" target="_blank">Gu-Yeon Wei</a><span>Harvard</span></li><li><a href="https://discover304.top/" target="_blank">Hobart Yang</a><span>MBZUAI</span></li><li><a href="https://yangky11.github.io/" target="_blank">Kaiyu Yang</a><span>MiroMind</span></li><li><a href="https://ziranyang0.github.io/" target="_blank">Ziran Yang</a><span>Princeton</span></li><li><a href="https://yeguanghao.xyz/" target="_blank">Guanghao Ye</a><span>OpenAI</span></li><li><a href="https://zixy17.github.io/" target="_blank">Zixuan Yi</a><span>UPenn</span></li><li><a href="https://ice1000.org/" target="_blank">Yinsen (Tesla) Zhang</a><span>CMU</span></li><li><a href="https://effect.systems/" target="_blank">Yihong Zhang</a><span>UW</span></li><li><a href="https://nanami18.github.io/" target="_blank">Muru Zhang</a><span>USC</span></li><li><a href="https://hyzhao.me/" target="_blank">Haoyu Zhao</a><span>Princeton</span></li><li><a href="https://www.linkedin.com/in/andrew-zhao-a10312159/" target="_blank">Andrew Zhao</a><span>Princeton</span></li><li><a href="https://zhezhouzz.github.io/" target="_blank">Zhe Zhou</a><span>Purdue</span></li><li><a href="https://self.shiroha.info/" target="_blank">Chenyu Zhou</a><span>USC</span></li><li><a href="https://www.cs.rochester.edu/~yzhu104/" target="_blank">Yifan Zhu</a><span>UofR</span></li></ul>
+        </details>
+        <details class="personal-details"><summary>Visitors from around the world</summary><img alt="Flag counter" loading="lazy" src="https://s11.flagcounter.com/count2/IatI/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/"/></details>
+        <div class="credits"><p>
+                    This website is adapted from a template generously provided by <a href="https://m-niemeyer.github.io/" target="_blank">Michael Niemeyer</a>. The Logo of this website is designed by my friend, Melina.
+                </p></div>
+    </section>
+
+    </main>
+    <footer class="site-footer page-shell"><span>Mike He <span class="footer-dot">/</span> Princeton University</span><a href="#main">Back to top ↑</a></footer>
 </body>
-
 </html>
-    
