@@ -1,10 +1,10 @@
 {
-  "Formal Methods for Systems": [
+  "Formal Methods for Systems/LLMs": [
     "he2026specy",
     "he2026soteria",
     "gaonkar2026bolt"
   ],
-  "LLMs with Formal Methods": [
+  "Formal Methods with LLMs": [
     "li2026goedelcodeproverhierarchicalproofsearch",
     "zhao2026algoveri",
     "min2026tla"

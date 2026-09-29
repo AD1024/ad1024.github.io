@@ -206,7 +206,7 @@ def get_personal_data():
     footer = f"""
     <section class="site-section personal-section" aria-labelledby="beyond-research">
         <div class="section-heading"><h2 id="beyond-research">Beyond research</h2><a class="text-link" href="recordings.html">Violin recordings <span aria-hidden="true">↗</span></a></div>
-        <div class="personal-intro"><p>Classical music, the violin, and a few other things.</p></div>
+        <div class="section-content">
         <details class="personal-details"><summary>A little more about me</summary><ul>
 <li>I love classical music and enjoy playing the violin. I've been playing the violin for about 20 years.
                      I received the Lv.9 certification issued by the Central Conservatory of Music when I was in middle school.
@@ -221,8 +221,9 @@ def get_personal_data():
         </details>
         <details class="personal-details"><summary>Visitors from around the world</summary><img alt="Flag counter" loading="lazy" src="https://s11.flagcounter.com/count2/IatI/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/"/></details>
         <div class="credits"><p>
-                    This website is adapted from a template generously provided by <a href="https://m-niemeyer.github.io/" target="_blank">Michael Niemeyer</a>. The Logo of this website is designed by my friend, Melina.
+                    The logo of this website was designed by my friend, Melina.
                 </p></div>
+        </div>
     </section>
     """
     return name, bio_text, footer
@@ -287,9 +288,9 @@ def get_paper_entry(entry_key, entry, heading_level=4):
     return f"""
     <article class="publication" id="paper-{escape(entry_key, quote=True)}">
         <div class="publication-body">
-            <div class="publication-venue">{venue} · {escape(fields['year'])} {award}</div>
             <h{heading_level} class="publication-title">{title_html}</h{heading_level}>
             <p class="publication-authors">{generate_person_html(entry.persons['author'])}</p>
+            <div class="publication-venue">{venue} · {escape(fields['year'])} {award}</div>
             {badge_html}
             <div class="publication-links">{links}
                 <details class="citation"><summary>BibTeX</summary><pre><code>{cite}</code></pre></details>
@@ -306,7 +307,6 @@ def get_talk_entry(entry, heading_level=3):
     <article class="talk" id="talk-{escape(entry['id'], quote=True)}">
         <div class="talk-date">{escape(entry['year'])}</div>
         <div class="talk-body"><h{heading_level}>{escape(entry['title'])}</h{heading_level}><p>{escape(entry['venue'])}</p><div class="resource-links">{links}</div></div>
-        <img src="{escape(entry['img'], quote=True)}" alt="Figure for {escape(entry['title'], quote=True)}" loading="lazy">
     </article>"""
 
 def _get_intern_stint_html(stint):
@@ -315,17 +315,17 @@ def _get_intern_stint_html(stint):
     if stint.get('mentor_page'):
         mentor = f'<a href="{escape(stint["mentor_page"], quote=True)}" target="_blank">{mentor}</a>'
     mentor_html = f'<p class="career-note">Mentor: {mentor}</p>' if mentor else ''
-    location = f' · {escape(stint["location"])}' if stint.get('location') else ''
-    return f"""<div class="career-stint">
-        <p class="career-date">{escape(stint['start_date'])} – {escape(stint['end_date'])}{location}</p>
-        {team}<p>{escape(stint['position'])}</p>{mentor_html}
-    </div>"""
+    location = f'<p class="career-location">{escape(stint["location"])}</p>' if stint.get('location') else ''
+    return f"""<li class="career-stint">
+        <div class="career-period"><p class="career-date">{escape(stint['start_date'])} – {escape(stint['end_date'])}</p>{location}</div>
+        <div class="career-role"><p class="career-position">{escape(stint['position'])}</p>{team}{mentor_html}</div>
+    </li>"""
 
 def get_intern_entry(entry):
     stints = ''.join(_get_intern_stint_html(stint) for stint in entry.get('stints', [entry]))
-    return f"""<article class="career-entry">
-        <img src="{escape(entry['img'], quote=True)}" alt="" loading="lazy">
-        <div><h4><a href="{escape(entry['company_link'], quote=True)}" target="_blank">{escape(entry['company'])}</a></h4>{stints}</div>
+    return f"""<article class="career-entry experience-entry">
+        <h4><a href="{escape(entry['company_link'], quote=True)}" target="_blank">{escape(entry['company'])}</a></h4>
+        <ul class="career-stints" role="list">{stints}</ul>
     </article>"""
 
 def load_publications():
@@ -357,7 +357,7 @@ def get_selected_publications_html():
             papers.append(get_paper_entry(key, entries[key]))
         sections.append(f"""
         <section class="research-category" aria-labelledby="selected-category-{index}">
-            <h3 id="selected-category-{index}" class="category-heading"><span aria-hidden="true">0{index}</span>{escape(category)}</h3>
+            <h3 id="selected-category-{index}" class="category-heading">{escape(category)}</h3>
             {''.join(papers)}
         </section>""")
     return ''.join(sections)
@@ -365,7 +365,7 @@ def get_selected_publications_html():
 def get_publications_page_html():
     papers = ''.join(get_paper_entry(key, entry, heading_level=2) for key, entry in load_publications())
     content = f"""<main id="main" class="page-shell archive-page">
-        <header class="archive-header"><p class="eyebrow">Research</p><h1>Publications<span class="accent">.</span></h1>
+        <header class="archive-header"><p class="eyebrow">Research</p><h1>Publications</h1>
         <p>Conference and journal publications, preprints, workshop papers, and other contributions.</p>
         <p class="small-note">* denotes a core contributor.</p></header>
         <div class="publication-list">{papers}</div>
@@ -389,7 +389,7 @@ def get_talks_html(limit=None, heading_level=3):
 
 def get_talks_page_html():
     content = f"""<main id="main" class="page-shell archive-page">
-        <header class="archive-header"><p class="eyebrow">Presentations &amp; conversations</p><h1>Talks<span class="accent">.</span></h1>
+        <header class="archive-header"><p class="eyebrow">Presentations &amp; conversations</p><h1>Talks</h1>
         <p>Research talks, conference presentations, and posters.</p></header>
         <div class="talk-list">{get_talks_html(heading_level=2)}</div>
         <a class="back-link" href="index.html">← Back to home</a>
@@ -406,7 +406,6 @@ def get_education_entry(entry):
             advisors.append(f'<p class="career-note">{label}: {name}</p>')
     location = f' · {escape(entry["location"])}' if entry.get('location') else ''
     return f"""<article class="career-entry">
-        <img src="{escape(entry['img'], quote=True)}" alt="" loading="lazy">
         <div><h4><a href="{escape(entry['institution_link'], quote=True)}" target="_blank">{escape(entry['institution'])}</a></h4>
         <p class="career-date">{escape(entry['start_date'])} – {escape(entry['end_date'])}{location}</p>
         <p>{entry['degree']}</p>{''.join(advisors)}</div>
@@ -441,7 +440,7 @@ def get_page_html(content, title, active='home'):
     navigation = ''.join(
         f'<a href="{url}"' + (' aria-current="page"' if active == key else '') + f'>{label}</a>'
         for key, label, url in (
-            ('home', 'About', 'index.html'),
+            ('home', 'Home', 'index.html'),
             ('publications', 'Publications', 'publications.html'),
             ('talks', 'Talks', 'talks.html'),
         )
@@ -459,7 +458,7 @@ def get_page_html(content, title, active='home'):
 <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header page-shell">
-        <a class="wordmark" href="index.html" aria-label="Mike He home">mh<span class="accent">.</span></a>
+        <a class="wordmark" href="index.html" aria-label="Mike He home"><span class="turnstile" aria-hidden="true">⊢</span></a>
         <nav aria-label="Main navigation">{navigation}</nav>
     </header>
     {content}
@@ -472,31 +471,32 @@ def get_page_html(content, title, active='home'):
 def get_index_html():
     name, bio_text, footer = get_personal_data()
     content = f"""
-    <main id="main" class="page-shell">
+    <main id="main" class="page-shell home-page">
         <section class="hero" aria-labelledby="name">
-            <div class="hero-intro"><p class="eyebrow">Ph.D. student · Princeton University</p>
-                <h1 id="name">{' '.join(name)}<span class="accent">.</span></h1>
+            <figure class="portrait"><img src="assets/img/photo_2025_web.jpg" alt="Mike He" width="483" height="600"><figcaption>Ph.D. student<br>Princeton University</figcaption></figure>
+            <div class="intro-content">
+                <h1 id="name">{' '.join(name)}</h1>
                 <p class="research-focus">Formal Methods for and with LLM Agents</p>
+                <div class="bio">{bio_text}</div>
             </div>
-            <figure class="portrait"><img src="assets/img/photo_2025_web.jpg" alt="Mike He" width="483" height="600"><figcaption>Princeton, New Jersey</figcaption></figure>
-            <div class="bio">{bio_text}</div>
         </section>
         <section class="site-section research-section" aria-labelledby="publications">
-            <div class="section-heading"><h2 id="publications">Selected Publications</h2><a class="text-link" href="publications.html">All publications <span aria-hidden="true">↗</span></a></div>
-            <p class="section-note">* denotes a core contributor.</p>
-            {get_selected_publications_html()}
+            <div class="section-heading"><h2 id="publications">Selected Publications</h2><a class="text-link" href="publications.html">Full list →</a></div>
+            <div class="section-content">
+                {get_selected_publications_html()}
+                <p class="section-note">* denotes a core contributor.</p>
+            </div>
         </section>
         <section class="site-section" aria-labelledby="talks">
-            <div class="section-heading"><h2 id="talks">Recent Talks</h2><a class="text-link" href="talks.html">All talks <span aria-hidden="true">↗</span></a></div>
-            <div class="talk-list">{get_talks_html(limit=3)}</div>
+            <div class="section-heading"><h2 id="talks">Recent Talks</h2><a class="text-link" href="talks.html">All talks →</a></div>
+            <div class="section-content talk-list">{get_talks_html(limit=3)}</div>
         </section>
         <section class="site-section" aria-labelledby="background">
-            <div class="section-heading"><h2 id="background">Background</h2><a class="text-link" href="assets/cv.pdf" target="_blank">Full CV <span aria-hidden="true">↗</span></a></div>
-            <div class="background-grid">
-                <div><h3 class="eyebrow column-heading">Education</h3>{get_education_html()}
-                    <div class="service"><h3 class="eyebrow column-heading">Professional Activities</h3>{get_professional_activities_html()}</div>
-                </div>
-                <div><h3 class="eyebrow column-heading">Experience</h3>{get_internship_html()}</div>
+            <div class="section-heading"><h2 id="background">Background</h2><a class="text-link" href="assets/cv.pdf" target="_blank">Full CV ↗</a></div>
+            <div class="section-content background-details">
+                <details><summary>Education</summary>{get_education_html()}</details>
+                <details><summary>Experience</summary>{get_internship_html()}</details>
+                <details><summary>Professional activities</summary>{get_professional_activities_html()}</details>
             </div>
         </section>
         {footer}
@@ -590,7 +590,7 @@ def get_recordings_html():
     <main id="main" class="page-shell archive-page recordings-page">
         <header class="archive-header">
             <p class="eyebrow">Beyond research</p>
-            <h1>Recordings<span class="accent">.</span></h1>
+            <h1>Recordings</h1>
             <p class="recordings-lead">A violin, and a lifelong love of music.</p>
             <p>I have been playing the violin since 2003, long before I started coding. This is a collection of classical pieces and music from games and anime, recorded over the years.</p>
             <details class="recording-story"><summary>A little musical background</summary>
