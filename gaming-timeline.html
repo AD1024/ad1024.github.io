@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Turn your gaming history into a timeline. Find games, add the dates you played, and export a PNG or SVG.">
+  <title>Gaming History Creator</title>
+  <link rel="icon" href="pictures/AD1024.png">
+  <link rel="stylesheet" href="assets/gaming-timeline.css">
+  <script type="module" src="assets/gaming-timeline.js"></script>
+</head>
+<body>
+  <header class="shell masthead"><a href="index.html" aria-label="Mike He home">⊢</a><span>A LITTLE TOOL FOR YOUR PLAY HISTORY</span></header>
+  <main class="shell">
+    <section class="intro"><p class="eyebrow">YOUR GAMES, OVER TIME</p><h1>Gaming History Creator</h1><p>Map the games you played. Add your dates, then create a timeline to keep or share.</p></section>
+    <div class="workspace">
+      <section class="editor" aria-labelledby="editor-title">
+        <div class="section-heading"><h2 id="editor-title"><span>01</span> Your games</h2><button type="button" id="example" class="text-button">Load example</button></div>
+        <p class="hint">Enter dates as <strong>YYYY</strong> or <strong>YYYY-MM</strong>. A year alone means January. Dates mark the beginning of each month.</p>
+        <form id="game-form">
+          <div class="search-field"><label for="game-name">Game name</label><input id="game-name" required maxlength="160" placeholder="Start typing a game title…" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suggestions" aria-describedby="search-status"><ul id="suggestions" role="listbox" hidden></ul></div>
+          <p id="search-status" class="field-note" aria-live="polite">Search the library by the beginning of a title, or use any name.</p>
+          <div class="date-fields"><label>From<input id="start-date" required placeholder="2014 or 2014-06" maxlength="7"></label><label>To<input id="end-date" required placeholder="2018 or 2018-09" maxlength="7"></label></div>
+          <button type="submit" class="add-button" id="add-game">+ Add game</button><button type="button" id="cancel-edit" class="text-button" hidden>Cancel edit</button>
+        </form>
+        <p id="entry-status" class="field-note" role="status"></p>
+        <ol id="entries" class="entries" aria-label="Games in your timeline"></ol>
+        <p id="empty-list" class="empty-list">Your next save starts here.<br>Add a game, or load the example.</p>
+        <details class="bulk"><summary>Paste a list of games</summary><p class="hint">One per line: <code>Game name, start, end</code>. You can also separate fields with tabs. Quote names containing commas.</p><label for="bulk-input" class="sr-only">Game list</label><textarea id="bulk-input" rows="5" maxlength="50000" placeholder="Minecraft, 2012, 2016-06&#10;Stardew Valley, 2016-03, 2019"></textarea><button id="import" type="button" class="secondary">Add list</button><p id="import-status" class="field-note" role="status"></p></details>
+        <div class="settings"><label for="timeline-title">Timeline title</label><input id="timeline-title" value="My gaming history" maxlength="90"><label class="checkbox"><input type="checkbox" id="show-covers" checked> Include game covers</label></div>
+        <button type="button" id="generate" class="primary">Generate timeline <span aria-hidden="true">↗</span></button>
+        <p class="field-note" id="save-status" role="status">Your draft and preview are saved automatically in this browser, including unfinished entries. Game lookups use GameDB.</p>
+        <div class="draft-files"><button type="button" id="save-inputs" class="secondary">↓ Save inputs</button><button type="button" id="load-inputs" class="secondary">↑ Load inputs</button><input type="file" id="inputs-file" accept=".json,application/json" aria-label="Load timeline inputs file" hidden></div>
+        <p class="field-note">Save a JSON backup of your games, settings, and unfinished input. Loading a file replaces the current draft.</p>
+        <p id="file-status" class="field-note" role="status"></p>
+      </section>
+      <section class="output" aria-labelledby="output-title">
+        <div class="section-heading"><h2 id="output-title"><span>02</span> The timeline</h2><span id="figure-meta" class="field-note">READY WHEN YOU ARE</span></div>
+        <div class="preview" id="preview" tabindex="0" aria-label="Timeline preview; scroll horizontally for longer timelines"><div class="placeholder"><div class="sample-line" aria-hidden="true"><i></i><b></b><i></i></div><h3>Your play history, at a glance.</h3><p>Add a few games and hit Generate.<br>Each line is a little time spent in another world.</p></div></div>
+        <div class="export-bar"><p id="render-status" role="status" aria-live="polite">Year ticks. Month-level precision. Made to keep.</p><div><button id="download-svg" type="button" class="secondary" disabled>↓ SVG</button><button id="download-png" type="button" class="secondary" disabled>↓ PNG</button></div></div>
+        <p class="hint">SVG stays sharp at any size. PNG is a high-resolution image. Covers are embedded in both files; unavailable covers are skipped. On smaller screens, scroll the figure to see the full timeline.</p>
+      </section>
+    </div>
+    <footer><span>A timeline of time well played.</span><span>Game library: <a href="https://github.com/LizardByte/GameDB">LizardByte GameDB</a> · Data &amp; covers: <a href="https://www.igdb.com/">IGDB</a></span></footer>
+  </main>
+  <noscript>This tool needs JavaScript to search games and generate images.</noscript>
+</body>
+</html>
