@@ -195,6 +195,10 @@ def get_personal_data():
     <div class="bio-disclosures">
         <details class="email-disclosure"><summary>λ-Mail</summary>{EMAIL_REDUCER}</details>
         <details class="awards-disclosure"><summary>Awards &amp; honors</summary><ul>
+<li class="funded-award">2026: <a href="https://www.renaissancephilanthropy.org/reliable-equivalence-checking-for-autoformalization" target="_blank" rel="noopener">AI for Math Fund</a>
+    <div class="award-credit">Organized by <a href="https://www.renaissancephilanthropy.org/" target="_blank" rel="noopener">Renaissance Philanthropy</a>; funded by <a href="https://www.xtxmarkets.com/" target="_blank" rel="noopener">XTX Markets</a>.</div>
+    <img class="award-logo" src="assets/img/ai4math_logo.png" alt="AI for Math Fund" width="2045" height="513" loading="lazy">
+</li>
 <li>2022: <a href="https://news.cs.washington.edu/2022/02/22/allen-school-undergraduates-recognized-by-the-computing-research-association-for-advancing-health-sensing-programming-languages-and-systems-research/" target="_blank">CRA Outstanding Undergraduate Researcher Award, Honorable Mention</a></li>
 <li>2020: Lynn Conway Research Award (DTR Team)</li>
 <li>2019: JASSO Scholarship, Waseda University</li>

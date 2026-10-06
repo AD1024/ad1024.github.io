@@ -1,5 +1,13 @@
 [
   {
+    "id": "PInferOOPSLA",
+    "title": "Specy: Learning Specifications for Distributed Systems from Event Traces",
+    "venue": "OOPSLA'26",
+    "year": "October 2026",
+    "img": "assets/img/img-specy.png",
+    "slides": "assets/talks/Specy_OOPSLA.pdf"
+  },
+  {
     "id": "AlgoVeriICML26",
     "title": "AlgoVeri: An Aligned Benchmark for Verified Code Generation on Classical Algorithms",
     "venue": "ICML'26",

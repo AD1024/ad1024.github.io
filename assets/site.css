@@ -49,6 +49,9 @@ summary::marker { color: var(--accent); font-size: 12px; }
 .bio-disclosures summary { min-height: 32px; padding-block: 5px; color: var(--muted); }
 .bio-disclosures details[open] { flex-basis: 100%; min-width: 0; }
 .awards-disclosure ul { padding-left: 19px; }
+.funded-award { margin-bottom: 14px; }
+.award-credit { font-size: 14px; color: var(--muted); margin-top: 3px; }
+.award-logo { width: 180px; height: auto; margin-top: 10px; }
 .site-section { padding: 24px 0; }
 .section-heading { align-self: start; padding-top: 2px; }
 .section-heading h2 { font: 15px/1.7 var(--mono); color: var(--ink); font-weight: 600; }
