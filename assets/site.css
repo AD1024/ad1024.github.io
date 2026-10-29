@@ -72,9 +72,6 @@ summary::marker { color: var(--accent); font-size: 12px; }
 .award-label::after { content: ']'; }
 .publication-links, .resource-links { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 16px; font: 14px/1.7 var(--mono); margin-top: 3px; }
 .publication-links > a, .resource-links a { display: inline-flex; align-items: center; gap: 4px; min-height: 28px; }
-.citation summary { min-height: 28px; padding-block: 4px; }
-.citation[open] { flex-basis: 100%; min-width: 0; }
-.citation pre { white-space: pre-wrap; overflow-wrap: anywhere; background: var(--soft); border-left: 2px solid var(--accent); padding: 14px; font: 14px/1.8 var(--mono); margin: 8px 0; }
 .section-note, .small-note { color: var(--muted); font-size: 14px; margin: 20px 0 0; }
 .artifact-badges { display: flex; gap: 8px; margin-top: 8px; }
 .artifact-badges img { height: 40px; }
@@ -158,7 +155,7 @@ summary::marker { color: var(--accent); font-size: 12px; }
 .audio-error { margin-top: 12px; color: var(--accent); font-size: 15px; }
 @media (max-width: 1024px), (pointer: coarse) {
   .contact-links a, .section-heading .text-link, .publication-links > a, .resource-links a, .site-footer a { min-height: 44px; }
-  .bio-disclosures summary, .citation summary { min-height: 44px; padding-block: 11px; }
+  .bio-disclosures summary { min-height: 44px; padding-block: 11px; }
   .lambda-mail .btn { min-height: 44px; }
 }
 @media (max-width: 800px) {

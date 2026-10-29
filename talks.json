@@ -1,5 +1,12 @@
 [
   {
+    "id": "ChipAgentTalk",
+    "title": "From Specifications to Formal Guarantees",
+    "venue": "Invited Talk @ ChipAgent",
+    "year": "October 2026",
+    "img": "assets/img/img-specy.png"
+  },
+  {
     "id": "PInferOOPSLA",
     "title": "Specy: Learning Specifications for Distributed Systems from Event Traces",
     "venue": "OOPSLA'26",

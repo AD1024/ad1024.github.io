@@ -1,7 +1,6 @@
 from pybtex.database.input import bibtex
 import json
 from collections import defaultdict
-from copy import deepcopy
 from datetime import datetime
 from html import escape
 
@@ -284,10 +283,6 @@ def get_paper_entry(entry_key, entry, heading_level=4):
                 badge = f'<a href="{escape(fields[key], quote=True)}" target="_blank">{badge}</a>'
             badges.append(badge)
     badge_html = '<div class="artifact-badges">' + ''.join(badges) + '</div>' if badges else ''
-    citation = deepcopy(entry)
-    for key in list(artefacts) + ['img', 'award'] + list(badge_names):
-        citation.fields.pop(key, None)
-    cite = escape(citation.to_string('bibtex'))
     venue = escape(fields.get('booktitle', fields.get('journal', 'Preprint')))
     return f"""
     <article class="publication" id="paper-{escape(entry_key, quote=True)}">
@@ -296,9 +291,7 @@ def get_paper_entry(entry_key, entry, heading_level=4):
             <p class="publication-authors">{generate_person_html(entry.persons['author'])}</p>
             <div class="publication-venue">{venue} · {escape(fields['year'])} {award}</div>
             {badge_html}
-            <div class="publication-links">{links}
-                <details class="citation"><summary>BibTeX</summary><pre><code>{cite}</code></pre></details>
-            </div>
+            <div class="publication-links">{links}</div>
         </div>
     </article>"""
 
