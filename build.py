@@ -194,6 +194,7 @@ def get_personal_data():
     <div class="bio-disclosures">
         <details class="email-disclosure"><summary>λ-Mail</summary>{EMAIL_REDUCER}</details>
         <details class="awards-disclosure"><summary>Awards &amp; honors</summary><ul>
+<li>2026: SEAS Award for Excellence </li>
 <li class="funded-award">2026: <a href="https://www.renaissancephilanthropy.org/reliable-equivalence-checking-for-autoformalization" target="_blank" rel="noopener">AI for Math Fund</a>
     <div class="award-credit">Organized by <a href="https://www.renaissancephilanthropy.org/" target="_blank" rel="noopener">Renaissance Philanthropy</a>; funded by <a href="https://www.xtxmarkets.com/" target="_blank" rel="noopener">XTX Markets</a>.</div>
     <img class="award-logo" src="assets/img/ai4math_logo.png" alt="AI for Math Fund" width="2045" height="513" loading="lazy">
