@@ -177,9 +177,9 @@ def get_personal_data():
     name = ["Mike", "He"]
     bio_text = f"""
 <p>
-                    I am a Ph.D. student at the <a href="https://pl.cs.princeton.edu/" target="_blank">Princeton Programming Languages Group</a> advised by Prof. <a href="https://www.cs.princeton.edu/~aartig/" target="_blank"> Aarti Gupta</a>.
+                    I am a Ph.D. candidate advised by Prof. <a href="https://www.cs.princeton.edu/~aartig/" target="_blank"> Aarti Gupta</a>.
                     I am broadly interested in programming languages, formal methods and compilers.
-                    My current research focuses on practical formal and semi-formal methods for distributed systems and agentic systems, and I am working with the <a href="https://p-org.github.io/P" target="_blank">P ecosystem</a> for verifying and reasoning about distributed systems.
+                    My current research focuses on two broad directions: scaling formal methods with LLMs, and making LLM agents more reliable and observable with formal methods.
                 </p>
 <p>Before joining Princeton, I studied at the <a href="https://cs.washington.edu" target="_blank">University of Washington</a>, where I was privileged to work with Prof. <a href="https://ztatlock.net/" target="_blank">Zachary Tatlock</a> on equality saturation and its applications to machine learning compilers.
                 </p>
@@ -471,7 +471,7 @@ def get_index_html():
     content = f"""
     <main id="main" class="page-shell home-page">
         <section class="hero" aria-labelledby="name">
-            <figure class="portrait"><img src="assets/img/photo_2025_web.jpg" alt="Mike He" width="483" height="600"><figcaption>Ph.D. student<br>Princeton University</figcaption></figure>
+            <figure class="portrait"><img src="assets/img/photo_2025_web.jpg" alt="Mike He" width="483" height="600"><figcaption>Ph.D. candidate<br>Princeton University</figcaption></figure>
             <div class="intro-content">
                 <h1 id="name">{' '.join(name)}</h1>
                 <p class="research-focus">Formal Methods for and with LLM Agents</p>
